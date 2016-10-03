@@ -26,7 +26,7 @@ SECRET_KEY = 'k8cra^pz-kty^7b2x-d$b(n8(+=uq9k#2mfet%ni+nf!$*_1gt'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+AUTH_USER_MODEL = 'users.Member'
 
 # Application definition
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users'
 ]
 
 MIDDLEWARE_CLASSES = [
