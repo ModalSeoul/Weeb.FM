@@ -9,6 +9,8 @@ from scrobbles.views import ScrobbleView
 from songs.views import SongView
 from artists.views import ArtistView
 from albums.views import AlbumView
+from featured.views import CurrentView, HistoricalView
+
 
 router = DefaultRouter()
 router.register(r'members', MemberView, base_name='members')
@@ -16,6 +18,8 @@ router.register(r'scrobbles', ScrobbleView, base_name='scrobbles')
 router.register(r'songs', SongView, base_name='songs')
 router.register(r'artists', ArtistView, base_name='artists')
 router.register(r'albums', AlbumView, base_name='albums')
+router.register(r'featured/current', CurrentView, base_name='currents')
+router.register(r'featured/historical', HistoricalView, base_name='historicals')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
