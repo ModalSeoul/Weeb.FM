@@ -1,11 +1,13 @@
 from django.db import models
 from artists.models import Artist
+from albums.models import Album
 
 
 class Song(models.Model):
     title = models.CharField(max_length=72, unique=True)
     artist = models.ForeignKey(Artist)
-    duration = models.IntegerField(null=True)
+    album = models.ForeignKey(Album, null=True, blank=True)
+    duration = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return self.title
+        return '{} - {}'.format(self.title, self.artist.name)

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'users',
     'scrobbles',
     'songs',
-    'artists'
+    'artists',
+    'albums'
 ]
 
 MIDDLEWARE_CLASSES = [
