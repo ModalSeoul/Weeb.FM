@@ -45,6 +45,7 @@ class ScrobbleView(viewsets.ModelViewSet):
         if artist_exists(data['artist']):
             artist = Artist.objects.get(name=data['artist'])
         else:
+            print(data)
             artist = Artist.objects.create(name=data['artist'])
 
         if song_exists(data['song']):

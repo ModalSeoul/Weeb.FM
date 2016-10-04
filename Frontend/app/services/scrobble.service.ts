@@ -25,4 +25,10 @@ export class ScrobbleService {
       return r;
     });
   }
+
+  public getAlbumScrobbles(title: string) {
+    return this.http.get(`scrobbles/${title}/by_album`).map((r: any) => {
+      return r;
+    });
+  }
 }
