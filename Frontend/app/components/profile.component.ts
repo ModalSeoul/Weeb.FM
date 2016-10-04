@@ -20,8 +20,5 @@ export class ProfileComponent implements OnInit {
 
   public ngOnInit() {
     this.uid = this.route.snapshot.params['id'];
-    this.http.get('members/1').subscribe((r: any) => {
-      console.log(r);
-    });
   }
 }

@@ -83,3 +83,11 @@ class ScrobbleView(viewsets.ModelViewSet):
             queryset = Scrobble.objects.filter(song=pk)
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
+
+    @detail_route(methods=['GET'])
+    def by_user(self, request, pk=None):
+        """Lists all scrobbles from one user(pk)"""
+        if pk is not None:
+            queryset = Scrobble.objects.filter(member__nick_name__iexact=pk)
+            serializer = ScrobbleSerializer(instance=queryset, many=True)
+            return Response(serializer.data)
