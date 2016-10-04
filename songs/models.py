@@ -8,6 +8,7 @@ class Song(models.Model):
     artist = models.ForeignKey(Artist)
     album = models.ForeignKey(Album, null=True, blank=True)
     duration = models.IntegerField(null=True, blank=True)
+    scrobble_count = models.IntegerField(default=0)
 
     def __str__(self):
         return '{} - {}'.format(self.title, self.artist.name)

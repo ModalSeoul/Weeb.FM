@@ -9,7 +9,7 @@ from songs.models import Song
 from .models import Scrobble
 from .serializers import ScrobbleSerializer
 
-def song_exists(title) -> str:
+def song_exists(title):
     does_exist = Song.objects.filter(title=title)
     if len(does_exist) != 0:
         return True

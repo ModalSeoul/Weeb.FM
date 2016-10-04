@@ -9,6 +9,7 @@ class Album(models.Model):
     artist = models.ForeignKey(Artist)
     release_year = models.IntegerField(null=True, blank=True)
     cover = models.ImageField(upload_to=ALBUM_CDN_PATH)
+    scrobble_count = models.IntegerField(default=0)
 
     def __str__(self):
         if self.release_year is not None:
