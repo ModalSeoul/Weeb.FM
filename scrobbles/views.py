@@ -24,14 +24,24 @@ class ScrobbleView(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(member=self.request.user)
 
+    @detail_route(methods=['GET'])
+    def by_artist(self, request, pk=None):
+        if pk is not None:
+            queryset = Scrobble.objects.filter(artist=pk)
+            serializer = ScrobbleSerializer(instance=queryset, many=True)
+            return Response(serializer.data)
+
+    # TODO: Untested until initial frontend routes
     @detail_route(methods=['POST'])
     def write(self, request, pk=None):
-         song_title = request.data.get('song_title')
-         song_album = request.data.get('song_album')
-         song_artist = request.data.get('song_artist')
+        """pseudo get_or_create function
+        because fuck it, Im awesome
+        """
+        song_title = request.data.get('song_title')
+        song_album = request.data.get('song_album')
+        song_artist = request.data.get('song_artist')
 
-         if song_exists(song_title):
-             song_object = Song.objects.get(title=song_title)
-             create = Scrobble.objects.create(song=song_object,
-                                            member=self.request.user)
-         return Response(create) # TODO: This just won't return a good response
+        if song_exists(song_title):
+            song_object = Song.objects.get(title=song_title)
+            create = Scrobble.objects.create(song=song_object, member=self.request.user)
+        return Response(create) # TODO: This just won't return a good response
