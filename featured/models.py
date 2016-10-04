@@ -8,7 +8,7 @@ from songs.models import Song
 
 
 class Current(models.Model):
-    song = models.ForeignKey(Song, unique=True)  # Ensures no duplicates
+    song = models.ForeignKey(Song)
     note = models.TextField(max_length=1200)  # Short text about the song
     # genre = models.ForeignKey(Genre) TODO: Add Genre application
     start_date = models.DateTimeField()  # Scheduled featuring
@@ -16,9 +16,9 @@ class Current(models.Model):
 
 
 class Historical(models.Model):
-    song = models.ForeignKey(Song, unique=True)
+    song = models.ForeignKey(Song)
     note = models.TextField(max_length=1200)
     # genre = models.ForeignKey(Genre) TODO: Add Genre application
     date_created = models.DateTimeField(auto_now_add=True)
-    date_started = models.DateTimeFIeld()
+    date_started = models.DateTimeField()
     date_ended = models.DateTimeField()

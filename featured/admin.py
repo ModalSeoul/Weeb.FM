@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from featured.models import Current, Historical
+
+admin.site.register(Current)
+admin.site.register(Historical)
