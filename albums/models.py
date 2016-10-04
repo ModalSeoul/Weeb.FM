@@ -12,6 +12,7 @@ class Album(models.Model):
     scrobble_count = models.IntegerField(default=0)
 
     def __str__(self):
+        # This formatting is kinda meh?
         if self.release_year is not None:
             return '{} - {} - {}'.format(self.artist.name,
                                          self.title,
