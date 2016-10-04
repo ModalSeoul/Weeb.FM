@@ -1,5 +1,5 @@
 # WeebFM
-WeebFM development started on 10/3/2016. The day LastFm decided to toss up a persistent modal on every. single. page. The modal asks users to Subscribe or disable Adblock. There's no way around it. But fuck that. Last has got to shit anyways. WeebFm(temporary name) is going to be better than Last, because "*If you ain't first, you're last*" - Ricky Bobby
+WeebFM development started on 10/3/2016. The day LastFm decided to toss up a persistent modal on every. single. page. The modal asks users to Subscribe or disable Adblock. There's no way around it. But fuck that. Last has gone to shit anyways. WeebFm(temporary name) is going to be better than Last, because "*If you ain't first, you're last*" - Ricky Bobby
 
 ## But, why?
 THIS. IS. ~~Sparta?~~ **WHY**
