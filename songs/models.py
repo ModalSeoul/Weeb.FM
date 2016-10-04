@@ -1,3 +1,4 @@
+"""Songs model file, contains all data storage logic"""
 from django.db import models
 from artists.models import Artist
 from albums.models import Album
