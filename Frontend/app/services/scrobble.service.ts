@@ -15,6 +15,8 @@ export class ScrobbleService {
   }
 
   public getArtistScrobbles(name: string | number) {
-    // TODO:
+    return this.http.get(`scrobbles/${name}/by_artist`).map((r: any) => {
+      return r;
+    });
   }
 }

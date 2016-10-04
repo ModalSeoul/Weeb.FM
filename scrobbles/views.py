@@ -64,7 +64,7 @@ class ScrobbleView(viewsets.ModelViewSet):
     def by_artist(self, request, pk=None):
         """List all scrobbles from one artist(pk)"""
         if pk is not None:
-            queryset = Scrobble.objects.filter(artist=pk)
+            queryset = Scrobble.objects.filter(artist__name__iexact=pk)
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
 
@@ -72,7 +72,7 @@ class ScrobbleView(viewsets.ModelViewSet):
     def by_album(self, request, pk=None):
         """Lists all scrobbles from one album(pk)"""
         if pk is not None:
-            queryset = Scrobble.objects.filter(song__album=pk)
+            queryset = Scrobble.objects.filter(song__album__title__iexact=pk)
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
 
@@ -80,7 +80,7 @@ class ScrobbleView(viewsets.ModelViewSet):
     def by_song(self, request, pk=None):
         """Lists all scrobbles from one song(pk)"""
         if pk is not None:
-            queryset = Scrobble.objects.filter(song=pk)
+            queryset = Scrobble.objects.filter(song__title__iexact=pk)
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
 
