@@ -28,6 +28,7 @@ export class HttpService {
   }
 
   public get (url: string, params: any = {}) {
+    url = `http://localhost:8000/api/${url}/`;
     return this.request('get', url, {}, params);
   }
 
