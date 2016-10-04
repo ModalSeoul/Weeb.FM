@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'scrobbles',
     'songs',
     'artists',
-    'albums'
+    'albums',
+    'featured'
 ]
 
 MIDDLEWARE_CLASSES = [
