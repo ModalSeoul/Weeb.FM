@@ -5,8 +5,8 @@ from songs.models import Song
 
 class Scrobble(models.Model):
     song = models.ForeignKey(Song)
-    date_scrobbled = models.DateTimeField(auto_now_add=True)
     member = models.ForeignKey(Member)
+    date_scrobbled = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         # e.x "Hells Bells, AC/DC - Admin"
