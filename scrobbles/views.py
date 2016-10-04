@@ -24,10 +24,30 @@ class ScrobbleView(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(member=self.request.user)
 
+    # In a perfect world, these 3 functions would be
+    # in a BaseFilterBackend. But, the world is an imperfect place..
+    # Screws fall out all the time.
     @detail_route(methods=['GET'])
     def by_artist(self, request, pk=None):
+        """List all scrobbles from one artist(pk)"""
         if pk is not None:
             queryset = Scrobble.objects.filter(artist=pk)
+            serializer = ScrobbleSerializer(instance=queryset, many=True)
+            return Response(serializer.data)
+
+    @detail_route(methods=['GET'])
+    def by_album(self, request, pk=None):
+        """Lists all scrobbles from one album(pk)"""
+        if pk is not None:
+            queryset = Scrobble.objects.filter(song__album=pk)
+            serializer = ScrobbleSerializer(instance=queryset, many=True)
+            return Response(serializer.data)
+
+    @detail_route(methods=['GET'])
+    def by_song(self, request, pk=None):
+        """Lists all scrobbles from one song(pk)"""
+        if pk is not None:
+            queryset = Scrobble.objects.filter(song=pk)
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
 
