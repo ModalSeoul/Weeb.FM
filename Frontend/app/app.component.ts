@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpService } from 'services/index';
 
 @Component({
     selector: 'my-app',
