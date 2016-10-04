@@ -22,3 +22,14 @@ class SongView(viewsets.ModelViewSet):
             serializer = SongSerializer(instance=queryset, many=True)
             # return the serialized & filtered data to the viewset
             return Response(serializer.data)
+
+    @detail_route(methods=['GET'])
+    def by_album(self, request, pk=None):
+        # If artist id is passed
+        if pk is not None:
+            # filter by passed artist id
+            queryset = Song.objects.filter(album=pk)
+            # serialize the filtered song objects(lets us display properly)
+            serializer = SongSerializer(instance=queryset, many=True)
+            # return the serialized & filtered data to the viewset
+            return Response(serializer.data)
