@@ -9,7 +9,7 @@ from songs.models import Song
 from .models import Scrobble
 from .serializers import ScrobbleSerializer
 
-def song_exists(title):
+def song_exists(title) -> str:
     does_exist = Song.objects.filter(title=title)
     if len(does_exist) != 0:
         return True
@@ -25,8 +25,8 @@ class ScrobbleView(viewsets.ModelViewSet):
         serializer.save(member=self.request.user)
 
     # In a perfect world, these 3 functions would be
-    # in a BaseFilterBackend. But, the world is an imperfect place..
-    # Screws fall out all the time.
+    # in a BaseFilterBackend. Screws fall out all the time,
+    # the world's an imperfect place.
     @detail_route(methods=['GET'])
     def by_artist(self, request, pk=None):
         """List all scrobbles from one artist(pk)"""
