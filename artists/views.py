@@ -4,10 +4,10 @@ from rest_framework.filters import BaseFilterBackend
 from rest_framework.decorators import list_route, detail_route
 from rest_framework.response import Response
 
-from .serializers import MemberSerializer
-from .models import Member
+from .models import Artist
+from .serializers import ArtistSerializer
 
 
-class MemberView(viewsets.ModelViewSet):
-    queryset = Member.objects.all()
-    serializer_class = MemberSerializer
+class ArtistView(viewsets.ModelViewSet):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
