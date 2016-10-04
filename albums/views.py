@@ -11,3 +11,14 @@ from .serializers import AlbumSerializer
 class AlbumView(viewsets.ModelViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
+
+    @detail_route(methods=['GET'])
+    def by_artist(self, request, pk=None):
+        # If artist id is passed
+        if pk is not None:
+            # filter by passed artist id
+            queryset = Album.objects.filter(artist=pk)
+            # serialize the filtered album objects(lets us display properly)
+            serializer = AlbumSerializer(instance=queryset, many=True)
+            # return the serialized & filtered data to the viewset
+            return Response(serializer.data)
