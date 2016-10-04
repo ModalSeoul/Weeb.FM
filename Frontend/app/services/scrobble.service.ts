@@ -13,4 +13,8 @@ export class ScrobbleService {
       return r;
     });
   }
+
+  public getArtistScrobbles(name: string | number) {
+    // TODO:
+  }
 }
