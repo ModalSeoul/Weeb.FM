@@ -14,8 +14,14 @@ export class ScrobbleService {
     });
   }
 
-  public getArtistScrobbles(name: string | number) {
+  public getArtistScrobbles(name: string) {
     return this.http.get(`scrobbles/${name}/by_artist`).map((r: any) => {
+      return r;
+    });
+  }
+
+  public getSongScrobbles(title: string) {
+    return this.http.get(`scrobbles/${title}/by_song`).map((r: any) => {
       return r;
     });
   }

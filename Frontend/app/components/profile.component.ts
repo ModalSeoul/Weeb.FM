@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService, ScrobbleService } from '../services/index';
 
@@ -10,7 +9,6 @@ import { HttpService, ScrobbleService } from '../services/index';
       HttpService,
       ScrobbleService
     ],
-    directives: [ ROUTER_DIRECTIVES ],
 })
 
 export class ProfileComponent implements OnInit {
