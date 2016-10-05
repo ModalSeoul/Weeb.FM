@@ -22,10 +22,8 @@ export class ProfileComponent implements OnInit {
 
   public ngOnInit() {
     this.uid = this.route.snapshot.params['id'];
-    this.Scrobble.getUserScrobbles('admin').subscribe((r: any) => {
-      console.log(r);
-    });
   }
+
 
 
 }

@@ -33,6 +33,7 @@ export class HttpService {
   }
 
   public post (url: string, body: any = {}, params: any = {}) {
+    url = `http://localhost:8000/api/${url}/`; // TODO: ENV based const var
     return this.request('post', url, body, params);
   }
 

@@ -31,4 +31,13 @@ export class ScrobbleService {
       return r;
     });
   }
+
+  public postScrobble(song: string, artist: string) {
+    return this.http.post('scrobbles', {
+      'song': song,
+      'artist': artist
+    }).map((r: any) => {
+      return r;
+    });
+  }
 }
