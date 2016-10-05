@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '../services/index';
 
@@ -27,7 +27,7 @@ import { HttpService } from '../services/index';
     ],
 })
 
-export class ScrobbleTableComponent implements OnInit {
+export class ScrobbleTableComponent {
   @Input() content: any;
 
   constructor(

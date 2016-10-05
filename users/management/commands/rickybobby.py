@@ -12,7 +12,9 @@ class Command(BaseCommand):
         password = raw_input('Password: ')
 
         # TODO: Hash/salt password (+ bcrypt)
-        Member.objects.create(nick_name=nick, email=email, username=username)
+        Member.objects.create(nick_name=nick, email=email,
+                              username=username, password=password,
+                              is_superuser=True, staff=True)
         print('''
                                          aaaaaaa,
                                 aaa###############&a,
