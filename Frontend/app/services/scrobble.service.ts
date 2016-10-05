@@ -8,8 +8,25 @@ export class ScrobbleService {
 
   constructor(private http: HttpService) {}
 
+  /*This class is laid out in a fairly
+  * straight forward manner. Names are
+  * long, but they're explicit
+  */
+
+  public getScrobble(id: number) {
+    return this.http.get(`songs/${id}`).map((r: any) => {
+      return r;
+    });
+  }
+
   public getUserScrobbles(name: string) {
     return this.http.get(`scrobbles/${name}/by_user`).map((r: any) => {
+      return r;
+    });
+  }
+
+  public getUserIdScrobbles(id: number) {
+    return this.http.get(`scrobbles/${id}/by_user_id`).map((r: any) => {
       return r;
     });
   }
