@@ -3,7 +3,9 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import url, include
 from django.conf.urls.static import static
+
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken import views
 
 from users.views import MemberView
 from scrobbles.views import ScrobbleView
@@ -25,4 +27,5 @@ router.register(r'featured/historical', HistoricalView, base_name='historicals')
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
+    url(r'^api-token-auth/', views.obtain_auth_token)
 ] + static('/', document_root=settings.MEDIA_ROOT)
