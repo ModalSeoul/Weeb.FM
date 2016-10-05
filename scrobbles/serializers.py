@@ -18,4 +18,4 @@ class ScrobbleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Scrobble
-        fields = ('id', 'song_name', 'artist_name', 'date_scrobbled')
+        fields = ('id', 'song_name', 'artist_name', 'date_scrobbled', 'member')

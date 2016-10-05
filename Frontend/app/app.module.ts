@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { ProfileComponent, HomeComponent } from './components/index';
 import { routing, appRoutingProviders} from './app.routes';
 import { AppComponent } from './app.component';
+import { ScrobbleTableComponent } from './common/index';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    ScrobbleTableComponent
   ],
   bootstrap: [ AppComponent ],
   providers: [ appRoutingProviders ]
