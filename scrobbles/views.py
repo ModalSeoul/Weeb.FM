@@ -54,7 +54,8 @@ class ScrobbleView(viewsets.ModelViewSet):
             song = Song.objects.create(
                 title=data['song'], artist=artist)
 
-        obj = Scrobble.objects.create(song=song, member=self.request.user)
+        # obj = Scrobble.objects.create(song=song, member=self.request.user)
+        obj = Scrobble.objects.create(song=song, member=Member.objects.first())
         created = serializer(instance=obj)
         return Response(created.data)
 
