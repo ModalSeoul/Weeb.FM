@@ -5,7 +5,6 @@ import { HttpService, ScrobbleService } from '../services/index';
 @Component({
     selector: 'profile',
     template: `<h2>Profile Component</h2>
-
     <table>
       <thead>
         <tr>
@@ -16,8 +15,8 @@ import { HttpService, ScrobbleService } from '../services/index';
       </thead>
       <tbody>
         <tr *ngFor="let scrobble of scrobbles">
-          <td>{{scrobble.song.title}}</td>
-          <td>{{scrobble.song.artist_name}}</td>
+          <td>{{scrobble.song_name}}</td>
+          <td>{{scrobble.artist_name}}</td>
           <td>{{scrobble.date_scrobbled}}</td>
         </tr>
       </tbody>
@@ -41,18 +40,8 @@ export class ProfileComponent implements OnInit {
 
   public ngOnInit() {
     this.uid = this.route.snapshot.params['id'];
-    this.loadRelations();
-  }
-
-  private loadRelations() {
-    this.Scrobble.getUserIdScrobbles(this.uid).subscribe((r: any) => {
-      r.forEach((scrobble: any) => {
-        this.Scrobble.getScrobble(scrobble.song).subscribe((song: any) => {
-          scrobble['song'] = song;
-          this.scrobbles.push(scrobble);
-          console.log(scrobble);
-        });
-      });
+    this.Scrobble.getUserScrobbles(this.uid).subscribe((r: any) => {
+      this.scrobbles = r;
     });
   }
 

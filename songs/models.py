@@ -10,5 +10,9 @@ class Song(models.Model):
     album = models.ForeignKey(Album, null=True, blank=True)
     scrobble_count = models.IntegerField(default=0)
 
+    @property
+    def artist_name(self):
+        return self.artist.name
+
     def __str__(self):
-        return '{} - {}'.format(self.title, self.artist.name)
+        return self.title
