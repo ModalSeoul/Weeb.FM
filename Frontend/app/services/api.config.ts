@@ -5,7 +5,7 @@ const apiHosts = {
   production: 'null'
 };
 
-const API_HOST = apiHosts[NODE_ENV];
+const API_HOST = apiHosts['dev'];
 
 const createWithApiUrl = (str: string) => `${API_HOST}/api/${str}`;
 
