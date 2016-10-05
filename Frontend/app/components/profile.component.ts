@@ -32,7 +32,7 @@ import { HttpService, ScrobbleService, UserService } from '../services/index';
 
 export class ProfileComponent implements OnInit {
   private scrobbles: Array<any> = [];
-  private uid: number;
+  private uid: string;
   private avatar: string = 'http://localhost:8000';
   private nick: string;
 
@@ -51,7 +51,6 @@ export class ProfileComponent implements OnInit {
     });
 
     this.User.getUserAvatar(this.uid).subscribe((r: any) => {
-      r = r.replace('/cdn/', '/');
       this.avatar += r;
     });
 
