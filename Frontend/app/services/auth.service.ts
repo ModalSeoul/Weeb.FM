@@ -32,7 +32,9 @@ export class AuthService {
     if (storedUser) {
       const user: IResponseToken = JSON.parse(storedUser);
       this.setAuthToken(user.token);
-      this.getUser(user.id);
+      this.http.get(`members/${user.token}/by_token`).subscribe((r: any) => {
+        this.getUser(r.id);
+      });
     }
   }
 
@@ -44,7 +46,6 @@ export class AuthService {
       this.cookies.putObject('user', response);
       this.setAuthToken(response.token);
       return this.http.get(`members/${response.token}/by_token`).map((r: any) => {
-        console.log(r['id']);
         this.getUser(r['id']);
       });
     });
@@ -68,7 +69,6 @@ export class AuthService {
       this.user = user;
       this.userRxSubject$.next(user);
     });
-
     return userRequest;
   }
 
