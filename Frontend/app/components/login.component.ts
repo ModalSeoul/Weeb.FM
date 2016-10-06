@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
 })
 
 export class LoginRoute {
-  // private username: string;
-  // private password: string;
+  private username: string;
+  private password: string;
 
   constructor(private auth: AuthService, private router: Router) {}
 

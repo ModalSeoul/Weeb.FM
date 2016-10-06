@@ -52,7 +52,7 @@ export class DefaultRequestOptions extends BaseRequestOptions{
     {
       provide: RequestOptions,
       useClass: DefaultRequestOptions
-    }
+    },
     {
         provide: XSRFStrategy,
         useFactory: (cookieService: any) => {
