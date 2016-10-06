@@ -14,11 +14,13 @@ class MemberView(viewsets.ModelViewSet):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
 
-    def get_queryset(self):
-        query = self.request.query_params
-        if not query.get('token'):
-            print(Token.objects.all())
-            return Member.objects.all()
+    @detail_route(methods=['GET'])
+    def by_token(self, request, pk=None):
+        if pk is not None:
+            instance = Token.objects.get(key=pk)
+            member = Member.objects.get(id=instance.user_id)
+            serializer = MemberSerializer(instance=member)
+            return Response(serializer.data)
 
     @detail_route(methods=['GET'])
     def by_nick(self, request, pk=None):
