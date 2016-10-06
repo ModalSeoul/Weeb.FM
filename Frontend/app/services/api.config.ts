@@ -16,7 +16,6 @@ export default {
   createWithApiUrl,
   baseUrl:            API_HOST,
   apiUrl:             createUrl('api'),
-  authTokenUrl:       createUrl('api-token-auth'),
   oauthUrl:           createUrl('social'),
   changePasswordUrl:  createUrl('reset'),
   resetPasswordUrl:   createUrl('reset-password'),

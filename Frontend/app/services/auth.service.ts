@@ -37,7 +37,7 @@ export class AuthService {
 
   public login(username: string, password: string): Observable<IUser> {
     this.http.resetHeaders();
-    const request = this.http.post(config.authTokenUrl, { username, password });
+    const request = this.http.post('api-token-auth', { username, password });
 
     return request.mergeMap((response: IResponseToken) => {
       this.cookies.putObject('user', response);
@@ -59,7 +59,7 @@ export class AuthService {
   }
 
   public getUser(id: string): Observable<Object> {
-    const userRequest = this.http.get(`${config.apiUrl}/users/${id}`);
+    const userRequest = this.http.get(`members/${id}`);
     userRequest.subscribe((user: IUser) => {
       this.user = user;
       this.userRxSubject$.next(user);

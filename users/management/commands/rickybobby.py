@@ -5,16 +5,17 @@ from users.models import Member
 class Command(BaseCommand):
     help = 'Creates a new user with appropriate custom fields'
 
+    # mfw I'm too lazy to install 3.5.1 at home
     def handle(self, *args, **options):
-        nick = raw_input('Nickname: ')
-        email = raw_input('Email: ')
-        username = raw_input('Username: ')
-        password = raw_input('Password: ')
+        nick = input('Nickname: ')
+        email = input('Email: ')
+        username = input('Username: ')
+        password = input('Password: ')
 
         # TODO: Hash/salt password (+ bcrypt)
         Member.objects.create(nick_name=nick, email=email,
                               username=username, password=password,
-                              is_superuser=True, staff=True)
+                              is_superuser=True, is_staff=True)
         print('''
                                          aaaaaaa,
                                 aaa###############&a,
