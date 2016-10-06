@@ -25,6 +25,7 @@ export class AuthService {
   public user: IUser = {};
 
   private AUTH_TOKEN_HEADER = 'Authorization';
+  private LOCAL: string = 'http://localhost:8000/api/';
 
   constructor(private http: HttpService, private cookies: CookieService) {
     const storedUser = cookies.get('user');
@@ -42,7 +43,10 @@ export class AuthService {
     return request.mergeMap((response: IResponseToken) => {
       this.cookies.putObject('user', response);
       this.setAuthToken(response.token);
-      return this.getUser(response.id);
+      return this.http.get(`members/${response.token}/by_token`).map((r: any) => {
+        console.log(r['id']);
+        this.getUser(r['id']);
+      });
     });
   }
 

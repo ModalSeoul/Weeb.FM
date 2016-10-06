@@ -24,7 +24,7 @@ export class LoginRoute {
     // this.auth.login(this.username, this.password)
     //   .subscribe(() => this.router.navigate(['/']));
     this.auth.login(this.username, this.password)
-      .subscribe(() => window.location.href = '/tasks');
+      .subscribe(() => window.location.href = '/');
   }
 
   public resetPassword() {
