@@ -91,7 +91,9 @@ class ScrobbleView(viewsets.ModelViewSet):
     def by_user(self, request, pk=None):
         """Lists all scrobbles from one user(pk)"""
         if pk is not None:
-            queryset = Scrobble.objects.filter(member__nick_name__iexact=pk)
+            print(pk)
+            queryset = Scrobble.objects.all()
+            print(queryset)
             queryset = queryset.order_by('-date_scrobbled')
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
