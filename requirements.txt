@@ -2,3 +2,5 @@ django==1.9.9
 djangorestframework
 requests
 pep8
+pillow
+corsheaders
