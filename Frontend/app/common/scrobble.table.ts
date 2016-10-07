@@ -5,22 +5,24 @@ import { HttpService } from '../services/index';
 @Component({
     selector: 'scrobble-table',
     template: `
-    <table>
-      <thead>
-        <tr>
-          <th>Song</th>
-          <th>Artist</th>
-          <th>Timestamp</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let scrobble of content">
-          <td>{{scrobble.song_name}}</td>
-          <td>{{scrobble.artist_name}}</td>
-          <td>{{scrobble.date_scrobbled}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-container">
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>Song</th>
+            <th>Artist</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let scrobble of content">
+            <td>{{scrobble.song_name}}</td>
+            <td>{{scrobble.artist_name}}</td>
+            <td>{{scrobble.date_scrobbled}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     `,
     providers: [
       HttpService,
