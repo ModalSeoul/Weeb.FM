@@ -8,6 +8,7 @@ from songs.models import Song
 from songs.serializers import SongSerializer
 from users.models import Member
 from artists.models import Artist
+from albums.models import Album
 
 from .models import Scrobble
 from .serializers import ScrobbleSerializer, CreateScrobbleSerializer
@@ -15,6 +16,14 @@ from .serializers import ScrobbleSerializer, CreateScrobbleSerializer
 
 def song_exists(title):
     check = Song.objects.filter(title=title)
+    if len(check) != 0:
+        return True
+    else:
+        return False
+
+
+def album_exists(title):
+    check = Album.objects.filter(title=title)
     if len(check) != 0:
         return True
     else:
@@ -49,6 +58,15 @@ class ScrobbleView(viewsets.ModelViewSet):
             artist.save()
         else:
             artist = Artist.objects.create(name=data['artist'])
+
+        if 'album' in data:
+            if album_exists(data['album']):
+                album = Album.objects.get(title=data['album'])
+                album.scrobble_count += 1
+                album.save()
+            else:
+                album = Album.objects.create(
+                    title=data['album'], artist=artist, scrobble_count=1)
 
         if song_exists(data['song']):
             song = Song.objects.get(title=data['song'])
