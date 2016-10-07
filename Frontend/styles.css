@@ -1,20 +1,20 @@
 /* Master Styles */
 h1 {
-  color: #369; 
-  font-family: Arial, Helvetica, sans-serif;   
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
-h2, h3 { 
+h2, h3 {
   color: #444;
-  font-family: Arial, Helvetica, sans-serif;   
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
-body { 
-  margin: 2em; 
+body {
+  margin: 2em;
 }
-body, input[text], button { 
-  color: #888; 
-  font-family: Cambria, Georgia; 
+body, input[text], button {
+  color: #888;
+  font-family: Cambria, Georgia;
 }
 a {
   cursor: pointer;
@@ -34,7 +34,7 @@ button:hover {
 }
 button:disabled {
   background-color: #eee;
-  color: #aaa; 
+  color: #aaa;
   cursor: auto;
 }
 
@@ -137,6 +137,54 @@ nav a.router-link-active {
 }
 
 /* everywhere else */
-* { 
-  font-family: Arial, Helvetica, sans-serif; 
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/**
+* Table component
+***********************************************************/
+
+.table-container {
+  font-size: 12px;
+}
+
+.table-container table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #adb5bd;
+    width: 100%;
+    word-break: break-all;
+}
+
+.table-container thead {
+    background: #ced4da;
+    border: 1px solid #adb5bd;
+}
+
+.table-container th {
+    background: #ced4da;
+    color: #343a40;
+    font-weight: bold;
+    padding: 8px 5px;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+    word-break: break-all;
+    vertical-align: middle;
+}
+
+.table-container td {
+    overflow-x: hidden;
+    padding: 3px 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+    vertical-align: middle;
+}
+
+.table-container .striped tr:nth-child(even) td {
+    background: #e9ecef;
 }
