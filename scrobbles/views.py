@@ -92,7 +92,7 @@ class ScrobbleView(viewsets.ModelViewSet):
         """Lists all scrobbles from one user(pk)"""
         if pk is not None:
             print(pk)
-            queryset = Scrobble.objects.all()
+            queryset = Scrobble.objects.filter(member__nick_name__iexact=pk)
             print(queryset)
             queryset = queryset.order_by('-date_scrobbled')
             serializer = ScrobbleSerializer(instance=queryset, many=True)
