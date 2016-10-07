@@ -16,6 +16,8 @@ class Member(AbstractUser):
     '''Memebr(user) model. Abstracted from Django user accounts.'''
     nick_name = models.CharField(max_length=24, unique=True)
     loved_tracks = models.ManyToManyField(Song, blank=True)
+    listened_to = models.ManyToManyField(
+        Song, blank=True, related_name='listened_to')
     profile_picture = models.ImageField(
         upload_to='cdn/images/avatars/', null=True, blank=True)
 
