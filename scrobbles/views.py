@@ -40,21 +40,27 @@ class ScrobbleView(viewsets.ModelViewSet):
 
     def create(self, request):
         data = self.request.data
+        creator = self.request.user
         serializer = self.get_serializer_class()
 
         if artist_exists(data['artist']):
             artist = Artist.objects.get(name=data['artist'])
+            artist.scrobble_count += 1
+            artist.save()
         else:
             artist = Artist.objects.create(name=data['artist'])
 
         if song_exists(data['song']):
             song = Song.objects.get(title=data['song'])
+            song.scrobble_count += 1
+            song.save()
         else:
             song = Song.objects.create(
                 title=data['song'], artist=artist)
 
-        print(data)
-        obj = Scrobble.objects.create(song=song, member=self.request.user)
+        creator.listened_to.add(song)
+        creator.save()
+        obj = Scrobble.objects.create(song=song, member=creator)
         created = serializer(instance=obj)
         return Response(created.data)
 
