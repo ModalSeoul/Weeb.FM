@@ -1,7 +1,7 @@
 
 describe('QuickStart E2E Tests', function () {
 
-  let expectedMsg = 'My First Angular App';
+  let expectedMsg = 'Last.fm clone. Yet to be named';
 
 
   beforeEach(function () {
