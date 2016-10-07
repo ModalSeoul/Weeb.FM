@@ -32,7 +32,7 @@ export class ScrobbleTableComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpService,
+    private http: HttpService
   ) {}
 
 
