@@ -15,7 +15,9 @@ class CreateScrobbleSerializer(serializers.Serializer):
 class ScrobbleSerializer(serializers.ModelSerializer):
     artist_name = serializers.CharField(source='song.artist', read_only=True)
     song_name = serializers.CharField(source='song')
+    album_name = serializers.CharField(source='song.album', read_only=True)
 
     class Meta:
         model = Scrobble
-        fields = ('id', 'song_name', 'artist_name', 'date_scrobbled', 'member')
+        fields = ('id', 'song_name', 'album_name',
+                  'artist_name', 'date_scrobbled', 'member')

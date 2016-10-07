@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: `<router-outlet></router-outlet>
-    <h1>Weeb FM Frontend</h1>`
+    template: `<router-outlet></router-outlet>`
 })
 export class AppComponent {
 }
