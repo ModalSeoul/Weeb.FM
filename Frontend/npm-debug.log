@@ -7,7 +7,7 @@
 6 silly lifecycle WeebFM@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle WeebFM@1.0.0~start: WeebFM@1.0.0
 8 verbose lifecycle WeebFM@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle WeebFM@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/home/cartersmith/SideProjects/WeebFM/WeebFM/Frontend/node_modules/.bin:/home/cartersmith/.local/bin:/home/cartersmith/.linuxbrew/bin:/home/cartersmith/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+9 verbose lifecycle WeebFM@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/home/cartersmith/SideProjects/WeebFM/WeebFM/Frontend/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 10 verbose lifecycle WeebFM@1.0.0~start: CWD: /home/cartersmith/SideProjects/WeebFM/WeebFM/Frontend
 11 silly lifecycle WeebFM@1.0.0~start: Args: [ '-c', 'tsc && concurrently "tsc -w" "lite-server" ' ]
 12 silly lifecycle WeebFM@1.0.0~start: Returned: code: 2  signal: null

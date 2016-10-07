@@ -4,7 +4,7 @@ import { AuthService } from '../services/index';
 @Component({
     selector: 'home',
     template: `<h2>Home Component</h2>`,
-    providers [ AuthService ]
+    providers: [ AuthService ]
 })
 export class HomeComponent {
 
