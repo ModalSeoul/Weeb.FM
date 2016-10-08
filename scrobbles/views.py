@@ -74,7 +74,7 @@ class ScrobbleView(viewsets.ModelViewSet):
             song.save()
         else:
             song = Song.objects.create(
-                title=data['song'], artist=artist)
+                title=data['song'], artist=artist, album=album)
 
         creator.listened_to.add(song)
         creator.save()
