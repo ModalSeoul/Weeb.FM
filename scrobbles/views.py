@@ -73,9 +73,13 @@ class ScrobbleView(viewsets.ModelViewSet):
             song.scrobble_count += 1
             song.save()
         else:
-            song = Song.objects.create(
-                title=data['song'], artist=artist, album=album)
-
+            if 'album' in data:
+                song = Song.objects.create(
+                    title=data['song'], artist=artist, album=album)
+            else:
+                song = Song.objects.create(
+                    title=data['song'], artist=artist)
+                    
         creator.listened_to.add(song)
         creator.save()
         obj = Scrobble.objects.create(song=song, member=creator)
