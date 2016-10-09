@@ -14,6 +14,14 @@ class MemberView(viewsets.ModelViewSet):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
 
+    def get_queryset(self):
+        query = self.request.query_params
+        if 'self' not in query:
+            return Member.objects.all()
+        else:
+            serializer = MemberSerializer(instance=self.request.user)
+            return Response(serializer.data)
+
     @detail_route(methods=['GET'])
     def by_token(self, request, pk=None):
         if pk is not None:

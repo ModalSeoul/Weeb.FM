@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService, ScrobbleService, UserService } from '../services/index';
 import { ScrobbleTableComponent } from '../common/index';
+import { AppComponent } from '../app.component';
 
 @Component({
     selector: 'profile',
     template: `<h2>Profile Component</h2>
     <img style="width:64px; height:64px" [src]="avatar"> <h2>{{nick}}</h2>
-    <scrobble-table [content]="scrobbles"></scrobble-table>
+    <scrobble-table [content]="scrobbles"><h1>Loading...</h1></scrobble-table>
     `,
     providers: [
       HttpService,
@@ -26,8 +27,10 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpService,
     private Scrobble: ScrobbleService,
-    private User: UserService
-  ) {}
+    private User: UserService,
+    private app: AppComponent
+  ) {
+  }
 
   public ngOnInit() {
     this.uid = this.route.snapshot.params['id'];
@@ -42,7 +45,7 @@ export class ProfileComponent implements OnInit {
 
     this.Scrobble.getUserScrobbles(this.uid).subscribe((r: any) => {
       this.scrobbles = r;
-      console.log(r);
+      this.app.loading = false;
     });
   }
 

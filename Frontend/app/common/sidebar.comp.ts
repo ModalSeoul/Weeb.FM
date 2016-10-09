@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/index';
+import { Router } from '@angular/router';
+import { AuthService, UserService } from '../services/index';
 
 @Component({
     selector: 'side-nav',
     template: `
     <div class="__pane">
       <ul>
-        <h2>Weeb</h2>
+        <h2>What I Listen To</h2>
+        <hr class="__sep">
         <li [routerLink]="['/']">Home</li>
-        <li *ngIf="auth.isLoggedIn()" [routerLink]="['profile/Carter']">My Profile</li>
+        <li *ngIf="auth.isLoggedIn()" [routerLink]="['profile/', curUser]">My Profile</li>
         <li *ngIf="!auth.isLoggedIn()" [routerLink]="['login']">Login</li>
         <li>Scrobble Leaderboard</li>
       </ul>
@@ -16,7 +18,6 @@ import { AuthService } from '../services/index';
     `,
     styles: [`
       .__pane {
-        font-family: Raleway !important;
         height: 100% !important;
         margin-bottom: -101%;
         padding-bottom: 101%;
@@ -28,7 +29,8 @@ import { AuthService } from '../services/index';
       }
       h2 {
         color: inherit;
-        padding-left: 1rem;
+        text-align: center;
+        font-family: Pacifico;
       }
       ul {
         display: inline;
@@ -51,11 +53,28 @@ import { AuthService } from '../services/index';
       li:hover {
         background-color: #324954;
       }
+      .__sep {
+        background-color: white;
+        height: 2px;
+        border: none;
+        width: 75%;
+        padding: 0;
+        margin-top: -1.5em;
+      }
     `],
-    providers: [ AuthService ]
+    providers: [ AuthService, UserService ]
 })
 export class SideComponent {
+  public curUser: string;
 
-  constructor(private auth: AuthService) {}
+  constructor(
+    private auth: AuthService,
+    private user: UserService,
+    private router: Router
+  ) {
+    user.getCurrentUser().subscribe((r: any) => {
+      this.curUser = r[0].nick_name;
+    });
+  }
 
 }

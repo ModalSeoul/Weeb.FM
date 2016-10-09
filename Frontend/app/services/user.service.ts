@@ -24,4 +24,10 @@ export class UserService {
       return r['nick_name'];
     });
   }
+
+  public getCurrentUser() {
+    return this.http.get('members/?self/').map((r: any) => {
+      return r;
+    });
+  }
 }

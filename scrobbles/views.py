@@ -42,6 +42,15 @@ class ScrobbleView(viewsets.ModelViewSet):
     queryset = Scrobble.objects.all()
     serializer_class = ScrobbleSerializer
 
+    def get_queryset(self):
+        data = self.request.query_params
+        if 'last_played' not in data:
+            return Scrobble.objects.all()
+        else:
+            query = Scrobble.objects.latest('date_scrobbled')
+            serializer = ScrobbleSerializer(instance=query)
+            return Response(serializer.data)
+
     def get_serializer_class(self):
         if self.action == 'create':
             return CreateScrobbleSerializer
@@ -79,7 +88,7 @@ class ScrobbleView(viewsets.ModelViewSet):
             else:
                 song = Song.objects.create(
                     title=data['song'], artist=artist)
-                    
+
         creator.listened_to.add(song)
         creator.save()
         obj = Scrobble.objects.create(song=song, member=creator)
