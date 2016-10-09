@@ -18,7 +18,7 @@ import { HttpService } from '../services/index';
           <tr *ngFor="let scrobble of content">
             <td>{{scrobble.song_name}}</td>
             <td>{{scrobble.artist_name}}</td>
-            <td>{{scrobble.date_scrobbled | date: 'M/d h:m'}}</td>
+            <td>{{scrobble.date_scrobbled | date: 'M/d h:mm'}}</td>
           </tr>
         </tbody>
       </table>

@@ -4,7 +4,11 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: `<router-outlet></router-outlet>`
+    template: `
+    <side-nav></side-nav>
+    <div class="__weeb">
+      <router-outlet></router-outlet>
+    </div>`
 })
 export class AppComponent {
 }

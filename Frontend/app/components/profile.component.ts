@@ -32,10 +32,6 @@ export class ProfileComponent implements OnInit {
   public ngOnInit() {
     this.uid = this.route.snapshot.params['id'];
 
-    // this.Scrobble.postScrobble('The Trooper', 'Iron Maiden').subscribe((r: any) => {
-    //   console.log(r);
-    // });
-
     this.User.getUserNick(this.uid).subscribe((r: any) => {
       this.nick = r;
     });

@@ -10,19 +10,27 @@ import { Router } from '@angular/router';
   <input type="button" value="Login" (click)="login()">
   `,
   providers: [ AuthService ]
-//  styleUrls: [scss],
 })
 
 export class LoginRoute {
   private username: string;
   private password: string;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router) {
+      // If user logged in, route to index
+      if (auth.isLoggedIn()) {
+        router.navigate(['/']);
+      }
+    }
 
   public login() {
     console.log(this.username, this.password);
     // this.auth.login(this.username, this.password)
     //   .subscribe(() => this.router.navigate(['/']));
+
+    // Use window.location instead of router to reload state
     this.auth.login(this.username, this.password)
       .subscribe(() => window.location.href = '/');
   }

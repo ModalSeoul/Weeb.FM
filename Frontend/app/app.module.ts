@@ -4,7 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { routing, appRoutingProviders} from './app.routes';
 import { AppComponent } from './app.component';
-import { ScrobbleTableComponent } from './common/index';
+import {
+  ScrobbleTableComponent,
+  SideComponent
+} from './common/index';
 import {
   HttpModule,
   Headers,
@@ -39,6 +42,7 @@ export class DefaultRequestOptions extends BaseRequestOptions{
   ],
   declarations: [
     AppComponent,
+    SideComponent,
     ProfileComponent,
     HomeComponent,
     ScrobbleTableComponent,
