@@ -4,8 +4,8 @@ from rest_framework.decorators import detail_route
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 
-from users.serializers import MemberSerializer
-from users.models import Member
+from users.serializers import MemberSerializer, FriendshipSerializer
+from users.models import Member, Friendship
 
 
 class MemberView(viewsets.ModelViewSet):
@@ -36,3 +36,8 @@ class MemberView(viewsets.ModelViewSet):
             queryset = Member.objects.get(nick_name__iexact=pk)
             serializer = MemberSerializer(instance=queryset)
             return Response(serializer.data)
+
+
+class FriendshipView(viewsets.ModelViewSet):
+    queryset = Friendship.objects.all()
+    serializer_class = FriendshipSerializer

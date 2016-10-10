@@ -1,6 +1,6 @@
 """Serializer module for the Users app."""
 from rest_framework import serializers
-from users.models import Member
+from users.models import Member, Friendship
 from songs.models import Song
 
 
@@ -13,3 +13,9 @@ class MemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Member
         fields = ('__all__')
+
+
+class FriendshipSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Friendship

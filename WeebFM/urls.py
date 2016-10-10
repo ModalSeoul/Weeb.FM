@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 
-from users.views import MemberView
+from users.views import MemberView, FriendshipView
 from scrobbles.views import ScrobbleView
 from songs.views import SongView
 from artists.views import ArtistView
@@ -18,6 +18,7 @@ from devblog.views import EntryView
 
 router = DefaultRouter()
 router.register(r'members', MemberView, base_name='members')
+router.register(r'friendships', FriendshipView, base_name='friendships')
 router.register(r'scrobbles', ScrobbleView, base_name='scrobbles')
 router.register(r'songs', SongView, base_name='songs')
 router.register(r'artists', ArtistView, base_name='artists')
