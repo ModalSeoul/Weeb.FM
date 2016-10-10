@@ -19,9 +19,7 @@ import { AuthService, UserService } from '../services/index';
     styles: [`
       .__pane {
         height: 100% !important;
-        margin-bottom: -101%;
-        padding-bottom: 101%;
-        position: absolute;
+        position: fixed;
         width: 12rem;
         bottom: 0;
         color: white;

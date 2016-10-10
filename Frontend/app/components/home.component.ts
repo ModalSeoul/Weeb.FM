@@ -13,7 +13,7 @@ import { AppComponent } from '../app.component';
       `,
       styles: [`
         .__subtext {
-          color: #ccc;
+          color: #aaa;
         }
     `],
     providers: [ AuthService, UserService ]

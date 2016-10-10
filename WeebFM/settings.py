@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'songs',
     'artists',
     'albums',
-    'featured'
+    'featured',
+    'devblog'
 ]
 
 REST_FRAMEWORK = {

@@ -13,6 +13,7 @@ from songs.views import SongView
 from artists.views import ArtistView
 from albums.views import AlbumView
 from featured.views import CurrentView, HistoricalView
+from devblog.views import EntryView
 
 
 router = DefaultRouter()
@@ -23,6 +24,8 @@ router.register(r'artists', ArtistView, base_name='artists')
 router.register(r'albums', AlbumView, base_name='albums')
 router.register(r'featured/current', CurrentView, base_name='currents')
 router.register(r'featured/historical', HistoricalView, base_name='historicals')
+router.register(r'blog_entries', EntryView, base_name="entries")
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
