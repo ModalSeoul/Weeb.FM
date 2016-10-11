@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NavigationStart, NavigationEnd } from '@angular/router';
+import { UserService } from './services/index';
 
 @Component({
     selector: 'my-app',
@@ -11,7 +12,8 @@ import { NavigationStart, NavigationEnd } from '@angular/router';
     </div>
     <div class="__weeb">
       <router-outlet></router-outlet>
-    </div>`
+    </div>`,
+    providers: [UserService]
 })
 
 export class AppComponent implements OnInit {
@@ -21,6 +23,7 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private ActiveRoute: ActivatedRoute
+    private user: UserService
   ) {}
 
   public ngOnInit() {
