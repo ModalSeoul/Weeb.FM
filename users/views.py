@@ -1,10 +1,12 @@
 """User views file. Contains all viewsets/routes for the Users app"""
+from django.contrib.auth.hashers import make_password
 from rest_framework import viewsets
-from rest_framework.decorators import detail_route
+from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 
-from users.serializers import MemberSerializer, FriendshipSerializer
+from users.serializers import MemberSerializer, CreateMemberSerializer, \
+    FriendshipSerializer
 from users.models import Member, Friendship
 
 
@@ -14,13 +16,16 @@ class MemberView(viewsets.ModelViewSet):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
 
-    def get_queryset(self):
-        query = self.request.query_params
-        if 'self' not in query:
-            return Member.objects.all()
-        else:
-            serializer = MemberSerializer(instance=self.request.user)
-            return Response(serializer.data)
+    def get_serializer_class(self):
+        if self.action == 'create':
+            return CreateMemberSerializer
+        return MemberSerializer
+
+    @list_route(methods=['GET'])
+    def current(self, request):
+        user = Member.objects.get(id=self.request.user.id)
+        serializer = self.get_serializer(user)
+        return Response(serializer.data)
 
     @detail_route(methods=['GET'])
     def by_token(self, request, pk=None):

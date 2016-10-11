@@ -4,15 +4,18 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 
 @Component({
-  selector: 'login',
+  selector: 'register',
   template: `
   <div class="__wrapper">
-    <div class="__login">
+    <div class="__register">
       <input class="text-wilt" type="text" [(ngModel)]="username" placeholder="Username">
+      <input class="text-wilt" type="text" [(ngModel)]="email" placeholder="E-Mail">
       <input class="text-wilt" type="password" [(ngModel)]="password" placeholder="Password">
+      <input class="text-wilt" type="password" [(ngModel)]="confPassword" placeholder="Confirm Password">
       <span class="__bottom">
-        <input class="btn-wilt" type="button" value="Login" (click)="login()">
-        <a [routerLink]="['/register']">Register</a>
+        <input class="btn-wilt" type="button" value="Register" (click)="register()">
+        <a [routerLink]="['/login']">Login</a>
+        <span *ngIf="noMatch">Passwords do not match!</span>
       </span>
     </div>
   </div>
@@ -25,12 +28,12 @@ import { AppComponent } from '../app.component';
       width: 15rem;
     }
 
-    .__login > input {
+    .__register > input {
       margin: .25rem;
       padding: .25rem;
     }
 
-    .__login {
+    .__register {
       padding: 2rem;
     }
 
@@ -43,9 +46,12 @@ import { AppComponent } from '../app.component';
   providers: [ AuthService ]
 })
 
-export class LoginRoute implements OnInit {
+export class RegisterRoute implements OnInit {
   private username: string;
+  private email: string;
   private password: string;
+  private confPassword: string;
+  private noMatch: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -62,20 +68,12 @@ export class LoginRoute implements OnInit {
       this.app.loading = false;
   }
 
-  public login() {
-    console.log(this.username, this.password);
-    // this.auth.login(this.username, this.password)
-    //   .subscribe(() => this.router.navigate(['/']));
-
-    // Use window.location instead of router to reload state
-    this.auth.login(this.username, this.password)
-      .subscribe(() => window.location.href = '/');
-  }
-
-  public resetPassword() {
-    this.auth.resetPassword(this.username)
-    .subscribe(() => {
-      this.router.navigate(['/']);
-    });
+  public register() {
+    if (this.password != this.confPassword) {
+      this.noMatch = true;
+    }
+    if (this.password === this.confPassword && this.noMatch) {
+      this.noMatch = false;
+    }
   }
 }

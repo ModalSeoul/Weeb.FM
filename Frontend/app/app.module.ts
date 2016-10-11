@@ -19,7 +19,8 @@ import {
 import {
   ProfileComponent,
   HomeComponent,
-  LoginRoute
+  LoginRoute,
+  RegisterRoute
 } from './components/index';
 import {
   HttpService
@@ -46,7 +47,8 @@ export class DefaultRequestOptions extends BaseRequestOptions{
     ProfileComponent,
     HomeComponent,
     ScrobbleTableComponent,
-    LoginRoute
+    LoginRoute,
+    RegisterRoute
   ],
   bootstrap: [ AppComponent ],
   providers: [

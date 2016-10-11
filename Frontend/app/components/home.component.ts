@@ -38,13 +38,13 @@ export class HomeComponent implements OnInit {
     // Setting loggedIn property based on user status
     if (this.auth.isLoggedIn()) {
       this.loggedIn = true;
-      console.log(this.loggedIn);
     }
+    console.log(this.loggedIn);
   }
 
   public ngOnInit() {
     this.user.getCurrentUser().subscribe((r: any) => {
-      this.curUser = r[0];
+      this.curUser = r;
       this.app.loading = false;
     });
   }

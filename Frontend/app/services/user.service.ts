@@ -14,19 +14,19 @@ export class UserService {
   */
 
   public getUserAvatar(name: string) {
-    return this.http.get(`members/${name}/by_nick`).map((r: any) => {
+    return this.http.get(`members/${name}/by_nick/`).map((r: any) => {
       return r['profile_picture'];
     });
   }
 
   public getUserNick(name: string) {
-    return this.http.get(`members/${name}/by_nick`).map((r: any) => {
+    return this.http.get(`members/${name}/by_nick/`).map((r: any) => {
       return r['nick_name'];
     });
   }
 
   public getCurrentUser() {
-    return this.http.get('members/?self/').map((r: any) => {
+    return this.http.get('members/current/').map((r: any) => {
       return r;
     });
   }

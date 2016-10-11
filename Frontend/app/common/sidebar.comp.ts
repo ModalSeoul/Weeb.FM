@@ -71,7 +71,7 @@ export class SideComponent {
     private router: Router
   ) {
     user.getCurrentUser().subscribe((r: any) => {
-      this.curUser = r[0].nick_name;
+      this.curUser = r.nick_name;
     });
   }
 
