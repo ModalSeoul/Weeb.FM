@@ -6,10 +6,40 @@ import { AppComponent } from '../app.component';
 @Component({
   selector: 'login',
   template: `
-  <input type="text" [(ngModel)]="username" placeholder="Username">
-  <input type="password" [(ngModel)]="password" placeholder="Password">
-  <input type="button" value="Login" (click)="login()">
+  <div class="__wrapper">
+    <div class="__login">
+      <input class="text-wilt" type="text" [(ngModel)]="username" placeholder="Username">
+      <input class="text-wilt" type="password" [(ngModel)]="password" placeholder="Password">
+      <span class="__bottom">
+        <input class="btn-wilt" type="button" value="Login" (click)="login()">
+        <a href="#">Register</a>
+      </span>
+    </div>
+  </div>
   `,
+  styles: [`
+    .__wrapper {
+      padding: 5rem;
+      margin: 0 auto;
+      margin-top: 15%;
+      width: 15rem;
+    }
+
+    .__login > input {
+      margin: .25rem;
+      padding: .25rem;
+    }
+
+    .__login {
+      padding: 2rem;
+    }
+
+    .__bottom {
+      padding: .25rem;
+      display: inline;
+    }
+
+  `],
   providers: [ AuthService ]
 })
 

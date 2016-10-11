@@ -6,10 +6,17 @@ import { AppComponent } from '../app.component';
 @Component({
     selector: 'home',
     template: `
+    <span *ngIf="loggedIn">
       <h2>Welcome back, {{curUser.nick_name}}</h2>
       <span class="__subtext">
         <h3>Here's what you missed</h3>
       </span>
+    </span>
+
+    <!-- If user is not logged in -->
+    <span *ngIf="!loggedIn">
+      <login></login>
+    </span>
       `,
       styles: [`
         .__subtext {
@@ -20,6 +27,7 @@ import { AppComponent } from '../app.component';
 })
 export class HomeComponent implements OnInit {
   private curUser: any = {};
+  private loggedIn: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -27,6 +35,11 @@ export class HomeComponent implements OnInit {
     private app: AppComponent
   ) {
     console.log(this.auth.isLoggedIn());
+    // Setting loggedIn property based on user status
+    if (this.auth.isLoggedIn()) {
+      this.loggedIn = true;
+      console.log(this.loggedIn);
+    }
   }
 
   public ngOnInit() {

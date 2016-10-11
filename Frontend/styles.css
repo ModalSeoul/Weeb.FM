@@ -11,10 +11,38 @@ body {
 a {
   cursor: pointer;
   cursor: hand;
+  text-decoration: none;
+}
+a:visited, a:active, a:link, a:hover {
+  text-decoration: none;
+  color: #41606E;
 }
 /* everywhere else */
 * {
   font-family: News Cycle, Helvetica, sans-serif;
+}
+
+/**
+* WILT Button CSS
+***********************************************************/
+.btn-wilt {
+  background-color: #6494AA;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  width: 3rem;
+  height: 2rem;
+}
+
+.btn-wilt:hover {
+  border: none;
+  cursor: pointer;
+}
+
+.text-wilt {
+  width: 10rem;
+  border-radius: 2px;
+  border: 1px solid #6494AA;
 }
 
 /**
