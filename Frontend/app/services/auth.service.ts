@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
-
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
@@ -27,7 +26,11 @@ export class AuthService {
   private AUTH_TOKEN_HEADER = 'Authorization';
   private LOCAL: string = 'http://localhost:8000/api/';
 
-  constructor(private http: HttpService, private cookies: CookieService) {
+  constructor(
+    private http: HttpService,
+    private cookies: CookieService,
+    private router: Router
+  ) {
     const storedUser = cookies.get('user');
     if (storedUser) {
       const user: IResponseToken = JSON.parse(storedUser);
@@ -48,6 +51,20 @@ export class AuthService {
       return this.http.get(`members/${response.token}/by_token`).map((r: any) => {
         this.getUser(r['id']);
       });
+    });
+  }
+
+  public register(username: string, password: string, email: string) {
+    const request = this.http.post('members', {
+      username: username,
+      password: password,
+      email: email,
+      nick_name: username // Temporary
+    });
+
+    return request.map((response: any) => {
+      this.router.navigate(['login']);
+      return response;
     });
   }
 

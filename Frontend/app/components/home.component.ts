@@ -43,10 +43,14 @@ export class HomeComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.user.getCurrentUser().subscribe((r: any) => {
-      this.curUser = r;
-      this.app.loading = false;
-    });
+    this.user.getCurrentUser().subscribe(
+      data => {
+        this.curUser = data;
+        this.app.loading = false;
+      },
+      err => this.app.loading = false,
+      () => console.log('We did it boss.')
+    );
   }
 
 }

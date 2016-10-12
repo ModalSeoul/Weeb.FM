@@ -75,5 +75,15 @@ export class RegisterRoute implements OnInit {
     if (this.password === this.confPassword && this.noMatch) {
       this.noMatch = false;
     }
+
+    if (!this.noMatch) {
+      this.auth.register(
+        this.username,
+        this.password,
+        this.email
+      ).subscribe((r: any) => {
+        // user logged in. Do checks and shit here later
+      });
+    }
   }
 }

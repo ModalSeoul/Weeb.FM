@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private ActiveRoute: ActivatedRoute
+    private ActiveRoute: ActivatedRoute,
     private user: UserService
   ) {}
 
