@@ -1,0 +1,10 @@
+<div class="__pane">
+  <ul>
+    <h2>What I Listen To</h2>
+    <hr class="__sep">
+    <li [routerLink]="['/']">Home</li>
+    <li *ngIf="auth.isLoggedIn()" [routerLink]="['profile/', curUser]">My Profile</li>
+    <li *ngIf="!auth.isLoggedIn()" [routerLink]="['login']">Login</li>
+    <li>Scrobble Leaderboard</li>
+  </ul>
+</div>

@@ -1,0 +1,42 @@
+.__pane {
+  height: 100% !important;
+  position: fixed;
+  width: 12rem;
+  bottom: 0;
+  color: white;
+  background-color: #6494AA;
+}
+h2 {
+  color: inherit;
+  text-align: center;
+  font-family: Pacifico;
+}
+ul {
+  display: inline;
+  list-style: none;
+}
+li {
+  padding-left: 1rem;
+  background-color: #41606E;
+  padding: 1rem;
+  border-bottom: #6494AA;
+  margin-bottom: .2rem;
+  cursor: pointer;
+  transition: 1s;
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+li:hover {
+  background-color: #324954;
+}
+.__sep {
+  background-color: white;
+  height: 2px;
+  border: none;
+  width: 75%;
+  padding: 0;
+  margin-top: -1.5em;
+}

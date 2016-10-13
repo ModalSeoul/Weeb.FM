@@ -1,0 +1,18 @@
+<div class="table-container">
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Song</th>
+        <th>Artist</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let scrobble of content">
+        <td>{{scrobble.song_name}}</td>
+        <td>{{scrobble.artist_name}}</td>
+        <td>{{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

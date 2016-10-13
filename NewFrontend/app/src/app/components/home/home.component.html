@@ -1,0 +1,11 @@
+<span *ngIf="loggedIn">
+  <h2>Welcome back, {{curUser.nick_name}}</h2>
+  <span class="__subtext">
+    <h3>Here's what you missed</h3>
+  </span>
+</span>
+
+<!-- If user is not logged in -->
+<span *ngIf="!loggedIn">
+  <login></login>
+</span>

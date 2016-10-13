@@ -1,0 +1,13 @@
+<div class="__wrapper">
+  <div class="__register">
+    <input class="text-wilt" type="text" [(ngModel)]="username" placeholder="Username">
+    <input class="text-wilt" type="text" [(ngModel)]="email" placeholder="E-Mail">
+    <input class="text-wilt" type="password" [(ngModel)]="password" placeholder="Password">
+    <input class="text-wilt" type="password" [(ngModel)]="confPassword" placeholder="Confirm Password">
+    <span class="__bottom">
+      <input class="btn-wilt" type="button" value="Register" (click)="register()">
+      <a [routerLink]="['/login']">Login</a>
+      <span *ngIf="noMatch">Passwords do not match!</span>
+    </span>
+  </div>
+</div>

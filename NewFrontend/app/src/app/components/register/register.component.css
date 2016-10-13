@@ -1,0 +1,20 @@
+.__wrapper {
+  padding: 5rem;
+  margin: 0 auto;
+  margin-top: 15%;
+  width: 15rem;
+}
+
+.__register > input {
+  margin: .25rem;
+  padding: .25rem;
+}
+
+.__register {
+  padding: 2rem;
+}
+
+.__bottom {
+  padding: .25rem;
+  display: inline;
+}
