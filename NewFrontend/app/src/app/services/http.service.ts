@@ -28,12 +28,12 @@ export class HttpService {
   }
 
   public get (url: string, params: any = {}) {
-    url = `http://localhost:8000/api/${url}`;
+    url = `https://modal.moe/api/${url}`;
     return this.request('get', url, {}, params);
   }
 
   public post (url: string, body: any = {}, params: any = {}) {
-    url = `http://localhost:8000/api/${url}/`; // TODO: ENV based const var
+    url = `https://modal.moe/api/${url}/`; // TODO: ENV based const var
     return this.request('post', url, body, params);
   }
 
