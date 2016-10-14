@@ -42,7 +42,7 @@ class MemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Member
-        fields = ('__all__')
+        exclude = ('email', 'password')
 
 
 class FriendshipSerializer(serializers.ModelSerializer):
