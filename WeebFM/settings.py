@@ -30,7 +30,8 @@ AUTH_USER_MODEL = 'users.Member'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'cdn')
 MEDIA_URL = '/'
 # Application definition
-
+ STATIC_ROOT = 'static'
+ 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
