@@ -12,7 +12,7 @@ import { AppComponent } from '../../app.component';
 export class ProfileComponent implements OnInit {
   private scrobbles: Array<any> = [];
   private uid: string;
-  private avatar: string = 'https://modal.moe';
+  private avatar: string = 'https://modal.moe/cdn/';
   private nick: string;
   private canFollow: boolean = false;
 

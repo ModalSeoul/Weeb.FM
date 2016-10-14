@@ -19,6 +19,12 @@ export class ScrobbleService {
     });
   }
 
+  public getRecent(amount: string | number) {
+    return this.http.get(`scrobbles/?past=${amount}`).map((r: any) => {
+      return r;
+    });
+  }
+
   public getUserScrobbles(name: string) {
     return this.http.get(`scrobbles/${name}/by_user`).map((r: any) => {
       return r;

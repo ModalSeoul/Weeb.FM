@@ -235,10 +235,10 @@ a:visited, a:active, a:link, a:hover {
     color: #343a40;
     font-weight: bold;
     padding: 8px 5px;
-    text-align: center;
     text-overflow: ellipsis;
     text-transform: uppercase;
     white-space: nowrap;
+    text-align: left;
     word-break: break-all;
     vertical-align: middle;
 }

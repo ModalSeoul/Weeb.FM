@@ -46,12 +46,13 @@ class ScrobbleView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         data = self.request.query_params
-        if 'last_played' not in data:
-            return Scrobble.objects.all()
-        else:
+        if 'last_played' in data:
             query = Scrobble.objects.latest('date_scrobbled')
-            serializer = ScrobbleSerializer(instance=query)
-            return Response(serializer.data)
+        elif 'past' in data:
+            query = Scrobble.objects.order_by('-id')[:int(data.get('past'))]
+        else:
+            query = Scrobble.objects.all()
+        return query
 
     def get_serializer_class(self):
         if self.action == 'create':

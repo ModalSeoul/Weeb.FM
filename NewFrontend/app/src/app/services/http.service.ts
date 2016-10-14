@@ -3,14 +3,26 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
+let isDev: boolean = false;
+let apiUrl: string;
+
+if (!isDev) {
+  apiUrl = 'https://modal.moe/api/';
+} else {
+  apiUrl = 'http://localhost:8000/api/';
+}
+
 @Injectable()
 export class HttpService {
+
   private headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   };
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+
+  }
 
   public resetHeaders (): void {
     this.headers = {
@@ -28,12 +40,12 @@ export class HttpService {
   }
 
   public get (url: string, params: any = {}) {
-    url = `https://modal.moe/api/${url}`;
+    url = `${apiUrl}${url}`;
     return this.request('get', url, {}, params);
   }
 
   public post (url: string, body: any = {}, params: any = {}) {
-    url = `https://modal.moe/api/${url}/`; // TODO: ENV based const var
+    url = `${apiUrl}${url}`;
     return this.request('post', url, body, params);
   }
 
