@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets, generics
 from rest_framework.filters import BaseFilterBackend
 from rest_framework.decorators import list_route, detail_route
@@ -38,6 +39,7 @@ def artist_exists(name):
         return False
 
 
+# @csrf_exempt
 class ScrobbleView(viewsets.ModelViewSet):
     queryset = Scrobble.objects.all()
     serializer_class = ScrobbleSerializer

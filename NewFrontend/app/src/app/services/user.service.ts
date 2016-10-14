@@ -20,7 +20,7 @@ export class UserService {
   }
 
   public getUserNick(name: string) {
-    return this.http.get(`members/${name}by_nick/`).map((r: any) => {
+    return this.http.get(`members/${name}/by_nick/`).map((r: any) => {
       return r['nick_name'];
     });
   }
