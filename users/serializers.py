@@ -2,6 +2,7 @@
 from rest_framework import serializers
 from users.models import Member, Friendship
 from songs.models import Song
+from scrobbles.models import Scrobble
 
 
 class CreateMemberSerializer(serializers.Serializer):
@@ -28,8 +29,13 @@ class CreateMemberSerializer(serializers.Serializer):
 class MemberSerializer(serializers.ModelSerializer):
     '''Member serializer - handles all data serialization
     for the Member model'''
+    # listen_count = serializers.IntegerField()
+    listen_count = serializers.SerializerMethodField('calc_listen_count')
     loved_tracks = serializers.PrimaryKeyRelatedField(
         many=True, read_only=True, required=False)
+
+    def calc_listen_count(self, obj):
+        return Scrobble.objects.filter(member=obj.id).count()
 
     def update(self, instance, validated_data):
         for attr, value in validated_data.items():

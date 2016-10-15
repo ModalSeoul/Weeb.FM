@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   private uid: string;
   private avatar: string = 'https://modal.moe/cdn/';
   private nick: string;
+  private userObj: any = {};
   private canFollow: boolean = false;
 
   constructor(
@@ -30,13 +31,19 @@ export class ProfileComponent implements OnInit {
     this.uid = this.route.snapshot.params['id'];
     this.user.getCurrentUser().subscribe((r: any) => {
       // if the user isn't viewing their own profile, display follow button
-      if (this.uid != r.nick_name) {
+      if (this.uid === r.nick_name) {
         this.canFollow = true;
       }
     });
 
+
+    // Deprecation warning (10/15/2016)
     this.user.getUserNick(this.uid).subscribe((r: any) => {
       this.nick = r;
+    });
+
+    this.user.getUserObject(this.uid).subscribe((r: any) => {
+      this.userObj = r;
     });
 
     this.user.getUserAvatar(this.uid).subscribe((r: any) => {

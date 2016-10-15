@@ -19,9 +19,17 @@ export class UserService {
     });
   }
 
+  // Deprecating this
   public getUserNick(name: string) {
     return this.http.get(`members/${name}/by_nick/`).map((r: any) => {
       return r['nick_name'];
+    });
+  }
+
+  // This function will replace getUserNick next version.
+  public getUserObject(name: string) {
+    return this.http.get(`members/${name}/by_nick/`).map((r: any) => {
+      return r;
     });
   }
 
