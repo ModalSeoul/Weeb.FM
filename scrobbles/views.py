@@ -69,6 +69,8 @@ class ScrobbleView(viewsets.ModelViewSet):
             artist.scrobble_count += 1
             artist.save()
         else:
+            if isinstance(data['artist'], bytes):
+                data['artist'] = data['artist'].decode('UTF-8')
             artist = Artist.objects.create(name=data['artist'])
 
         if 'album' in data:
@@ -77,6 +79,8 @@ class ScrobbleView(viewsets.ModelViewSet):
                 album.scrobble_count += 1
                 album.save()
             else:
+                if isinstance(data['album'], bytes):
+                    data['album'] = data['album'].decode('UTF-8')
                 album = Album.objects.create(
                     title=data['album'], artist=artist, scrobble_count=1)
 
@@ -86,9 +90,13 @@ class ScrobbleView(viewsets.ModelViewSet):
             song.save()
         else:
             if 'album' in data:
+                if isinstance(data['song'], bytes):
+                    data['song'] = data['song'].decode('UTF-8')
                 song = Song.objects.create(
                     title=data['song'], artist=artist, album=album)
             else:
+                if isinstance(data['song'], bytes):
+                    data['song'] = data['song'].decode('UTF-8')
                 song = Song.objects.create(
                     title=data['song'], artist=artist)
 
