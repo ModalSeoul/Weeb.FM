@@ -7,6 +7,7 @@ from rest_framework.response import Response
 
 from songs.models import Song
 from songs.serializers import SongSerializer
+from users.serializers import MemberSerializer
 from users.models import Member
 from artists.models import Artist
 from albums.models import Album
@@ -50,8 +51,10 @@ class ScrobbleView(viewsets.ModelViewSet):
             query = Scrobble.objects.latest('date_scrobbled')
         elif 'past' in data:
             query = Scrobble.objects.order_by('-id')[:int(data.get('past'))]
-        else:
-            query = Scrobble.objects.all()
+        elif 'artist':
+            query = Scrobble.objects.filter(song__artist__name=data.get('artist'))
+        elif 'song':
+            query = Scrobble.objects.filter(song__title=data.get('song'))
         return query
 
     def get_serializer_class(self):

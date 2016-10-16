@@ -1,0 +1,23 @@
+<p>
+  This is currently displaying recent scrobbles. Not a leaderboard.
+</p>
+<div class="table-container">
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Song</th>
+        <th>Artist</th>
+        <th>Who</th>
+        <th>When</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let scrobble of scrobbles">
+        <td>{{scrobble.song_name}}</td>
+        <td>{{scrobble.artist_name}}</td>
+        <td>{{scrobble.nick}}</td>
+        <td>{{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

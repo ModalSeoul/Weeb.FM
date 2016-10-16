@@ -26,6 +26,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ScrobbletableComponent } from './components/scrobbletable/scrobbletable.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { RecentComponent } from './components/recent/recent.component';
 
 @Injectable()
 export class DefaultRequestOptions extends BaseRequestOptions {
@@ -44,6 +45,7 @@ export class DefaultRequestOptions extends BaseRequestOptions {
     HomeComponent,
     ScrobbletableComponent,
     LeaderboardComponent,
+    RecentComponent,
   ],
   imports: [
     AppRoutingModule,

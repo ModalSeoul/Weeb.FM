@@ -23,13 +23,11 @@ class CreateMemberSerializer(serializers.Serializer):
         if passwd is not None:
             instance.set_password(passwd)
         instance.save()
-        print(instance)
         return instance
 
 class MemberSerializer(serializers.ModelSerializer):
     '''Member serializer - handles all data serialization
     for the Member model'''
-    # listen_count = serializers.IntegerField()
     listen_count = serializers.SerializerMethodField('calc_listen_count')
     loved_tracks = serializers.PrimaryKeyRelatedField(
         many=True, read_only=True, required=False)

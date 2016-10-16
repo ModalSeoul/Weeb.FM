@@ -1,5 +1,6 @@
 """User views file. Contains all viewsets/routes for the Users app"""
 from django.contrib.auth.hashers import make_password
+from django.db.models import Count
 from rest_framework import viewsets
 from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response

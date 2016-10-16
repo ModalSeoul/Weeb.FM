@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
     this.uid = this.route.snapshot.params['id'];
     this.user.getCurrentUser().subscribe((r: any) => {
       // if the user isn't viewing their own profile, display follow button
-      if (this.uid === r.nick_name) {
+      if (this.uid != r.nick_name) {
         this.canFollow = true;
       }
     });
