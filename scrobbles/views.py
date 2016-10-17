@@ -47,13 +47,14 @@ class ScrobbleView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         data = self.request.query_params
+        query = Scrobble.objects.all()
         if 'last_played' in data:
             query = Scrobble.objects.latest('date_scrobbled')
         elif 'past' in data:
             query = Scrobble.objects.order_by('-id')[:int(data.get('past'))]
-        elif 'artist':
+        elif 'artist' in data:
             query = Scrobble.objects.filter(song__artist__name=data.get('artist'))
-        elif 'song':
+        elif 'song' in data:
             query = Scrobble.objects.filter(song__title=data.get('song'))
         return query
 
@@ -127,6 +128,10 @@ class ScrobbleView(viewsets.ModelViewSet):
             queryset = Scrobble.objects.filter(song__album__title__iexact=pk)
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
+
+    @list_route(methods=['GET'])
+    def count(self, request):
+        return Response(len(Scrobble.objects.all()))
 
     @detail_route(methods=['GET'])
     def by_song(self, request, pk=None):

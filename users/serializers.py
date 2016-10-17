@@ -19,7 +19,6 @@ class CreateMemberSerializer(serializers.Serializer):
 
         does_exist = Member.objects.filter(nick_name__iexact=nick)
         if len(does_exist) > 0:
-            print('EXISTS')
             return
 
         instance = Member(
