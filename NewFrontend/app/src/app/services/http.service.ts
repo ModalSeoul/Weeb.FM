@@ -3,7 +3,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
-let isDev: boolean = false;
+let isDev: boolean = true;
 let apiUrl: string;
 
 if (!isDev) {
@@ -20,9 +20,7 @@ export class HttpService {
     'Content-Type': 'application/json',
   };
 
-  constructor(private http: Http) {
-
-  }
+  constructor(private http: Http) {}
 
   public resetHeaders (): void {
     this.headers = {

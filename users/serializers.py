@@ -16,13 +16,18 @@ class CreateMemberSerializer(serializers.Serializer):
         user_name = validated_data.pop('username', None)
         mail = validated_data.pop('email', None)
         nick = validated_data.pop('nick_name', None)
+
+        does_exist = Member.objects.filter(nick_name__iexact=nick)
+        if does_exist[0]:
+            return
+
         instance = Member(
                 email=mail,
                 username=user_name,
                 nick_name=nick)
         if passwd is not None:
             instance.set_password(passwd)
-        instance.save()
+        # instance.save()
         return instance
 
 class MemberSerializer(serializers.ModelSerializer):
