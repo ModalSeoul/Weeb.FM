@@ -1,13 +1,16 @@
 """Serializer module for the Users app."""
 from rest_framework import serializers
+from django.core.validators import RegexValidator
 from users.models import Member, Friendship
 from songs.models import Song
 from scrobbles.models import Scrobble
 
+alpha_only = RegexValidator('^[A-Za-z0-9]+$', message='No unicode')
+
 
 class CreateMemberSerializer(serializers.Serializer):
-    nick_name = serializers.CharField()
-    username = serializers.CharField()
+    nick_name = serializers.CharField(validators=[alpha_only])
+    username = serializers.CharField(validators=[alpha_only])
     email = serializers.CharField()
     password = serializers.CharField()
 

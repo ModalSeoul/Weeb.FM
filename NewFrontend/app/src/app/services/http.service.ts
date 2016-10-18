@@ -17,7 +17,7 @@ export class HttpService {
 
   private headers = {
     'Accept': 'application/json',
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json'
   };
 
   constructor(private http: Http) {}
@@ -25,7 +25,7 @@ export class HttpService {
   public resetHeaders (): void {
     this.headers = {
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     };
   }
 

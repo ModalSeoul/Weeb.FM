@@ -15,7 +15,9 @@
       <tr *ngFor="let scrobble of scrobbles">
         <td>{{scrobble.song_name}}</td>
         <td>{{scrobble.artist_name}}</td>
-        <td>{{scrobble.nick}}</td>
+        <td [routerLink]="['/profile', scrobble.nick]">
+          <a>{{scrobble.nick}}</a>
+        </td>
         <td>{{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}</td>
       </tr>
     </tbody>

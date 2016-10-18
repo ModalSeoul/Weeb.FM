@@ -30,10 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
-    console.log(this.username, this.password);
-    // this.auth.login(this.username, this.password)
-    //   .subscribe(() => this.router.navigate(['/']));
-
     // Use window.location instead of router to reload state
     this.auth.login(this.username, this.password)
       .subscribe(() => window.location.href = '/');
