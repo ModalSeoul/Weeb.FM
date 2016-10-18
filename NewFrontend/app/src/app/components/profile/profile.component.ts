@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService, AuthService, ScrobbleService, UserService } from '../../services/index';
 import { AppComponent } from '../../app.component';
-
 @Component({
   selector: 'profile',
   templateUrl: './profile.component.html',
@@ -12,13 +11,16 @@ import { AppComponent } from '../../app.component';
 export class ProfileComponent implements OnInit {
   private scrobbles: Array<any> = [];
   private uid: string;
-  private avatar: string = 'https://modal.moe/cdn/';
+  private avatarBase: string = 'https://modal.moe/cdn';
+  private avatar: string;
   private nick: string;
   private userObj: any = {};
   private canFollow: boolean = false;
+  private sub: any;
 
   constructor(
     private route: ActivatedRoute,
+    private r: Router,
     private http: HttpService,
     private Scrobble: ScrobbleService,
     private auth: AuthService,
@@ -27,8 +29,12 @@ export class ProfileComponent implements OnInit {
   ) {
   }
 
-  public ngOnInit() {
-    this.uid = this.route.snapshot.params['id'];
+  public refresh(self: boolean, id: any) {
+    if (!self) {
+      this.uid = this.route.snapshot.params['id'];
+    } else {
+      this.uid = id;
+    }
     this.user.getCurrentUser().subscribe((r: any) => {
       // if the user isn't viewing their own profile, display follow button
       if (this.uid != r.nick_name) {
@@ -47,13 +53,25 @@ export class ProfileComponent implements OnInit {
     });
 
     this.user.getUserAvatar(this.uid).subscribe((r: any) => {
-      this.avatar += r;
+      this.avatar = this.avatarBase + r;
     });
 
     this.Scrobble.getUserScrobbles(this.uid).subscribe((r: any) => {
       this.scrobbles = r;
       this.app.loading = false;
     });
+  }
+
+  public ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.paramsChanged(params['id']);
+    });
+    this.refresh(false, undefined);
+  }
+
+  public paramsChanged(id: any) {
+    console.log(id);
+    this.refresh(true, id);
   }
 
 }
