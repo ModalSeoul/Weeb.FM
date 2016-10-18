@@ -38,4 +38,10 @@ export class UserService {
       return r;
     });
   }
+
+  public getCount() {
+    return this.http.get('members/count/').map((r: any) => {
+      return r;
+    });
+  }
 }

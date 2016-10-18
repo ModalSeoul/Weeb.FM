@@ -6,5 +6,6 @@
     <li *ngIf="auth.isLoggedIn()" [routerLink]="['profile/', curUser]">My Profile</li>
     <li *ngIf="!auth.isLoggedIn()" [routerLink]="['login']">Login</li>
     <li [routerLink]="['/board']">Scrobble Leaderboard</li>
+    <li [routerLink]="['/stats']">Stats</li>
   </ul>
 </div>

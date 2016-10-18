@@ -10,5 +10,5 @@ if proper_args:
     ls_path = os.popen('ls {}'.format(path)).read()
     path_split = ls_path.split('\r')
     for app in path_split[0].split('\n'):
-        os.system('python manage.py makemigrations {}'.format(app))
-    os.system('python manage.py migrate')
+        os.system('python3 manage.py makemigrations {}'.format(app))
+    os.system('python3 manage.py migrate')

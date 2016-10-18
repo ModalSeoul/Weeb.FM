@@ -28,6 +28,10 @@ class MemberView(viewsets.ModelViewSet):
         serializer = self.get_serializer(user)
         return Response(serializer.data)
 
+    @list_route(methods=['GET'])
+    def count(self, request):
+        return Response(len(Member.objects.all()))
+
     @detail_route(methods=['GET'])
     def by_token(self, request, pk=None):
         if pk is not None:
