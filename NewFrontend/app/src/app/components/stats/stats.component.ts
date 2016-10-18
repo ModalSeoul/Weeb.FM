@@ -11,6 +11,8 @@ import { UserService } from '../../services/user.service';
 export class StatsComponent implements OnInit {
   private scrobbleCount: number | string;
   private memberCount: number | string;
+  private popularSongs: Array<any> = [];
+  private popularArtists: Array<any> = [];
 
   constructor(
     private Stats: StatsService,
@@ -18,7 +20,14 @@ export class StatsComponent implements OnInit {
     private app: AppComponent
   ) { }
 
+
   public refresh() {
+    this.Stats.popularArtists().subscribe((artists: any) => {
+      this.popularArtists = artists;
+    });
+    this.Stats.popularSongs().subscribe((songs: any) => {
+      this.popularSongs = songs;
+    });
     this.Stats.scrobbleCount().subscribe((r: any) => {
       this.scrobbleCount = r;
       this.User.getCount().subscribe((l: any) => {

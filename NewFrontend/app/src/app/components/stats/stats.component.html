@@ -2,3 +2,41 @@
   <h1>We have scrobbled {{scrobbleCount}} times across {{memberCount}} members.</h1>
   <input type="button" class="btn-wilt" value="Refresh" (click)="refresh()">
 </div>
+
+<div class="__tables">
+  <div class="left smol table-container">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Song</th>
+          <th>Artist</th>
+          <th>Scrobbles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let song of popularSongs">
+          <td>{{song.title}}</td>
+          <td>{{song.artist_name}}</td>
+          <td>{{song.scrobble_count}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="right smol table-container">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Artist</th>
+          <th>Scrobbles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let artist of popularArtists">
+          <td>{{artist.name}}</td>
+          <td>{{artist.scrobble_count}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

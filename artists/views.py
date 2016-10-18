@@ -11,3 +11,9 @@ from .serializers import ArtistSerializer
 class ArtistView(viewsets.ModelViewSet):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
+
+    @list_route(methods=['GET'])
+    def popular(self, request):
+        queryset = Artist.objects.order_by('-scrobble_count')[:10]
+        serializer = ArtistSerializer(instance=queryset, many=True)
+        return Response(serializer.data)

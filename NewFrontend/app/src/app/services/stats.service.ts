@@ -12,4 +12,16 @@ export class StatsService {
     });
   }
 
+  public popularArtists() {
+    return this.http.get('artists/popular').map((r: any) => {
+      return r;
+    });
+  }
+
+  public popularSongs() {
+    return this.http.get('songs/popular').map((r: any) => {
+      return r;
+    });
+  }
+
 }

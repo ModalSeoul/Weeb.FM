@@ -12,6 +12,12 @@ class SongView(viewsets.ModelViewSet):
     queryset = Song.objects.all()
     serializer_class = SongSerializer
 
+    @list_route(methods=['GET'])
+    def popular(self, request):
+        queryset = Song.objects.order_by('-scrobble_count')[:10]
+        serializer = SongSerializer(instance=queryset, many=True)
+        return Response(serializer.data)
+
     @detail_route(methods=['GET'])
     def by_artist(self, request, pk=None):
         # If artist id is passed
