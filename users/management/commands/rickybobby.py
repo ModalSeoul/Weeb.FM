@@ -6,10 +6,10 @@ class Command(BaseCommand):
     help = 'Creates a new user with appropriate custom fields'
 
     def handle(self, *args, **options):
-        nick = raw_input('Nickname: ')
-        email = raw_input('Email: ')
-        username = raw_input('Username: ')
-        password = raw_input('Password: ')
+        nick = input('Nickname: ')
+        email = input('Email: ')
+        username = input('Username: ')
+        password = input('Password: ')
 
         # TODO: Hash/salt password (+ bcrypt)
         Member.objects.create(nick_name=nick, email=email,

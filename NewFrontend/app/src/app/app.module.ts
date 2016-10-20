@@ -16,7 +16,8 @@ import {
   UserService,
   HttpService,
   ScrobbleService,
-  StatsService
+  StatsService,
+  BlogService
 } from './services';
 
 import { AppComponent } from './app.component';
@@ -64,6 +65,7 @@ export class DefaultRequestOptions extends BaseRequestOptions {
     HttpService,
     ScrobbleService,
     StatsService,
+    BlogService,
     CookieService,
     {
       provide: RequestOptions,

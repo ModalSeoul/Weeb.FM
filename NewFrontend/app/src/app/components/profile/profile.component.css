@@ -2,3 +2,9 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.__avi {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  margin-top: 1rem;
+}

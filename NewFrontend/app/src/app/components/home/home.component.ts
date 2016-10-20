@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, UserService } from '../../services/index';
+import { AuthService, UserService, BlogService } from '../../services/index';
 import { AppComponent } from '../../app.component';
 
 @Component({
@@ -11,23 +11,33 @@ import { AppComponent } from '../../app.component';
 
 export class HomeComponent implements OnInit {
   private curUser: any = {};
+  private entries: Array<any>;
   private loggedIn: boolean = false;
 
   constructor(
-    private auth: AuthService,
-    private user: UserService,
+    private Auth: AuthService,
+    private User: UserService,
+    private Blog: BlogService,
     private app: AppComponent
   ) {
-    console.log(this.auth.isLoggedIn());
+    console.log(this.Auth.isLoggedIn());
     // Setting loggedIn property based on user status
-    if (this.auth.isLoggedIn()) {
+    if (this.Auth.isLoggedIn()) {
       this.loggedIn = true;
     }
-    console.log(this.loggedIn);
+  }
+
+  public post() {
+    this.Blog.post().subscribe((r: any) => {
+      console.log(r);
+    });
   }
 
   public ngOnInit() {
-    this.user.getCurrentUser().subscribe(
+    this.Blog.getAll().subscribe((posts: any) => {
+      this.entries = posts;
+    });
+    this.User.getCurrentUser().subscribe(
       data => {
         this.curUser = data;
         this.app.loading = false;

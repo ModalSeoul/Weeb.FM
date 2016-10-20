@@ -1,8 +1,9 @@
 <span *ngIf="loggedIn">
   <h2>Welcome back, {{curUser.nick_name}}</h2>
-  <span class="__subtext">
-    <h3>Here's what you missed</h3>
-  </span>
+  <div class="__entry" *ngFor="let entry of entries">
+    <h2>{{entry.title}}</h2>
+    <p>{{entry.body}}</p>
+  </div>
 </span>
 
 <!-- If user is not logged in -->
