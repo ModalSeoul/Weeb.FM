@@ -1,5 +1,6 @@
 """User views file. Contains all viewsets/routes for the Users app"""
 from django.contrib.auth.hashers import make_password
+from django.http import HttpResponseRedirect
 from django.db.models import Count
 from rest_framework import viewsets
 from rest_framework.decorators import detail_route, list_route
@@ -46,6 +47,15 @@ class MemberView(viewsets.ModelViewSet):
             queryset = Member.objects.get(nick_name__iexact=pk)
             serializer = MemberSerializer(instance=queryset)
             return Response(serializer.data)
+
+    @detail_route(methods=['POST'])
+    def upload_avatar(self, request, pk=None):
+        if pk is not None:
+            token = self.request.data['my_token']
+            member = Token.objects.get(key=token).user
+            member.profile_picture = self.request.data['profile_picture']
+            member.save()
+            return HttpResponseRedirect('https://modal.moe/settings')
 
 
 class FriendshipView(viewsets.ModelViewSet):

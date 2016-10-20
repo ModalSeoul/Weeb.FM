@@ -1,0 +1,13 @@
+.__backing {
+  position: relative;
+}
+.__settings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+.btn-wilt {
+  margin-top: 1rem;
+  border-radius: 0px !important;
+}

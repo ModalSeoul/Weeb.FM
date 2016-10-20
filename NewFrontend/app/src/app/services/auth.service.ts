@@ -24,7 +24,6 @@ export class AuthService {
   public user: IUser = {};
 
   private AUTH_TOKEN_HEADER = 'Authorization';
-  private LOCAL: string = 'http://localhost:8000/api/';
 
   constructor(
     private http: HttpService,
@@ -71,6 +70,10 @@ export class AuthService {
   public isLoggedIn(): boolean {
     const lUser = this.cookies.get('user');
     return !!(this.user.id || lUser);
+  }
+
+  public getCookie() {
+    return JSON.parse(this.cookies.get('user')).token;
   }
 
   public logout(): void {
