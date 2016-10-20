@@ -48,14 +48,14 @@ class MemberView(viewsets.ModelViewSet):
             serializer = MemberSerializer(instance=queryset)
             return Response(serializer.data)
 
-    @detail_route(methods=['POST'])
-    def upload_avatar(self, request, pk=None):
-        if pk is not None:
-            token = self.request.data['my_token']
-            member = Token.objects.get(key=token).user
-            member.profile_picture = self.request.data['profile_picture']
-            member.save()
-            return HttpResponseRedirect('https://modal.moe/settings')
+    @list_route(methods=['POST'])
+    def upload_avatar(self, request):
+        token = self.request.data['my_token']
+        print(self.request.user)
+        member = Token.objects.get(key=token).user
+        member.profile_picture = self.request.data['profile_picture']
+        member.save()
+        return HttpResponseRedirect('https://modal.moe/settings')
 
 
 class FriendshipView(viewsets.ModelViewSet):

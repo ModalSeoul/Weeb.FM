@@ -1,6 +1,6 @@
 <div class="__backing">
   <div class="__settings">
-    <form enctype="multipart/form-data" id="go" method="post" action="http://localhost:8000/api/members/1/upload_avatar/">
+    <form enctype="multipart/form-data" id="go" method="post" action="https://modal.moe/api/members/upload_avatar/">
       <input type="file" name="profile_picture"/><br> <!-- FORGIVE ME FATHER -->
       <input type="hidden" [ngModel]="token" name="my_token">
       <input type="button" class="btn-wilt" onclick="document.all.go.submit()" value="Submit">
