@@ -2,13 +2,15 @@
   <table class="striped">
     <thead>
       <tr>
+        <th>#</th>
         <th>Song</th>
         <th>Artist</th>
         <th>Timestamp</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let scrobble of content">
+      <tr *ngFor="let scrobble of content; let i=index">
+        <td>{{i + 1}}</td>
         <td>{{scrobble.song_name}}</td>
         <td>{{scrobble.artist_name}}</td>
         <td>{{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}</td>

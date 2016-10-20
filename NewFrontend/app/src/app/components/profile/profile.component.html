@@ -4,3 +4,4 @@
 </div>
 <input *ngIf="canFollow" type="button" class="btn-wilt" value="+ Follow">
 <scrobble-table [content]="scrobbles"><h1>Loading...</h1></scrobble-table>
+<input *ngIf="!full" (click)="addScrobbles()" type="button" class="btn-wilt" value="Load More">

@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ScrobbleService {
+  private ep: string = 'scrobbles/';
 
   constructor(private http: HttpService) {}
 
@@ -20,37 +21,37 @@ export class ScrobbleService {
   }
 
   public getRecent(amount: string | number) {
-    return this.http.get(`scrobbles/?past=${amount}`).map((r: any) => {
+    return this.http.get(`${this.ep}?past=${amount}`).map((r: any) => {
       return r;
     });
   }
 
-  public getUserScrobbles(name: string) {
-    return this.http.get(`scrobbles/${name}/by_user`).map((r: any) => {
+  public getUserScrobbles(name: string, start: number, end: number) {
+    return this.http.get(`${this.ep}?by_user=${name}&start=${start}&end=${end}`).map((r: any) => {
       return r;
     });
   }
 
   public getUserIdScrobbles(id: number) {
-    return this.http.get(`scrobbles/${id}/by_user_id`).map((r: any) => {
+    return this.http.get(`${this.ep}${id}/by_user_id`).map((r: any) => {
       return r;
     });
   }
 
   public getArtistScrobbles(name: string) {
-    return this.http.get(`scrobbles/${name}/by_artist`).map((r: any) => {
+    return this.http.get(`${this.ep}${name}/by_artist`).map((r: any) => {
       return r;
     });
   }
 
   public getSongScrobbles(title: string) {
-    return this.http.get(`scrobbles/${title}/by_song`).map((r: any) => {
+    return this.http.get(`${this.ep}${title}/by_song`).map((r: any) => {
       return r;
     });
   }
 
   public getAlbumScrobbles(title: string) {
-    return this.http.get(`scrobbles/${title}/by_album`).map((r: any) => {
+    return this.http.get(`${this.ep}${title}/by_album`).map((r: any) => {
       return r;
     });
   }

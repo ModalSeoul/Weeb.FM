@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets, generics
 from rest_framework.filters import BaseFilterBackend
 from rest_framework.decorators import list_route, detail_route
@@ -40,7 +39,6 @@ def artist_exists(name):
         return False
 
 
-# @csrf_exempt
 class ScrobbleView(viewsets.ModelViewSet):
     queryset = Scrobble.objects.all()
     serializer_class = ScrobbleSerializer
@@ -56,6 +54,11 @@ class ScrobbleView(viewsets.ModelViewSet):
             query = Scrobble.objects.filter(song__artist__name=data.get('artist'))
         elif 'song' in data:
             query = Scrobble.objects.filter(song__title=data.get('song'))
+        # Example: ?by_user=Idiot&start=9&end=15
+        elif 'by_user' in data:
+            start, end = int(data.get('start')), int(data.get('end'))
+            query = Scrobble.objects.filter(member__nick_name__iexact=data.get('by_user'))
+            query = query.order_by('-date_scrobbled')[start:end]
         return query
 
     def get_serializer_class(self):
@@ -141,12 +144,12 @@ class ScrobbleView(viewsets.ModelViewSet):
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
 
-    @detail_route(methods=['GET'])
+    @list_route(methods=['GET'])
     def by_user(self, request, pk=None):
         """Lists all scrobbles from one user(pk)"""
         if pk is not None:
             queryset = Scrobble.objects.filter(member__nick_name__iexact=pk)
-            queryset = queryset.order_by('-date_scrobbled')
+            queryset = queryset.order_by('-date_scrobbled')[9:15]
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
 
