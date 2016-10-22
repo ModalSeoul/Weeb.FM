@@ -1,7 +1,7 @@
 """Serializer module for the Users app."""
 from rest_framework import serializers
 from django.core.validators import RegexValidator
-from users.models import Member, Friendship
+from users.models import Member, Following
 from songs.models import Song
 from scrobbles.models import Scrobble
 
@@ -57,7 +57,13 @@ class MemberSerializer(serializers.ModelSerializer):
         exclude = ('email', 'password')
 
 
-class FriendshipSerializer(serializers.ModelSerializer):
+class FollowingSerializer(serializers.ModelSerializer):
+    belongs_to = serializers.StringRelatedField()
+    following = serializers.StringRelatedField(many=True)
 
     class Meta:
-        model = Friendship
+        model = Following
+
+
+class FollowerSerializer(serializers.Serializer):
+    belongs_to = serializers.CharField()

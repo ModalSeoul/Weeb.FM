@@ -44,4 +44,10 @@ export class UserService {
       return r;
     });
   }
+
+  public follow(user: string) {
+    return this.http.post(`followings/${user}/follow`).map((r: any) => {
+      return r;
+    });
+  }
 }

@@ -41,6 +41,8 @@ export class ProfileComponent implements OnInit {
       // if the user isn't viewing their own profile, display follow button
       if (this.uid != r.nick_name) {
         this.canFollow = true;
+      } else {
+        this.canFollow = false;
       }
     });
 
@@ -64,6 +66,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  public follow() {
+    this.user.follow(this.uid).subscribe((r: any) => {
+      console.log(r);
+    });
+  }
+
   // Adds additional scrobbles to the viewing list
   public addScrobbles() {
     this.Scrobble.getUserScrobbles(
@@ -71,11 +79,12 @@ export class ProfileComponent implements OnInit {
     ).subscribe((r: any) => {
       if (r.length < 100) {
         this.full = true;
+      } else {
+        this.start += 100;
       }
       r.forEach((scrobble: any) => {
         this.scrobbles.push(scrobble);
       });
-      // this.scrobbles.concat(r);
     });
   }
 

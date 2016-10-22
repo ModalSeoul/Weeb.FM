@@ -2,6 +2,6 @@
 <div class="__stats">
   This user has scrobbled {{userObj.listen_count}} times.
 </div>
-<input *ngIf="canFollow" type="button" class="btn-wilt" value="+ Follow">
+<input *ngIf="canFollow" (click)="follow()" type="button" class="btn-wilt" value="+ Follow">
 <scrobble-table [content]="scrobbles"><h1>Loading...</h1></scrobble-table>
 <input *ngIf="!full" (click)="addScrobbles()" type="button" class="btn-wilt" value="Load More">

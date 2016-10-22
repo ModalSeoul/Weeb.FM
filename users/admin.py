@@ -1,5 +1,5 @@
 from django.contrib import admin
-from users.models import Member, Friendship
+from users.models import Member, Following
 
 admin.site.register(Member)
-admin.site.register(Friendship)
+admin.site.register(Following)

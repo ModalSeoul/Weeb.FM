@@ -26,14 +26,13 @@ class Member(AbstractUser):
         return self.nick_name
 
 
-class Friendship(models.Model):
-    date_created = models.DateTimeField(auto_now_add=True)
-    sender = models.ForeignKey(Member, related_name='sender')
-    recipient = models.ForeignKey(Member, related_name='recipient')
+class Following(models.Model):
+    following = models.ManyToManyField(Member, related_name='sender')
+    belongs_to = models.ForeignKey(Member)
+
 
     def __str__(self):
-        return '{} added {}'.format(self.sender.nick_name,
-                                    self.recipient.nick_name)
+        return 'People {} follows'.format(self.belongs_to.nick_name)
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)

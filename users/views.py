@@ -8,8 +8,8 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 
 from users.serializers import MemberSerializer, CreateMemberSerializer, \
-    FriendshipSerializer
-from users.models import Member, Friendship
+    FollowingSerializer, FollowerSerializer
+from users.models import Member, Following
 
 
 class MemberView(viewsets.ModelViewSet):
@@ -58,6 +58,34 @@ class MemberView(viewsets.ModelViewSet):
         return HttpResponseRedirect('https://modal.moe/settings')
 
 
-class FriendshipView(viewsets.ModelViewSet):
-    queryset = Friendship.objects.all()
-    serializer_class = FriendshipSerializer
+class FollowingView(viewsets.ModelViewSet):
+    queryset = Following.objects.all()
+    serializer_class = FollowingSerializer
+
+    # def create(self, request):
+    #     data = self.request.data
+    #     creator = self.request.user
+        
+
+    @detail_route(methods=['POST'])
+    def follow(self, request, pk=None):
+        print(pk)
+        if pk:
+            query = Following.objects.get(belongs_to__nick_name__iexact=pk)
+            query.following.add(self.request.user.id)
+            serializer = FollowingSerializer(query)
+            return Response(serializer.data)
+
+    @detail_route(methods=['GET'])
+    def following(self, request, pk=None):
+        if pk:
+            query = Following.objects.get(belongs_to__nick_name__iexact=pk)
+            serializer = FollowingSerializer(query)
+            return Response(serializer.data)
+
+    @detail_route(methods=['GET'])
+    def followers(self, request, pk=None):
+        if pk:
+            query = Following.objects.filter(following__in=pk)
+            serializer = FollowerSerializer(instance=query, many=True)
+            return Response(serializer.data)
