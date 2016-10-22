@@ -17,7 +17,8 @@ export class ProfileComponent implements OnInit {
   private avatar: string;
   private nick: string;
   private userObj: any = {};
-  private canFollow: boolean = false;
+  private canFollow: boolean;
+  private isFollowing: boolean;
   private sub: any;
 
   constructor(
@@ -31,6 +32,18 @@ export class ProfileComponent implements OnInit {
   ) {
   }
 
+  public contains(list: Array<any>, check: string | number) {
+    return !!~list.indexOf(check);
+  }
+
+  public isMe(me: string) {
+    if (this.uid == me) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public refresh(self: boolean, id: any) {
     if (!self) {
       this.uid = this.route.snapshot.params['id'];
@@ -38,17 +51,24 @@ export class ProfileComponent implements OnInit {
       this.uid = id;
     }
     this.user.getCurrentUser().subscribe((r: any) => {
+      let tmpUser: any = r;
       // if the user isn't viewing their own profile, display follow button
-      if (this.uid != r.nick_name) {
-        this.canFollow = true;
-      } else {
-        this.canFollow = false;
-      }
 
       this.user.getUserObject(this.uid).subscribe((r: any) => {
         this.userObj = r;
         this.user.followers(this.userObj.id).subscribe((r: any) => {
-          console.log(r);
+          this.userObj.followerCount = r.length;
+          if (this.contains(r, tmpUser.nick_name)) {
+            this.canFollow = false;
+            if (!this.isMe) {
+              this.isFollowing = true;
+            }
+          }
+          if (this.canFollow != false) {
+            if (!this.isMe) {
+              this.canFollow = true;
+            }
+          }
         });
       });
     });
@@ -99,7 +119,6 @@ export class ProfileComponent implements OnInit {
   }
 
   public paramsChanged(id: any) {
-    console.log(id);
     this.refresh(true, id);
   }
 

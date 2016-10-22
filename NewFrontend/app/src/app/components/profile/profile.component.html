@@ -1,7 +1,11 @@
 <img class="__avi" [src]="avatar"> <h2>{{nick}}</h2>
 <div class="__stats">
-  This user has scrobbled {{userObj.listen_count}} times.
+  <ul>
+    <li>This user has scrobbled {{userObj.listen_count}} times.</li>
+    <li>This user has {{userObj.followerCount}} followers.</li>
+  </ul>
 </div>
 <input *ngIf="canFollow" (click)="follow()" type="button" class="btn-wilt" value="+ Follow">
+<input *ngIf="isFollowing" type="button" class="btn-wilt" value="Unfollow">
 <scrobble-table [content]="scrobbles"><h1>Loading...</h1></scrobble-table>
 <input *ngIf="!full" (click)="addScrobbles()" type="button" class="btn-wilt" value="Load More">
