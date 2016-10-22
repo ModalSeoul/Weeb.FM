@@ -44,16 +44,19 @@ export class ProfileComponent implements OnInit {
       } else {
         this.canFollow = false;
       }
+
+      this.user.getUserObject(this.uid).subscribe((r: any) => {
+        this.userObj = r;
+        this.user.followers(this.userObj.id).subscribe((r: any) => {
+          console.log(r);
+        });
+      });
     });
 
 
     // Deprecation warning (10/15/2016)
     this.user.getUserNick(this.uid).subscribe((r: any) => {
       this.nick = r;
-    });
-
-    this.user.getUserObject(this.uid).subscribe((r: any) => {
-      this.userObj = r;
     });
 
     this.user.getUserAvatar(this.uid).subscribe((r: any) => {

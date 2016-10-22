@@ -50,4 +50,10 @@ export class UserService {
       return r;
     });
   }
+
+  public followers(id: string | number) {
+    return this.http.get(`followings/${id}/followers`).map((r: any) => {
+      return r;
+    });
+  }
 }

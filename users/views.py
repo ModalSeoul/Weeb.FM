@@ -62,11 +62,6 @@ class FollowingView(viewsets.ModelViewSet):
     queryset = Following.objects.all()
     serializer_class = FollowingSerializer
 
-    # def create(self, request):
-    #     data = self.request.data
-    #     creator = self.request.user
-        
-
     @detail_route(methods=['POST'])
     def follow(self, request, pk=None):
         print(pk)
@@ -88,4 +83,5 @@ class FollowingView(viewsets.ModelViewSet):
         if pk:
             query = Following.objects.filter(following__in=pk)
             serializer = FollowerSerializer(instance=query, many=True)
-            return Response(serializer.data)
+            values = query.values_list('belongs_to__nick_name', flat=True)
+            return Response(values)
