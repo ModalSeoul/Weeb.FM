@@ -7,6 +7,7 @@ import { HomeComponent }   from './components/home/home.component';
 import { LeaderboardComponent }   from './components/leaderboard/leaderboard.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { StartComponent } from './components/start/start.component';
 
 const routes: Routes = [
   { path: '',  component: HomeComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'login',  component: LoginComponent },
   { path: 'board',  component: LeaderboardComponent },
   { path: 'stats',  component: StatsComponent },
-  { path: 'settings',  component: SettingsComponent }
+  { path: 'settings',  component: SettingsComponent },
+  { path: 'get-started', component: StartComponent }
 ];
 
 @NgModule({

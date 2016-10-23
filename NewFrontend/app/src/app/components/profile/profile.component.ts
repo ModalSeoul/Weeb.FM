@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpService, AuthService, ScrobbleService, UserService } from '../../services/index';
+import {
+  HttpService,
+  AuthService,
+  ScrobbleService,
+  UserService,
+  ProfileService
+} from '../../services/index';
 import { AppComponent } from '../../app.component';
 @Component({
   selector: 'profile',
@@ -13,11 +19,7 @@ export class ProfileComponent implements OnInit {
   private full: boolean = false;
   private scrobbles: Array<any> = [];
   private uid: string;
-  private avatarBase: string = 'https://modal.moe/cdn';
-  private avatar: string;
-  private nick: string;
-  private userObj: any = {};
-  private canFollow: boolean;
+  private profileObj: any = {};
   private isFollowing: boolean;
   private sub: any;
 
@@ -28,6 +30,7 @@ export class ProfileComponent implements OnInit {
     private Scrobble: ScrobbleService,
     private auth: AuthService,
     private user: UserService,
+    private Profile: ProfileService,
     private app: AppComponent
   ) {
   }
@@ -50,37 +53,9 @@ export class ProfileComponent implements OnInit {
     } else {
       this.uid = id;
     }
-    this.user.getCurrentUser().subscribe((r: any) => {
-      let tmpUser: any = r;
-      // if the user isn't viewing their own profile, display follow button
 
-      this.user.getUserObject(this.uid).subscribe((r: any) => {
-        this.userObj = r;
-        this.user.followers(this.userObj.id).subscribe((r: any) => {
-          this.userObj.followerCount = r.length;
-          if (this.contains(r, tmpUser.nick_name)) {
-            this.canFollow = false;
-            if (!this.isMe) {
-              this.isFollowing = true;
-            }
-          }
-          if (this.canFollow != false) {
-            if (!this.isMe) {
-              this.canFollow = true;
-            }
-          }
-        });
-      });
-    });
-
-
-    // Deprecation warning (10/15/2016)
-    this.user.getUserNick(this.uid).subscribe((r: any) => {
-      this.nick = r;
-    });
-
-    this.user.getUserAvatar(this.uid).subscribe((r: any) => {
-      this.avatar = this.avatarBase + r;
+    this.Profile.canFollow(this.uid).then((r: any) => {
+      this.profileObj = r;
     });
 
     this.Scrobble.getUserScrobbles(this.uid, 0, 100).subscribe((r: any) => {

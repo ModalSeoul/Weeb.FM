@@ -17,7 +17,8 @@ import {
   HttpService,
   ScrobbleService,
   StatsService,
-  BlogService
+  BlogService,
+  ProfileService
 } from './services';
 
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
 import { RecentComponent } from './components/recent/recent.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { StartComponent } from './components/start/start.component';
 
 @Injectable()
 export class DefaultRequestOptions extends BaseRequestOptions {
@@ -52,6 +54,7 @@ export class DefaultRequestOptions extends BaseRequestOptions {
     RecentComponent,
     StatsComponent,
     SettingsComponent,
+    StartComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -66,6 +69,7 @@ export class DefaultRequestOptions extends BaseRequestOptions {
     ScrobbleService,
     StatsService,
     BlogService,
+    ProfileService,
     CookieService,
     {
       provide: RequestOptions,

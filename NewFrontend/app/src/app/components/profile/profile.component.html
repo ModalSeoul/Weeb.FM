@@ -1,8 +1,8 @@
-<img class="__avi" [src]="avatar"> <h2>{{nick}}</h2>
+<img class="__avi" [src]="profileObj.avatar"> <h2>{{profileObj.nick}}</h2>
 <div class="__stats">
   <ul>
-    <li>This user has scrobbled {{userObj.listen_count}} times.</li>
-    <li>This user has {{userObj.followerCount}} followers.</li>
+    <li>This user has scrobbled {{profileObj.listen_count}} times.</li>
+    <!-- <li>This user has {{profileObj.followerCount}} followers.</li> -->
   </ul>
 </div>
 <input *ngIf="canFollow" (click)="follow()" type="button" class="btn-wilt" value="+ Follow">
