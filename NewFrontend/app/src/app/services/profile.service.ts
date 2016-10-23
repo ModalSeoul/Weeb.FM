@@ -22,6 +22,15 @@ export class ProfileService {
     }
   }
 
+  public dayDiff(joinDate: any): Promise<any> {
+    let today: any = new Date();
+    today.setDate(today.getDate() + 1); // Solves off by 1
+    return new Promise((resolve, reject) => {
+      resolve(Math.floor(( Date.parse(today) - Date.parse(joinDate) ) / 86400000));
+    });
+  }
+
+  // TODO: Split this up
   public canFollow(visitingUser: string) {
     return new Promise((resolve, reject) => {
       let resolveMe: any = {};
@@ -29,10 +38,13 @@ export class ProfileService {
         let tmpUser: any = r;
         // if the user isn't viewing their own profile, display follow button
         this.User.getUserObject(visitingUser).subscribe((visitingObj: any) => {
-          console.log(visitingObj);
+          // TODO: global var for cdn
           resolveMe.avatar = `https://modal.moe/cdn${visitingObj.profile_picture}`;
           resolveMe.nick = visitingObj.nick_name;
           resolveMe.listen_count = visitingObj.listen_count;
+          this.dayDiff(visitingObj.date_joined).then((diffDays: any) => {
+            resolveMe.per_day = Math.ceil(resolveMe.listen_count / diffDays);
+          });
           this.User.followers(visitingObj.id).subscribe((r: any) => {
             resolveMe.followerCount = r.length;
             // If requesting user is in the following array

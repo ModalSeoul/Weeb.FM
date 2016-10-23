@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   public resetPassword() {
-    this.auth.resetPassword(this.username)
-    .subscribe(() => {
+    this.auth.resetPassword(this.username).subscribe(() => {
       this.router.navigate(['/']);
     });
   }
