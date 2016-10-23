@@ -9,5 +9,6 @@
     <li [routerLink]="['/stats']">Stats</li>
     <li [routerLink]="['/settings']">Settings</li>
     <li [routerLink]="['/get-started']">Get Started</li>
+    <li *ngIf="auth.isLoggedIn()" (click)="logout()">Logout</li>
   </ul>
 </div>

@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   public login() {
     // Use window.location instead of router to reload state
     this.auth.login(this.username, this.password)
-      .subscribe(() => window.location.href = '/');
+      .subscribe(() => this.router.navigate(['/']));
   }
 
   public resetPassword() {

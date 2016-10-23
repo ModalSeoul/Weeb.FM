@@ -22,4 +22,8 @@ export class SidebarComponent {
     });
   }
 
+  public logout(): void {
+    this.auth.logout();
+  }
+
 }
