@@ -10,6 +10,7 @@ from rest_framework.authtoken.models import Token
 from users.serializers import MemberSerializer, CreateMemberSerializer, \
     FollowingSerializer, FollowerSerializer
 from users.models import Member, Following
+from .filters import UserFilter
 
 
 class MemberView(viewsets.ModelViewSet):
@@ -17,6 +18,10 @@ class MemberView(viewsets.ModelViewSet):
     related routes/post-creation tasks'''
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
+
+    filter_backends = [
+        UserFilter
+    ]
 
     def get_serializer_class(self):
         if self.action == 'create':
