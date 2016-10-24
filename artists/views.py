@@ -19,7 +19,7 @@ class ArtistView(viewsets.ModelViewSet):
 
     @list_route(methods=['GET'])
     def popular(self, request):
-        queryset = Artist.objects.order_by('-scrobble_count')[:15]
+        queryset = Artist.objects.order_by('-scrobble_count')[:20]
         serializer = ArtistSerializer(instance=queryset, many=True)
         return Response(serializer.data)
 

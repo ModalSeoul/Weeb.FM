@@ -14,7 +14,7 @@ class SongView(viewsets.ModelViewSet):
 
     @list_route(methods=['GET'])
     def popular(self, request):
-        queryset = Song.objects.order_by('-scrobble_count')[:15]
+        queryset = Song.objects.order_by('-scrobble_count')[:20]
         serializer = SongSerializer(instance=queryset, many=True)
         return Response(serializer.data)
 
