@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   private username: string;
   private password: string;
 
+  private errorString: string;
+
   constructor(
     private auth: AuthService,
     private app: AppComponent,
@@ -26,13 +28,31 @@ export class LoginComponent implements OnInit {
   }
 
   public ngOnInit() {
-      this.app.loading = false;
+    this.app.loading = false;
   }
 
   public login() {
     // Use window.location instead of router to reload state
     this.auth.login(this.username, this.password)
-      .subscribe(() => this.router.navigate(['/']));
+      .subscribe(() => {
+        this.router.navigate(['/']);
+      }, (err) => {
+        var errMessages = err.json();
+        if (errMessages.username) {
+          this.errorString = `Username: ${errMessages.username[0]}`;
+          return;
+        }
+        if (errMessages.password) {
+          this.errorString = `Password: ${errMessages.password[0]}`;
+          return;
+        }
+        if (errMessages.non_field_errors) {
+          this.errorString = `${errMessages.non_field_errors[0]}`
+          return;
+        }
+        // else
+        this.errorString = `${err._body}`;
+      });
   }
 
   public resetPassword() {
