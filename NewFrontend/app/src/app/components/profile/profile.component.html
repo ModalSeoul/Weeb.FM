@@ -11,9 +11,9 @@
     <h1>User Stats</h1>
   </div>
   <ul>
-    <li>Member since {{profileObj.date_joined| date: 'MM/dd/yyyy' }}</li>
-    <li>{{profileObj.listen_count}} total scrobbles</li>
-    <li>{{profileObj.per_day}} scrobbles per day on average.</li>
+    <li>Member since {{profileObj.date_joined | date: 'MM/dd/yyyy' }}</li>
+    <li>{{profileObj.listen_count | number}} total scrobbles</li>
+    <li>{{profileObj.per_day | number}} scrobbles per day on average.</li>
     <!-- <li>This user has {{profileObj.followerCount}} followers.</li> -->
   </ul>
 </div>
