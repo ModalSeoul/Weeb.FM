@@ -17,10 +17,9 @@ ul {
 }
 li {
   padding-left: 1rem;
-  background-color: #41606E;
+  background-color: #4B6F7F;
   padding: 1rem;
-  border-bottom: #6494AA;
-  margin-bottom: .2rem;
+  border-bottom: 1px solid #6494AA;
   cursor: pointer;
   transition: 1s;
   -moz-user-select: none; /* Firefox */
@@ -30,7 +29,7 @@ li {
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 li:hover {
-  background-color: #324954;
+  background-color: #3F5D6A;
 }
 .__sep {
   background-color: white;
