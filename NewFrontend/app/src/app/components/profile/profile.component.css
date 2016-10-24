@@ -1,3 +1,10 @@
+.profileWrapper {
+  border-bottom: 3px solid black;
+  background: linear-gradient(
+    rgba(150, 150, 150, 0.75),
+    rgba(100, 100, 100, 0.75)
+  );
+}
 .btn-wilt {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -5,6 +12,19 @@
 .__avi {
   width: 200px;
   height: 200px;
-  border: 1px solid black;
+  border: 2px solid black;
   margin-top: 1rem;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+     -moz-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
+}
+.__banner {
+  margin-left: -2rem;
+  margin-right: -2rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.__user {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }

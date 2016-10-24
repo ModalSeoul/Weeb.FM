@@ -51,9 +51,16 @@ class MemberView(viewsets.ModelViewSet):
     @list_route(methods=['POST'])
     def upload_avatar(self, request):
         token = self.request.data['my_token']
-        print(self.request.user)
         member = Token.objects.get(key=token).user
         member.profile_picture = self.request.data['profile_picture']
+        member.save()
+        return HttpResponseRedirect('https://modal.moe/settings')
+
+    @list_route(methods=['POST'])
+    def upload_banner(self, request):
+        token = self.request.data['my_token']
+        member = Token.objects.get(key=token).user
+        member.banner_picture = self.request.data['banner_picture']
         member.save()
         return HttpResponseRedirect('https://modal.moe/settings')
 

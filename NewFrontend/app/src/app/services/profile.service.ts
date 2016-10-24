@@ -40,6 +40,7 @@ export class ProfileService {
         this.User.getUserObject(visitingUser).subscribe((visitingObj: any) => {
           // TODO: global var for cdn
           resolveMe.avatar = `https://modal.moe/cdn${visitingObj.profile_picture}`;
+          resolveMe.banner = `https://modal.moe/cdn${visitingObj.banner_picture}`;
           resolveMe.nick = visitingObj.nick_name;
           resolveMe.listen_count = visitingObj.listen_count;
           this.dayDiff(visitingObj.date_joined).then((diffDays: any) => {

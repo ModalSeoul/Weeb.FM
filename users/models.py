@@ -16,12 +16,16 @@ class Member(AbstractUser):
     '''Memebr(user) model. Abstracted from Django user accounts.'''
     nick_name = models.CharField(max_length=24, unique=True)
     loved_tracks = models.ManyToManyField(Song, blank=True)
+
     listened_to = models.ManyToManyField(
         Song, blank=True, related_name='listened_to')
+
     profile_picture = models.ImageField(
         upload_to='cdn/images/avatars/', null=True, blank=True)
 
-    # String to show in Django Admin
+    banner_picture = models.ImageField(
+        upload_to='cdn/images/banners/', null=True, blank=True)
+
     def __str__(self):
         return self.nick_name
 
@@ -35,6 +39,8 @@ class Following(models.Model):
         return 'People {} follows'.format(self.belongs_to.nick_name)
 
 
+
+# DRF auth token receiver
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
