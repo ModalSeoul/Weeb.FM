@@ -11,7 +11,7 @@
       <tr *ngFor="let scrobble of content; let i=index">
         <td>{{scrobble.song_name}}</td>
         <td>{{scrobble.artist_name}}</td>
-        <td>{{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}</td>
+        <td width="15%">{{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}</td>
       </tr>
     </tbody>
   </table>

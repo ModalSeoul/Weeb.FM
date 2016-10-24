@@ -5,15 +5,12 @@
 
 .__tables {
   display: flex;
+  width: 100%;
+  max-width: 100%;
 }
 
 .smol {
+  margin: .5rem;
   width: 50%;
-  margin: 1rem;
-}
-.left {
-  justify-content: flex-start;
-}
-.right {
-  justify-content: flex-end;
+  max-width: 50%;
 }

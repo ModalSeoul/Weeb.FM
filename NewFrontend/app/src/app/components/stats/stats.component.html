@@ -4,7 +4,7 @@
 </div>
 
 <div class="__tables">
-  <div class="left smol table-container">
+  <div class="smol table-container">
     <table class="striped">
       <thead>
         <tr>
@@ -15,15 +15,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let song of popularSongs">
-          <td>{{song.title}}</td>
-          <td>{{song.artist_name}}</td>
-          <td>{{song.scrobble_count}}</td>
+          <td width="50%">{{song.title}}</td>
+          <td width="30%">{{song.artist_name}}</td>
+          <td width="10%">{{song.scrobble_count}}</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="right smol table-container">
+  <div class="smol table-container">
     <table class="striped">
       <thead>
         <tr>
@@ -33,8 +33,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let artist of popularArtists">
-          <td>{{artist.name}}</td>
-          <td>{{artist.scrobble_count}}</td>
+          <td width="90%">{{artist.name}}</td>
+          <td width="10%">{{artist.scrobble_count}}</td>
         </tr>
       </tbody>
     </table>

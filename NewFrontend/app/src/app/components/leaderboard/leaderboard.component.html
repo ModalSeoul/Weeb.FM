@@ -13,12 +13,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let scrobble of scrobbles">
-        <td>{{scrobble.song_name}}</td>
+        <td width="35%">{{scrobble.song_name}}</td>
         <td>{{scrobble.artist_name}}</td>
         <td [routerLink]="['/profile', scrobble.nick]">
           <a>{{scrobble.nick}}</a>
         </td>
-        <td>{{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}</td>
+        <td width="15%">{{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}</td>
       </tr>
     </tbody>
   </table>
