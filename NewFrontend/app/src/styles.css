@@ -186,54 +186,54 @@ a:visited, a:active, a:link, a:hover {
 /* Table Alignment Helpers
 *************************************/
 
-.table-container .align-left,
-.table-container .align-left-all,
-.table-container .align-left-all * {
+.align-left,
+.align-left-all,
+.align-left-all * {
   text-align: left !important;
 }
 
-.table-container .align-center,
-.table-container .align-center-all,
-.table-container .align-center-all * {
+.align-center,
+.align-center-all,
+.align-center-all * {
   text-align: center !important;
 }
 
-.table-container .align-right,
-.table-container .align-right-all,
-.table-container .align-right-all * {
+.align-right,
+.align-right-all,
+.align-right-all * {
   text-align: right !important;
 }
 
 /* Table Border Helpers
 *************************************/
 
-.table-container .border,
-.table-container .border-all,
-.table-container .border-all * {
+.border,
+.border-all,
+.border-all * {
   border: 1px solid #adb5bd !important;
 }
 
-.table-container .border-top,
-.table-container .border-top-all,
-.table-container .border-top-all * {
+.border-top,
+.border-top-all,
+.border-top-all * {
   border-top: 1px solid #adb5bd !important;
 }
 
-.table-container .border-bottom,
-.table-container .border-bottom-all,
-.table-container .border-bottom-all * {
+.border-bottom,
+.border-bottom-all,
+.border-bottom-all * {
   border-bottom: 1px solid #adb5bd !important;
 }
 
-.table-container .border-right,
-.table-container .border-right-all,
-.table-container .border-right-all * {
+.border-right,
+.border-right-all,
+.border-right-all * {
   border-right: 1px solid #adb5bd !important;
 }
 
-.table-container .border-left,
-.table-container .border-left-all,
-.table-container .border-left-all * {
+.border-left,
+.border-left-all,
+.border-left-all * {
   border-left: 1px solid #adb5bd !important;
 }
 
