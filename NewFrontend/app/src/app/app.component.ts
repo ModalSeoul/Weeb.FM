@@ -11,7 +11,8 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
     <div class="__weeb">
       <router-outlet></router-outlet>
     </div>`,
-    providers: []
+    providers: [],
+    styleUrls: ['app.component.scss']
 })
 
 export class AppComponent implements OnInit {

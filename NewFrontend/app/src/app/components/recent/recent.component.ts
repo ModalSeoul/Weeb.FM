@@ -5,7 +5,7 @@ import { AppComponent } from '../../app.component';
 @Component({
   selector: 'app-recent',
   templateUrl: './recent.component.html',
-  styleUrls: ['./recent.component.css']
+  styleUrls: ['./recent.component.scss']
 })
 export class RecentComponent implements OnInit {
   private scrobbles: Array<any> = [];

@@ -5,7 +5,7 @@ import { HttpService } from '../../services/index';
 @Component({
   selector: 'scrobble-table',
   templateUrl: './scrobbletable.component.html',
-  styleUrls: ['./scrobbletable.component.css'],
+  styleUrls: ['./scrobbletable.component.scss'],
   providers: [ HttpService ]
 })
 

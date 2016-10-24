@@ -5,7 +5,7 @@ import { AuthService, UserService } from '../../services/index';
 @Component({
   selector: 'side-nav',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css'],
+  styleUrls: ['./sidebar.component.scss'],
   providers: [ AuthService, UserService ]
 })
 

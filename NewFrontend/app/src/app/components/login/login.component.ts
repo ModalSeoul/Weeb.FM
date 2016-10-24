@@ -6,7 +6,7 @@ import { AppComponent } from '../../app.component';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
   providers: [ AuthService ]
 })
 
