@@ -1,9 +1,17 @@
 <div class="__backing">
   <div class="__settings">
-    <form enctype="multipart/form-data" id="go" method="post" action="https://modal.moe/api/members/upload_avatar/">
+    <h1>Avatar</h1>
+    <form enctype="multipart/form-data" id="avatar" method="post" action="https://modal.moe/api/members/upload_avatar/">
       <input type="file" name="profile_picture"/><br> <!-- FORGIVE ME FATHER -->
       <input type="hidden" [ngModel]="token" name="my_token">
-      <input type="button" class="btn-wilt" onclick="document.all.go.submit()" value="Submit">
+      <input type="button" class="btn-wilt" onclick="document.all.avatar.submit()" value="Submit">
+    </form>
+
+    <h2>Banner</h2>
+    <form enctype="multipart/form-data" id="banner" method="post" action="https://modal.moe/api/members/upload_banner/">
+      <input type="file" name="banner_picture"/><br> <!-- FORGIVE ME FATHER -->
+      <input type="hidden" [ngModel]="token" name="my_token">
+      <input type="button" class="btn-wilt" onclick="document.all.banner.submit()" value="Submit">
     </form>
   </div>
 </div>

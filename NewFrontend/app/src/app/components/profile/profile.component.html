@@ -1,4 +1,11 @@
-<img class="__avi" [src]="profileObj.avatar"> <h2>{{profileObj.nick}}</h2>
+<div class="__banner" [ngStyle]="{'background-image':'url('+ profileObj.banner +')'}">
+<div class="profileWrapper">
+    <div class="__user">
+      <img class="__avi" [src]="profileObj.avatar">
+      <h1>{{profileObj.nick}}</h1>
+    </div>
+  </div>
+</div>
 <div class="__stats">
   <ul>
     <li>This user has scrobbled {{profileObj.listen_count}} times.</li>
