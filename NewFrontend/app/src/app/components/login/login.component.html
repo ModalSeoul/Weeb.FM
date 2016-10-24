@@ -5,7 +5,10 @@
     <input class="text-wilt" type="password" [(ngModel)]="password" placeholder="Password"
       (keyup.enter)="login()">
     <span class="__bottom">
-      <input class="btn-wilt" type="button" value="Login" (click)="login()">
+      <button class="btn-wilt" (click)="login()">
+        <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>
+        Login
+      </button>
       <a [routerLink]="['/register']">Register</a>
     </span>
     <p style="color: red;">{{errorString}}</p>
