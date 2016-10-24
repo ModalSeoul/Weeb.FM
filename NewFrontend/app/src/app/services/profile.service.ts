@@ -42,6 +42,7 @@ export class ProfileService {
           resolveMe.avatar = `https://modal.moe/cdn${visitingObj.profile_picture}`;
           resolveMe.banner = `https://modal.moe/cdn${visitingObj.banner_picture}`;
           resolveMe.nick = visitingObj.nick_name;
+          resolveMe.date_joined = visitingObj.date_joined;
           resolveMe.listen_count = visitingObj.listen_count;
           this.dayDiff(visitingObj.date_joined).then((diffDays: any) => {
             resolveMe.per_day = Math.ceil(resolveMe.listen_count / diffDays);
