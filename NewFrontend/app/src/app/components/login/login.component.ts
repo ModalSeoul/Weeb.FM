@@ -34,8 +34,7 @@ export class LoginComponent implements OnInit {
   public login() {
     // Use window.location instead of router to reload state
     this.auth.login(this.username, this.password)
-      .subscribe(() => {
-        this.router.navigate(['/']);
+      .subscribe(() => { document.location.href = "/";
       }, (err) => {
         var errMessages = err.json();
         if (errMessages.username) {
