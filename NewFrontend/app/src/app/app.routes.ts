@@ -8,10 +8,12 @@ import { LeaderboardComponent }   from './components/leaderboard/leaderboard.com
 import { StatsComponent } from './components/stats/stats.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { StartComponent } from './components/start/start.component';
+import { ArtistComponent } from './components/artist/artist.component';
 
 const routes: Routes = [
   { path: '',  component: HomeComponent },
   { path: 'profile/:id',  component: ProfileComponent },
+  { path: 'artist/:name', component: ArtistComponent },
   { path: 'register',  component: RegisterComponent },
   { path: 'login',  component: LoginComponent },
   { path: 'board',  component: LeaderboardComponent },

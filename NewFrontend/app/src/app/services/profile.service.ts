@@ -39,8 +39,8 @@ export class ProfileService {
         // if the user isn't viewing their own profile, display follow button
         this.User.getUserObject(visitingUser).subscribe((visitingObj: any) => {
           // TODO: global var for cdn
-          resolveMe.avatar = `https://modal.moe/cdn${visitingObj.profile_picture}`;
-          resolveMe.banner = `https://modal.moe/cdn${visitingObj.banner_picture}`;
+          resolveMe.avatar = `https://modal.moe/${visitingObj.profile_picture}`;
+          resolveMe.banner = `https://modal.moe/${visitingObj.banner_picture}`;
           resolveMe.nick = visitingObj.nick_name;
           resolveMe.date_joined = visitingObj.date_joined;
           resolveMe.listen_count = visitingObj.listen_count;

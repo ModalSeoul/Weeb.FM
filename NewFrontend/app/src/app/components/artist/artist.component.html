@@ -1,0 +1,27 @@
+<div class="table-container">
+  <div class="table-header">
+    <h1>Users who have also scrobbled {{artist}}</h1>
+  </div>
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Picture</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i=index">
+        <td>
+          <img [src]="user.profile_picture" id="table-avi">
+        </td>
+        <td>
+          <h3>
+            <a [routerLink]="['/profile', user.nick_name]">
+              {{user.nick_name}}
+            </a>
+          </h3>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

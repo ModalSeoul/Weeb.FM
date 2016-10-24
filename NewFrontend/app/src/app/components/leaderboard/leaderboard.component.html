@@ -17,7 +17,11 @@
     <tbody>
       <tr *ngFor="let scrobble of scrobbles">
         <td width="35%">{{scrobble.song_name}}</td>
-        <td>{{scrobble.artist_name}}</td>
+        <td>
+          <a [routerLink]="['/artist', scrobble.artist_name]">
+            {{scrobble.artist_name}}
+          </a>
+        </td>
         <td [routerLink]="['/profile', scrobble.nick]">
           <a>{{scrobble.nick}}</a>
         </td>

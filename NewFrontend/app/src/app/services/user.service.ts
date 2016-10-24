@@ -56,4 +56,10 @@ export class UserService {
       return r;
     });
   }
+
+  public listensTo(name: string) {
+    return this.http.get(`members/?listened=${name}`).map((r: any) => {
+      return r;
+    });
+  }
 }

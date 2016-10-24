@@ -33,6 +33,7 @@ import { RecentComponent } from './components/recent/recent.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { StartComponent } from './components/start/start.component';
+import { ArtistComponent } from './components/artist/artist.component';
 
 @Injectable()
 export class DefaultRequestOptions extends BaseRequestOptions {
@@ -55,6 +56,7 @@ export class DefaultRequestOptions extends BaseRequestOptions {
     StatsComponent,
     SettingsComponent,
     StartComponent,
+    ArtistComponent,
   ],
   imports: [
     AppRoutingModule,
