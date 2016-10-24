@@ -6,7 +6,7 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
     template: `
     <side-nav></side-nav>
     <div class="__loading" *ngIf="loading">
-      Loading
+      <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
     </div>
     <div class="__weeb">
       <router-outlet></router-outlet>
