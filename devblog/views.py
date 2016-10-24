@@ -6,11 +6,11 @@ from devblog.serializers import EntrySerializer
 
 
 class EntryView(viewsets.ModelViewSet):
-    queryset = Entry.objects.all()
+    queryset = Entry.objects.order_by('-date')
     serializer_class = EntrySerializer
 
     def create(self, request):
-        data = self.request.data # aliasing
+        data = self.request.data
         user = self.request.user
         if user.is_staff:
             entry = Entry.objects.create(
