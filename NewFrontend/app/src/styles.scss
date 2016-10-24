@@ -127,86 +127,103 @@ a:visited, a:active, a:link, a:hover {
 
 /* Table component
 *******************************************************************************/
-.table-container {
+
+.tableComponent {
   font-size: 16px;
   margin-bottom: 1rem;
-}
 
-.table-container table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  border: 1px solid color(divider);
-  width: 100%;
-}
+  &__header {
+    background-color: color(accent);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: none;
+    color: color(accent-text);
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    width: 100%;
 
-.table-header {
-  background-color: color(accent);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border: none;
-  color: color(accent-text);
-  height: 3rem;
-  line-height: 3rem;
-  text-align: center;
-  width: 100%;
-}
-.table-header h1 {
-  font-size: 20px;
-}
+    h1 {
+      font-size: 20px;
+    }
+  }
 
-.table-container thead {
-  background: $oc-gray-4;
-  border: 1px solid color(divider);
-}
+  &__table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid color(divider);
+    width: 100%;
 
-.table-container th {
-  background: $oc-gray-4;
-  border-bottom: 1px solid color(divider);
-  color: $oc-gray-9;
-  font-weight: bold;
-  overflow: hidden;
-  padding: 8px 5px;
-  text-align: left;
-  text-overflow: ellipsis;
-  text-transform: uppercase;
-  vertical-align: middle;
-  white-space: nowrap;
-}
+    thead {
+      background: $oc-gray-4;
+      border: 1px solid color(divider);
+    }
 
-.table-container td {
-  border-bottom: 1px solid color(divider);
-  overflow: hidden;
-  padding: 3px 5px;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  max-width: 0;
-  white-space: nowrap;
-}
+    th {
+      background: $oc-gray-4;
+      border-bottom: 1px solid color(divider);
+      color: $oc-gray-9;
+      font-weight: bold;
+      overflow: hidden;
+      padding: 8px 5px;
+      text-align: left;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
 
-.table-container .striped tr:nth-child(even) td {
-  background: $oc-gray-2;
+    td {
+      border-bottom: 1px solid color(divider);
+      overflow: hidden;
+      padding: 3px 5px;
+      text-overflow: ellipsis;
+      vertical-align: middle;
+      max-width: 0;
+      white-space: nowrap;
+    }
+
+    &--striped {
+      tr:nth-child(even) td {
+        background-color: $oc-gray-2;
+      }
+    }
+  }
 }
 
 /* Table Alignment Helpers
 *************************************/
 
-.align-left,
-.align-left-all,
-.align-left-all * {
+.align-left {
   text-align: left !important;
+  &--all {
+    text-align: left !important;
+    * {
+      text-align: left !important;
+    }
+  }
 }
 
-.align-center,
-.align-center-all,
-.align-center-all * {
-  text-align: center !important;
-}
-
-.align-right,
-.align-right-all,
-.align-right-all * {
+.align-right {
   text-align: right !important;
+  &--all {
+    text-align: right !important;
+    * {
+      text-align: right !important;
+    }
+  }
 }
+
+.align-center {
+  text-align: center !important;
+  &--all {
+    text-align: center !important;
+    * {
+      text-align: center !important;
+    }
+  }
+}
+
 
 /* Table Border Helpers
 *************************************/
@@ -217,71 +234,86 @@ a:visited, a:active, a:link, a:hover {
   border: 1px solid color(divider) !important;
 }
 
-.border-top,
-.border-top-all,
-.border-top-all * {
-  border-top: 1px solid color(divider) !important;
-}
-
-.border-bottom,
-.border-bottom-all,
-.border-bottom-all * {
-  border-bottom: 1px solid color(divider) !important;
-}
-
-.border-right,
-.border-right-all,
-.border-right-all * {
-  border-right: 1px solid color(divider) !important;
-}
-
-.border-left,
-.border-left-all,
-.border-left-all * {
-  border-left: 1px solid color(divider) !important;
+.border {
+  &__top {
+    border-top: 1px solid color(divider) !important;
+    &--all {
+      border-top: 1px solid color(divider) !important;
+      * {
+        border-top: 1px solid color(divider) !important;
+      }
+    }
+  }
+  &__bottom {
+    border-bottom: 1px solid color(divider) !important;
+    &--all {
+      border-bottom: 1px solid color(divider) !important;
+      * {
+        border-bottom: 1px solid color(divider) !important;
+      }
+    }
+  }
+  &__right {
+    border-right: 1px solid color(divider) !important;
+    &--all {
+      border-right: 1px solid color(divider) !important;
+      * {
+        border-right: 1px solid color(divider) !important;
+      }
+    }
+  }
+  &__left {
+    border-left: 1px solid color(divider) !important;
+    &--all {
+      border-left: 1px solid color(divider) !important;
+      * {
+        border-left: 1px solid color(divider) !important;
+      }
+    }
+  }
 }
 
 
 /* List Component
 *******************************************************************************/
-.list-container {
+.listComponent {
   margin-bottom: 1rem;
   width: 100%;
-}
-.list-container .list-header {
-  background-color: color(accent);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border: none;
-  color: color(accent-text);
-  height: 3rem;
-  line-height: 3rem;
-  text-align: center;
-  width: 100%;
-}
-.list-container .list-header h1 {
-  font-size: 20px;
-}
-.list-container ul {
-  border-left: 1px solid color(divider);
-  border-right: 1px solid color(divider);
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.list-container li {
-  border-bottom: 1px solid color(divider);
-  padding: .25rem;
-}
-/*
-* Add to an <li> to give it a stripe background
-*/
-.list-container .stripe {
+
+  &__ul {
+    border-left: 1px solid color(divider);
+    border-right: 1px solid color(divider);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__li {
+    border-bottom: 1px solid color(divider);
+    padding: .25rem;
+  }
+
+  &.stripe {
     background: $oc-gray-2;
-}
-/*
-* Add to a <ul> to stripe the list items
-*/
-.list-container .striped li:nth-child(odd) {
+  }
+
+  &--striped li:nth-child(odd) {
     background: $oc-gray-2;
+  }
+
+  &__header {
+    background-color: color(accent);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: none;
+    color: color(accent-text);
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    width: 100%;
+
+    h1 {
+      font-size: 20px;
+    }
+  }
 }

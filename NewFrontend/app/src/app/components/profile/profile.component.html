@@ -6,14 +6,14 @@
     </div>
   </div>
 </div>
-<div class="list-container __stats">
-  <div class="list-header">
+<div class="listComponent">
+  <div class="listComponent__header">
     <h1>User Stats</h1>
   </div>
-  <ul>
-    <li>Member since {{profileObj.date_joined | date: 'MM/dd/yyyy' }}</li>
-    <li>{{profileObj.listen_count | number}} total scrobbles</li>
-    <li>{{profileObj.per_day | number}} scrobbles per day on average.</li>
+  <ul class="listComponent__ul">
+    <li class="listComponent__li">Member since {{profileObj.date_joined | date: 'MM/dd/yyyy' }}</li>
+    <li class="listComponent__li">{{profileObj.listen_count | number}} total scrobbles</li>
+    <li class="listComponent__li">{{profileObj.per_day | number}} scrobbles per day on average.</li>
     <!-- <li>This user has {{profileObj.followerCount}} followers.</li> -->
   </ul>
 </div>
