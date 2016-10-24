@@ -30,9 +30,12 @@ class MemberView(viewsets.ModelViewSet):
 
     @list_route(methods=['GET'])
     def current(self, request):
-        user = Member.objects.get(id=self.request.user.id)
-        serializer = self.get_serializer(user)
-        return Response(serializer.data)
+        try:
+            user = Member.objects.get(id=self.request.user.id)
+            serializer = self.get_serializer(user)
+            return Response(serializer.data)
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
     @list_route(methods=['GET'])
     def count(self, request):
