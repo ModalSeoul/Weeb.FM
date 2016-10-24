@@ -22,7 +22,7 @@ a {
 }
 a:visited, a:active, a:link, a:hover {
   text-decoration: none;
-  color: #41606E;
+  color: color(accent);
 }
 
 /**
@@ -133,11 +133,11 @@ a:visited, a:active, a:link, a:hover {
   margin-bottom: 1rem;
 
   &__header {
-    background-color: color(accent);
+    background-color: color(tableHeader);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: none;
-    color: color(accent-text);
+    color: color(tableHeaderText);
     height: 3rem;
     line-height: 3rem;
     text-align: center;
@@ -155,14 +155,14 @@ a:visited, a:active, a:link, a:hover {
     width: 100%;
 
     thead {
-      background: $oc-gray-4;
+      background: color(tableTh);
       border: 1px solid color(divider);
     }
 
     th {
-      background: $oc-gray-4;
+      background: color(tableTh);
       border-bottom: 1px solid color(divider);
-      color: $oc-gray-9;
+      color: color(tableThText);
       font-weight: bold;
       overflow: hidden;
       padding: 8px 5px;
@@ -174,7 +174,9 @@ a:visited, a:active, a:link, a:hover {
     }
 
     td {
-      border-bottom: 1px solid color(divider);
+      background-color: color(tableTd);
+      border-bottom: 1px solid color(tableTdBorder);
+      color: color(tableTdText);
       overflow: hidden;
       padding: 3px 5px;
       text-overflow: ellipsis;
@@ -185,7 +187,7 @@ a:visited, a:active, a:link, a:hover {
 
     &--striped {
       tr:nth-child(even) td {
-        background-color: $oc-gray-2;
+        background-color: color(tableStripe);
       }
     }
   }
@@ -280,33 +282,35 @@ a:visited, a:active, a:link, a:hover {
   margin-bottom: 1rem;
   width: 100%;
 
-  &__ul {
-    border-left: 1px solid color(divider);
-    border-right: 1px solid color(divider);
+  ul {
+    border-left: 1px solid color(listBorder);
+    border-right: 1px solid color(listBorder);
     list-style: none;
     padding: 0;
     margin: 0;
+
+    li {
+      border-bottom: 1px solid color(listBorder);
+      padding: .25rem;
+    }
   }
 
-  &__li {
-    border-bottom: 1px solid color(divider);
-    padding: .25rem;
+  &--stripe {
+    background: color(listStripe);
   }
 
-  &.stripe {
-    background: $oc-gray-2;
-  }
-
-  &--striped li:nth-child(odd) {
-    background: $oc-gray-2;
+  &--striped {
+    li:nth-child(odd) {
+      background: color(listStripe);
+    }
   }
 
   &__header {
-    background-color: color(accent);
+    background-color: color(listHeader);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: none;
-    color: color(accent-text);
+    color: color(listHeaderText);
     height: 3rem;
     line-height: 3rem;
     text-align: center;

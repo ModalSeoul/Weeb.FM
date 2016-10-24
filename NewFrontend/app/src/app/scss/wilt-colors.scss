@@ -5,10 +5,26 @@ $colors: (
   primary: $oc-gray-8,
   primary-lt: $oc-gray-7,
   primary-text: $oc-gray-0,
+  accent-dk: $oc-blue-9,
   accent: $oc-blue-8,
+  accent-lt: $oc-blue-7,
   accent-text: $oc-gray-0,
 
-  divider: $oc-gray-5
+  divider: $oc-gray-5,
+
+  tableHeader: $oc-blue-8,
+  tableHeaderText: $oc-gray-0,
+  tableTh: $oc-gray-4,
+  tableThText: $oc-gray-9,
+  tableTd: $oc-white,
+  tableTdBorder: $oc-gray-5,
+  tableTdText: $oc-gray-9,
+  tableStripe: $oc-gray-2,
+
+  listHeader: $oc-blue-8,
+  listHeaderText: $oc-gray-0,
+  listBorder: $oc-gray-5,
+  listStripe: $oc-gray-2
 );
 
 @function color($color) {
