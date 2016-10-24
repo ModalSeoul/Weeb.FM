@@ -1,8 +1,12 @@
 <span *ngIf="loggedIn">
   <h2>Welcome back, {{curUser.nick_name}}</h2>
   <div class="__entry" *ngFor="let entry of entries">
-    <h2>{{entry.title}}</h2>
-    <p>{{entry.body}}</p>
+    <div class="__title">
+      <h2>{{entry.title}}</h2>
+    </div>
+    <div class="__content">
+      <p>{{entry.body}}</p>
+    </div>
   </div>
 </span>
 

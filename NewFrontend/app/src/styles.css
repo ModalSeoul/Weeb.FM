@@ -209,9 +209,8 @@ a:visited, a:active, a:link, a:hover {
   margin-right: 2rem;
 }
 
-/**
-* Table component
-***********************************************************/
+/* Table component
+*******************************************************************************/
 .table-container {
   font-size: 16px;
   margin-bottom: 1rem;
@@ -324,4 +323,48 @@ a:visited, a:active, a:link, a:hover {
 .table-container .border-left-all,
 .table-container .border-left-all * {
   border-left: 1px solid #adb5bd !important;
+}
+
+/* List Component
+*******************************************************************************/
+.list-container {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.list-container .list-header {
+  background-color: #6494AA;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: none;
+  color: #ffffff;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  width: 100%;
+}
+.list-container .list-header h1 {
+  font-size: 20px;
+}
+.list-container ul {
+  border-left: 1px solid #adb5bd;
+  border-right: 1px solid #adb5bd;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list-container li {
+  border-bottom: 1px solid #adb5bd;
+  padding: .25rem;
+}
+/*
+* Add to an <li> to give it a stripe background
+*/
+.list-container .stripe {
+    background: #e9ecef;
+}
+/*
+* Add to a <ul> to stripe the list items
+*/
+.list-container .striped li:nth-child(odd) {
+    background: #e9ecef;
 }

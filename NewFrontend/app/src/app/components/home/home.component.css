@@ -1,0 +1,23 @@
+.__entry {
+  -webkit-box-shadow: 0 8px 6px -6px black;
+     -moz-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
+}
+
+.__entry .__title {
+  background-color: #6494AA;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: none;
+  color: #ffffff;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  width: 100%;
+}
+
+.__entry .__content {
+  background-color: #e9ecef;
+  border: 1px solid #adb5bd;
+  padding: 0 1rem;
+}
