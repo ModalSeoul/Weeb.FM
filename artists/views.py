@@ -23,9 +23,16 @@ class ArtistView(viewsets.ModelViewSet):
         serializer = ArtistSerializer(instance=queryset, many=True)
         return Response(serializer.data)
 
-    @detail_route(methods=['GET'])
+    @detail_route(methods=['GET', 'PATCH'])
     def name(self, request, pk=None):
         if pk:
-            queryset = Artist.objects.get(name__iexact=pk)
-            serializer = ArtistSerializer(instance=queryset)
-            return Response(serializer.data)
+            if not request.method == 'PATCH':
+                queryset = Artist.objects.get(name__iexact=pk)
+                serializer = ArtistSerializer(instance=queryset)
+                return Response(serializer.data)
+            else:
+                queryset = Artist.objects.get(name__iexact=pk)
+                queryset.bio = request.data['bio']
+                queryset.save()
+                serializer = ArtistSerializer(instance=queryset)
+                return Response(serializer.data)
