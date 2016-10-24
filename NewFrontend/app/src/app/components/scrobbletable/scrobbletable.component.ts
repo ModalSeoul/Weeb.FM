@@ -11,6 +11,7 @@ import { HttpService } from '../../services/index';
 
 export class ScrobbletableComponent {
   @Input() content: any;
+  @Input() header: string;
 
   constructor(
     private route: ActivatedRoute,

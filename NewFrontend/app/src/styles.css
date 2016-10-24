@@ -224,6 +224,21 @@ a:visited, a:active, a:link, a:hover {
   width: 100%;
 }
 
+.table-header {
+  background-color: #6494AA;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: none;
+  color: #ffffff;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  width: 100%;
+}
+.table-header h1 {
+  font-size: 20px;
+}
+
 .table-container thead {
   background: #ced4da;
   border: 1px solid #adb5bd;
@@ -237,25 +252,20 @@ a:visited, a:active, a:link, a:hover {
   overflow: hidden;
   padding: 8px 5px;
   text-align: left;
+  text-overflow: ellipsis;
   text-transform: uppercase;
   vertical-align: middle;
-
-
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .table-container td {
   border-bottom: 1px solid #adb5bd;
   overflow: hidden;
-
-
-  white-space: nowrap;
-  text-overflow: ellipsis;
-
   padding: 3px 5px;
+  text-overflow: ellipsis;
   vertical-align: middle;
   max-width: 0;
+  white-space: nowrap;
 }
 
 .table-container .striped tr:nth-child(even) td {
