@@ -1,3 +1,6 @@
+@import 'app/scss/wilt-colors.scss';
+@import 'app/scss/open-color.scss';
+
 /* Master Styles */
 html {
 }
@@ -6,6 +9,10 @@ body {
   margin: 0px;
   /*min-height: 100%;*/
   /*width: 100%;*/
+}
+/* everywhere else */
+* {
+  font-family: News Cycle, Helvetica, sans-serif;
 }
 
 a {
@@ -17,17 +24,13 @@ a:visited, a:active, a:link, a:hover {
   text-decoration: none;
   color: #41606E;
 }
-/* everywhere else */
-* {
-  font-family: News Cycle, Helvetica, sans-serif;
-}
 
 /**
 * WILT Button CSS
 ***********************************************************/
 .btn-wilt {
-  background-color: #6494AA;
-  color: white;
+  background-color: color(primary);
+  color: color(primary-text);
   border-radius: 5px;
   border: none;
   width: 6rem;
@@ -42,7 +45,7 @@ a:visited, a:active, a:link, a:hover {
 .text-wilt {
   width: 10rem;
   border-radius: 2px;
-  border: 1px solid #6494AA;
+  border: 1px solid color(accent);
 }
 
 /**
@@ -59,22 +62,23 @@ a:visited, a:active, a:link, a:hover {
   left: 0;
   right: 0;
   bottom: 0;
+
+  i {
+    color: color(accent);
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: color(primary);
+  }
 }
 
-.__loading:before {
-  content: '';
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(100,148,170,1);
-}
-
-.__loading i {
-  color: #282828;
-}
 
 /**
 * Scrollbar
@@ -131,16 +135,16 @@ a:visited, a:active, a:link, a:hover {
 .table-container table {
   border-collapse: collapse;
   border-spacing: 0;
-  border: 1px solid #adb5bd;
+  border: 1px solid color(divider);
   width: 100%;
 }
 
 .table-header {
-  background-color: #6494AA;
+  background-color: color(accent);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border: none;
-  color: #ffffff;
+  color: color(accent-text);
   height: 3rem;
   line-height: 3rem;
   text-align: center;
@@ -151,14 +155,14 @@ a:visited, a:active, a:link, a:hover {
 }
 
 .table-container thead {
-  background: #ced4da;
-  border: 1px solid #adb5bd;
+  background: $oc-gray-4;
+  border: 1px solid color(divider);
 }
 
 .table-container th {
-  background: #ced4da;
-  border-bottom: 1px solid #adb5bd;
-  color: #343a40;
+  background: $oc-gray-4;
+  border-bottom: 1px solid color(divider);
+  color: $oc-gray-9;
   font-weight: bold;
   overflow: hidden;
   padding: 8px 5px;
@@ -170,7 +174,7 @@ a:visited, a:active, a:link, a:hover {
 }
 
 .table-container td {
-  border-bottom: 1px solid #adb5bd;
+  border-bottom: 1px solid color(divider);
   overflow: hidden;
   padding: 3px 5px;
   text-overflow: ellipsis;
@@ -180,7 +184,7 @@ a:visited, a:active, a:link, a:hover {
 }
 
 .table-container .striped tr:nth-child(even) td {
-  background: #e9ecef;
+  background: $oc-gray-2;
 }
 
 /* Table Alignment Helpers
@@ -210,32 +214,33 @@ a:visited, a:active, a:link, a:hover {
 .border,
 .border-all,
 .border-all * {
-  border: 1px solid #adb5bd !important;
+  border: 1px solid color(divider) !important;
 }
 
 .border-top,
 .border-top-all,
 .border-top-all * {
-  border-top: 1px solid #adb5bd !important;
+  border-top: 1px solid color(divider) !important;
 }
 
 .border-bottom,
 .border-bottom-all,
 .border-bottom-all * {
-  border-bottom: 1px solid #adb5bd !important;
+  border-bottom: 1px solid color(divider) !important;
 }
 
 .border-right,
 .border-right-all,
 .border-right-all * {
-  border-right: 1px solid #adb5bd !important;
+  border-right: 1px solid color(divider) !important;
 }
 
 .border-left,
 .border-left-all,
 .border-left-all * {
-  border-left: 1px solid #adb5bd !important;
+  border-left: 1px solid color(divider) !important;
 }
+
 
 /* List Component
 *******************************************************************************/
@@ -244,11 +249,11 @@ a:visited, a:active, a:link, a:hover {
   width: 100%;
 }
 .list-container .list-header {
-  background-color: #6494AA;
+  background-color: color(accent);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border: none;
-  color: #ffffff;
+  color: color(accent-text);
   height: 3rem;
   line-height: 3rem;
   text-align: center;
@@ -258,25 +263,25 @@ a:visited, a:active, a:link, a:hover {
   font-size: 20px;
 }
 .list-container ul {
-  border-left: 1px solid #adb5bd;
-  border-right: 1px solid #adb5bd;
+  border-left: 1px solid color(divider);
+  border-right: 1px solid color(divider);
   list-style: none;
   padding: 0;
   margin: 0;
 }
 .list-container li {
-  border-bottom: 1px solid #adb5bd;
+  border-bottom: 1px solid color(divider);
   padding: .25rem;
 }
 /*
 * Add to an <li> to give it a stripe background
 */
 .list-container .stripe {
-    background: #e9ecef;
+    background: $oc-gray-2;
 }
 /*
 * Add to a <ul> to stripe the list items
 */
 .list-container .striped li:nth-child(odd) {
-    background: #e9ecef;
+    background: $oc-gray-2;
 }

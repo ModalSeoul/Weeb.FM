@@ -1,0 +1,16 @@
+@import 'open-color.scss';
+
+$colors: (
+  primary-dk: $oc-gray-9,
+  primary: $oc-gray-8,
+  primary-lt: $oc-gray-7,
+  primary-text: $oc-gray-0,
+  accent: $oc-blue-8,
+  accent-text: $oc-gray-0,
+
+  divider: $oc-gray-5
+);
+
+@function color($color) {
+    @return map-get($colors, $color);
+}

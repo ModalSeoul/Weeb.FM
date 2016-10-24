@@ -1,13 +1,16 @@
+@import './src/app/scss/wilt-colors.scss';
+@import './src/app/scss/open-color.scss';
+
 .__pane {
   height: 100% !important;
   position: fixed;
   width: 12rem;
   bottom: 0;
   color: white;
-  background-color: #6494AA;
+  background-color: color(primary);
 }
 h2 {
-  color: inherit;
+  color: color(primary-text);
   text-align: center;
   font-family: Pacifico;
 }
@@ -17,9 +20,9 @@ ul {
 }
 li {
   padding-left: 1rem;
-  background-color: #4B6F7F;
+  background-color: color(primary-dk);
   padding: 1rem;
-  border-bottom: 1px solid #6494AA;
+  border-bottom: 1px solid color(accent);
   cursor: pointer;
   transition: 1s;
   -moz-user-select: none; /* Firefox */
@@ -29,7 +32,7 @@ li {
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 li:hover {
-  background-color: #3F5D6A;
+  background-color: color(accent);
 }
 .__sep {
   background-color: white;

@@ -1,3 +1,6 @@
+@import './src/app/scss/wilt-colors.scss';
+@import './src/app/scss/open-color.scss';
+
 .__entry {
   -webkit-box-shadow: 0 8px 6px -6px black;
      -moz-box-shadow: 0 8px 6px -6px black;
@@ -5,11 +8,11 @@
 }
 
 .__entry .__title {
-  background-color: #6494AA;
+  background-color: color(accent);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border: none;
-  color: #ffffff;
+  color: color(accent-text);
   height: 3rem;
   line-height: 3rem;
   text-align: center;
@@ -17,7 +20,7 @@
 }
 
 .__entry .__content {
-  background-color: #e9ecef;
-  border: 1px solid #adb5bd;
+  background-color: $oc-gray-2;
+  border: 1px solid color(divider);
   padding: 0 1rem;
 }
