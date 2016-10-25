@@ -14,25 +14,28 @@ h2 {
   text-align: center;
   font-family: Pacifico;
 }
-ul {
-  display: inline;
-  list-style: none;
-}
-li {
-  padding-left: 1rem;
-  background-color: $oc-gray-8;
-  padding: 1rem;
-  border-bottom: 1px solid color(primary);
-  cursor: pointer;
-  transition: 1s;
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer */
-  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
-  -webkit-user-select: none; /* Chrome, Safari, and Opera */
-  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
-}
-li:hover {
-  background-color: $oc-gray-9;
+.nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  
+  &--link {
+    padding-left: 1rem;
+    background-color: $oc-gray-8;
+    color: white;
+    padding: 1rem;
+    border-bottom: 1px solid color(primary);
+    cursor: pointer;
+    transition: 1s;
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+    -webkit-user-select: none; /* Chrome, Safari, and Opera */
+    -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+    &:hover {
+      background-color: $oc-gray-9;
+    }
+  }
 }
 .__sep {
   background-color: white;
