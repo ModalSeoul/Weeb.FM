@@ -6,19 +6,32 @@
   </div>
   <hr>
 
-  <div class="listComponent">
+  <h2>The following programs are written in Python and compiled using Pyinstaller</h2>
+  <p>Some users have told me that their anti-virus software has flagged these as potential malware. Obviously that's not the case, but if you're still worried, you're free to run the code available on my Github without downloading anything!</p>
+
+  <div class="tableComponent">
     <p>They're a few ways to scrobble at the moment:</p>
-    <div class="listComponent__header">
+    <div class="tableComponent__header">
       <h2>Scrobbling</h2>
     </div>
-    <ul class="listComponent--striped">
-      <li>Pandora</li>
-      <li>Google Play</li>
-      <li>Bandcamp</li>
-      <li>MusicBee</li>
-      <li>Foobar2000</li>
-      <li>MPD (Music Player Daemon)</li>
-    </ul>
+    <table class="tableComponent__table tableComponent__table--striped">
+      <thead>
+        <tr>
+          <th>
+            Scrobbler
+          </th>
+          <th>
+            Download
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let scrobbler of scrobblers">
+          <td>{{scrobbler.name}}</td>
+          <td><a href="{{scrobbler.link}}">Download</a></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <h3>Don't see your player here?</h3>
@@ -26,31 +39,4 @@
 
   <h2>What I Listen To - Open Source</h2>
   <p>Because the owner likes to pretend he's a nice guy, the source code for WILT and all of the tools it uses is available on his <a href="https://github.com/ModalSeoul/">Github page.</a></p>
-
-
-  <h2>The following programs are written in Python and compiled using Pyinstaller</h2>
-  <p>Some users have told me that their anti-virus software has flagged these as potential malware. Obviously that's not the case, but if you're still worried, you're free to run the code available on my Github without downloading anything!</p>
-
-  <div class="listComponent">
-    <div class="listComponent__header">
-      <h1>Scrobbler Downloads</h1>
-    </div>
-    <ul class="listComponent--striped">
-      <li>
-        <a href="/static/MusicBee.exe">MusicBee</a>
-      </li>
-      <li>
-        <a href="/static/Foobar.exe">Foobar2000</a>
-      </li>
-      <li>
-        <a href="/static/ripfm.exe">RipFM</a>
-      </li>
-      <li>
-        <a href="https://github.com/ModalSeoul/Weeb-Chrome-Scrobbler">Chrome Extension(GooglePlay, Pandora, Bandcamp)</a>
-      </li>
-      <li>
-        <a href="https://github.com/ModalSeoul/mpd-scrobbler">MPD</a>
-      </li>
-    </ul>
-  </div>
 </div>
