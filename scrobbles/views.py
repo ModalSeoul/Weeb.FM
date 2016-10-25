@@ -46,12 +46,19 @@ class ScrobbleView(viewsets.ModelViewSet):
     def get_queryset(self):
         data = self.request.query_params
         query = Scrobble.objects.all()
+        user = self.request.user
+
+        if 'active' in data:
+            query = Scrobble.objects.filter(
+                    member__nick_name__iexact=data.get('active'))
+            query = query.order_by('-date_scrobbled')[:1]
         if 'last_played' in data:
             query = Scrobble.objects.latest('date_scrobbled')
         elif 'past' in data:
             query = Scrobble.objects.order_by('-id')[:int(data.get('past'))]
         elif 'artist' in data:
-            query = Scrobble.objects.filter(song__artist__name=data.get('artist'))
+            query = Scrobble.objects.filter(
+                    song__artist__name=data.get('artist'))
         elif 'song' in data:
             query = Scrobble.objects.filter(song__title=data.get('song'))
         # Example: ?by_user=Idiot&start=9&end=15
