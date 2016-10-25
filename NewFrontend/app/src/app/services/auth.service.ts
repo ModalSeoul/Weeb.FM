@@ -77,6 +77,7 @@ export class AuthService {
   }
 
   public logout(): void {
+    this.router.navigate(['login']);
     this.http.clearToken(this.AUTH_TOKEN_HEADER);
     this.user = {};
     this.cookies.remove('user');
