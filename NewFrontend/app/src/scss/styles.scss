@@ -1,5 +1,5 @@
-@import 'app/scss/wilt-colors.scss';
-@import 'app/scss/open-color.scss';
+@import '../app/scss/wilt-colors.scss';
+@import '../app/scss/open-color.scss';
 
 /* Master Styles */
 html, body {
@@ -29,23 +29,32 @@ a:visited, a:active, a:link, a:hover {
           box-shadow: 0 8px 6px -6px black;
 }
 
+@mixin hover-base($color) {
+  cursor: pointer;
+  opacity: 1;
+  transition: .5s;
+
+  &:hover {
+    background-color: $color;
+  }
+  &:active {
+    box-shadow: 0 3px 0 $color;
+    opacity: 0.75;
+  }
+}
+
 /**
 * WILT Button CSS
 ***********************************************************/
 .btn-wilt {
+  @include hover-base(color(primary-dk));
   background-color: color(primary);
+  border-radius: 3px;
+  border: none;
   color: color(primary-text);
-  border-radius: 5px;
-  border: none;
-  width: 6rem;
-  height: 2rem;
+  outline: none;
+  padding: .5rem 2rem;
 }
-
-.btn-wilt:hover {
-  border: none;
-  cursor: pointer;
-}
-
 .text-wilt {
   width: 10rem;
   border-radius: 2px;
