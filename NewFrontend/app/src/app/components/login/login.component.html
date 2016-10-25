@@ -1,9 +1,9 @@
 <div class="__wrapper">
   <div class="__login">
     <input class="text-wilt" type="text" [(ngModel)]="username" placeholder="Username"
-      (keyup.enter)="login()">
+      (keyup.enter)="login()" id="username">
     <input class="text-wilt" type="password" [(ngModel)]="password" placeholder="Password"
-      (keyup.enter)="login()">
+      (keyup.enter)="login()" id="password">
     <span class="__bottom">
       <button class="btn-wilt" (click)="login()">
         <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>
