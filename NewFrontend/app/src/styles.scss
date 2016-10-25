@@ -25,6 +25,14 @@ a:visited, a:active, a:link, a:hover {
   color: color(accent);
 }
 
+/* Mixins
+******************************************/
+@mixin box-shadow() {
+  -webkit-box-shadow: 0 8px 6px -6px black;
+     -moz-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
+}
+
 /**
 * WILT Button CSS
 ***********************************************************/
@@ -129,6 +137,8 @@ a:visited, a:active, a:link, a:hover {
 *******************************************************************************/
 
 .tableComponent {
+  @include box-shadow();
+
   font-size: 16px;
   margin-bottom: 1rem;
 
@@ -279,6 +289,7 @@ a:visited, a:active, a:link, a:hover {
 /* List Component
 *******************************************************************************/
 .listComponent {
+  @include box-shadow();
   margin-bottom: 1rem;
   width: 100%;
 
