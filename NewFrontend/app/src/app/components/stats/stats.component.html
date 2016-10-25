@@ -19,7 +19,11 @@
       <tbody>
         <tr *ngFor="let song of popularSongs">
           <td width="50%">{{song.title}}</td>
-          <td width="30%">{{song.artist_name}}</td>
+          <td width="30%">
+            <a [routerLink]="['/artist', song.artist_name]">
+              {{song.artist_name}}
+            </a>
+          </td>
           <td width="10%">{{song.scrobble_count}}</td>
         </tr>
       </tbody>
