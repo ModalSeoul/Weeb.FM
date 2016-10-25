@@ -6,6 +6,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  min-height: 100%;
   width: 100%;
 }
 * {
@@ -125,8 +126,8 @@ a:visited, a:active, a:link, a:hover {
 * Weeb container
 ***********************************************************/
 .__weeb {
-  margin-left: 14rem;
-  margin-right: 2rem;
+  margin-left: 12rem;
+  padding: 2rem;
 }
 
 /* Table component
