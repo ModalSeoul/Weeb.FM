@@ -56,7 +56,6 @@ export class ProfileComponent implements OnInit {
 
     this.Profile.canFollow(this.uid).then((r: any) => {
       this.profileObj = r;
-      console.log(this.profileObj);
     });
 
     this.Scrobble.getUserScrobbles(this.uid, 0, 100).subscribe((r: any) => {
