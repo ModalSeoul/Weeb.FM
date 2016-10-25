@@ -1,5 +1,8 @@
+@import './src/app/scss/wilt-colors.scss';
+@import './src/app/scss/open-color.scss';
+
 .profileWrapper {
-  border-bottom: 3px solid #adb5bd;
+  border-bottom: 3px solid $oc-gray-9;
   // background: linear-gradient(
   //   rgba(150, 150, 150, 0.75),
   //   rgba(100, 100, 100, 0.75)

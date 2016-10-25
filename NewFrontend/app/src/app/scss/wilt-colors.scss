@@ -1,30 +1,16 @@
 @import 'open-color.scss';
 
 $colors: (
-  primary-dk: $oc-gray-9,
-  primary: $oc-gray-8,
-  primary-lt: $oc-gray-7,
+  primary-dk: $oc-blue-9,
+  primary: $oc-blue-8,
+  primary-lt: $oc-blue-7,
   primary-text: $oc-gray-0,
-  accent-dk: $oc-blue-9,
-  accent: $oc-blue-8,
-  accent-lt: $oc-blue-7,
-  accent-text: $oc-gray-0,
 
-  divider: $oc-gray-5,
+  gray-dk: $oc-gray-9,
+  gray: $oc-gray-8,
+  gray-lt: $oc-gray-7,
 
-  tableHeader: $oc-blue-8,
-  tableHeaderText: $oc-gray-0,
-  tableTh: $oc-gray-4,
-  tableThText: $oc-gray-9,
-  tableTd: $oc-white,
-  tableTdBorder: $oc-gray-5,
-  tableTdText: $oc-gray-9,
-  tableStripe: $oc-gray-2,
-
-  listHeader: $oc-blue-8,
-  listHeaderText: $oc-gray-0,
-  listBorder: $oc-gray-5,
-  listStripe: $oc-gray-2
+  divider: $oc-gray-5
 );
 
 @function color($color) {

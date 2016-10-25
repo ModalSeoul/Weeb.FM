@@ -2,19 +2,15 @@
 @import 'app/scss/open-color.scss';
 
 /* Master Styles */
-html {
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
-body {
-  /*overflow: hidden;*/
-  margin: 0px;
-  /*min-height: 100%;*/
-  /*width: 100%;*/
-}
-/* everywhere else */
 * {
   font-family: News Cycle, Helvetica, sans-serif;
 }
-
 a {
   cursor: pointer;
   cursor: hand;
@@ -22,7 +18,7 @@ a {
 }
 a:visited, a:active, a:link, a:hover {
   text-decoration: none;
-  color: color(accent);
+  color: color(primary-dk);
 }
 
 /* Mixins
@@ -53,7 +49,7 @@ a:visited, a:active, a:link, a:hover {
 .text-wilt {
   width: 10rem;
   border-radius: 2px;
-  border: 1px solid color(accent);
+  border: 1px solid color(primary-dk);
 }
 
 /**
@@ -72,7 +68,7 @@ a:visited, a:active, a:link, a:hover {
   bottom: 0;
 
   i {
-    color: color(accent);
+    color: color(primary);
   }
 
   &:before {
@@ -83,7 +79,7 @@ a:visited, a:active, a:link, a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: color(primary);
+    background-color: color(gray-dk);
   }
 }
 
@@ -143,11 +139,11 @@ a:visited, a:active, a:link, a:hover {
   margin-bottom: 1rem;
 
   &__header {
-    background-color: color(tableHeader);
+    background-color: color(primary);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: none;
-    color: color(tableHeaderText);
+    color: color(primary-text);
     height: 3rem;
     line-height: 3rem;
     text-align: center;
@@ -165,14 +161,14 @@ a:visited, a:active, a:link, a:hover {
     width: 100%;
 
     thead {
-      background: color(tableTh);
+      background: $oc-gray-4;
       border: 1px solid color(divider);
     }
 
     th {
-      background: color(tableTh);
+      background: $oc-gray-4;
       border-bottom: 1px solid color(divider);
-      color: color(tableThText);
+      color: $oc-gray-9;
       font-weight: bold;
       overflow: hidden;
       padding: 8px 5px;
@@ -184,9 +180,9 @@ a:visited, a:active, a:link, a:hover {
     }
 
     td {
-      background-color: color(tableTd);
-      border-bottom: 1px solid color(tableTdBorder);
-      color: color(tableTdText);
+      background-color: $oc-white;
+      border-bottom: 1px solid color(divider);
+      color: $oc-gray-9;
       overflow: hidden;
       padding: 3px 5px;
       text-overflow: ellipsis;
@@ -197,7 +193,7 @@ a:visited, a:active, a:link, a:hover {
 
     &--striped {
       tr:nth-child(even) td {
-        background-color: color(tableStripe);
+        background-color: $oc-gray-2;
       }
     }
   }
@@ -294,34 +290,34 @@ a:visited, a:active, a:link, a:hover {
   width: 100%;
 
   ul {
-    border-left: 1px solid color(listBorder);
-    border-right: 1px solid color(listBorder);
+    border-left: 1px solid color(divider);
+    border-right: 1px solid color(divider);
     list-style: none;
     padding: 0;
     margin: 0;
 
     li {
-      border-bottom: 1px solid color(listBorder);
+      border-bottom: 1px solid color(divider);
       padding: .25rem;
     }
   }
 
   &--stripe {
-    background: color(listStripe);
+    background: $oc-gray-2;
   }
 
   &--striped {
     li:nth-child(odd) {
-      background: color(listStripe);
+      background: $oc-gray-2;
     }
   }
 
   &__header {
-    background-color: color(listHeader);
+    background-color: color(primary);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: none;
-    color: color(listHeaderText);
+    color: color(primary-text);
     height: 3rem;
     line-height: 3rem;
     text-align: center;

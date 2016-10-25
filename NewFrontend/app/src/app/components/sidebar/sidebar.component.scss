@@ -7,7 +7,7 @@
   width: 12rem;
   bottom: 0;
   color: white;
-  background-color: color(primary);
+  background-color: $oc-gray-7;
 }
 h2 {
   color: color(primary-text);
@@ -20,9 +20,9 @@ ul {
 }
 li {
   padding-left: 1rem;
-  background-color: color(primary-dk);
+  background-color: $oc-gray-8;
   padding: 1rem;
-  border-bottom: 1px solid color(accent);
+  border-bottom: 1px solid color(primary);
   cursor: pointer;
   transition: 1s;
   -moz-user-select: none; /* Firefox */
@@ -32,7 +32,7 @@ li {
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 li:hover {
-  background-color: color(accent);
+  background-color: $oc-gray-9;
 }
 .__sep {
   background-color: white;
