@@ -1,4 +1,5 @@
 """User views file. Contains all viewsets/routes for the Users app"""
+from operator import itemgetter
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseRedirect
 from django.db.models import Count
@@ -42,16 +43,19 @@ class MemberView(viewsets.ModelViewSet):
 
     @list_route(methods=['GET'])
     def most_scrobbles(self, request):
-        users = defaultdict()
+        users = []
         for user in Member.objects.all():
-            count_dict = Scrobble.objects.filter(member__id=user.id).count()
-            users[user.nick_name] = count_dict
+            count_dict = {
+                'nick_name': user.nick_name,
+                'count': Scrobble.objects.filter(member__id=user.id).count()
+            }
+            users.append(count_dict)
         # Leaderboard queryset ?leaderboard=True
         leaderboard = self.request.query_params.get('leaderboard', None)
         if leaderboard is not None:
-            return Response(
-                sorted(users.items(), key=lambda x: x[1], reverse=True)[:25]
-            )
+            top_users = sorted(
+                users, key=itemgetter('count'), reverse=True)[:25]
+            return Response(top_users)
         return Response(users)
         # Example:
         # for user in users:
