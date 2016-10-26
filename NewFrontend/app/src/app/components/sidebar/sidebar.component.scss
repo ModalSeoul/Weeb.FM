@@ -10,40 +10,6 @@
   color: white;
   background-color: $oc-gray-8;
 
-  h2 {
-    color: color(primary-text);
-    text-align: center;
-    font-family: Pacifico;
-  }
-  .nav {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid $oc-gray-9;
-  }
-  a {
-    color: white !important;
-    padding-left: 1rem;
-    background-color: $oc-gray-8;
-    border-bottom: 1px solid $oc-gray-9;
-    padding: 1rem;
-    cursor: pointer;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    @include hover-base(color(primary));
-
-    i {
-      margin-right: 1rem;
-    }
-  }
-  .activeLink {
-    -webkit-box-shadow: inset -1rem 0 0 0 color(primary);
-       -moz-box-shadow: inset -1rem 0 0 0 color(primary);
-            box-shadow: inset -1rem 0 0 0 color(primary);
-  }
   &__seperator {
     background-color: white;
     height: 2px;
@@ -51,5 +17,41 @@
     width: 75%;
     padding: 0;
     margin-top: -1.5em;
+  }
+  &__title {
+    color: color(primary-text);
+    text-align: center;
+    font-family: Pacifico;
+  }
+
+  .nav {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid black;
+
+    &__link {
+      color: white !important;
+      padding-left: 1rem;
+      background-color: $oc-gray-8;
+      border-bottom: 1px solid black;
+      padding: 1rem;
+      cursor: pointer;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      @include hover-base(color(primary));
+
+      &--active {
+        -webkit-box-shadow: inset -1rem 0 0 0 color(primary);
+           -moz-box-shadow: inset -1rem 0 0 0 color(primary);
+                box-shadow: inset -1rem 0 0 0 color(primary);
+      }
+    }
+    &__icon {
+      margin-right: 1rem;
+    }
   }
 }
