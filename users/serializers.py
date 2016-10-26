@@ -5,7 +5,7 @@ from users.models import Member, Following
 from songs.models import Song
 from scrobbles.models import Scrobble
 
-alpha_only = RegexValidator('^[A-Za-z0-9]+$', message='No unicode')
+alpha_only = RegexValidator('^[A-Za-z0-9_]+$', message='No unicode')
 
 
 class CreateMemberSerializer(serializers.Serializer):
