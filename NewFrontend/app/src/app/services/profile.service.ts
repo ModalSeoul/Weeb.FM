@@ -64,6 +64,9 @@ export class ProfileService {
               }
             }
           });
+        }, err => {
+          alert('User is not in the database.');
+          window.location.href = '/';
         });
       });
       resolve(resolveMe);
