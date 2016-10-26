@@ -44,13 +44,13 @@ class MemberView(viewsets.ModelViewSet):
     def most_scrobbles(self, request):
         users = defaultdict()
         for user in Member.objects.all():
-            count_dict = {'count': Scrobble.objects.filter(
-                member__id=user.id).count()}
+            count_dict = Scrobble.objects.filter(
+                member__id=user.id).count()
             users[user.nick_name] = count_dict
-            # Example:
-            # for user in users:
-            # ...print(users.get(user)['count'])
-        return Response(users)
+        # Example:
+        # for user in users:
+        # ...print(users.get(user)['count'])
+        return Response(sorted(users.items(), key=lambda x: x[1], reverse=True))
 
     @list_route(methods=['GET'])
     def count(self, request):
