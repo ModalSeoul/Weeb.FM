@@ -13,7 +13,9 @@
     <tbody>
       <tr *ngFor="let user of topUsers; let i = index">
         <td width="10%">{{i + 1}}</td>
-        <td width="70%">{{user.nick_name}}</td>
+        <td width="70%" [routerLink]="['/profile', user.nick_name]">
+          <a [routerLink]="['/profile', user.nick_name]">{{user.nick_name}}</a>
+        </td>
         <td width="15%">{{user.count}}</td>
       </tr>
     </tbody>
