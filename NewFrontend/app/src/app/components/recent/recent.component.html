@@ -19,8 +19,8 @@
             {{scrobble.artist_name}}
           </a>
         </td>
-        <td [routerLink]="['/profile', scrobble.nick]">
-          <a>{{scrobble.nick}}</a>
+        <td>
+          <a [routerLink]="['/profile', scrobble.nick]">{{scrobble.nick}}</a>
         </td>
         <td width="15%">{{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}</td>
       </tr>
