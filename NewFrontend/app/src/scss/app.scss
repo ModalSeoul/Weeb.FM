@@ -21,6 +21,12 @@
   width: 10rem;
   border-radius: 2px;
   border: 1px solid color(primary-dk);
+  outline: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 /**
