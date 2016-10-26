@@ -9,6 +9,7 @@ import { StatsComponent } from './components/stats/stats.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { StartComponent } from './components/start/start.component';
 import { ArtistComponent } from './components/artist/artist.component';
+import { RecentComponent } from './components/recent/recent.component';
 
 const routes: Routes = [
   { path: '',  component: HomeComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'board',  component: LeaderboardComponent },
   { path: 'stats',  component: StatsComponent },
   { path: 'settings',  component: SettingsComponent },
-  { path: 'get-started', component: StartComponent }
+  { path: 'get-started', component: StartComponent },
+  { path: 'recent', component: RecentComponent }
 ];
 
 @NgModule({

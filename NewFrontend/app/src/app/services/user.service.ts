@@ -33,6 +33,11 @@ export class UserService {
     });
   }
 
+  public getLeaderboardUsers() {
+    return this.http.get('members/most_scrobbles/', { 'leaderboard': true })
+                      .map((r : any) => { return r; })
+  }
+
   public getCurrentUser() {
     return this.http.get('members/current/').map((r: any) => {
       return r;

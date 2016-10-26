@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ScrobbleService } from '../../services/index';
+import { ScrobbleService, UserService } from '../../services/index';
 import { AppComponent } from '../../app.component';
 
 @Component({
@@ -9,17 +9,25 @@ import { AppComponent } from '../../app.component';
 })
 export class LeaderboardComponent implements OnInit {
   private scrobbles: Array<any> = [];
+  private topUsers: Array<any> = [];
 
   constructor(
-    private Scrobbles: ScrobbleService,
+    // private Scrobbles: ScrobbleService,
+    private users: UserService,
     private app: AppComponent
   ) { }
 
   ngOnInit() {
-    this.Scrobbles.getRecent(50).subscribe((r: any) => {
-      this.scrobbles = r;
-      this.app.loading =  false;
+    this.users.getLeaderboardUsers().subscribe((r : any) => {
+      this.topUsers = r;
+      console.log(this.topUsers);
+      this.app.loading = false;
     });
+
+    // this.Scrobbles.getRecent(50).subscribe((r: any) => {
+    //   this.scrobbles = r;
+    //   this.app.loading =  false;
+    // });
   }
 
 }

@@ -1,31 +1,20 @@
-<p>
-  This is currently displaying recent scrobbles. Not a leaderboard.
-</p>
 <div class="tableComponent">
   <div class="tableComponent__header">
-    <h1>Recent Scrobbles</h1>
+    <h1>Top Scobblers</h1>
   </div>
   <table class="tableComponent__table tableComponent__table--striped">
     <thead>
       <tr>
-        <th>Song</th>
-        <th>Artist</th>
-        <th>Who</th>
-        <th>When</th>
+        <th>Rank</th>
+        <th>User</th>
+        <th>Scrobbles</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let scrobble of scrobbles">
-        <td width="35%">{{scrobble.song_name}}</td>
-        <td>
-          <a [routerLink]="['/artist', scrobble.artist_name]">
-            {{scrobble.artist_name}}
-          </a>
-        </td>
-        <td>
-          <a [routerLink]="['/profile', scrobble.nick]">{{scrobble.nick}}</a>
-        </td>
-        <td width="15%">{{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}</td>
+      <tr *ngFor="let user of topUsers; let i = index">
+        <td width="10%">{{i + 1}}</td>
+        <td width="70%">{{user.nick_name}}</td>
+        <td width="15%">{{user.count}}</td>
       </tr>
     </tbody>
   </table>
