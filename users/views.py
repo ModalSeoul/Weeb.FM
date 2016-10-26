@@ -38,6 +38,15 @@ class MemberView(viewsets.ModelViewSet):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
     @list_route(methods=['GET'])
+    def most_scrobbles(self, request):
+        try:
+            users = Member.objects.annotate(test=Count('listened_to')).order_by('-test')[:20]
+            serializer = MemberSerializer(instance=users, many=True)
+            return Response(serializer.data)
+        except Exception as e:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    @list_route(methods=['GET'])
     def count(self, request):
         return Response(len(Member.objects.all()))
 
