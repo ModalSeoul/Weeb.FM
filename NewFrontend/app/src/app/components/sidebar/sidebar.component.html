@@ -7,6 +7,10 @@
       <i class="fa fa-home fa-fw nav__icon" aria-hidden="true"></i>
       Home
     </a>
+    <a class="nav__link" *ngIf="auth.isLoggedIn()" [routerLink]="['/get-started']" [routerLinkActive]="['nav__link--active']">
+      <i class="fa fa-info fa-fw nav__icon" aria-hidden="true"></i>
+      Get Started
+    </a>
     <a class="nav__link" *ngIf="auth.isLoggedIn()" [routerLink]="['profile/', curUser]" [routerLinkActive]="['nav__link--active']">
       <i class="fa fa-user fa-fw nav__icon" aria-hidden="true"></i>
       My Profile
@@ -30,10 +34,6 @@
     <a class="nav__link" *ngIf="auth.isLoggedIn()" [routerLink]="['/settings']" [routerLinkActive]="['nav__link--active']">
       <i class="fa fa-cog fa-fw nav__icon" aria-hidden="true"></i>
       Settings
-    </a>
-    <a class="nav__link" [routerLink]="['/get-started']" [routerLinkActive]="['nav__link--active']">
-      <i class="fa fa-info fa-fw nav__icon" aria-hidden="true"></i>
-      Get Started
     </a>
     <a class="nav__link" *ngIf="auth.isLoggedIn()" (click)="logout()">
       <i class="fa fa-sign-out fa-fw nav__icon" aria-hidden="true"></i>
