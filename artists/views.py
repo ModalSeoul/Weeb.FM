@@ -1,3 +1,4 @@
+import math
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.filters import BaseFilterBackend
@@ -35,16 +36,19 @@ class ArtistView(viewsets.ModelViewSet):
             artists = []
             user = Member.objects.get(nick_name__iexact=pk)
             scrobbles = Scrobble.objects.filter(member__id=user.id)
+            scrobble_count = scrobbles.count()
             artist_names = scrobbles.values_list(
                 'song__artist__name').distinct()
             for artist in artist_names:
                 artist_name = artist[0]
                 artist_scrobbles = scrobbles.filter(
                     song__artist__name=artist_name).count()
+                increase = scrobbles.count() - artist_scrobbles
 
                 artists.append({
                     'name': artist_name,
-                    'count': artist_scrobbles
+                    'count': artist_scrobbles,
+                    'percent': 100 * (artist_scrobbles / scrobble_count)
                 })
             artists = sorted(
                 artists, key=itemgetter('count'), reverse=True)[:10]
