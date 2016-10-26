@@ -7,13 +7,15 @@
 @mixin hover-base($color) {
   cursor: pointer;
   opacity: 1;
-  transition: .5s;
+  transition: 1s;
 
   &:hover {
     background-color: $color;
   }
   &:active {
-    box-shadow: 0 3px 0 $color;
     opacity: 0.75;
+    -webkit-box-shadow: inset -8px 0px 6px -6px rgba(40, 40, 40, 0.5);
+      -moz-box-shadow: inset -8px 0px 6px -6px rgba(40, 40, 40, 0.5);
+        box-shadow: inset -8px 0px 6px -6px rgba(40, 40, 40, 0.5);
   }
 }

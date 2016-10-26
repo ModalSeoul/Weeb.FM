@@ -2,35 +2,40 @@
   <h2>What I Listen To</h2>
   <hr class="paneComponent__seperator">
   <div class="nav">
-    <a [routerLink]="['/']">
+    <a [routerLink]="['/']"
+       [routerLinkActive]="['activeLink']"
+       [routerLinkActiveOptions]="{ exact: true }">
       <i class="fa fa-home fa-fw" aria-hidden="true"></i>
       Home
     </a>
-    <a *ngIf="auth.isLoggedIn()" [routerLink]="['profile/', curUser]">
+    <a *ngIf="auth.isLoggedIn()"
+      [routerLink]="['profile/', curUser]" [routerLinkActive]="['activeLink']">
       <i class="fa fa-user fa-fw" aria-hidden="true"></i>
       My Profile
     </a>
-    <a *ngIf="!auth.isLoggedIn()" [routerLink]="['login']">
+    <a *ngIf="!auth.isLoggedIn()"
+      [routerLink]="['login']" [routerLinkActive]="['activeLink']">
       <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>
       Login
     </a>
-    <a [routerLink]="['/recent']">
+    <a [routerLink]="['/recent']" [routerLinkActive]="['activeLink']">
       <i class="fa fa-play-circle fa-fw" aria-hidden="true"></i>
       Now Playing
     </a>
-    <a [routerLink]="['/board']">
+    <a [routerLink]="['/board']" [routerLinkActive]="['activeLink']">
       <i class="fa fa-trophy fa-fw" aria-hidden="true"></i>
       Leaderboard
     </a>
-    <a [routerLink]="['/stats']">
+    <a [routerLink]="['/stats']" [routerLinkActive]="['activeLink']">
       <i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i>
       Stats
     </a>
-    <a *ngIf="auth.isLoggedIn()" [routerLink]="['/settings']">
+    <a *ngIf="auth.isLoggedIn()"
+      [routerLink]="['/settings']" [routerLinkActive]="['activeLink']">
       <i class="fa fa-cog fa-fw" aria-hidden="true"></i>
       Settings
     </a>
-    <a [routerLink]="['/get-started']">
+    <a [routerLink]="['/get-started']" [routerLinkActive]="['activeLink']">
       <i class="fa fa-info fa-fw" aria-hidden="true"></i>
       Get Started
     </a>

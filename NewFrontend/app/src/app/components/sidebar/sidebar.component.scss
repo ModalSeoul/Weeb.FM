@@ -2,7 +2,6 @@
 @import './src/scss/open-color';
 @import './src/scss/app';
 
-
 .paneComponent {
   height: 100% !important;
   position: fixed;
@@ -20,13 +19,14 @@
     margin-top: 40px;
     display: flex;
     flex-direction: column;
+    border-top: 1px solid $oc-gray-9;
   }
   a {
     color: white !important;
     padding-left: 1rem;
-    background-color: $oc-gray-9;
+    background-color: $oc-gray-8;
+    border-bottom: 1px solid $oc-gray-9;
     padding: 1rem;
-    border-bottom: 1px solid color(primary);
     cursor: pointer;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -38,6 +38,11 @@
     i {
       margin-right: 1rem;
     }
+  }
+  .activeLink {
+    -webkit-box-shadow: inset -1rem 0 0 0 color(primary);
+       -moz-box-shadow: inset -1rem 0 0 0 color(primary);
+            box-shadow: inset -1rem 0 0 0 color(primary);
   }
   &__seperator {
     background-color: white;
