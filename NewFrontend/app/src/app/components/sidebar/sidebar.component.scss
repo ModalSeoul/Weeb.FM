@@ -16,11 +16,13 @@
     text-align: center;
     font-family: Pacifico;
   }
-  ul {
-    display: inline;
-    list-style: none;
+  .nav {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
   }
-  li {
+  a {
+    color: white !important;
     padding-left: 1rem;
     background-color: $oc-gray-9;
     padding: 1rem;

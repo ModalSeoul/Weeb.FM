@@ -1,42 +1,42 @@
 <div class="paneComponent">
   <h2>What I Listen To</h2>
   <hr class="paneComponent__seperator">
-  <ul>
-    <li [routerLink]="['/']">
+  <div class="nav">
+    <a [routerLink]="['/']">
       <i class="fa fa-home fa-fw" aria-hidden="true"></i>
       Home
-    </li>
-    <li *ngIf="auth.isLoggedIn()" [routerLink]="['profile/', curUser]">
+    </a>
+    <a *ngIf="auth.isLoggedIn()" [routerLink]="['profile/', curUser]">
       <i class="fa fa-user fa-fw" aria-hidden="true"></i>
       My Profile
-    </li>
-    <li *ngIf="!auth.isLoggedIn()" [routerLink]="['login']">
+    </a>
+    <a *ngIf="!auth.isLoggedIn()" [routerLink]="['login']">
       <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>
       Login
-    </li>
-    <li [routerLink]="['/recent']">
+    </a>
+    <a [routerLink]="['/recent']">
       <i class="fa fa-play-circle fa-fw" aria-hidden="true"></i>
       Now Playing
-    </li>
-    <li [routerLink]="['/board']">
+    </a>
+    <a [routerLink]="['/board']">
       <i class="fa fa-trophy fa-fw" aria-hidden="true"></i>
       Leaderboard
-    </li>
-    <li [routerLink]="['/stats']">
+    </a>
+    <a [routerLink]="['/stats']">
       <i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i>
       Stats
-    </li>
-    <li *ngIf="auth.isLoggedIn()" [routerLink]="['/settings']">
+    </a>
+    <a *ngIf="auth.isLoggedIn()" [routerLink]="['/settings']">
       <i class="fa fa-cog fa-fw" aria-hidden="true"></i>
       Settings
-    </li>
-    <li [routerLink]="['/get-started']">
+    </a>
+    <a [routerLink]="['/get-started']">
       <i class="fa fa-info fa-fw" aria-hidden="true"></i>
       Get Started
-    </li>
-    <li *ngIf="auth.isLoggedIn()" (click)="logout()">
+    </a>
+    <a *ngIf="auth.isLoggedIn()" (click)="logout()">
       <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>
       Logout
-    </li>
-  </ul>
+    </a>
+  </div>
 </div>
