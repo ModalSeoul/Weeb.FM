@@ -10,7 +10,10 @@ from rest_framework.authtoken.models import Token
 from users.serializers import MemberSerializer, CreateMemberSerializer, \
     FollowingSerializer, FollowerSerializer
 from users.models import Member, Following
+from scrobbles.models import Scrobble
 from .filters import UserFilter
+
+from collections import defaultdict
 
 
 class MemberView(viewsets.ModelViewSet):
@@ -39,12 +42,15 @@ class MemberView(viewsets.ModelViewSet):
 
     @list_route(methods=['GET'])
     def most_scrobbles(self, request):
-        try:
-            users = Member.objects.annotate(test=Count('listened_to')).order_by('-test')[:20]
-            serializer = MemberSerializer(instance=users, many=True)
-            return Response(serializer.data)
-        except Exception as e:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+        users = defaultdict()
+        for user in Member.objects.all():
+            count_dict = {'count': Scrobble.objects.filter(
+                member__id=user.id).count()}
+            users[user.nick_name] = count_dict
+            # Example:
+            # for user in users:
+            # ...print(users.get(user)['count'])
+        return Response(users)
 
     @list_route(methods=['GET'])
     def count(self, request):
