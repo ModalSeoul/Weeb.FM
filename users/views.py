@@ -45,9 +45,12 @@ class MemberView(viewsets.ModelViewSet):
     def most_scrobbles(self, request):
         users = []
         for user in Member.objects.all():
+            scrobbles = Scrobble.objects.filter(member__id=user.id)
             count_dict = {
                 'nick_name': user.nick_name,
-                'count': Scrobble.objects.filter(member__id=user.id).count()
+                'count': scrobbles.count(),
+                'percent': 100 * (
+                    scrobbles.count() / Scrobble.objects.all().count())
             }
             users.append(count_dict)
         # Leaderboard queryset ?leaderboard=True
