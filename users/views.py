@@ -46,10 +46,16 @@ class MemberView(viewsets.ModelViewSet):
         for user in Member.objects.all():
             count_dict = Scrobble.objects.filter(member__id=user.id).count()
             users[user.nick_name] = count_dict
+        # Leaderboard queryset ?leaderboard=True
+        leaderboard = self.request.query_params.get('leaderboard', None)
+        if leaderboard is not None:
+            return Response(
+                sorted(users.items(), key=lambda x: x[1], reverse=True)[:25]
+            )
+        return Response(users)
         # Example:
         # for user in users:
         # ...print(users.get(user)['count'])
-        return Response(sorted(users.items(), key=lambda x: x[1], reverse=True))
 
     @list_route(methods=['GET'])
     def count(self, request):
