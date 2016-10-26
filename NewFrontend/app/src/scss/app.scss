@@ -1,52 +1,13 @@
-@import '../app/scss/wilt-colors.scss';
-@import '../app/scss/open-color.scss';
-
-/* Master Styles */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  min-height: 100%;
-  width: 100%;
-}
-* {
-  font-family: News Cycle, Helvetica, sans-serif;
-}
-a {
-  cursor: pointer;
-  cursor: hand;
-  text-decoration: none;
-}
-a:visited, a:active, a:link, a:hover {
-  text-decoration: none;
-  color: color(primary-dk);
-}
-
-/* Mixins
-******************************************/
-@mixin box-shadow() {
-  -webkit-box-shadow: 0 8px 6px -6px black;
-     -moz-box-shadow: 0 8px 6px -6px black;
-          box-shadow: 0 8px 6px -6px black;
-}
-
-@mixin hover-base($color) {
-  cursor: pointer;
-  opacity: 1;
-  transition: .5s;
-
-  &:hover {
-    background-color: $color;
-  }
-  &:active {
-    box-shadow: 0 3px 0 $color;
-    opacity: 0.75;
-  }
-}
+@import 'colors';
+@import 'default';
+@import 'mixins';
+@import 'scrollbar';
+@import 'open-color';
 
 /**
 * WILT Button CSS
 ***********************************************************/
+
 .btn-wilt {
   @include hover-base(color(primary-dk));
   background-color: color(primary);
@@ -65,7 +26,8 @@ a:visited, a:active, a:link, a:hover {
 /**
 * Component loading screen
 ***********************************************************/
-.__loading {
+
+.loading {
   position: fixed;
   z-index: 999;
   height: 2em;
@@ -93,48 +55,11 @@ a:visited, a:active, a:link, a:hover {
   }
 }
 
-
-/**
-* Scrollbar
-***********************************************************/
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-::-webkit-scrollbar-button {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: #41606e;
-  border: 11px none #ffffff;
-  border-radius: 0px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #2f4751;
-}
-::-webkit-scrollbar-thumb:active {
-  background: #1b2a30;
-}
-::-webkit-scrollbar-track {
-  background: #568296;
-  border: 0px none #ffffff;
-  border-radius: 0px;
-}
-::-webkit-scrollbar-track:hover {
-  background: #568296;
-}
-::-webkit-scrollbar-track:active {
-  background: #568296;
-}
-::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
 /**
 * Weeb container
 ***********************************************************/
-.__weeb {
+
+.weebContainer {
   margin-left: 12rem;
   padding: 0 2rem;
 }
@@ -294,6 +219,7 @@ a:visited, a:active, a:link, a:hover {
 
 /* List Component
 *******************************************************************************/
+
 .listComponent {
   @include box-shadow();
   margin-bottom: 1rem;

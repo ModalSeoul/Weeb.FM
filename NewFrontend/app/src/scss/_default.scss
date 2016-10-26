@@ -1,0 +1,21 @@
+@import 'colors';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+}
+* {
+  font-family: News Cycle, Helvetica, sans-serif;
+}
+a {
+  cursor: pointer;
+  cursor: hand;
+  text-decoration: none;
+}
+a:visited, a:active, a:link, a:hover {
+  text-decoration: none;
+  color: color(primary-dk);
+}

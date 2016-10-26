@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -13,10 +14,13 @@ export class SettingsComponent implements OnInit {
   private avatar: any;
   private token: string;
 
+  private primaryChoices: any;
+
   constructor(
     private app: AppComponent,
     private User: UserService,
-    private Auth: AuthService
+    private Auth: AuthService,
+    private cookies: CookieService
   ) { }
 
   ngOnInit() {
@@ -26,5 +30,24 @@ export class SettingsComponent implements OnInit {
       this.activeUser = user;
       this.app.loading = false;
     });
+    this.primaryChoices = [
+      'gray',
+      'red',
+      'pink',
+      'grape',
+      'violet',
+      'indigo',
+      'blue',
+      'cyan',
+      'teal',
+      'green',
+      'lime',
+      'yellow',
+      'orange'
+    ];
+  }
+
+  setPrimaryColor(color) {
+    this.cookies.putObject('primary-color', color);
   }
 }

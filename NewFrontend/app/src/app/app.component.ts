@@ -5,10 +5,10 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
     selector: 'app-root',
     template: `
     <side-nav></side-nav>
-    <div class="__loading" *ngIf="loading">
+    <div class="loading" *ngIf="loading">
       <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
     </div>
-    <div class="__weeb">
+    <div class="weebContainer">
       <router-outlet></router-outlet>
     </div>`,
     providers: [],

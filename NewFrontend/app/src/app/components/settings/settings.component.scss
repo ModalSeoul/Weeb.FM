@@ -1,13 +1,16 @@
-.__backing {
-  position: relative;
-}
-.__settings {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 50%);
-}
+@import './src/scss/app';
+@import './src/scss/colors';
+
 .btn-wilt {
   margin-top: 1rem;
   border-radius: 0px !important;
+}
+
+.colorSwitch {
+  display: flex;
+
+  &__color {
+    cursor: pointer;
+    margin-right: 2px;
+  }
 }

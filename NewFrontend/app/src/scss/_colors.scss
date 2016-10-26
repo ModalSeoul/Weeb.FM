@@ -1,0 +1,48 @@
+@import 'open-color.scss';
+
+$primary-colors: (
+  gray: $oc-gray-8,
+  red: $oc-red-8,
+  pink: $oc-pink-8,
+  grape: $oc-grape-8,
+  violet: $oc-violet-8,
+  indigo: $oc-indigo-8,
+  blue: $oc-blue-8,
+  cyan: $oc-cyan-8,
+  teal: $oc-teal-8,
+  green: $oc-green-8,
+  lime: $oc-lime-8,
+  yellow: $oc-yellow-8,
+  orange: $oc-orange-8
+);
+
+@each $name, $color in $primary-colors {
+  .primary-#{$name} {
+    color: $color !important;
+    border-color: $color !important;
+  }
+  .primary-#{$name}-bg {
+    background-color: $color;
+  }
+}
+
+@function get-primary($color) {
+  @return map-get($primary-colors, $color);
+}
+
+$colors: (
+  primary-dk: $oc-blue-9,
+  primary: $oc-blue-8,
+  primary-lt: $oc-blue-7,
+  primary-text: $oc-gray-0,
+
+  gray-dk: $oc-gray-9,
+  gray: $oc-gray-8,
+  gray-lt: $oc-gray-7,
+
+  divider: $oc-gray-5
+);
+
+@function color($color) {
+    @return map-get($colors, $color);
+}
