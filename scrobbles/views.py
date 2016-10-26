@@ -120,7 +120,7 @@ class ScrobbleView(viewsets.ModelViewSet):
         created = serializer(instance=obj)
         return Response(created.data)
 
-    # In a perfect world, these 3 functions would be
+    # In a perfect world, these functions would be
     # in a BaseFilterBackend. Screws fall out all the time,
     # the world's an imperfect place.
     @detail_route(methods=['GET'])
@@ -153,7 +153,7 @@ class ScrobbleView(viewsets.ModelViewSet):
 
     @list_route(methods=['GET'])
     def by_user(self, request, pk=None):
-        """Lists all scrobbles from one user(pk)"""
+        """Lists scrobbles from one user"""
         if pk is not None:
             queryset = Scrobble.objects.filter(member__nick_name__iexact=pk)
             queryset = queryset.order_by('-date_scrobbled')[9:15]

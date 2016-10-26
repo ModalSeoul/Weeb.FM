@@ -5,3 +5,4 @@ __pycache__/
 cdn/
 nnpm-debug*
 *.swp
+migrations/

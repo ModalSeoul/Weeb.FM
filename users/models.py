@@ -24,7 +24,8 @@ class Member(AbstractUser):
         upload_to='cdn/images/avatars/', null=True, blank=True)
 
     banner_picture = models.ImageField(
-        upload_to='cdn/images/banners/', null=True, blank=True)
+        upload_to='cdn/images/banners/', null=True, blank=True,
+        default='https://modal.moe/cdn/images/avatars/swongbad.gif')
 
     def __str__(self):
         return self.nick_name
@@ -34,10 +35,8 @@ class Following(models.Model):
     following = models.ManyToManyField(Member, related_name='sender')
     belongs_to = models.ForeignKey(Member)
 
-
     def __str__(self):
         return 'People {} follows'.format(self.belongs_to.nick_name)
-
 
 
 # DRF auth token receiver

@@ -5,8 +5,8 @@ from songs.models import Song
 
 
 class Scrobble(models.Model):
-    '''Scrobbles model to specifically handle all
-    Artist data/storage within the Scrobbles app.'''
+    """Scrobbles model to specifically handle all
+    Artist data/storage within the Scrobbles app"""
     song = models.ForeignKey(Song)
     member = models.ForeignKey(Member)
     date_scrobbled = models.DateTimeField(auto_now_add=True)

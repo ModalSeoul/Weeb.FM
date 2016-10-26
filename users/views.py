@@ -57,9 +57,6 @@ class MemberView(viewsets.ModelViewSet):
                 users, key=itemgetter('count'), reverse=True)[:25]
             return Response(top_users)
         return Response(users)
-        # Example:
-        # for user in users:
-        # ...print(users.get(user)['count'])
 
     @list_route(methods=['GET'])
     def count(self, request):
