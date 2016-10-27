@@ -1,46 +1,68 @@
+@import 'open-color';
 @import 'colors';
 @import 'default';
 @import 'functions';
 @import 'increments';
 @import 'mixins';
-@import 'scrollbar';
 @import 'typography';
-@import 'open-color';
+@import 'scrollbar';
 
-body {
-  background-color: color(gray-dk);
-}
 a {
-  color: color(primary-lt);
+  color: color(primary6);
   cursor: pointer;
   text-decoration: none;
 }
 a:visited, a:link {
   text-decoration: none;
-  color: color(primary-lt);
+  color: color(primary6);
 }
 a:active, a:hover {
   text-decoration: none;
-  color: color(primary-dk);
+  color: color(primary8);
 }
 
 /**
 * WILT Button CSS
-***********************************************************/
+*******************************************************************************/
 
 .btn-wilt {
-  @include hover-base(color(primary-dk));
   @include medium-text;
 
-  background-color: color(primary);
+  background-color: color(primary7);
   border-radius: 3px;
   border: none;
-  color: color(primary-text);
+  color: color(gray2);
+  opacity: 1;
   padding: size(1) size(3);
+  @include transition(all, .5s, ease-in-out);
+
+  &:hover {
+    background-color: color(primary5);
+  }
+  &:active {
+    opacity: 0.8;
+    -webkit-box-shadow: inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+    -moz-box-shadow:    inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+    box-shadow:         inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+  }
+
+  &.accent {
+    background-color: color(accent8);
+
+    &:hover {
+      background-color: color(accent6);
+    }
+    &:active {
+      opacity: .8;
+      -webkit-box-shadow: inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+      -moz-box-shadow:    inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+      box-shadow:         inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+    }
+  }
 }
 .text-wilt {
   border-radius: 2px;
-  border: 1px solid color(primary-dk);
+  border: 2px solid color(primary7);
   margin: size(1);
   padding: size(1);
 }
@@ -49,16 +71,16 @@ a:active, a:hover {
   @include box-shadow();
   @include normal-text;
 
-  background-color: $oc-gray-2;
-  border: 2px solid color(primary);
+  background-color: color(gray8);
+  border: 2px solid color(primary7);
   border-radius: 2px;
   margin-bottom: size(2);
 
   &__title {
     @include bold-text;
 
-    background-color: color(primary);
-    color: color(primary-text);
+    background-color: color(primary7);
+    color: color(gray0);
     padding: size(1) size(2);
     text-align: center;
     text-transform: uppercase;
@@ -75,7 +97,7 @@ a:active, a:hover {
 
 /**
 * Component loading screen
-***********************************************************/
+*******************************************************************************/
 
 .loading {
   position: fixed;
@@ -90,7 +112,7 @@ a:active, a:hover {
   bottom: 0;
 
   i {
-    color: color(primary);
+    color: color(primary7);
   }
 
   &:before {
@@ -101,7 +123,7 @@ a:active, a:hover {
     left: 12rem;
     width: 100%;
     height: 100%;
-    background-color: color(gray-dk);
+    background-color: color(gray9);
   }
 }
 
@@ -109,16 +131,15 @@ a:active, a:hover {
 *******************************************************************************/
 
 .tableComponent {
-  @include box-shadow();
   margin: size(2) 0;
 
   &__header {
     @include bold-text;
 
-    background-color: color(primary);
+    background-color: color(primary7);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
-    color: color(primary-text);
+    color: color(gray0);
     padding: size(1);
     text-align: center;
     text-transform: uppercase;
@@ -127,22 +148,27 @@ a:active, a:hover {
   &__table {
     border-collapse: collapse;
     border-spacing: 0;
-    border: 1px solid color(divider);
     width: 100%;
 
     thead {
-      background: $oc-gray-4;
-      border: 1px solid color(divider);
+      background: color(gray8);
+    }
+
+    tr {
+      border-bottom: 1px solid color(divider);
+
+      &:hover td {
+        border-bottom: 1px solid color(accent8);
+      }
     }
 
     th {
-      @include bold-text;
+      @include medium-text;
 
-      background: $oc-gray-4;
-      border-bottom: 1px solid color(divider);
-      color: $oc-gray-9;
+      background: color(gray8);
+      color: color(gray0);
       overflow: hidden;
-      padding: 8px 5px;
+      padding: size(2) size(2);
       text-align: left;
       text-overflow: ellipsis;
       text-transform: uppercase;
@@ -153,11 +179,10 @@ a:active, a:hover {
     td {
       @include normal-text;
 
-      background-color: $oc-white;
-      border-bottom: 1px solid color(divider);
-      color: $oc-gray-9;
+      background-color: color(gray9);
+      color: color(gray0);
       overflow: hidden;
-      padding: 3px 5px;
+      padding: size(1.5) size(2);
       text-overflow: ellipsis;
       vertical-align: middle;
       max-width: 0;
@@ -166,14 +191,14 @@ a:active, a:hover {
 
     &--striped {
       tr:nth-child(even) td {
-        background-color: $oc-gray-2;
+        background-color: color(gray9);
       }
     }
   }
 }
 
 /* Table Alignment Helpers
-*************************************/
+*******************************************************************************/
 
 .align-left {
   text-align: left !important;
@@ -206,94 +231,250 @@ a:active, a:hover {
 }
 
 
-/* Table Border Helpers
-*************************************/
-
-.border,
-.border-all,
-.border-all * {
-  border: 1px solid color(divider) !important;
-}
-
-.border {
-  &__top {
-    border-top: 1px solid color(divider) !important;
-    &--all {
-      border-top: 1px solid color(divider) !important;
-      * {
-        border-top: 1px solid color(divider) !important;
-      }
-    }
-  }
-  &__bottom {
-    border-bottom: 1px solid color(divider) !important;
-    &--all {
-      border-bottom: 1px solid color(divider) !important;
-      * {
-        border-bottom: 1px solid color(divider) !important;
-      }
-    }
-  }
-  &__right {
-    border-right: 1px solid color(divider) !important;
-    &--all {
-      border-right: 1px solid color(divider) !important;
-      * {
-        border-right: 1px solid color(divider) !important;
-      }
-    }
-  }
-  &__left {
-    border-left: 1px solid color(divider) !important;
-    &--all {
-      border-left: 1px solid color(divider) !important;
-      * {
-        border-left: 1px solid color(divider) !important;
-      }
-    }
-  }
-}
-
-
 /* List Component
 *******************************************************************************/
 
 .listComponent {
-  @include box-shadow();
-  margin: 1rem 0 1rem 0;
+  margin: size(1) 0;
   width: 100%;
 
   ul {
-    border-left: 1px solid color(divider);
-    border-right: 1px solid color(divider);
     list-style: none;
     padding: 0;
     margin: 0;
 
     li {
       border-bottom: 1px solid color(divider);
-      padding: .25rem;
+      padding: size(1) size(1);
+
+      &:hover {
+        border-bottom: 1px solid color(accent8);
+      }
     }
   }
 
   &--stripe {
-    background: $oc-gray-2;
+    background: color(gray2);
   }
 
   &--striped {
     li:nth-child(odd) {
-      background: $oc-gray-2;
+      background: color(gray2);
     }
   }
 
   &__header {
-    background-color: color(primary);
+    background-color: color(primary7);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
-    color: color(primary-text);
+    color: color(gray0);
     font-weight: bold;
     padding: .5rem 1rem;
     text-align: center;
     text-transform: uppercase;
   }
+}
+
+/* Artist
+*******************************************************************************/
+
+.artist {
+  &__table-avi {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+
+/* Leaderboard
+*******************************************************************************/
+
+.leaderBoard {
+  a {
+    text-decoration: underline;
+  }
+}
+
+
+/* Login
+*******************************************************************************/
+
+.login {
+  padding: size(5);
+  margin: 0 auto;
+  margin-top: 15%;
+  width: 15rem;
+}
+
+
+/* Profile
+*******************************************************************************/
+
+.profile {
+  .btn-wilt {
+    margin-top: size(1);
+    margin-bottom: size(1);
+  }
+
+  &__avi {
+    border: 2px solid color(divider);
+    margin-top: 1rem;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+       -moz-box-shadow: 0 8px 6px -6px black;
+            box-shadow: 0 8px 6px -6px black;
+  }
+
+  &__banner {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  &__user {
+    margin-left: 2rem;
+    margin-right: 2rem;
+
+    h1 {
+      @include bold-text;
+      color: color(gray2);
+      text-shadow: 2px 2px 4px #000000;
+    }
+  }
+
+  &__wrapper {
+    border-bottom: 3px solid color(gray9);
+    // background: linear-gradient(
+    //   rgba(150, 150, 150, 0.75),
+    //   rgba(100, 100, 100, 0.75)
+    // );
+  }
+}
+
+
+/* Register
+*******************************************************************************/
+
+.register {
+  padding: size(5);
+  margin: 0 auto;
+  margin-top: 15%;
+  width: 15rem;
+}
+
+
+/* Settings
+*******************************************************************************/
+
+.settings {
+  display: flex;
+  flex-direction: column;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__card {
+    width: 50%;
+    margin: 1rem;
+  }
+
+  .colorSwitch {
+    display: flex;
+    flex-direction: row;
+
+    &__color {
+      cursor: pointer;
+      margin-right: 2px;
+      height: 50px;
+      width: 50px;
+    }
+  }
+}
+
+
+/* Sidebar
+*******************************************************************************/
+
+.sidebar {
+  background-color: color(gray8);
+  bottom: 0;
+  color: white;
+  position: fixed;
+  height: 100% !important;
+  width: 12rem;
+
+  &__title {
+    background-color: color(primary7);
+    color: white;
+    font-family: Pacifico;
+    padding: size(1);
+    text-align: center;
+  }
+  .nav {
+    display: flex;
+    flex-direction: column;
+
+    &__link {
+      @include bold-text;
+
+      background-color: color(gray8);
+      border-bottom: 1px solid color(divider);
+      color: color(gray2) !important;
+      cursor: pointer;
+      opacity: 1;
+      padding: size(2) size(1.5);
+      @include transition(all, 1s, ease);
+
+      &:hover {
+        background-color: color(accent8);
+      }
+
+      &--active {
+        -webkit-box-shadow: inset size(6) 0 0 0 color(accent8);
+           -moz-box-shadow: inset size(6) 0 0 0 color(accent8);
+                box-shadow: inset size(6) 0 0 0 color(accent8);
+      }
+    }
+    &__icon {
+      color: color(gray2);
+      border-right: 1px;
+      font-size: 18px;
+      margin-right: size(3);
+    }
+  }
+}
+
+
+/* Start
+*******************************************************************************/
+
+.start {
+  a {
+    text-decoration: underline;
+  }
+}
+
+
+/* Stats
+*******************************************************************************/
+
+.__stats {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.__tables {
+  display: flex;
+  width: 100%;
+}
+
+.smol {
+  margin: .5rem;
+  width: 50%;
 }

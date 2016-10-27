@@ -1,25 +1,27 @@
-<div *ngIf="profileObj.date_joined">
-  <div class="__banner" [ngStyle]="{'background-image':'url('+ profileObj.banner +')'}">
-    <div class="profileWrapper">
-      <div class="__user">
-        <img class="__avi" [src]="profileObj.avatar">
-        <h1>{{profileObj.nick}}</h1>
+<div class="profile">
+  <div *ngIf="profileObj.date_joined">
+    <div class="profile__banner" [ngStyle]="{'background-image':'url('+ profileObj.banner +')'}">
+      <div class="profile__wrapper">
+        <div class="profile__user">
+          <img class="profile__avi" [src]="profileObj.avatar">
+          <h1>{{profileObj.nick}}</h1>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="listComponent">
-    <div class="listComponent__header">
-      User Stats
+    <div class="listComponent">
+      <div class="listComponent__header">
+        User Stats
+      </div>
+      <ul class="listComponent__ul">
+        <li class="listComponent__li">Member since {{profileObj.date_joined | date: 'MM/dd/yyyy' }}</li>
+        <li class="listComponent__li">{{profileObj.listen_count | number}} total scrobbles</li>
+        <li class="listComponent__li">{{profileObj.per_day | number}} scrobbles per day on average.</li>
+        <!-- <li>This user has {{profileObj.followerCount}} followers.</li> -->
+      </ul>
     </div>
-    <ul class="listComponent__ul">
-      <li class="listComponent__li">Member since {{profileObj.date_joined | date: 'MM/dd/yyyy' }}</li>
-      <li class="listComponent__li">{{profileObj.listen_count | number}} total scrobbles</li>
-      <li class="listComponent__li">{{profileObj.per_day | number}} scrobbles per day on average.</li>
-      <!-- <li>This user has {{profileObj.followerCount}} followers.</li> -->
-    </ul>
+    <input *ngIf="profileObj.canFollow" (click)="follow()" type="button" class="btn-wilt" value="+ Follow">
+    <input *ngIf="isFollowing" type="button" class="btn-wilt" value="Unfollow">
+    <scrobble-table [content]="scrobbles" [header]="'User Scrobbles'"><h1>Loading...</h1></scrobble-table>
+    <input *ngIf="!full" (click)="addScrobbles()" type="button" class="btn-wilt" value="Load More">
   </div>
-  <input *ngIf="profileObj.canFollow" (click)="follow()" type="button" class="btn-wilt" value="+ Follow">
-  <input *ngIf="isFollowing" type="button" class="btn-wilt" value="Unfollow">
-  <scrobble-table [content]="scrobbles" [header]="'User Scrobbles'"><h1>Loading...</h1></scrobble-table>
-  <input *ngIf="!full" (click)="addScrobbles()" type="button" class="btn-wilt" value="Load More">
 </div>

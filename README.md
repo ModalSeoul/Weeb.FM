@@ -1,3 +1,15 @@
+# DARK BRANCH NOTICE
+
+Run from NewFrontend/app/
+
+```
+sass --watch src/scss/app.scss:src/css/dark.css
+```
+
+This will automatically watch for changes in the scss and compile it to css.
+The dark branch loads css that has been compiled from scss.
+
+
 # WeebFM
 <hr>
 WeebFM development started on 10/3/2016. The day LastFm decided to toss up a persistent modal on every. single. page. The modal asks users to Subscribe or disable Adblock. There's no way around it. But fuck that. Last has gone to shit anyways. WeebFm(temporary name) is going to be better than Last, because "*If you ain't first, you're last*" - Ricky Bobby
