@@ -61,8 +61,10 @@ a:active, a:hover {
   }
 }
 .text-wilt {
+  background-color: color(gray8);
   border-radius: 2px;
   border: 2px solid color(primary7);
+  color: color(gray2);
   margin: size(1);
   padding: size(1);
 }
@@ -136,12 +138,12 @@ a:active, a:hover {
   &__header {
     @include bold-text;
 
-    background-color: color(primary7);
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+    // background-color: color(primary7);
+    // border-top-left-radius: 2px;
+    // border-top-right-radius: 2px;
     color: color(gray0);
     padding: size(1);
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
   }
 
@@ -151,6 +153,7 @@ a:active, a:hover {
     width: 100%;
 
     thead {
+      border-top: 1px solid color(divider);
       background: color(gray8);
     }
 
@@ -239,13 +242,14 @@ a:active, a:hover {
   width: 100%;
 
   ul {
+    border-top: 1px solid color(divider);
     list-style: none;
     padding: 0;
     margin: 0;
 
     li {
       border-bottom: 1px solid color(divider);
-      padding: size(1) size(1);
+      padding: size(1.5) size(2);
 
       &:hover {
         border-bottom: 1px solid color(accent8);
@@ -264,13 +268,13 @@ a:active, a:hover {
   }
 
   &__header {
-    background-color: color(primary7);
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+    // background-color: color(primary7);
+    // border-top-left-radius: 2px;
+    // border-top-right-radius: 2px;
     color: color(gray0);
     font-weight: bold;
-    padding: .5rem 1rem;
-    text-align: center;
+    padding: size(1);
+    text-align: left;
     text-transform: uppercase;
   }
 }

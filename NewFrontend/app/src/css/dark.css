@@ -570,8 +570,10 @@ a:active, a:hover {
       box-shadow: inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3); }
 
 .text-wilt {
+  background-color: #343a40;
   border-radius: 2px;
   border: 2px solid #1c7cd6;
+  color: #f1f3f5;
   margin: 8px;
   padding: 8px; }
 
@@ -630,18 +632,16 @@ a:active, a:hover {
   margin: 16px 0; }
   .tableComponent__header {
     font-weight: 800;
-    background-color: #1c7cd6;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
     color: #f8f9fa;
     padding: 8px;
-    text-align: center;
+    text-align: left;
     text-transform: uppercase; }
   .tableComponent__table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%; }
     .tableComponent__table thead {
+      border-top: 1px solid #495057;
       background: #343a40; }
     .tableComponent__table tr {
       border-bottom: 1px solid #495057; }
@@ -700,12 +700,13 @@ a:active, a:hover {
   margin: 8px 0;
   width: 100%; }
   .listComponent ul {
+    border-top: 1px solid #495057;
     list-style: none;
     padding: 0;
     margin: 0; }
     .listComponent ul li {
       border-bottom: 1px solid #495057;
-      padding: 8px 8px; }
+      padding: 12px 16px; }
       .listComponent ul li:hover {
         border-bottom: 1px solid #2f9e44; }
   .listComponent--stripe {
@@ -713,13 +714,10 @@ a:active, a:hover {
   .listComponent--striped li:nth-child(odd) {
     background: #f1f3f5; }
   .listComponent__header {
-    background-color: #1c7cd6;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
     color: #f8f9fa;
     font-weight: bold;
-    padding: .5rem 1rem;
-    text-align: center;
+    padding: 8px;
+    text-align: left;
     text-transform: uppercase; }
 
 /* Artist
