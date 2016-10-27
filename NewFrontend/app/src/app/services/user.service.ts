@@ -14,57 +14,40 @@ export class UserService {
   */
 
   public getUserAvatar(name: string) {
-    return this.http.get(`members/${name}/by_nick/`).map((r: any) => {
-      return r['profile_picture'];
-    });
+    return this.http.get(`members/${name}/by_nick/`);
   }
 
   // Deprecating this
   public getUserNick(name: string) {
-    return this.http.get(`members/${name}/by_nick/`).map((r: any) => {
-      return r['nick_name'];
-    });
+    return this.http.get(`members/${name}/by_nick/`);
   }
 
   // This function will replace getUserNick next version.
   public getUserObject(name: string) {
-    return this.http.get(`members/${name}/by_nick/`).map((r: any) => {
-      return r;
-    });
+    return this.http.get(`members/${name}/by_nick/`);
   }
 
   public getLeaderboardUsers() {
-    return this.http.get('members/most_scrobbles/', { 'leaderboard': true })
-                      .map((r : any) => { return r; })
+    return this.http.get('members/most_scrobbles/', { 'leaderboard': true });
   }
 
   public getCurrentUser() {
-    return this.http.get('members/current/').map((r: any) => {
-      return r;
-    });
+    return this.http.get('members/current/');
   }
 
   public getCount() {
-    return this.http.get('members/count/').map((r: any) => {
-      return r;
-    });
+    return this.http.get('members/count/');
   }
 
   public follow(user: string) {
-    return this.http.post(`followings/${user}/follow`).map((r: any) => {
-      return r;
-    });
+    return this.http.post(`followings/${user}/follow`);
   }
 
   public followers(id: string | number) {
-    return this.http.get(`followings/${id}/followers`).map((r: any) => {
-      return r;
-    });
+    return this.http.get(`followings/${id}/followers`);
   }
 
   public listensTo(name: string) {
-    return this.http.get(`members/?listened=${name}`).map((r: any) => {
-      return r;
-    });
+    return this.http.get(`members/?listened=${name}`);
   }
 }

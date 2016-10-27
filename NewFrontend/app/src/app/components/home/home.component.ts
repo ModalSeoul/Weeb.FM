@@ -27,12 +27,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  public post() {
-    this.Blog.post().subscribe((r: any) => {
-      console.log(r);
-    });
-  }
-
   public ngOnInit() {
     this.Blog.getAll().subscribe((posts: any) => {
       this.entries = posts;
@@ -43,8 +37,7 @@ export class HomeComponent implements OnInit {
         this.app.loading = false;
       },
       err => this.app.loading = false,
-      () => console.log('We did it boss.')
-    );
+      () => console.log('We did it boss.'));
   }
 
 }

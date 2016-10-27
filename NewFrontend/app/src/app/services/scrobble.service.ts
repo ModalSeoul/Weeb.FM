@@ -15,53 +15,37 @@ export class ScrobbleService {
   */
 
   public getScrobble(id: number) {
-    return this.http.get(`songs/${id}`).map((r: any) => {
-      return r;
-    });
+    return this.http.get(`songs/${id}`);
   }
 
   public getRecent(amount: string | number) {
-    return this.http.get(`${this.ep}?past=${amount}`).map((r: any) => {
-      return r;
-    });
+    return this.http.get(`${this.ep}?past=${amount}`);
   }
 
   public getUserScrobbles(name: string, start: number, end: number) {
-    return this.http.get(`${this.ep}?by_user=${name}&start=${start}&end=${end}`).map((r: any) => {
-      return r;
-    });
+    return this.http.get(`${this.ep}?by_user=${name}&start=${start}&end=${end}`);
   }
 
   public getUserIdScrobbles(id: number) {
-    return this.http.get(`${this.ep}${id}/by_user_id`).map((r: any) => {
-      return r;
-    });
+    return this.http.get(`${this.ep}${id}/by_user_id`);
   }
 
   public getArtistScrobbles(name: string) {
-    return this.http.get(`${this.ep}${name}/by_artist`).map((r: any) => {
-      return r;
-    });
+    return this.http.get(`${this.ep}${name}/by_artist`);
   }
 
   public getSongScrobbles(title: string) {
-    return this.http.get(`${this.ep}${title}/by_song`).map((r: any) => {
-      return r;
-    });
+    return this.http.get(`${this.ep}${title}/by_song`);
   }
 
   public getAlbumScrobbles(title: string) {
-    return this.http.get(`${this.ep}${title}/by_album`).map((r: any) => {
-      return r;
-    });
+    return this.http.get(`${this.ep}${title}/by_album`);
   }
 
   public postScrobble(song: string, artist: string) {
     return this.http.post('scrobbles', {
       'song': song,
       'artist': artist
-    }).map((r: any) => {
-      return r;
     });
   }
 }

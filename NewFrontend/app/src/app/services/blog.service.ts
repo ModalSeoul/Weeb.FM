@@ -9,17 +9,15 @@ export class BlogService {
   ) { }
 
   public getAll() {
-    return this.http.get('blog_entries').map((r: any) => {
-      return r;
-    });
+    return this.http.get('blog_entries');
   }
 
   public post() {
-    return this.http.post('blog_entries', {
-      'title': 'NICE TITLE',
-      'body': 'This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. '
-    }).map((r: any) => {
-      return r;
-    });
+    // return this.http.post('blog_entries', {
+    //   'title': 'NICE TITLE',
+    //   'body': 'This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. This is body text man. '
+    // }).map((r: any) => {
+    //   return r;
+    // });
   }
 }
