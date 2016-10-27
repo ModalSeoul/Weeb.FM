@@ -1,16 +1,23 @@
-<div class="__wrapper">
-  <div class="__login">
-    <input class="text-wilt" type="text" [(ngModel)]="username" placeholder="Username"
-      (keyup.enter)="login()" id="username">
-    <input class="text-wilt" type="password" [(ngModel)]="password" placeholder="Password"
-      (keyup.enter)="login()" id="password">
-    <span class="__bottom">
+<div class="loginWrapper">
+  <div class="card">
+    <div class="card__title">
+      Login
+    </div>
+    <div class="card__body">
+      <input class="text-wilt" type="text" [(ngModel)]="username" placeholder="Username"
+        (keyup.enter)="login()" id="username">
+      <input class="text-wilt" type="password" [(ngModel)]="password" placeholder="Password"
+        (keyup.enter)="login()" id="password">
+      <span class="__bottom">
+      </span>
+      <p style="color: red;">{{errorString}}</p>
+    </div>
+    <div class="card__footer">
       <button class="btn-wilt" (click)="login()">
         <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>
         Login
       </button>
       <a [routerLink]="['/register']">Register</a>
-    </span>
-    <p style="color: red;">{{errorString}}</p>
+    </div>
   </div>
 </div>

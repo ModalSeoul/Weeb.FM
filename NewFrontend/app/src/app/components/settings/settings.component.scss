@@ -1,16 +1,29 @@
 @import './src/scss/app';
 @import './src/scss/colors';
 
-.btn-wilt {
-  margin-top: 1rem;
-  border-radius: 0px !important;
+.settingsWrapper {
+  display: flex;
+  flex-direction: column;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__card {
+    width: 50%;
+    margin: 1rem;
+  }
 }
 
 .colorSwitch {
   display: flex;
+  flex-direction: row;
 
   &__color {
     cursor: pointer;
     margin-right: 2px;
+    height: 50px;
+    width: 50px;
   }
 }

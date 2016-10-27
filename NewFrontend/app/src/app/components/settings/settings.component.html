@@ -1,25 +1,43 @@
-<div>
-  <h1>Avatar</h1>
-  <form enctype="multipart/form-data" id="avatar" method="post" action="https://modal.moe/api/members/upload_avatar/">
-    <input type="file" name="profile_picture"/><br> <!-- FORGIVE ME FATHER -->
-    <input type="hidden" [ngModel]="token" name="my_token">
-    <input type="button" class="btn-wilt" onclick="document.all.avatar.submit()" value="Submit">
-  </form>
-
-  <h2>Banner</h2>
-  <form enctype="multipart/form-data" id="banner" method="post" action="https://modal.moe/api/members/upload_banner/">
-    <input type="file" name="banner_picture"/><br> <!-- FORGIVE ME FATHER -->
-    <input type="hidden" [ngModel]="token" name="my_token">
-    <input type="button" class="btn-wilt" onclick="document.all.banner.submit()" value="Submit">
-  </form>
+<div class="settingsWrapper">
+  <div class="settingsWrapper__row">
+    <div class="settingsWrapper__card card">
+      <div class="card__title">
+        Upload Banner
+      </div>
+      <div class="card__body">
+        <form enctype="multipart/form-data" id="banner" method="post" action="https://modal.moe/api/members/upload_banner/">
+          <input type="file" name="banner_picture"/><br> <!-- FORGIVE ME FATHER -->
+          <input type="hidden" [ngModel]="token" name="my_token"><br> <!-- FORGIVE ME FATHER -->
+          <input type="button" class="btn-wilt" onclick="document.all.banner.submit()" value="Submit">
+        </form>
+      </div>
+    </div>
+    <div class="settingsWrapper__card card">
+      <div class="card__title">
+        Upload Avatar
+      </div>
+      <div class="card__body">
+        <form enctype="multipart/form-data" id="avatar" method="post" action="https://modal.moe/api/members/upload_avatar/">
+          <input type="file" name="profile_picture"/><br> <!-- FORGIVE ME FATHER -->
+          <input type="hidden" [ngModel]="token" name="my_token"><br> <!-- FORGIVE ME FATHER -->
+          <input type="button" class="btn-wilt" onclick="document.all.avatar.submit()" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="settingsWrapper__row">
+    <div class="settingsWrapper__card card">
+      <div class="card__title">
+        Primary Color
+      </div>
+      <div class="card__body">
+        <div class="colorSwitch">
+          <div *ngFor="let color of primaryChoices"
+            class="colorSwitch__color"
+            [ngClass]="['primary-' + color + '-bg']"
+            (click)="setPrimaryColor(color)"></div>
+        </div>
+      </div>
+    </div>
+  </div> -->
 </div>
-
-<!-- <br>
-
-<h2>Primary Color</h2>
-<div class="colorSwitch">
-  <div *ngFor="let color of primaryChoices"
-    class="colorSwitch__color"
-    [ngClass]="['primary-' + color + '-bg']" style="width: 45px; height: 45px;"
-    (click)="setPrimaryColor(color)"></div>
-</div> -->

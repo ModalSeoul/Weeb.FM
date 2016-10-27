@@ -1,16 +1,21 @@
-<div class="__wrapper">
-  <div class="__register">
-    <input class="text-wilt" type="text" [(ngModel)]="username" placeholder="Username">
-    <input class="text-wilt" type="text" [(ngModel)]="email" placeholder="E-Mail">
-    <input class="text-wilt" type="password" [(ngModel)]="password" placeholder="Password">
-    <input class="text-wilt" type="password" [(ngModel)]="confPassword" placeholder="Confirm Password">
-    <span class="__bottom">
+<div class="registerWrapper">
+  <div class="card">
+    <div class="card__title">
+      Register
+    </div>
+    <div class="card__body">
+      <input class="text-wilt" type="text" [(ngModel)]="username" placeholder="Username">
+      <input class="text-wilt" type="text" [(ngModel)]="email" placeholder="E-Mail">
+      <input class="text-wilt" type="password" [(ngModel)]="password" placeholder="Password">
+      <input class="text-wilt" type="password" [(ngModel)]="confPassword" placeholder="Confirm Password">
+      <span *ngIf="noMatch">Passwords do not match!</span>
+    </div>
+    <div class="card__footer">
       <button class="btn-wilt" (click)="register()">
         <i class="fa fa-user-plus" aria-hidden="true"></i>
         Register
       </button>
       <a [routerLink]="['/login']">Login</a>
-      <span *ngIf="noMatch">Passwords do not match!</span>
-    </span>
+    </div>
   </div>
 </div>

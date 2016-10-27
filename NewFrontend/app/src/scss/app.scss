@@ -18,15 +18,36 @@
   padding: .5rem 2rem;
 }
 .text-wilt {
-  width: 10rem;
   border-radius: 2px;
   border: 1px solid color(primary-dk);
   outline: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
+  margin: .25rem;
+  padding: .25rem;
+}
+
+.card {
+  @include box-shadow()
+  background-color: $oc-gray-2;
+  border: 2px solid color(primary);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+
+  &__title {
+    background-color: color(primary);
+    color: color(primary-text);
+    font-weight: bold;
+    padding: .5rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  &__body {
+    padding: .5rem 1rem;
+    text-align: center;
+  }
+  &__footer {
+    padding: .5rem 1rem;
+    text-align: center;
+  }
 }
 
 /**
@@ -75,24 +96,18 @@
 
 .tableComponent {
   @include box-shadow();
-
   font-size: 16px;
-  margin-bottom: 1rem;
+  margin: 1rem 0 1rem 0;
 
   &__header {
     background-color: color(primary);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
-    border: none;
     color: color(primary-text);
-    height: 3rem;
-    line-height: 3rem;
+    font-weight: bold;
+    padding: .5rem 1rem;
     text-align: center;
-    width: 100%;
-
-    h1 {
-      font-size: 20px;
-    }
+    text-transform: uppercase;
   }
 
   &__table {
@@ -228,7 +243,7 @@
 
 .listComponent {
   @include box-shadow();
-  margin-bottom: 1rem;
+  margin: 1rem 0 1rem 0;
   width: 100%;
 
   ul {
@@ -258,15 +273,10 @@
     background-color: color(primary);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
-    border: none;
     color: color(primary-text);
-    height: 3rem;
-    line-height: 3rem;
+    font-weight: bold;
+    padding: .5rem 1rem;
     text-align: center;
-    width: 100%;
-
-    h1 {
-      font-size: 20px;
-    }
+    text-transform: uppercase;
   }
 }
