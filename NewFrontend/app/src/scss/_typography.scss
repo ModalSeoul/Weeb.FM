@@ -1,9 +1,9 @@
 @import 'colors';
 
-@mixin light-text { font-weight: 300; }
-@mixin normal-text { font-weight: 400; }
-@mixin medium-text { font-weight: 500; }
-@mixin bold-text { font-weight: 700; }
+@mixin light-text { font-weight: 400; }
+@mixin normal-text { font-weight: 500; }
+@mixin medium-text { font-weight: 600; }
+@mixin bold-text { font-weight: 800; }
 
 html, body {
   font-size: 100%;

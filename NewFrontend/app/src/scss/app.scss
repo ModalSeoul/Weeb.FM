@@ -18,7 +18,7 @@ a:visited, a:link {
 }
 a:active, a:hover {
   text-decoration: none;
-  color: color(primary-dk)
+  color: color(primary-dk);
 }
 
 /**
@@ -27,42 +27,45 @@ a:active, a:hover {
 
 .btn-wilt {
   @include hover-base(color(primary-dk));
+  @include medium-text;
+
   background-color: color(primary);
   border-radius: 3px;
   border: none;
   color: color(primary-text);
-  outline: none;
-  padding: .5rem 2rem;
+  padding: size(1) size(3);
 }
 .text-wilt {
   border-radius: 2px;
   border: 1px solid color(primary-dk);
-  outline: none;
-  margin: .25rem;
-  padding: .25rem;
+  margin: size(1);
+  padding: size(1);
 }
 
 .card {
-  @include box-shadow()
+  @include box-shadow();
+  @include normal-text;
+
   background-color: $oc-gray-2;
   border: 2px solid color(primary);
   border-radius: 2px;
-  margin-bottom: 1rem;
+  margin-bottom: size(2);
 
   &__title {
+    @include bold-text;
+
     background-color: color(primary);
     color: color(primary-text);
-    font-weight: bold;
-    padding: .5rem 1rem;
+    padding: size(1) size(2);
     text-align: center;
     text-transform: uppercase;
   }
   &__body {
-    padding: .5rem 1rem;
-    text-align: center;
+    padding: size(1) size(2);
+    text-align: left;
   }
   &__footer {
-    padding: .5rem 1rem;
+    padding: size(1) size(2);
     text-align: center;
   }
 }
@@ -104,15 +107,16 @@ a:active, a:hover {
 
 .tableComponent {
   @include box-shadow();
-  margin: 1rem 0 1rem 0;
+  margin: size(2) 0;
 
   &__header {
+    @include bold-text;
+
     background-color: color(primary);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     color: color(primary-text);
-    font-weight: bold;
-    padding: .5rem 1rem;
+    padding: size(1);
     text-align: center;
     text-transform: uppercase;
   }
@@ -129,10 +133,11 @@ a:active, a:hover {
     }
 
     th {
+      @include bold-text;
+
       background: $oc-gray-4;
       border-bottom: 1px solid color(divider);
       color: $oc-gray-9;
-      font-weight: bold;
       overflow: hidden;
       padding: 8px 5px;
       text-align: left;
@@ -143,6 +148,8 @@ a:active, a:hover {
     }
 
     td {
+      @include normal-text;
+
       background-color: $oc-white;
       border-bottom: 1px solid color(divider);
       color: $oc-gray-9;

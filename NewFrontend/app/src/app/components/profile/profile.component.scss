@@ -1,3 +1,4 @@
+@import './src/scss/app';
 @import './src/scss/colors';
 @import './src/scss/open-color';
 
@@ -31,4 +32,10 @@
 .__user {
   margin-left: 2rem;
   margin-right: 2rem;
+
+  h1 {
+    @include bold-text;
+    color: $oc-gray-2;
+    text-shadow: 2px 2px 4px #000000;
+  }
 }
