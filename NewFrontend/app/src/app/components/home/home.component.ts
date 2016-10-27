@@ -31,13 +31,6 @@ export class HomeComponent implements OnInit {
     this.Blog.getAll().subscribe((posts: any) => {
       this.entries = posts;
     });
-    this.User.getCurrentUser().subscribe(
-      data => {
-        this.curUser = data;
-        this.app.loading = false;
-      },
-      err => this.app.loading = false,
-      () => console.log('We did it boss.'));
   }
 
 }
