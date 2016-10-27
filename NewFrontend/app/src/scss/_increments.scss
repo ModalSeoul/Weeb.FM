@@ -1,0 +1,64 @@
+$unitBase: 8px;
+
+/*
+* margin: size(4) // 32px
+*/
+@function size($multiplier:1) {
+  @return $unitBase * $multiplier;
+}
+
+// All other increments are configured using the base, which corresponds to $unitSmaller. Update the inline comments to clarify what final px measurements would be
+$unitBiggest: $unitBase * 8; // 64px
+$unitBigger: $unitBase * 6; // 48px
+$unitBig: $unitBase * 4; // 32px
+$unitRegular: $unitBase * 3; // 24px
+$unitSmall: $unitBase * 2; // 16px
+$unitSmaller: $unitBase; // 8px
+$unitSmallest: $unitBase / 2; // 4px
+$unitNone: 0; // helpful to remove margins or padding
+
+// Units map
+$units: (
+  Biggest: $unitBiggest,
+  Bigger: $unitBigger,
+  Big: $unitBig,
+  Regular: $unitRegular,
+  Small: $unitSmall,
+  Smaller: $unitSmaller,
+  Smallest: $unitSmallest,
+  None: $unitNone
+);
+
+/* Utility classes for margins and padding */
+@each $size, $unit in $units {
+  .margin#{$size} {
+    margin: #{$unit};
+  }
+  .marginTop#{$size} {
+    margin-top: #{$unit};
+  }
+  .marginBottom#{$size} {
+    margin-bottom: #{$unit};
+  }
+  .marginRight#{$size} {
+    margin-right: #{$unit};
+  }
+  .marginLeft#{$size} {
+    margin-left: #{$unit};
+  }
+  .padding#{$size} {
+    padding: #{$unit};
+  }
+  .paddingTop#{$size} {
+    padding-top: #{$unit};
+  }
+  .paddingBottom#{$size} {
+    padding-bottom: #{$unit};
+  }
+  .paddingRight#{$size} {
+    padding-right: #{$unit};
+  }
+  .paddingLeft#{$size} {
+    padding-left: #{$unit};
+  }
+}

@@ -1,0 +1,19 @@
+@import 'colors';
+
+@mixin light-text { font-weight: 300; }
+@mixin normal-text { font-weight: 400; }
+@mixin medium-text { font-weight: 500; }
+@mixin bold-text { font-weight: 700; }
+
+html, body {
+  font-size: 100%;
+  font-family: News Cycle, Helvetica, sans-serif;
+  color: color(gray);
+  @include normal-text;
+}
+
+h1 { font-size: 2.25em; } //36px
+h2 { font-size: 1.31em; } //21px
+h3 { font-size: 1.13em; } //18px
+h5 { font-size: 0.81em; } //13px
+h6 { font-size: 0.75em; } //12px

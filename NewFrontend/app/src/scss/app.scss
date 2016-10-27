@@ -1,8 +1,25 @@
 @import 'colors';
 @import 'default';
+@import 'functions';
+@import 'increments';
 @import 'mixins';
 @import 'scrollbar';
+@import 'typography';
 @import 'open-color';
+
+a {
+  color: color(primary-lt);
+  cursor: pointer;
+  text-decoration: none;
+}
+a:visited, a:link {
+  text-decoration: none;
+  color: color(primary-lt);
+}
+a:active, a:hover {
+  text-decoration: none;
+  color: color(primary-dk)
+}
 
 /**
 * WILT Button CSS
@@ -82,21 +99,11 @@
   }
 }
 
-/**
-* Weeb container
-***********************************************************/
-
-.weebContainer {
-  margin-left: 12rem;
-  padding: 0 2rem;
-}
-
 /* Table component
 *******************************************************************************/
 
 .tableComponent {
   @include box-shadow();
-  font-size: 16px;
   margin: 1rem 0 1rem 0;
 
   &__header {

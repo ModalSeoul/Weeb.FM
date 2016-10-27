@@ -16,20 +16,6 @@ $primary-colors: (
   orange: $oc-orange-8
 );
 
-@each $name, $color in $primary-colors {
-  .primary-#{$name} {
-    color: $color !important;
-    border-color: $color !important;
-  }
-  .primary-#{$name}-bg {
-    background-color: $color;
-  }
-}
-
-@function get-primary($color) {
-  @return map-get($primary-colors, $color);
-}
-
 $colors: (
   primary-dk: $oc-teal-9,
   primary: $oc-teal-8,
@@ -45,4 +31,14 @@ $colors: (
 
 @function color($color) {
     @return map-get($colors, $color);
+}
+
+/*Generate color, and color-bg classes for each color defined above*/
+@each $name, $color in $colors {
+    .#{$name} {
+        color: $color;
+    }
+    .#{$name}Bg {
+        background-color: $color;
+    }
 }

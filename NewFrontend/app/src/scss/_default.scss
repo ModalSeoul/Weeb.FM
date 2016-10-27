@@ -1,19 +1,40 @@
-@import 'colors';
-
-html, body {
+body {
   margin: 0;
   padding: 0;
+  min-width: 320px;
   width: 100%;
 }
-body {
-  font-family: News Cycle, Helvetica, sans-serif;
+
+/* List styling */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-a {
-  cursor: pointer;
-  cursor: hand;
-  text-decoration: none;
+
+/* Remove shadow and outline on focus */
+input[type=name], input[type=email], input[type=text], input[type=tel], input[type=submit],
+input[type=number], input[type=password], textarea, button, a, select {
+  &:focus {
+    outline: none !important;
+    box-shadow: 0, 0, 0, transparent;
+    text-decoration: none;
+  }
 }
-a:visited, a:active, a:link, a:hover {
-  text-decoration: none;
-  color: color(primary-dk);
+input:focus:invalid:focus, textarea:focus:invalid:focus, select:focus:invalid:focus {
+  outline: none;
+  box-shadow: 0, 0, 0, transparent;
+}
+
+/* images can't be wider than their containers */
+img { max-width: 100%; }
+
+/* tables inherit font size (some browsers set a default table font size) */
+table {
+  font-size: inherit;
+}
+
+.weebContainer {
+  margin-left: 12rem;
+  padding: 0 2rem;
 }

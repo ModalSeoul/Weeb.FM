@@ -3,40 +3,40 @@
 @import './src/scss/app';
 
 .paneComponent {
-  height: 100% !important;
-  position: fixed;
-  width: 12rem;
+  background-color: $oc-gray-8;
   bottom: 0;
   color: white;
-  background-color: $oc-gray-8;
+  position: fixed;
+  height: 100% !important;
+  width: 12rem;
 
   &__seperator {
     background-color: white;
-    height: 2px;
     border: none;
-    width: 75%;
     padding: 0;
     margin-top: -1.5em;
+    height: 2px;
+    width: 75%;
   }
   &__title {
     color: color(primary-text);
-    text-align: center;
     font-family: Pacifico;
+    text-align: center;
   }
 
   .nav {
-    margin-top: 40px;
+    border-top: 1px solid black;
     display: flex;
     flex-direction: column;
-    border-top: 1px solid black;
+    margin-top: 40px;
 
     &__link {
-      color: white !important;
-      padding-left: 1rem;
       background-color: $oc-gray-8;
       border-bottom: 1px solid black;
-      padding: 1rem;
+      color: white !important;
       cursor: pointer;
+      padding: 1rem;
+      padding-left: 1rem;
       -moz-user-select: none;
       -ms-user-select: none;
       -khtml-user-select: none;

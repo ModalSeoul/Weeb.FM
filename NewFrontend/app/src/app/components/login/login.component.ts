@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private app: AppComponent,
     private router: Router,
     private cookies: CookieService
-  ){
+  ) {
     // If user logged in, route to index
     if (auth.isLoggedIn()) {
       router.navigate(['/']);

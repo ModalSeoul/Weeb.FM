@@ -1,4 +1,10 @@
-@mixin box-shadow() {
+@mixin no-transition { transition: none; }
+@mixin transition($property: all, $duration: .25s, $timing-function: ease) {
+  transition: $property $duration $timing-function;
+}
+
+@mixin no-shadow { box-shadow: 0 0 0 transparent; }
+@mixin box-shadow {
   -webkit-box-shadow: 0 8px 6px -6px black;
      -moz-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
@@ -7,7 +13,7 @@
 @mixin hover-base($color) {
   cursor: pointer;
   opacity: 1;
-  transition: 1s;
+  @include transition(all, 1s, ease);
 
   &:hover {
     background-color: $color;
