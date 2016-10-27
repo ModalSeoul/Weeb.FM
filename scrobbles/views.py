@@ -16,7 +16,8 @@ from .serializers import ScrobbleSerializer, CreateScrobbleSerializer
 
 
 def song_exists(title, artist):
-    check = Song.objects.filter(title__iexact=title, artist__name__iexact=artist)
+    check = Song.objects.filter(
+        title__iexact=title, artist__name__iexact=artist)
     if len(check) != 0:
         return True
     else:
@@ -64,7 +65,8 @@ class ScrobbleView(viewsets.ModelViewSet):
         # Example: ?by_user=Idiot&start=9&end=15
         elif 'by_user' in data:
             start, end = int(data.get('start')), int(data.get('end'))
-            query = Scrobble.objects.filter(member__nick_name__iexact=data.get('by_user'))
+            query = Scrobble.objects.filter(
+                member__nick_name__iexact=data.get('by_user'))
             query = query.order_by('-date_scrobbled')[start:end]
         return query
 
@@ -77,6 +79,7 @@ class ScrobbleView(viewsets.ModelViewSet):
         data = self.request.data
         creator = self.request.user
         serializer = self.get_serializer_class()
+        print(data)
 
         if artist_exists(data['artist']):
             artist = Artist.objects.get(name=data['artist'])
