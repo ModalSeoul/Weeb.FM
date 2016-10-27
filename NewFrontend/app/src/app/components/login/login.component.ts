@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/index';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/index';
 import { AppComponent } from '../../app.component';
 
 @Component({
@@ -19,11 +20,18 @@ export class LoginComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private app: AppComponent,
-    private router: Router
+    private router: Router,
+    private cookies: CookieService
   ){
     // If user logged in, route to index
     if (auth.isLoggedIn()) {
       router.navigate(['/']);
+    }
+
+    let savedUser = this.cookies.get('saved-user')
+    if (savedUser != null) {
+      this.username = savedUser;
+      this.rememberMe = true;
     }
   }
 
@@ -32,6 +40,11 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
+    if (this.rememberMe) {
+      this.cookies.put('saved-user', this.username);
+    } else {
+      this.cookies.put('saved-user', null);
+    }
     // Use window.location instead of router to reload state
     this.auth.login(this.username, this.password)
       .subscribe(() => { document.location.href = "/";

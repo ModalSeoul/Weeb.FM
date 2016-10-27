@@ -5,11 +5,13 @@
     </div>
     <div class="card__body">
       <input class="text-wilt" type="text" [(ngModel)]="username" placeholder="Username"
-        (keyup.enter)="login()" id="username">
+        (keyup.enter)="login()" id="username" />
       <input class="text-wilt" type="password" [(ngModel)]="password" placeholder="Password"
-        (keyup.enter)="login()" id="password">
-      <span class="__bottom">
-      </span>
+        (keyup.enter)="login()" id="password" />
+      <label for="saveUserCheckbox">
+        <input name="saveUserCheckbox" type="checkbox" [(ngModel)]="rememberMe" />
+        Remember Me
+      </label>
       <p style="color: red;">{{errorString}}</p>
     </div>
     <div class="card__footer">
