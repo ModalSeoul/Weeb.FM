@@ -7,6 +7,9 @@
 @import 'typography';
 @import 'open-color';
 
+body {
+  background-color: color(gray-dk);
+}
 a {
   color: color(primary-lt);
   cursor: pointer;

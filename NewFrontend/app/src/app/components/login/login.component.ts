@@ -14,7 +14,7 @@ import { AppComponent } from '../../app.component';
 export class LoginComponent implements OnInit {
   private username: string;
   private password: string;
-
+  private rememberMe: boolean;
   private errorString: string;
 
   constructor(
