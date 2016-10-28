@@ -23,7 +23,7 @@ class SongView(viewsets.ModelViewSet):
         # If artist id is passed
         if pk is not None:
             # filter by passed artist id
-            queryset = Song.objects.filter(artist=pk)
+            queryset = Song.objects.filter(artist__name__iexact=pk)
             # serialize the filtered song objects(lets us display properly)
             serializer = SongSerializer(instance=queryset, many=True)
             # return the serialized & filtered data to the viewset
