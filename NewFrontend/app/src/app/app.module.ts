@@ -11,6 +11,7 @@ import {
   RequestOptions
 } from '@angular/http';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { AppComponent } from './app.component';
 import {
   AuthService,
   UserService,
@@ -22,19 +23,7 @@ import {
   GlobalService
 } from './services';
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
-import { ScrobbletableComponent } from './components/scrobbletable/scrobbletable.component';
-import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
-import { RecentComponent } from './components/recent/recent.component';
-import { StatsComponent } from './components/stats/stats.component';
-import { SettingsComponent } from './components/settings/settings.component';
-import { StartComponent } from './components/start/start.component';
-import { ArtistComponent } from './components/artist/artist.component';
+import * as Components from './components';
 
 @Injectable()
 export class DefaultRequestOptions extends BaseRequestOptions {
@@ -46,18 +35,7 @@ export class DefaultRequestOptions extends BaseRequestOptions {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    SidebarComponent,
-    ProfileComponent,
-    RegisterComponent,
-    HomeComponent,
-    ScrobbletableComponent,
-    LeaderboardComponent,
-    RecentComponent,
-    StatsComponent,
-    SettingsComponent,
-    StartComponent,
-    ArtistComponent,
+    ...Object.keys(Components).map(k => Components[k]),
   ],
   imports: [
     AppRoutingModule,

@@ -6,7 +6,7 @@ export { LeaderboardComponent } from './leaderboard/leaderboard.component';
 export { ProfileComponent } from './profile/profile.component';
 export { RecentComponent } from './recent/recent.component';
 export { RegisterComponent } from './register/register.component';
-export { ScrobbleTableComponent } from './scrobbletable/scrobbletable.component';
+export { ScrobbletableComponent } from './scrobbletable/scrobbletable.component';
 export { SettingsComponent } from './settings/settings.component';
 export { StartComponent } from './start/start.component';
 export { StatsComponent } from './stats/stats.component';
