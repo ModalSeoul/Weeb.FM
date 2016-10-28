@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../../app.component';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
-import { UserService } from '../../services/user.service';
-import { AuthService } from '../../services/auth.service';
+import { UserService, AuthService, GlobalService } from '../../services';
 
 @Component({
   selector: 'app-settings',
@@ -17,7 +15,7 @@ export class SettingsComponent implements OnInit {
   private primaryChoices: any;
 
   constructor(
-    private app: AppComponent,
+    private Global: GlobalService,
     private User: UserService,
     private Auth: AuthService,
     private cookies: CookieService
@@ -28,7 +26,7 @@ export class SettingsComponent implements OnInit {
       this.token = this.Auth.getCookie();
       console.log(this.token);
       this.activeUser = user;
-      this.app.loading = false;
+      this.Global.isLoading = false;
     });
     this.primaryChoices = [
       'gray',

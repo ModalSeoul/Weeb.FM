@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/index';
-import { AppComponent } from '../../app.component';
+import { UserService, GlobalService } from '../../services/index';
 
 @Component({
   selector: 'app-leaderboard',
@@ -12,13 +11,13 @@ export class LeaderboardComponent implements OnInit {
 
   constructor(
     private users: UserService,
-    private app: AppComponent
+    private Global: GlobalService
   ) { }
 
   ngOnInit() {
     this.users.getLeaderboardUsers().subscribe((r : any) => {
       this.topUsers = r;
-      this.app.loading = false;
+      this.Global.isLoading= false;
     });
   }
 

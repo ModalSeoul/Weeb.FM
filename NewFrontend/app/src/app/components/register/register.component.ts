@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/index';
+import { AuthService, GlobalService } from '../../services';
 import { Router } from '@angular/router';
-import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'register',
@@ -19,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private app: AppComponent,
+    private Global: GlobalService,
     private router: Router
   ) {
     // If user logged in, route to index
@@ -29,7 +28,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.app.loading = false;
+    this.Global.isLoading = false;
   }
 
   public register() {

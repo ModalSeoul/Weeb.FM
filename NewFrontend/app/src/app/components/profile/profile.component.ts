@@ -5,9 +5,10 @@ import {
   AuthService,
   ScrobbleService,
   UserService,
-  ProfileService
-} from '../../services/index';
-import { AppComponent } from '../../app.component';
+  ProfileService,
+  GlobalService
+} from '../../services';
+
 @Component({
   selector: 'profile',
   templateUrl: './profile.component.html',
@@ -31,7 +32,7 @@ export class ProfileComponent implements OnInit {
     private auth: AuthService,
     private user: UserService,
     private Profile: ProfileService,
-    private app: AppComponent
+    private Global: GlobalService
   ) {
   }
 
@@ -60,7 +61,7 @@ export class ProfileComponent implements OnInit {
 
     this.Scrobble.getUserScrobbles(this.uid, 0, 100).subscribe((r: any) => {
       this.scrobbles = r;
-      this.app.loading = false;
+      this.Global.isLoading = false;
     });
   }
 

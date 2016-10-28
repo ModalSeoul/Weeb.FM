@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, UserService, BlogService } from '../../services/index';
-import { AppComponent } from '../../app.component';
+import {
+  AuthService,
+  UserService,
+  BlogService,
+  GlobalService
+} from '../../services/index';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  providers: [ AuthService, UserService ]
+  styleUrls: ['./home.component.scss']
 })
 
 export class HomeComponent implements OnInit {
@@ -18,7 +21,7 @@ export class HomeComponent implements OnInit {
     private Auth: AuthService,
     private User: UserService,
     private Blog: BlogService,
-    private app: AppComponent
+    private Global: GlobalService
   ) {
     console.log(this.Auth.isLoggedIn());
     // Setting loggedIn property based on user status
@@ -30,6 +33,7 @@ export class HomeComponent implements OnInit {
   public ngOnInit() {
     this.Blog.getAll().subscribe((posts: any) => {
       this.entries = posts;
+      this.Global.isLoading = false;
     });
   }
 

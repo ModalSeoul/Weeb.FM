@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StatsService } from '../../services/stats.service';
-import { AppComponent } from '../../app.component';
-import { UserService } from '../../services/user.service';
+import { UserService, GlobalService, StatsService } from '../../services';
 
 @Component({
   selector: 'app-stats',
@@ -17,7 +15,7 @@ export class StatsComponent implements OnInit {
   constructor(
     private Stats: StatsService,
     private User: UserService,
-    private app: AppComponent
+    private Global: GlobalService
   ) { }
 
 
@@ -32,7 +30,7 @@ export class StatsComponent implements OnInit {
       this.scrobbleCount = r;
       this.User.getCount().subscribe((l: any) => {
         this.memberCount = l;
-        this.app.loading = false;
+        this.Global.isLoading = false;
       });
     });
   }

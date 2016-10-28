@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppComponent } from '../../app.component';
-import { UserService } from '../../services';
+import { UserService, GlobalService } from '../../services';
 
 @Component({
   selector: 'app-artist',
@@ -13,7 +12,7 @@ export class ArtistComponent implements OnInit {
   private users: Array<any> = [];
 
   constructor(
-    private app: AppComponent,
+    private Global: GlobalService,
     private route: ActivatedRoute,
     private User: UserService
   ) { }
@@ -23,7 +22,7 @@ export class ArtistComponent implements OnInit {
     this.User.listensTo(this.artist).subscribe((users: any) => {
       console.log(users);
       this.users = users;
-      this.app.loading = false;
+      this.Global.isLoading = false;
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../../app.component';
+import { GlobalService } from '../../services';
 
 @Component({
   selector: 'app-start',
@@ -7,15 +7,14 @@ import { AppComponent } from '../../app.component';
   styleUrls: ['./start.component.scss']
 })
 export class StartComponent implements OnInit {
-
   public scrobblers : any;
 
   constructor(
-    private app: AppComponent
+    private Global: GlobalService
   ) { }
 
   ngOnInit() {
-    this.app.loading = false;
+    this.Global.isLoading = false;
     this.scrobblers = [
       {
         name: 'Chrome Extension (Bandcamp, Google Play, Pandora)',

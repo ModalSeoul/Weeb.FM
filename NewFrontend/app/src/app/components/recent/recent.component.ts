@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ScrobbleService } from '../../services/index';
-import { AppComponent } from '../../app.component';
+import { ScrobbleService, GlobalService } from '../../services';
 
 @Component({
   selector: 'app-recent',
@@ -12,13 +11,13 @@ export class RecentComponent implements OnInit {
 
   constructor(
     private Scrobbles: ScrobbleService,
-    private app: AppComponent
+    private Global: GlobalService
   ) { }
 
   ngOnInit() {
     this.Scrobbles.getRecent(50).subscribe((r: any) => {
       this.scrobbles = r;
-      this.app.loading =  false;
+      this.Global.isLoading =  false;
     });
   }
 

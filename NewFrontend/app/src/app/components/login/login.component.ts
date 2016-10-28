@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/index';
-import { AppComponent } from '../../app.component';
+import { AuthService, GlobalService } from '../../services';
 
 @Component({
   selector: 'login',
@@ -19,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private app: AppComponent,
+    private Global: GlobalService,
     private router: Router,
     private cookies: CookieService
   ) {
@@ -36,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.app.loading = false;
+    this.Global.isLoading = false;
   }
 
   public login() {
