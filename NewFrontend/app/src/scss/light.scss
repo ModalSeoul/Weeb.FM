@@ -42,30 +42,19 @@ a:active, a:hover { color: color(primary9); }
   }
 
   &__table {
-    thead {
-      border-top: none;
-      background-color: color(gray5);
-    }
+    th { color: color(gray8); }
 
-    th {
-      background-color: color(gray4);
-      color: color(gray8);
-    }
+    tr th { border-bottom: 2px solid color(divider-lt); }
 
-    tr td { border-bottom: 2px solid color(gray3); }
+    tr td { border-bottom: 2px solid color(divider-lt); }
 
-    tr:hover td {
-      background-color: color(gray3);
-    }
+    tr:hover td { background-color: color(divider-lt); }
 
-    td {
-      // background-color: color(gray3);
-      color: color(gray8);
-    }
+    td { color: color(gray8);}
 
     &--striped {
       tr:nth-child(even) td {
-        background-color: color(gray3);
+        background-color: color(divider-lt);
       }
     }
   }
@@ -79,57 +68,16 @@ a:active, a:hover { color: color(primary9); }
     border-top-right-radius: 2px;
     color: color(gray0);
   }
-
   ul {
-    li {
-      border-bottom: 2px solid color(gray3);
-    }
+    li { border-bottom: 2px solid color(divider-lt); }
+    li:hover { background-color: color(divider-lt); }
   }
-
-  ul li:hover {
-    background-color: color(gray3);
-  }
-
   &--stripe {
-    background-color: color(gray3);
+    background-color: color(divider-lt);
   }
-
   &--striped {
     li:nth-child(odd) {
-      background-color: color(gray3);
-    }
-  }
-}
-
-
-.sidebar {
-  background-color: color(gray8);
-  color: white;
-
-  &__title {
-    background-color: color(primary7);
-    color: white;
-  }
-  .nav {
-    &__link {
-      @include bold-text;
-
-      background-color: color(gray8);
-      color: color(gray2) !important;
-
-      &:hover {
-        background-color: color(accent8);
-      }
-
-      &--active {
-        -webkit-box-shadow: inset size(6) 0 0 0 color(accent8);
-           -moz-box-shadow: inset size(6) 0 0 0 color(accent8);
-                box-shadow: inset size(6) 0 0 0 color(accent8);
-      }
-
-      &__icon {
-        color: color(gray2);
-      }
+      background-color: color(divider-lt);
     }
   }
 }

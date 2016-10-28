@@ -42,25 +42,19 @@ a:active, a:hover { color: color(primary8); }
   }
 
   &__table {
-    thead {
-      background-color: color(gray8);
-    }
+    th { color: color(gray0); }
 
-    th {
-      background-color: color(gray8);
-      color: color(gray0);
-    }
+    tr th { border-bottom: 2px solid color(divider-dk); }
 
-    tr:hover td { border-bottom: 2px solid color(accent8); }
+    tr td { border-bottom: 2px solid color(divider-dk); }
 
-    td {
-      background-color: color(gray9);
-      color: color(gray0);
-    }
+    tr:hover td { background-color: color(divider-dk); }
+
+    td { color: color(gray0); }
 
     &--striped {
       tr:nth-child(even) td {
-        background-color: color(gray9);
+        background-color: color(divider-dk);
       }
     }
   }
@@ -68,57 +62,22 @@ a:active, a:hover { color: color(primary8); }
 
 
 .listComponent {
-  ul li:hover {
-    border-bottom: 2px solid color(accent8);
-  }
-
-  &--stripe {
-    background: color(gray9);
-  }
-
-  &--striped {
-    li:nth-child(odd) {
-      background: color(gray9);
-    }
-  }
-
   &__header {
     background-color: color(primary9);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     color: color(gray0);
   }
-}
-
-
-.sidebar {
-  background-color: color(gray8);
-  color: white;
-
-  &__title {
-    background-color: color(primary7);
-    color: white;
+  ul {
+    li { border-bottom: 2px solid color(divider-dk); }
+    li:hover { background-color: color(divider-dk); }
   }
-  .nav {
-    &__link {
-      @include bold-text;
-
-      background-color: color(gray8);
-      color: color(gray2) !important;
-
-      &:hover {
-        background-color: color(accent8);
-      }
-
-      &--active {
-        -webkit-box-shadow: inset size(6) 0 0 0 color(accent8);
-           -moz-box-shadow: inset size(6) 0 0 0 color(accent8);
-                box-shadow: inset size(6) 0 0 0 color(accent8);
-      }
-
-      &__icon {
-        color: color(gray2);
-      }
+  &--stripe {
+    background: color(divider-dk);
+  }
+  &--striped {
+    li:nth-child(odd) {
+      background: color(divider-dk);
     }
   }
 }

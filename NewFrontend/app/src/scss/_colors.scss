@@ -48,7 +48,8 @@ $colors: (
   gray2:              $oc-gray-1,
   gray0:              $oc-gray-0,
 
-  divider:            $oc-gray-7
+  divider-dk:         $oc-gray-7,
+  divider-lt:         $oc-gray-3
 );
 
 @function color($color) {
