@@ -28,7 +28,7 @@ a:active, a:hover { color: color(primary9); }
 
 .loading {
   &:before {
-    background-color: color(gray2);
+    background-color: color(gray4);
   }
 }
 
@@ -42,33 +42,30 @@ a:active, a:hover { color: color(primary9); }
   }
 
   &__table {
-    border: 2px solid color(primary7);
-
     thead {
       border-top: none;
       background-color: color(gray5);
     }
 
     th {
-      background-color: color(gray5);
-      border-bottom: 2px solid color(divider);
+      background-color: color(gray4);
       color: color(gray8);
     }
 
-    tr { border-bottom: none; }
+    tr td { border-bottom: 2px solid color(gray3); }
 
     tr:hover td {
-      background-color: color(gray4);
+      background-color: color(gray3);
     }
 
     td {
-      background-color: color(gray3);
+      // background-color: color(gray3);
       color: color(gray8);
     }
 
     &--striped {
       tr:nth-child(even) td {
-        background-color: color(gray4);
+        background-color: color(gray3);
       }
     }
   }
@@ -84,26 +81,22 @@ a:active, a:hover { color: color(primary9); }
   }
 
   ul {
-    background-color: color(gray3);
-    border: 2px solid color(primary7);
-
     li {
-      border-bottom: none;
+      border-bottom: 2px solid color(gray3);
     }
   }
 
   ul li:hover {
-    border-bottom: none;
-    background-color: color(gray4);
+    background-color: color(gray3);
   }
 
   &--stripe {
-    background-color: color(gray4);
+    background-color: color(gray3);
   }
 
   &--striped {
     li:nth-child(odd) {
-      background-color: color(gray4);
+      background-color: color(gray3);
     }
   }
 }

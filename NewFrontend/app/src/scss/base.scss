@@ -129,7 +129,7 @@ a:active, a:hover {
   &__header {
     @include bold-text;
     padding: size(2) size(1);
-    text-align: left;
+    text-align: center;
     text-transform: uppercase;
   }
 
@@ -138,11 +138,7 @@ a:active, a:hover {
     border-spacing: 0;
     width: 100%;
 
-    thead {
-      border-top: 2px solid color(divider);
-    }
-
-    tr {
+    tr td {
       border-bottom: 2px solid color(divider);
     }
 
@@ -163,7 +159,6 @@ a:active, a:hover {
     td {
       @include normal-text;
 
-      background-color: color(gray9);
       color: color(gray0);
       overflow: hidden;
       padding: size(1.5) size(2);
@@ -223,7 +218,6 @@ a:active, a:hover {
   width: 100%;
 
   ul {
-    border-top: 2px solid color(divider);
     list-style: none;
     padding: 0;
     margin: 0;
@@ -237,7 +231,7 @@ a:active, a:hover {
   &__header {
     font-weight: bold;
     padding: size(2) size(1);
-    text-align: left;
+    text-align: center;
     text-transform: uppercase;
   }
 }
@@ -374,9 +368,18 @@ a:active, a:hover {
   height: 100% !important;
   width: 12rem;
 
+  &__seperator {
+    background-color: white;
+    border: none;
+    margin-top: size(-3.5);
+    margin-bottom: size(3);
+    height: 2px;
+    width: 75%;
+  }
+
   &__title {
     font-family: Pacifico;
-    padding: size(1);
+    padding: size(.75);
     text-align: center;
   }
   .nav {
