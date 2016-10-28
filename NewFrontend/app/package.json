@@ -4,7 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve",
+    "start": "ng serve & npm run scss",
     "lint": "tslint \"src/**/*.ts\"",
     "scss": "sass --watch src/scss/light.scss:src/css/light.css src/scss/dark.scss:src/css/dark.css",
     "test": "ng test",
