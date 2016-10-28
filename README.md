@@ -1,9 +1,8 @@
-# DARK BRANCH NOTICE
+# DARK BRANCH NOTICE\
 
-Run from NewFrontend/app/
-
+You must run if you're changing any css.  Does not need to be ran on the server:
 ```
-sass --watch src/scss/app.scss:src/css/dark.css
+npm run scss
 ```
 
 This will automatically watch for changes in the scss and compile it to css.

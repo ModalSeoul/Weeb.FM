@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { ThemeService } from './services';
 
 @Component({
     selector: 'app-root',
@@ -12,21 +14,32 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
       <router-outlet></router-outlet>
     </div>`,
     providers: [],
-    styleUrls: ['app.component.scss']
 })
 
 export class AppComponent implements OnInit {
   public loading: boolean = true;
   public lastRoute: string;
 
+  private currentTheme: string;
+
   constructor(
-    private router: Router
+    private router: Router,
+    private theme: ThemeService,
+    private cookies: CookieService
   ) {}
 
   public ngOnInit() {
     this.router.events.subscribe((event: any) => {
       this.navigationInterceptor(event);
     });
+
+    if (!this.cookies.get('theme')) {
+      this.cookies.put('theme', 'light');
+      this.currentTheme = 'light';
+    } else {
+      this.currentTheme = this.cookies.get('theme');
+    }
+    this.theme.setStyle(this.currentTheme);
   }
 
   navigationInterceptor(event: any): void {

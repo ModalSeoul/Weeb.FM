@@ -821,54 +821,72 @@ a:active, a:hover {
   width: 50%; }
 
 body {
-  background-color: #212529;
-  color: #f1f3f5; }
+  background-color: #f1f3f5;
+  color: #212529; }
 
 a {
-  color: #228ae6; }
-
-a:visited, a:link {
-  color: #228ae6; }
-
-a:active, a:hover {
   color: #1b6ec2; }
 
+a:visited, a:link {
+  color: #1b6ec2; }
+
+a:active, a:hover {
+  color: #1862ab; }
+
 .text-wilt {
-  background-color: #343a40;
-  color: #f1f3f5; }
+  background-color: #f1f3f5;
+  color: #212529; }
 
 .card {
-  background-color: #343a40; }
+  background-color: #dee2e6; }
   .card__title {
     background-color: #1c7cd6;
     color: #f8f9fa; }
 
 .loading:before {
-  background-color: #212529; }
+  background-color: #f1f3f5; }
 
 .tableComponent__header {
+  background-color: #1c7cd6;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
   color: #f8f9fa; }
-.tableComponent__table thead {
-  background-color: #343a40; }
-.tableComponent__table th {
-  background-color: #343a40;
-  color: #f8f9fa; }
-.tableComponent__table tr:hover td {
-  border-bottom: 2px solid #e03131; }
-.tableComponent__table td {
-  background-color: #212529;
-  color: #f8f9fa; }
-.tableComponent__table--striped tr:nth-child(even) td {
-  background-color: #212529; }
+.tableComponent__table {
+  border: 2px solid #1c7cd6; }
+  .tableComponent__table thead {
+    border-top: none;
+    background-color: #adb5bd; }
+  .tableComponent__table th {
+    background-color: #adb5bd;
+    border-bottom: 2px solid #495057;
+    color: #343a40; }
+  .tableComponent__table tr {
+    border-bottom: none; }
+  .tableComponent__table tr:hover td {
+    background-color: #ced4da; }
+  .tableComponent__table td {
+    background-color: #dee2e6;
+    color: #343a40; }
+  .tableComponent__table--striped tr:nth-child(even) td {
+    background-color: #ced4da; }
 
-.listComponent ul li:hover {
-  border-bottom: 2px solid #e03131; }
-.listComponent--stripe {
-  background: #212529; }
-.listComponent--striped li:nth-child(odd) {
-  background: #212529; }
 .listComponent__header {
+  background-color: #1c7cd6;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
   color: #f8f9fa; }
+.listComponent ul {
+  background-color: #dee2e6;
+  border: 2px solid #1c7cd6; }
+  .listComponent ul li {
+    border-bottom: none; }
+.listComponent ul li:hover {
+  border-bottom: none;
+  background-color: #ced4da; }
+.listComponent--stripe {
+  background-color: #ced4da; }
+.listComponent--striped li:nth-child(odd) {
+  background-color: #ced4da; }
 
 .sidebar {
   background-color: #343a40;
@@ -889,4 +907,4 @@ a:active, a:hover {
     .sidebar .nav__link__icon {
       color: #f1f3f5; }
 
-/*# sourceMappingURL=dark.css.map */
+/*# sourceMappingURL=light.css.map */

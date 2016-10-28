@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
+    "scss": "sass --watch src/scss/light.scss:src/css/light.css src/scss/dark.scss:src/css/dark.css",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor"

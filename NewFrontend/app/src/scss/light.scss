@@ -1,0 +1,142 @@
+@import 'base';
+
+body {
+  background-color: color(gray2);
+  color: color(gray9);
+}
+
+a { color: color(primary8); }
+a:visited, a:link { color: color(primary8); }
+a:active, a:hover { color: color(primary9); }
+
+
+.text-wilt {
+  background-color: color(gray2);
+  color: color(gray9);
+}
+
+
+.card {
+  background-color: color(gray3);
+
+  &__title {
+    background-color: color(primary7);
+    color: color(gray0);
+  }
+}
+
+
+.loading {
+  &:before {
+    background-color: color(gray2);
+  }
+}
+
+
+.tableComponent {
+  &__header {
+    background-color: color(primary7);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    color: color(gray0);
+  }
+
+  &__table {
+    border: 2px solid color(primary7);
+
+    thead {
+      border-top: none;
+      background-color: color(gray5);
+    }
+
+    th {
+      background-color: color(gray5);
+      border-bottom: 2px solid color(divider);
+      color: color(gray8);
+    }
+
+    tr { border-bottom: none; }
+
+    tr:hover td {
+      background-color: color(gray4);
+    }
+
+    td {
+      background-color: color(gray3);
+      color: color(gray8);
+    }
+
+    &--striped {
+      tr:nth-child(even) td {
+        background-color: color(gray4);
+      }
+    }
+  }
+}
+
+
+.listComponent {
+  &__header {
+    background-color: color(primary7);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    color: color(gray0);
+  }
+
+  ul {
+    background-color: color(gray3);
+    border: 2px solid color(primary7);
+
+    li {
+      border-bottom: none;
+    }
+  }
+
+  ul li:hover {
+    border-bottom: none;
+    background-color: color(gray4);
+  }
+
+  &--stripe {
+    background-color: color(gray4);
+  }
+
+  &--striped {
+    li:nth-child(odd) {
+      background-color: color(gray4);
+    }
+  }
+}
+
+
+.sidebar {
+  background-color: color(gray8);
+  color: white;
+
+  &__title {
+    background-color: color(primary7);
+    color: white;
+  }
+  .nav {
+    &__link {
+      @include bold-text;
+
+      background-color: color(gray8);
+      color: color(gray2) !important;
+
+      &:hover {
+        background-color: color(accent8);
+      }
+
+      &--active {
+        -webkit-box-shadow: inset size(6) 0 0 0 color(accent8);
+           -moz-box-shadow: inset size(6) 0 0 0 color(accent8);
+                box-shadow: inset size(6) 0 0 0 color(accent8);
+      }
+
+      &__icon {
+        color: color(gray2);
+      }
+    }
+  }
+}

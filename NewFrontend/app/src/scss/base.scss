@@ -8,17 +8,14 @@
 @import 'scrollbar';
 
 a {
-  color: color(primary6);
   cursor: pointer;
   text-decoration: none;
 }
 a:visited, a:link {
   text-decoration: none;
-  color: color(primary6);
 }
 a:active, a:hover {
   text-decoration: none;
-  color: color(primary8);
 }
 
 /**
@@ -61,10 +58,8 @@ a:active, a:hover {
   }
 }
 .text-wilt {
-  background-color: color(gray8);
   border-radius: 2px;
   border: 2px solid color(primary7);
-  color: color(gray2);
   margin: size(1);
   padding: size(1);
 }
@@ -73,7 +68,6 @@ a:active, a:hover {
   @include box-shadow();
   @include normal-text;
 
-  background-color: color(gray8);
   border: 2px solid color(primary7);
   border-radius: 2px;
   margin-bottom: size(2);
@@ -81,8 +75,6 @@ a:active, a:hover {
   &__title {
     @include bold-text;
 
-    background-color: color(primary7);
-    color: color(gray0);
     padding: size(1) size(2);
     text-align: center;
     text-transform: uppercase;
@@ -125,7 +117,6 @@ a:active, a:hover {
     left: 12rem;
     width: 100%;
     height: 100%;
-    background-color: color(gray9);
   }
 }
 
@@ -137,12 +128,7 @@ a:active, a:hover {
 
   &__header {
     @include bold-text;
-
-    // background-color: color(primary7);
-    // border-top-left-radius: 2px;
-    // border-top-right-radius: 2px;
-    color: color(gray0);
-    padding: size(1);
+    padding: size(2) size(1);
     text-align: left;
     text-transform: uppercase;
   }
@@ -153,16 +139,11 @@ a:active, a:hover {
     width: 100%;
 
     thead {
-      border-top: 1px solid color(divider);
-      background: color(gray8);
+      border-top: 2px solid color(divider);
     }
 
     tr {
-      border-bottom: 1px solid color(divider);
-
-      &:hover td {
-        border-bottom: 1px solid color(accent8);
-      }
+      border-bottom: 2px solid color(divider);
     }
 
     th {
@@ -242,38 +223,20 @@ a:active, a:hover {
   width: 100%;
 
   ul {
-    border-top: 1px solid color(divider);
+    border-top: 2px solid color(divider);
     list-style: none;
     padding: 0;
     margin: 0;
 
     li {
-      border-bottom: 1px solid color(divider);
+      border-bottom: 2px solid color(divider);
       padding: size(1.5) size(2);
-
-      &:hover {
-        border-bottom: 1px solid color(accent8);
-      }
-    }
-  }
-
-  &--stripe {
-    background: color(gray2);
-  }
-
-  &--striped {
-    li:nth-child(odd) {
-      background: color(gray2);
     }
   }
 
   &__header {
-    // background-color: color(primary7);
-    // border-top-left-radius: 2px;
-    // border-top-right-radius: 2px;
-    color: color(gray0);
     font-weight: bold;
-    padding: size(1);
+    padding: size(2) size(1);
     text-align: left;
     text-transform: uppercase;
   }
@@ -406,16 +369,12 @@ a:active, a:hover {
 *******************************************************************************/
 
 .sidebar {
-  background-color: color(gray8);
   bottom: 0;
-  color: white;
   position: fixed;
   height: 100% !important;
   width: 12rem;
 
   &__title {
-    background-color: color(primary7);
-    color: white;
     font-family: Pacifico;
     padding: size(1);
     text-align: center;
@@ -425,31 +384,17 @@ a:active, a:hover {
     flex-direction: column;
 
     &__link {
-      @include bold-text;
-
-      background-color: color(gray8);
-      border-bottom: 1px solid color(divider);
-      color: color(gray2) !important;
+      border-bottom: 2px solid color(divider);
       cursor: pointer;
       opacity: 1;
       padding: size(2) size(1.5);
       @include transition(all, 1s, ease);
 
-      &:hover {
-        background-color: color(accent8);
+      &__icon {
+        border-right: 1px;
+        font-size: 18px;
+        margin-right: size(3);
       }
-
-      &--active {
-        -webkit-box-shadow: inset size(6) 0 0 0 color(accent8);
-           -moz-box-shadow: inset size(6) 0 0 0 color(accent8);
-                box-shadow: inset size(6) 0 0 0 color(accent8);
-      }
-    }
-    &__icon {
-      color: color(gray2);
-      border-right: 1px;
-      font-size: 18px;
-      margin-right: size(3);
     }
   }
 }
