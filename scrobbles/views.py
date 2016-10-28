@@ -102,7 +102,7 @@ class ScrobbleView(viewsets.ModelViewSet):
                     title=data['album'], artist=artist, scrobble_count=1)
 
         if song_exists(data['song'], data['artist']):
-            song = Song.objects.filter(title=data['song'])[0]
+            song = Song.objects.get(title=data['song'], artist=artist)
             song.scrobble_count += 1
             song.save()
         else:
