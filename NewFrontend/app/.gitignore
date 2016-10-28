@@ -22,6 +22,8 @@
 /coverage/*
 /libpeerconnection.log
 npm-debug.log
+*.map
+*.css
 testem.log
 /typings
 
