@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService, GlobalService } from '../../services/index';
+import { UserService, GlobalService } from '../../services';
 
 @Component({
   selector: 'app-leaderboard',

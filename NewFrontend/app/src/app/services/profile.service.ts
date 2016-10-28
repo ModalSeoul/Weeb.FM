@@ -31,7 +31,7 @@ export class ProfileService {
   }
 
   // TODO: Split this up
-  public canFollow(visitingUser: string) {
+  public updateProfile(visitingUser: string) {
     return new Promise((resolve, reject) => {
       let resolveMe: any = {};
       this.User.getCurrentUser().subscribe((r: any) => {

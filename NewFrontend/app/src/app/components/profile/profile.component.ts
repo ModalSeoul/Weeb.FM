@@ -16,7 +16,7 @@ import {
 })
 
 export class ProfileComponent implements OnInit {
-  private start: number = 100;
+  private start: number = 50;
   private full: boolean = false;
   private scrobbles: Array<any> = [];
   private uid: string;
@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
       this.uid = id;
     }
 
-    this.Profile.canFollow(this.uid).then((r: any) => {
+    this.Profile.updateProfile(this.uid).then((r: any) => {
       this.profileObj = r;
     });
 
@@ -74,12 +74,12 @@ export class ProfileComponent implements OnInit {
   // Adds additional scrobbles to the viewing list
   public addScrobbles() {
     this.Scrobble.getUserScrobbles(
-      this.uid, this.start, this.start + 100
+      this.uid, this.start, this.start + 50
     ).subscribe((r: any) => {
-      if (r.length < 100) {
+      if (r.length < 50) {
         this.full = true;
       } else {
-        this.start += 100;
+        this.start += 50;
       }
       r.forEach((scrobble: any) => {
         this.scrobbles.push(scrobble);

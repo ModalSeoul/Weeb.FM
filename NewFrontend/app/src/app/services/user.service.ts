@@ -2,52 +2,63 @@ import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/cache';
 
 @Injectable()
 export class UserService {
+  public curUser: any = {};
 
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService) {
+    this.getCurrentUser().subscribe((r: any) => {
+      this.curUser = r;
+    });
+  }
 
   /*This class is laid out in a fairly
   * straight forward manner. Names are
   * long, but they're explicit
   */
 
-  public getUserAvatar(name: string) {
-    return this.http.get(`members/${name}/by_nick/`);
-  }
-
-  // Deprecating this
-  public getUserNick(name: string) {
-    return this.http.get(`members/${name}/by_nick/`);
-  }
-
   // This function will replace getUserNick next version.
   public getUserObject(name: string) {
-    return this.http.get(`members/${name}/by_nick/`);
+    const network$ = this.http.get(`members/${name}/by_nick/`).cache();
+    network$.subscribe(
+      () => console.log('(User object)HTTP Get happened!'));
+    return network$;
   }
 
   public getLeaderboardUsers() {
-    return this.http.get('members/most_scrobbles/', { 'leaderboard': true });
+    const network$ = this.http.get(
+        'members/most_scrobbles/', {'leaderboard': true}).cache();
+    network$.subscribe(
+      () => console.log('(Leaderboard object)HTTP Get happened!'));
+    return network$;
   }
 
   public getCurrentUser() {
-    return this.http.get('members/current/');
+    const network$ = this.http.get('members/current/').cache();
+    network$.subscribe(
+      () => console.log('(Current user)HTTP Get happened!'));
+    return network$;
   }
 
   public getCount() {
-    return this.http.get('members/count/');
+    return this.http.get('members/count/').share();
   }
 
   public follow(user: string) {
-    return this.http.post(`followings/${user}/follow`);
+    return this.http.post(`followings/${user}/follow`).share();
   }
 
   public followers(id: string | number) {
-    return this.http.get(`followings/${id}/followers`);
+    const network$ = this.http.get(`followings/${id}/followers`).cache();
+    network$.subscribe(
+      () => console.log('(Followers object)Http get happened!'));
+    return network$;
   }
 
   public listensTo(name: string) {
-    return this.http.get(`members/?listened=${name}`);
+    return this.http.get(`members/?listened=${name}`).share();
   }
 }

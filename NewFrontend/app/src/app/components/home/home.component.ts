@@ -4,7 +4,7 @@ import {
   UserService,
   BlogService,
   GlobalService
-} from '../../services/index';
+} from '../../services';
 
 @Component({
   selector: 'app-home',

@@ -11,7 +11,7 @@
       <i class="fa fa-info fa-fw nav__icon" aria-hidden="true"></i>
       Get Started
     </a>
-    <a class="nav__link" *ngIf="auth.isLoggedIn()" [routerLink]="['profile/', curUser]" [routerLinkActive]="['nav__link--active']">
+    <a class="nav__link" *ngIf="auth.isLoggedIn()" [routerLink]="['profile/', User.curUser.nick_name]" [routerLinkActive]="['nav__link--active']">
       <i class="fa fa-user fa-fw nav__icon" aria-hidden="true"></i>
       My Profile
     </a>

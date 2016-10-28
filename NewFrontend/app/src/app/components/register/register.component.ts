@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
   selector: 'register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [AuthService]
 })
 
 export class RegisterComponent implements OnInit {
