@@ -1,8 +1,8 @@
 <div *ngIf="profileObj.date_joined">
   <div class="__banner" [ngStyle]="{'background-image':'url('+ profileObj.banner +')'}">
     <div class="profileWrapper">
-      <div class="__user">
-        <img class="__avi" [src]="profileObj.avatar">
+      <div class="__user" [ngClass]="{'staff': profileObj.is_staff}">
+        <img class="__avi" [ngClass]="{'staff': profileObj.is_staff}" [src]="profileObj.avatar">
         <h1>{{profileObj.nick}}</h1>
       </div>
     </div>
