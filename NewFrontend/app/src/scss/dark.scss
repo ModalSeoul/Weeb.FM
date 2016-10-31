@@ -18,6 +18,7 @@ a:active, a:hover { color: color(primary8); }
 
 .card {
   background-color: color(gray8);
+  border: 2px solid color(primary7);
 
   &__title {
     background-color: color(primary7);
@@ -35,7 +36,7 @@ a:active, a:hover { color: color(primary8); }
 
 .tableComponent {
   &__header {
-    background-color: color(primary9);
+    background-color: color(primary7);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     color: color(gray0);
@@ -63,7 +64,7 @@ a:active, a:hover { color: color(primary8); }
 
 .listComponent {
   &__header {
-    background-color: color(primary9);
+    background-color: color(primary7);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     color: color(gray0);

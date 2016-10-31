@@ -25,7 +25,7 @@ a:active, a:hover {
 .btn-wilt {
   @include medium-text;
 
-  background-color: color(primary7);
+  background-color: color(primary8);
   border-radius: 3px;
   border: none;
   color: color(gray2);
@@ -34,7 +34,7 @@ a:active, a:hover {
   @include transition(all, .5s, ease-in-out);
 
   &:hover {
-    background-color: color(primary5);
+    background-color: color(primary6);
   }
   &:active {
     opacity: 0.8;
@@ -68,7 +68,6 @@ a:active, a:hover {
   @include box-shadow();
   @include normal-text;
 
-  border: 2px solid color(primary7);
   border-radius: 2px;
   margin-bottom: size(2);
 
@@ -106,7 +105,7 @@ a:active, a:hover {
   bottom: 0;
 
   i {
-    color: color(primary7);
+    color: color(primary9);
   }
 
   &:before {
