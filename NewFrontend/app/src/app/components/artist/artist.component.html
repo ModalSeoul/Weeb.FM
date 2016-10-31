@@ -1,27 +1,29 @@
-<div class="tableComponent">
-  <div class="tableComponent__header">
-    Users who have scrobbled {{artist}}
+<div class="artist">
+  <div class="tableComponent">
+    <div class="tableComponent__header">
+      Users who have scrobbled {{artist}}
+    </div>
+    <table class="tableComponent__table">
+      <thead>
+        <tr>
+          <th>Picture</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i=index">
+          <td>
+            <img [src]="user.profile_picture" class="artist__table-avi">
+          </td>
+          <td>
+            <h3>
+              <a [routerLink]="['/profile', user.nick_name]">
+                {{user.nick_name}}
+              </a>
+            </h3>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <table class="tableComponent__table tableComponent__table--striped">
-    <thead>
-      <tr>
-        <th>Picture</th>
-        <th>Username</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users; let i=index">
-        <td>
-          <img [src]="user.profile_picture" id="table-avi">
-        </td>
-        <td>
-          <h3>
-            <a [routerLink]="['/profile', user.nick_name]">
-              {{user.nick_name}}
-            </a>
-          </h3>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>

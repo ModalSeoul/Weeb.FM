@@ -1,32 +1,55 @@
-@import 'open-color.scss';
-
 $primary-colors: (
-  gray: $oc-gray-8,
-  red: $oc-red-8,
-  pink: $oc-pink-8,
-  grape: $oc-grape-8,
-  violet: $oc-violet-8,
-  indigo: $oc-indigo-8,
-  blue: $oc-blue-8,
-  cyan: $oc-cyan-8,
-  teal: $oc-teal-8,
-  green: $oc-green-8,
-  lime: $oc-lime-8,
-  yellow: $oc-yellow-8,
-  orange: $oc-orange-8
+  gray:     $oc-gray-8,
+  red:      $oc-red-8,
+  pink:     $oc-pink-8,
+  grape:    $oc-grape-8,
+  violet:   $oc-violet-8,
+  indigo:   $oc-indigo-8,
+  blue:     $oc-blue-8,
+  cyan:     $oc-cyan-8,
+  teal:     $oc-teal-8,
+  green:    $oc-green-8,
+  lime:     $oc-lime-8,
+  yellow:   $oc-yellow-8,
+  orange:   $oc-orange-8
 );
 
 $colors: (
-  primary-dk: $oc-teal-9,
-  primary: $oc-teal-8,
-  primary-lt: $oc-teal-7,
-  primary-text: $oc-gray-0,
+  primary9:              $oc-blue-9,
+  primary8:              $oc-blue-8,
+  primary7:              $oc-blue-7,
+  primary6:              $oc-blue-6,
+  primary5:              $oc-blue-5,
+  primary4:              $oc-blue-4,
+  primary3:              $oc-blue-3,
+  primary1:              $oc-blue-2,
+  primary2:              $oc-blue-1,
+  primary0:              $oc-blue-0,
 
-  gray-dk: $oc-gray-9,
-  gray: $oc-gray-8,
-  gray-lt: $oc-gray-7,
+  accent9:              $oc-green-9,
+  accent8:              $oc-green-8,
+  accent7:              $oc-green-7,
+  accent6:              $oc-green-6,
+  accent5:              $oc-green-5,
+  accent4:              $oc-green-4,
+  accent3:              $oc-green-3,
+  accent1:              $oc-green-2,
+  accent2:              $oc-green-1,
+  accent0:              $oc-green-0,
 
-  divider: $oc-gray-5
+  gray9:              $oc-gray-9,
+  gray8:              $oc-gray-8,
+  gray7:              $oc-gray-7,
+  gray6:              $oc-gray-6,
+  gray5:              $oc-gray-5,
+  gray4:              $oc-gray-4,
+  gray3:              $oc-gray-3,
+  gray1:              $oc-gray-2,
+  gray2:              $oc-gray-1,
+  gray0:              $oc-gray-0,
+
+  divider-dk:         $oc-gray-7,
+  divider-lt:         $oc-gray-3
 );
 
 @function color($color) {

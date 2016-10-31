@@ -3,8 +3,7 @@ import { UserService, GlobalService, StatsService } from '../../services';
 
 @Component({
   selector: 'app-stats',
-  templateUrl: './stats.component.html',
-  styleUrls: ['./stats.component.scss']
+  templateUrl: './stats.component.html'
 })
 export class StatsComponent implements OnInit {
   private scrobbleCount: number | string;

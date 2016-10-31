@@ -1,0 +1,85 @@
+// @import 'base';
+
+@import 'base';
+
+body {
+  background-color: color(gray2);
+  color: color(gray9);
+}
+
+a { color: color(primary8); }
+a:visited, a:link { color: color(primary8); }
+a:active, a:hover { color: color(primary9); }
+
+
+.text-wilt {
+  background-color: color(gray2);
+  color: color(gray9);
+}
+
+
+.card {
+  background-color: color(gray3);
+
+  &__title {
+    background-color: color(primary7);
+    color: color(gray0);
+  }
+}
+
+
+.loading {
+  &:before {
+    background-color: color(gray4);
+  }
+}
+
+
+.tableComponent {
+  &__header {
+    background-color: color(primary7);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    color: color(gray0);
+  }
+
+  &__table {
+    th { color: color(gray8); }
+
+    tr th { border-bottom: 2px solid color(divider-lt); }
+
+    tr td { border-bottom: 2px solid color(divider-lt); }
+
+    tr:hover td { background-color: color(divider-lt); }
+
+    td { color: color(gray8); }
+
+    &--striped {
+      tr:nth-child(even) td {
+        background-color: color(divider-lt);
+      }
+    }
+  }
+}
+
+
+.listComponent {
+  &__header {
+    background-color: color(primary7);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    color: color(gray0);
+  }
+  ul {
+    li { border-bottom: 2px solid color(divider-lt); }
+    li:hover { background-color: color(divider-lt); }
+  }
+  &--stripe {
+    background-color: color(divider-lt);
+  }
+  &--striped {
+    li:nth-child(odd) {
+      background-color: color(divider-lt);
+    }
+  }
+}

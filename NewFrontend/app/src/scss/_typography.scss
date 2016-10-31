@@ -1,5 +1,3 @@
-@import 'colors';
-
 @mixin light-text { font-weight: 400; }
 @mixin normal-text { font-weight: 500; }
 @mixin medium-text { font-weight: 600; }
@@ -8,7 +6,6 @@
 html, body {
   font-size: 100%;
   font-family: News Cycle, Helvetica, sans-serif;
-  color: color(gray);
   @include normal-text;
 }
 

@@ -11,7 +11,6 @@ import { GlobalService } from './services';
     <div class="weebContainer">
       <router-outlet></router-outlet>
     </div>`,
-    styleUrls: ['app.component.scss']
 })
 
 export class AppComponent {

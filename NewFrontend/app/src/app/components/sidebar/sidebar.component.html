@@ -1,42 +1,44 @@
-<div class="paneComponent">
-  <h2 class="paneComponent__title">What I Listen To</h2>
-  <hr class="paneComponent__seperator">
+<div class="sidebar">
+  <div class="sidebar__title">
+    <h2>What I Listen To</h2>
+  </div>
+  <hr class="sidebar__seperator">
   <div class="nav">
     <a class="nav__link" [routerLink]="['/']" [routerLinkActive]="['nav__link--active']"
        [routerLinkActiveOptions]="{ exact: true }">
-      <i class="fa fa-home fa-fw nav__icon" aria-hidden="true"></i>
+      <i class="fa fa-home fa-fw nav__link__icon" aria-hidden="true"></i>
       Home
     </a>
     <a class="nav__link" *ngIf="auth.isLoggedIn()" [routerLink]="['/get-started']" [routerLinkActive]="['nav__link--active']">
-      <i class="fa fa-info fa-fw nav__icon" aria-hidden="true"></i>
+      <i class="fa fa-info fa-fw nav__link__icon" aria-hidden="true"></i>
       Get Started
     </a>
     <a class="nav__link" *ngIf="auth.isLoggedIn()" [routerLink]="['profile/', User.curUser.nick_name]" [routerLinkActive]="['nav__link--active']">
-      <i class="fa fa-user fa-fw nav__icon" aria-hidden="true"></i>
+      <i class="fa fa-user fa-fw nav__link__icon" aria-hidden="true"></i>
       My Profile
     </a>
     <a class="nav__link" *ngIf="!auth.isLoggedIn()" [routerLink]="['login']" [routerLinkActive]="['nav__link--active']">
-      <i class="fa fa-sign-in fa-fw nav__icon" aria-hidden="true"></i>
+      <i class="fa fa-sign-in fa-fw nav__link__icon" aria-hidden="true"></i>
       Login
     </a>
     <a class="nav__link" [routerLink]="['/recent']" [routerLinkActive]="['nav__link--active']">
-      <i class="fa fa-play-circle fa-fw nav__icon" aria-hidden="true"></i>
+      <i class="fa fa-play-circle fa-fw nav__link__icon" aria-hidden="true"></i>
       Now Playing
     </a>
     <a class="nav__link" [routerLink]="['/board']" [routerLinkActive]="['nav__link--active']">
-      <i class="fa fa-trophy fa-fw nav__icon" aria-hidden="true"></i>
+      <i class="fa fa-trophy fa-fw nav__link__icon" aria-hidden="true"></i>
       Leaderboard
     </a>
     <a class="nav__link" [routerLink]="['/stats']" [routerLinkActive]="['nav__link--active']">
-      <i class="fa fa-bar-chart fa-fw nav__icon" aria-hidden="true"></i>
+      <i class="fa fa-bar-chart fa-fw nav__link__icon" aria-hidden="true"></i>
       Stats
     </a>
     <a class="nav__link" *ngIf="auth.isLoggedIn()" [routerLink]="['/settings']" [routerLinkActive]="['nav__link--active']">
-      <i class="fa fa-cog fa-fw nav__icon" aria-hidden="true"></i>
+      <i class="fa fa-cog fa-fw nav__link__icon" aria-hidden="true"></i>
       Settings
     </a>
     <a class="nav__link" *ngIf="auth.isLoggedIn()" (click)="logout()">
-      <i class="fa fa-sign-out fa-fw nav__icon" aria-hidden="true"></i>
+      <i class="fa fa-sign-out fa-fw nav__link__icon" aria-hidden="true"></i>
       Logout
     </a>
   </div>

@@ -4,8 +4,7 @@ import { UserService, GlobalService } from '../../services';
 
 @Component({
   selector: 'app-artist',
-  templateUrl: './artist.component.html',
-  styleUrls: ['./artist.component.scss']
+  templateUrl: './artist.component.html'
 })
 export class ArtistComponent implements OnInit {
   private artist: string;

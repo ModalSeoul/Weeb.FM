@@ -1,0 +1,452 @@
+@import 'open-color';
+@import 'colors';
+@import 'default';
+@import 'functions';
+@import 'increments';
+@import 'mixins';
+@import 'typography';
+@import 'scrollbar';
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+a:visited, a:link {
+  text-decoration: none;
+}
+a:active, a:hover {
+  text-decoration: none;
+}
+
+/**
+* WILT Button CSS
+*******************************************************************************/
+
+.btn-wilt {
+  @include medium-text;
+
+  background-color: color(primary7);
+  border-radius: 3px;
+  border: none;
+  color: color(gray2);
+  opacity: 1;
+  padding: size(1) size(3);
+  @include transition(all, .5s, ease-in-out);
+
+  &:hover {
+    background-color: color(primary5);
+  }
+  &:active {
+    opacity: 0.8;
+    -webkit-box-shadow: inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+    -moz-box-shadow:    inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+    box-shadow:         inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+  }
+
+  &.accent {
+    background-color: color(accent8);
+    &:hover {
+      background-color: color(accent6);
+    }
+    &:active {
+      opacity: .8;
+      -webkit-box-shadow: inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+      -moz-box-shadow:    inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+      box-shadow:         inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+    }
+  }
+}
+
+.text-wilt {
+  border-radius: 2px;
+  border: 2px solid color(primary7);
+  margin: size(1);
+  padding: size(1);
+}
+
+.card {
+  @include box-shadow();
+  @include normal-text;
+
+  border: 2px solid color(primary7);
+  border-radius: 2px;
+  margin-bottom: size(2);
+
+  &__title {
+    @include bold-text;
+
+    padding: size(1) size(2);
+    text-align: center;
+    text-transform: uppercase;
+  }
+  &__body {
+    padding: size(1) size(2);
+    text-align: left;
+  }
+  &__footer {
+    padding: size(1) size(2);
+    text-align: center;
+  }
+}
+
+/**
+* Component loading screen
+*******************************************************************************/
+
+.loading {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 6rem;
+  right: 0;
+  bottom: 0;
+
+  i {
+    color: color(primary7);
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 12rem;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Table component
+*******************************************************************************/
+
+.tableComponent {
+  margin: size(2) 0;
+
+  &__header {
+    @include bold-text;
+    padding: size(2) size(1);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+
+    th {
+      @include medium-text;
+
+      color: color(gray0);
+      cursor: pointer;
+      overflow: hidden;
+      padding: size(2) size(2);
+      text-align: left;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    td {
+      @include normal-text;
+
+      color: color(gray0);
+      overflow: hidden;
+      padding: size(1.5) size(2);
+      text-overflow: ellipsis;
+      vertical-align: middle;
+      max-width: 0;
+      white-space: nowrap;
+    }
+
+    &--striped {
+      tr:nth-child(even) td {
+        background-color: color(gray9);
+      }
+    }
+  }
+}
+
+/* Table Alignment Helpers
+*******************************************************************************/
+
+.align-left {
+  text-align: left !important;
+  &--all {
+    text-align: left !important;
+    * {
+      text-align: left !important;
+    }
+  }
+}
+
+.align-right {
+  text-align: right !important;
+  &--all {
+    text-align: right !important;
+    * {
+      text-align: right !important;
+    }
+  }
+}
+
+.align-center {
+  text-align: center !important;
+  &--all {
+    text-align: center !important;
+    * {
+      text-align: center !important;
+    }
+  }
+}
+
+
+/* List Component
+*******************************************************************************/
+
+.listComponent {
+  margin: size(1) 0;
+  width: 100%;
+
+  &__header {
+    font-weight: bold;
+    padding: size(2) size(1);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: size(1.5) size(2);
+    }
+  }
+}
+
+/* Artist
+*******************************************************************************/
+
+.artist {
+  &__table-avi {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+
+/* Leaderboard
+*******************************************************************************/
+
+.leaderBoard {
+  a {
+    text-decoration: underline;
+  }
+}
+
+
+/* Login
+*******************************************************************************/
+
+.login {
+  padding: size(5);
+  margin: 0 auto;
+  margin-top: 15%;
+  width: 15rem;
+}
+
+
+/* Profile
+*******************************************************************************/
+
+.profile {
+  .btn-wilt {
+    margin-top: size(1);
+    margin-bottom: size(1);
+  }
+
+  &__avi {
+    border: 2px solid color(divider-dk);
+    margin-top: 1rem;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+       -moz-box-shadow: 0 8px 6px -6px black;
+            box-shadow: 0 8px 6px -6px black;
+  }
+
+  &__banner {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  &__staff {
+    img {
+      border: 2px solid goldenrod !important;
+    }
+    h1 {
+      color: goldenrod !important;
+    }
+  }
+
+  &__user {
+    margin-left: 2rem;
+    margin-right: 2rem;
+
+    h1 {
+      @include bold-text;
+      color: color(gray2);
+      text-shadow: 2px 2px 4px #000000;
+    }
+  }
+
+  &__wrapper {
+    border-bottom: 3px solid color(gray9);
+    // background: linear-gradient(
+    //   rgba(150, 150, 150, 0.75),
+    //   rgba(100, 100, 100, 0.75)
+    // );
+  }
+}
+
+
+/* Register
+*******************************************************************************/
+
+.register {
+  padding: size(5);
+  margin: 0 auto;
+  margin-top: 15%;
+  width: 15rem;
+}
+
+
+/* Settings
+*******************************************************************************/
+
+.settings {
+  display: flex;
+  flex-direction: column;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__card {
+    width: 50%;
+    margin: 1rem;
+  }
+
+  .colorSwitch {
+    display: flex;
+    flex-direction: row;
+
+    &__color {
+      cursor: pointer;
+      margin-right: 2px;
+      height: 50px;
+      width: 50px;
+    }
+  }
+}
+
+
+/* Sidebar
+*******************************************************************************/
+
+.sidebar {
+  background-color: color(gray8);
+  bottom: 0;
+  color: white;
+  position: fixed;
+  height: 100% !important;
+  width: 12rem;
+
+  &__seperator {
+    background-color: white;
+    border: none;
+    margin-top: size(-3.5);
+    margin-bottom: size(3);
+    height: 2px;
+    width: 75%;
+  }
+  &__title {
+    @include bold-text;
+    background-color: color(primary7);
+    color: white;
+    font-family: Pacifico;
+    padding: size(.75);
+    text-align: center;
+  }
+  .nav {
+    background-color: color(gray8);
+    color: color(gray2) !important;
+    display: flex;
+    flex-direction: column;
+
+    &__link {
+      background-color: color(gray8);
+      border-bottom: 2px solid color(divider-dk);
+      color: color(gray2) !important;
+      cursor: pointer;
+      opacity: 1;
+      padding: size(2) size(1.5);
+      @include transition(all, 1s, ease);
+      &:hover {
+        background-color: color(accent8);
+      }
+      &--active {
+        -webkit-box-shadow: inset size(6) 0 0 0 color(accent8);
+           -moz-box-shadow: inset size(6) 0 0 0 color(accent8);
+                box-shadow: inset size(6) 0 0 0 color(accent8);
+      }
+      &__icon {
+        border-right: 1px;
+        color: color(gray2);
+        font-size: 18px;
+        margin-right: size(3);
+      }
+    }
+  }
+}
+
+
+/* Start
+*******************************************************************************/
+
+.start {
+  a {
+    text-decoration: underline;
+  }
+}
+
+
+/* Stats
+*******************************************************************************/
+
+.__stats {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.__tables {
+  display: flex;
+  width: 100%;
+}
+
+.smol {
+  margin: .5rem;
+  width: 50%;
+}

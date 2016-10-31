@@ -3,8 +3,7 @@ import { GlobalService } from '../../services';
 
 @Component({
   selector: 'app-start',
-  templateUrl: './start.component.html',
-  styleUrls: ['./start.component.scss']
+  templateUrl: './start.component.html'
 })
 export class StartComponent implements OnInit {
   public scrobblers : any;

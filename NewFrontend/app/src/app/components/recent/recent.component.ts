@@ -3,8 +3,7 @@ import { ScrobbleService, GlobalService } from '../../services';
 
 @Component({
   selector: 'app-recent',
-  templateUrl: './recent.component.html',
-  styleUrls: ['./recent.component.scss']
+  templateUrl: './recent.component.html'
 })
 export class RecentComponent implements OnInit {
   private scrobbles: Array<any> = [];

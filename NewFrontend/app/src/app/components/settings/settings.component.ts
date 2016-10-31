@@ -4,15 +4,12 @@ import { UserService, AuthService, GlobalService } from '../../services';
 
 @Component({
   selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  templateUrl: './settings.component.html'
 })
 export class SettingsComponent implements OnInit {
   private activeUser: any;
   private avatar: any;
   private token: string;
-
-  private primaryChoices: any;
 
   constructor(
     private Global: GlobalService,
@@ -28,24 +25,5 @@ export class SettingsComponent implements OnInit {
       this.activeUser = user;
       this.Global.isLoading = false;
     });
-    this.primaryChoices = [
-      'gray',
-      'red',
-      'pink',
-      'grape',
-      'violet',
-      'indigo',
-      'blue',
-      'cyan',
-      'teal',
-      'green',
-      'lime',
-      'yellow',
-      'orange'
-    ];
-  }
-
-  setPrimaryColor(color) {
-    this.cookies.putObject('primary-color', color);
   }
 }

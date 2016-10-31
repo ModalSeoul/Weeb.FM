@@ -3,8 +3,7 @@ import { UserService, GlobalService } from '../../services';
 
 @Component({
   selector: 'app-leaderboard',
-  templateUrl: './leaderboard.component.html',
-  styleUrls: ['./leaderboard.component.scss']
+  templateUrl: './leaderboard.component.html'
 })
 export class LeaderboardComponent implements OnInit {
   private topUsers: Array<any> = [];
