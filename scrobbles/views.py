@@ -84,9 +84,8 @@ class ScrobbleView(viewsets.ModelViewSet):
         print(data)
 
         if artist_exists(data['artist']):
-            artist = Artist.objects.filter(name__iexact=data['artist'])
-            for a in artist:
-                print('{} : {}'.format(a, a.id))
+            artist = Artist.objects.get(name__iexact=data['artist'])
+
             # artist.scrobble_count += 1
             # artist.save()
         else:
