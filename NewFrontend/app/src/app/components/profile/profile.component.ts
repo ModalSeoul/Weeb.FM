@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   private start: number = 50;
   private full: boolean = false;
   private scrobbles: Array<any> = [];
+  private topArtists: Array<any> = [];
   private uid: string;
   private profileObj: any = {};
   private isFollowing: boolean;
@@ -61,6 +62,11 @@ export class ProfileComponent implements OnInit {
 
     this.Scrobble.getUserScrobbles(this.uid, 0, 100).subscribe((r: any) => {
       this.scrobbles = r;
+    });
+
+    this.user.getTopArtists(this.uid).subscribe((r: any) => {
+      this.topArtists = r;
+      console.log(this.topArtists);
       this.Global.isLoading = false;
     });
   }

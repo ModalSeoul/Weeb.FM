@@ -28,6 +28,12 @@ export class UserService {
     return network$;
   }
 
+  public getTopArtists(name: string) {
+    const network$ = this.http.get(`artists/${name}/top/`).cache();
+    network$.subscribe();
+    return network$;
+  }
+
   public getLeaderboardUsers() {
     const network$ = this.http.get(
         'members/most_scrobbles/', {'leaderboard': true}).cache();

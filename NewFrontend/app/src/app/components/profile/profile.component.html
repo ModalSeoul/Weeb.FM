@@ -8,16 +8,45 @@
         </div>
       </div>
     </div>
-    <div class="listComponent">
-      <div class="listComponent__header">
-        User Stats
+    <div class="flex">
+      <div class="flex__side--lg">
+        <div class="tableComponent">
+          <div class="tableComponent__header">
+            Top Artists
+          </div>
+          <table class="tableComponent__table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Artist</th>
+                <th>Scrobbles</th>
+                <th>Total %</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let artist of topArtists; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{artist.name}}</td>
+                <td>{{artist.count}}</td>
+                <td>{{artist.percent | number: '1.2-2'}}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <ul class="listComponent__ul">
-        <li class="listComponent__li">Member since {{profileObj.date_joined | date: 'MM/dd/yyyy' }}</li>
-        <li class="listComponent__li">{{profileObj.listen_count | number}} total scrobbles</li>
-        <li class="listComponent__li">{{profileObj.per_day | number}} scrobbles per day on average.</li>
-        <!-- <li>This user has {{profileObj.followerCount}} followers.</li> -->
-      </ul>
+      <div class="flex__side--sm">
+        <div class="listComponent">
+          <div class="listComponent__header">
+            User Stats
+          </div>
+          <ul class="listComponent__ul">
+            <li class="listComponent__li">Member since {{profileObj.date_joined | date: 'MM/dd/yyyy' }}</li>
+            <li class="listComponent__li">{{profileObj.listen_count | number}} total scrobbles</li>
+            <li class="listComponent__li">{{profileObj.per_day | number}} scrobbles per day on average.</li>
+            <!-- <li>This user has {{profileObj.followerCount}} followers.</li> -->
+          </ul>
+        </div>
+      </div>
     </div>
     <input *ngIf="profileObj.canFollow" (click)="follow()" type="button" class="btn-wilt" value="+ Follow">
     <input *ngIf="isFollowing" type="button" class="btn-wilt" value="Unfollow">
