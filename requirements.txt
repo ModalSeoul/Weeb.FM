@@ -4,3 +4,4 @@ requests
 pep8
 pillow
 django-cors-headers
+djangorestframework-xml

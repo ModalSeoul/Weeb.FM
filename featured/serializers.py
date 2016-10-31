@@ -17,3 +17,4 @@ class HistoricalSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Historical
+        fields = '__all__'
