@@ -19,8 +19,10 @@ def song_exists(title, artist):
     check = Song.objects.filter(
         title__iexact=title, artist__name__iexact=artist)
     if len(check) != 0:
+        print('{} : TRUE'.format(len(check)))
         return True
     else:
+        print('{} : FALSE'.format(len(check)))
         return False
 
 
@@ -82,9 +84,11 @@ class ScrobbleView(viewsets.ModelViewSet):
         print(data)
 
         if artist_exists(data['artist']):
-            artist = Artist.objects.get(name__iexact=data['artist'])
-            artist.scrobble_count += 1
-            artist.save()
+            artist = Artist.objects.filter(name__iexact=data['artist'])
+            for a in artist:
+                print('{} : {}'.format(a, a.id))
+            # artist.scrobble_count += 1
+            # artist.save()
         else:
             if isinstance(data['artist'], bytes):
                 data['artist'] = data['artist'].decode('UTF-8')
@@ -107,13 +111,19 @@ class ScrobbleView(viewsets.ModelViewSet):
             song.save()
         else:
             if 'album' in data:
+                # Encoding if needed
                 if isinstance(data['song'], bytes):
                     data['song'] = data['song'].decode('UTF-8')
+
+                # Creating song with album, artist & title
                 song = Song.objects.create(
                     title=data['song'], artist=artist, album=album)
             else:
+                # Encoding if needed
                 if isinstance(data['song'], bytes):
                     data['song'] = data['song'].decode('UTF-8')
+
+                # Creating song with title & artist only.
                 song = Song.objects.create(
                     title=data['song'], artist=artist)
 
