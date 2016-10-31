@@ -35,6 +35,10 @@
             </tbody>
           </table>
         </div>
+        <input *ngIf="profileObj.canFollow" (click)="follow()" type="button" class="btn-wilt" value="+ Follow">
+        <input *ngIf="isFollowing" type="button" class="btn-wilt" value="Unfollow">
+        <scrobble-table [content]="scrobbles" [header]="'User Scrobbles'"><h1>Loading...</h1></scrobble-table>
+        <input *ngIf="!full" (click)="addScrobbles()" type="button" class="btn-wilt" value="Load More">
       </div>
       <div class="flex__side--sm">
         <div class="listComponent">
@@ -50,9 +54,5 @@
         </div>
       </div>
     </div>
-    <input *ngIf="profileObj.canFollow" (click)="follow()" type="button" class="btn-wilt" value="+ Follow">
-    <input *ngIf="isFollowing" type="button" class="btn-wilt" value="Unfollow">
-    <scrobble-table [content]="scrobbles" [header]="'User Scrobbles'"><h1>Loading...</h1></scrobble-table>
-    <input *ngIf="!full" (click)="addScrobbles()" type="button" class="btn-wilt" value="Load More">
   </div>
 </div>

@@ -238,15 +238,15 @@ a:active, a:hover {
   width: 100%;
 
   &__side {
-    padding: size(2);
+    padding: size(1);
     width: 50%;
 
     &--sm {
-      padding: size(2);
+      padding: size(1);
       width: 25%;
     }
     &--lg {
-      padding: size(2);
+      padding: size(1);
       width: 75%;
     }
   }
