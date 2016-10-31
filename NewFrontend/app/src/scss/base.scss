@@ -68,7 +68,6 @@ a:active, a:hover {
   @include box-shadow();
   @include normal-text;
 
-  border-radius: 2px;
   margin-bottom: size(2);
 
   &__title {

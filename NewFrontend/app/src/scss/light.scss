@@ -37,8 +37,6 @@ a:active, a:hover { color: color(primary9); }
 .tableComponent {
   &__header {
     background-color: color(primary7);
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
     color: color(gray0);
   }
 
@@ -65,8 +63,6 @@ a:active, a:hover { color: color(primary9); }
 .listComponent {
   &__header {
     background-color: color(primary7);
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
     color: color(gray0);
   }
   ul {
