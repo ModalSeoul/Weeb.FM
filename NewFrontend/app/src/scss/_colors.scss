@@ -15,27 +15,27 @@ $primary-colors: (
 );
 
 $colors: (
-  primary9:              $oc-blue-9,
-  primary8:              $oc-blue-8,
-  primary7:              $oc-blue-7,
-  primary6:              $oc-blue-6,
-  primary5:              $oc-blue-5,
-  primary4:              $oc-blue-4,
-  primary3:              $oc-blue-3,
-  primary1:              $oc-blue-2,
-  primary2:              $oc-blue-1,
-  primary0:              $oc-blue-0,
+  primary9:              $oc-orange-9,
+  primary8:              $oc-orange-8,
+  primary7:              $oc-orange-7,
+  primary6:              $oc-orange-6,
+  primary5:              $oc-orange-5,
+  primary4:              $oc-orange-4,
+  primary3:              $oc-orange-3,
+  primary1:              $oc-orange-2,
+  primary2:              $oc-orange-1,
+  primary0:              $oc-orange-0,
 
-  accent9:              $oc-green-9,
-  accent8:              $oc-green-8,
-  accent7:              $oc-green-7,
-  accent6:              $oc-green-6,
-  accent5:              $oc-green-5,
-  accent4:              $oc-green-4,
-  accent3:              $oc-green-3,
-  accent1:              $oc-green-2,
-  accent2:              $oc-green-1,
-  accent0:              $oc-green-0,
+  accent9:              $oc-orange-9,
+  accent8:              $oc-orange-8,
+  accent7:              $oc-orange-7,
+  accent6:              $oc-orange-6,
+  accent5:              $oc-orange-5,
+  accent4:              $oc-orange-4,
+  accent3:              $oc-orange-3,
+  accent1:              $oc-orange-2,
+  accent2:              $oc-orange-1,
+  accent0:              $oc-orange-0,
 
   gray9:              $oc-gray-9,
   gray8:              $oc-gray-8,
@@ -56,7 +56,7 @@ $colors: (
     @return map-get($colors, $color);
 }
 
-/*Generate color, and color-bg classes for each color defined above*/
+/* Generate color, and color-bg classes for each color defined above */
 @each $name, $color in $colors {
     .#{$name} {
         color: $color;
