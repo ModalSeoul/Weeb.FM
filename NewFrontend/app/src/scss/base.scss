@@ -327,10 +327,10 @@ a:active, a:hover {
 
   &__staff {
     img {
-      border: 2px solid goldenrod !important;
+      border: 2px solid color(primary7) !important;
     }
     h1 {
-      color: goldenrod !important;
+      color: color(primary7) !important;
     }
   }
 
@@ -424,6 +424,7 @@ a:active, a:hover {
     font-family: Pacifico;
     padding: size(.75);
     text-align: center;
+    border-bottom: 3px solid color(gray9);
   }
   .nav {
     background-color: color(gray8);
@@ -440,12 +441,12 @@ a:active, a:hover {
       padding: size(2) size(1.5);
       @include transition(all, 1s, ease);
       &:hover {
-        background-color: color(accent8);
+        background-color: color(gray9);
       }
       &--active {
-        -webkit-box-shadow: inset size(6) 0 0 0 color(accent8);
-           -moz-box-shadow: inset size(6) 0 0 0 color(accent8);
-                box-shadow: inset size(6) 0 0 0 color(accent8);
+        -webkit-box-shadow: inset size(6) 0 0 0 color(primary7);
+           -moz-box-shadow: inset size(6) 0 0 0 color(primary7);
+                box-shadow: inset size(6) 0 0 0 color(primary7);
       }
       &__icon {
         border-right: 1px;

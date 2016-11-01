@@ -56,16 +56,15 @@ export class ProfileComponent implements OnInit {
     }
 
     this.Profile.updateProfile(this.uid).then((r: any) => {
-      console.log(r);
       this.profileObj = r;
       this.user.getTopArtists(this.uid).subscribe((artists: any) => {
         this.topArtists = artists;
-        this.Global.isLoading = false;
       });
     });
 
-    this.Scrobble.getUserScrobbles(this.uid, 0, 100).subscribe((r: any) => {
+    this.Scrobble.getUserScrobbles(this.uid, 0, 50).subscribe((r: any) => {
       this.scrobbles = r;
+      this.Global.isLoading = false;
     });
   }
 
@@ -78,12 +77,12 @@ export class ProfileComponent implements OnInit {
   // Adds additional scrobbles to the viewing list
   public addScrobbles() {
     this.Scrobble.getUserScrobbles(
-      this.uid, this.start, this.start + 50
+      this.uid, this.start, this.start + 25
     ).subscribe((r: any) => {
-      if (r.length < 50) {
+      if (r.length < 25) {
         this.full = true;
       } else {
-        this.start += 50;
+        this.start += 25;
       }
       r.forEach((scrobble: any) => {
         this.scrobbles.push(scrobble);
