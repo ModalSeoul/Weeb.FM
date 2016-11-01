@@ -65,7 +65,6 @@ a:active, a:hover {
 }
 
 .hr-wilt {
-  background-color: color(divider-dk);
   border: none;
   color: color(divider-dk);
   height: 3px;
@@ -434,7 +433,7 @@ a:active, a:hover {
 
     &__link {
       background-color: color(gray8);
-      border-bottom: 2px solid color(divider-dk);
+      border-bottom: 2px solid color(gray7);
       color: color(gray2) !important;
       cursor: pointer;
       opacity: 1;
