@@ -1,16 +1,18 @@
-<span *ngIf="loggedIn">
-  <div class="card" *ngFor="let entry of entries">
-    <div class="card__title">{{entry.title}}</div>
-    <div class="card__body">
-      {{entry.body}}
+<div class="home">
+  <span *ngIf="loggedIn">
+    <div class="card" *ngFor="let entry of entries">
+      <div class="card__title">{{entry.title}}</div>
+      <div class="card__body">
+        {{entry.body}}
+      </div>
+      <div class="card__footer">
+        {{entry.date | date: 'MMM d h:mm a'}}
+      </div>
     </div>
-    <div class="card__footer">
-      {{entry.date | date: 'MMM d h:mm a'}}
-    </div>
-  </div>
-</span>
+  </span>
 
-<!-- If user is not logged in -->
-<span *ngIf="!loggedIn">
-  <login></login>
-</span>
+  <!-- If user is not logged in -->
+  <span *ngIf="!loggedIn">
+    <login></login>
+  </span>
+</div>

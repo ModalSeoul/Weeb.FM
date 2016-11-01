@@ -64,6 +64,14 @@ a:active, a:hover {
   padding: size(1);
 }
 
+.hr-wilt {
+  background-color: color(divider-dk);
+  border: none;
+  color: color(divider-dk);
+  height: 3px;
+  margin: size(3) 0;
+}
+
 .card {
   @include box-shadow();
   @include normal-text;
@@ -122,7 +130,7 @@ a:active, a:hover {
 *******************************************************************************/
 
 .tableComponent {
-  margin: size(2) 0;
+  margin: 0 0 size(2) 0;
 
   &__header {
     @include bold-text;
@@ -208,7 +216,7 @@ a:active, a:hover {
 *******************************************************************************/
 
 .listComponent {
-  margin: size(2) 0;
+  margin: 0 0 size(2) 0;
   width: 100%;
 
   &__header {
@@ -263,6 +271,13 @@ a:active, a:hover {
 }
 
 
+/******************************************************************************/
+
+.home {
+
+}
+
+
 /* Leaderboard
 *******************************************************************************/
 
@@ -305,8 +320,7 @@ a:active, a:hover {
   }
 
   &__banner {
-    margin-left: -2rem;
-    margin-right: -2rem;
+    margin: -2rem;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
@@ -333,7 +347,8 @@ a:active, a:hover {
   }
 
   &__wrapper {
-    border-bottom: 3px solid color(gray9);
+    border-bottom: 3px solid color(divider-dk);
+    margin-bottom: 2rem;
     // background: linear-gradient(
     //   rgba(150, 150, 150, 0.75),
     //   rgba(100, 100, 100, 0.75)
