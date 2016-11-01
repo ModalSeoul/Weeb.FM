@@ -424,10 +424,10 @@ a:active, a:hover {
     font-family: Pacifico;
     padding: size(.75);
     text-align: center;
-    border-bottom: 3px solid color(gray9);
   }
   .nav {
     background-color: color(gray8);
+    border-top: 2px solid color(gray7);
     color: color(gray2) !important;
     display: flex;
     flex-direction: column;
