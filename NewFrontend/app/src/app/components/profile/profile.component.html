@@ -25,12 +25,12 @@
             </thead>
             <tbody>
               <tr *ngFor="let artist of topArtists; let i = index">
-                <td>{{i + 1}}</td>
-                <td>
+                <td width="15%">{{i + 1}}</td>
+                <td width="55%">
                   <a [routerLink]="['/artist', artist.name]">{{artist.name}}</a>
                 </td>
-                <td>{{artist.count}}</td>
-                <td>{{artist.percent | number: '1.2-2'}}%</td>
+                <td width="15%">{{artist.count}}</td>
+                <td width="15%">{{artist.percent | number: '1.2-2'}}%</td>
               </tr>
             </tbody>
           </table>
