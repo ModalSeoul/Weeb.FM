@@ -33,12 +33,18 @@ class CreateMemberSerializer(serializers.Serializer):
         instance.save()
         return instance
 
+
 class MemberSerializer(serializers.ModelSerializer):
     '''Member serializer - handles all data serialization
     for the Member model'''
+    unique_artists = serializers.SerializerMethodField('calc_unique_artists')
     listen_count = serializers.SerializerMethodField('calc_listen_count')
     loved_tracks = serializers.PrimaryKeyRelatedField(
         many=True, read_only=True, required=False)
+
+    def calc_unique_artists(self, obj):
+        scrobbles = Scrobble.objects.filter(member=obj.id)
+        return scrobbles.values_list('song__artist__id').distinct().count()
 
     def calc_listen_count(self, obj):
         return Scrobble.objects.filter(member=obj.id).count()

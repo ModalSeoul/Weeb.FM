@@ -99,7 +99,7 @@ class MemberView(viewsets.ModelViewSet):
         member = Token.objects.get(key=token).user
         member.profile_picture = self.request.data['profile_picture']
         member.save()
-        return HttpResponseRedirect('https://modal.moe/settings')
+        return HttpResponseRedirect('https://wilt.fm/settings')
 
     @list_route(methods=['POST'])
     def upload_banner(self, request):
@@ -107,7 +107,7 @@ class MemberView(viewsets.ModelViewSet):
         member = Token.objects.get(key=token).user
         member.banner_picture = self.request.data['banner_picture']
         member.save()
-        return HttpResponseRedirect('https://modal.moe/settings')
+        return HttpResponseRedirect('https://wilt.fm/settings')
 
 
 class FollowingView(viewsets.ModelViewSet):
