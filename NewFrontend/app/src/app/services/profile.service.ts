@@ -45,6 +45,7 @@ export class ProfileService {
           resolveMe.date_joined = visitingObj.date_joined;
           resolveMe.listen_count = visitingObj.listen_count;
           resolveMe.is_staff = visitingObj.is_staff;
+          resolveMe.unique_artists = visitingObj.unique_artists;
           this.dayDiff(visitingObj.date_joined).then((diffDays: any) => {
             resolveMe.per_day = Math.ceil(resolveMe.listen_count / diffDays);
           });

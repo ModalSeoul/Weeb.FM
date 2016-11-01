@@ -7,7 +7,7 @@ let isDev: boolean = false;
 let apiUrl: string;
 
 if (!isDev) {
-  apiUrl = 'https://modal.moe/api/';
+  apiUrl = 'https://wilt.fm/api/';
 } else {
   apiUrl = 'http://localhost:8000/api/';
 }
