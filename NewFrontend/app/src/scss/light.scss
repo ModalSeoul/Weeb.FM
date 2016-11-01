@@ -48,7 +48,7 @@ a:active, a:hover { color: color(primary9); }
   &__table {
     th { color: color(gray8); }
 
-    tr th { border-bottom: 2px solid color(divider-lt); }
+    thead { border-bottom: 2px solid color(divider-lt); }
 
     tr td { border-bottom: 2px solid color(divider-lt); }
 

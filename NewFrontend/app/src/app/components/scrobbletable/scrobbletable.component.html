@@ -9,9 +9,20 @@
         <th>Artist</th>
         <th>Timestamp</th>
       </tr>
+      <!-- <tr>
+        <th>
+          <input type="text" class="text-wilt" placeholder="Filter by song"
+            [(ngModel)]="songFilter" (ngModelChange)="searchSong()" />
+        </th>
+        <th>
+          <input type="text" class="text-wilt" placeholder="Filter by artist"
+            [(ngModel)]="artistFilter" (ngModelChange)="searchArtist()" />
+        </th>
+        <th></th>
+      </tr> -->
     </thead>
     <tbody>
-      <tr *ngFor="let scrobble of content; let i=index">
+      <tr *ngFor="let scrobble of data; let i=index">
         <td width="40%">{{scrobble.song_name}}</td>
         <td width="40%">
           <a [routerLink]="['/artist', scrobble.artist_name]">
