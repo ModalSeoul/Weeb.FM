@@ -63,6 +63,7 @@ class FollowingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Following
+        fields = '__all__'
 
 
 class FollowerSerializer(serializers.Serializer):

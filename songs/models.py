@@ -5,7 +5,7 @@ from albums.models import Album
 
 
 class Song(models.Model):
-    title = models.CharField(max_length=72)
+    title = models.CharField(max_length=260)
     artist = models.ForeignKey(Artist)
     album = models.ForeignKey(Album, null=True, blank=True)
     scrobble_count = models.IntegerField(default=0)

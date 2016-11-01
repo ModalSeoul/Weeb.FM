@@ -14,7 +14,7 @@ from songs.models import Song
 
 class Member(AbstractUser):
     '''Memebr(user) model. Abstracted from Django user accounts.'''
-    nick_name = models.CharField(max_length=24, unique=True)
+    nick_name = models.CharField(max_length=60, unique=True)
     loved_tracks = models.ManyToManyField(Song, blank=True)
 
     listened_to = models.ManyToManyField(
