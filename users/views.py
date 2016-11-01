@@ -66,6 +66,19 @@ class MemberView(viewsets.ModelViewSet):
         return Response(len(Member.objects.all()))
 
     @detail_route(methods=['GET'])
+    def top(self, request, pk=None):
+        user = Member.objects.get(nick_name__iexact=pk)
+        scrobbles = Scrobble.objects.filter(member_id=user.pk)
+        count = scrobbles.count()
+        data = scrobbles.filter(member=user).values(
+            'member', 'song__artist', 'song__artist__name').annotate(
+            total=Count('id')).order_by('-total')
+        data = data[:10]
+        for i in data:
+            i['percent'] = 100 * (i['total'] / count)
+        return Response(status=200, data=data)
+
+    @detail_route(methods=['GET'])
     def by_token(self, request, pk=None):
         if pk is not None:
             instance = Token.objects.get(key=pk)

@@ -56,18 +56,16 @@ export class ProfileComponent implements OnInit {
     }
 
     this.Profile.updateProfile(this.uid).then((r: any) => {
+      console.log(r);
       this.profileObj = r;
-      console.log(this.profileObj);
+      this.user.getTopArtists(this.uid).subscribe((artists: any) => {
+        this.topArtists = artists;
+        this.Global.isLoading = false;
+      });
     });
 
     this.Scrobble.getUserScrobbles(this.uid, 0, 100).subscribe((r: any) => {
       this.scrobbles = r;
-    });
-
-    this.user.getTopArtists(this.uid).subscribe((r: any) => {
-      this.topArtists = r;
-      console.log(this.topArtists);
-      this.Global.isLoading = false;
     });
   }
 

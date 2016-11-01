@@ -29,7 +29,7 @@ export class UserService {
   }
 
   public getTopArtists(name: string) {
-    const network$ = this.http.get(`artists/${name}/top/`).cache();
+    const network$ = this.http.get(`members/${name}/top/`).cache();
     network$.subscribe();
     return network$;
   }
