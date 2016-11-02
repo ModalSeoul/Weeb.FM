@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       router.navigate(['/']);
     }
 
-    let savedUser = this.cookies.get('saved-user')
+    let savedUser = this.cookies.get('saved-user');
     if (savedUser != null) {
       this.username = savedUser;
       this.rememberMe = true;
@@ -38,7 +38,9 @@ export class LoginComponent implements OnInit {
 
   public login() {
     if (this.rememberMe) {
-      this.cookies.put('saved-user', this.username);
+      let expireDate = new Date();
+      expireDate.setDate(expireDate.getDate() + 30);
+      this.cookies.put('saved-user', this.username, {'expires': expireDate});
     } else {
       this.cookies.put('saved-user', null);
     }
