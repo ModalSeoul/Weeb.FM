@@ -20,7 +20,6 @@ export class UserService {
   * long, but they're explicit
   */
 
-  // This function will replace getUserNick next version.
   public getUserObject(name: string) {
     const network$ = this.http.get(`members/${name}/by_nick/`).cache();
     network$.subscribe(

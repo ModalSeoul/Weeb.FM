@@ -9,12 +9,24 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 
 from users.serializers import MemberSerializer, CreateMemberSerializer, \
-    FollowingSerializer, FollowerSerializer
-from users.models import Member, Following
+    FollowingSerializer, FollowerSerializer, MemberInfoSerializer
+from users.models import Member, Following, MemberInfo
 from scrobbles.models import Scrobble
 from .filters import UserFilter
 
 from collections import defaultdict
+
+
+class MemberInfoView(viewsets.ModelViewSet):
+    '''Social links for a user. User foreign keys to this'''
+    queryset = MemberInfo.objects.all()
+    serializer_class = MemberInfoSerializer
+
+    @detail_route(methods=['GET'])
+    def nick(self, request, pk=None):
+        resp = MemberInfo.objects.get(belongs_to__nick_name__iexact=pk)
+        serializer = MemberInfoSerializer(instance=resp)
+        return Response(serializer.data)
 
 
 class MemberView(viewsets.ModelViewSet):

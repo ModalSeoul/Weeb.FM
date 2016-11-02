@@ -70,6 +70,7 @@ export class ProfileComponent implements OnInit {
 
   public follow() {
     this.user.follow(this.uid).subscribe((r: any) => {
+      // TODO: Finish following implementation on frontend
       console.log(r);
     });
   }

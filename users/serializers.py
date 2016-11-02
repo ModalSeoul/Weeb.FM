@@ -1,7 +1,7 @@
 """Serializer module for the Users app."""
 from rest_framework import serializers
 from django.core.validators import RegexValidator
-from users.models import Member, Following
+from users.models import Member, Following, MemberInfo
 from songs.models import Song
 from scrobbles.models import Scrobble
 
@@ -31,6 +31,7 @@ class CreateMemberSerializer(serializers.Serializer):
         if passwd is not None:
             instance.set_password(passwd)
         instance.save()
+        social = MemberInfo.objects.create(belongs_to=instance)
         return instance
 
 
@@ -61,6 +62,13 @@ class MemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Member
         exclude = ('email', 'password')
+
+
+class MemberInfoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = MemberInfo
+        fields = '__all__'
 
 
 class FollowingSerializer(serializers.ModelSerializer):

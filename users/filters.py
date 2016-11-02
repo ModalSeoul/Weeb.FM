@@ -1,4 +1,5 @@
 from rest_framework.filters import BaseFilterBackend
+from users.models import MemberInfo
 
 
 class UserFilter(BaseFilterBackend):

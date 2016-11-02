@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 
-from users.views import MemberView, FollowingView
+from users.views import MemberView, FollowingView, MemberInfoView
 from scrobbles.views import ScrobbleView
 from songs.views import SongView
 from artists.views import ArtistView
@@ -18,6 +18,7 @@ from devblog.views import EntryView
 
 router = DefaultRouter()
 router.register(r'members', MemberView, base_name='members')
+router.register(r'member_info', MemberInfoView, base_name='memberinfo')
 router.register(r'followings', FollowingView, base_name='friendships')
 router.register(r'scrobbles', ScrobbleView, base_name='scrobbles')
 router.register(r'songs', SongView, base_name='songs')
@@ -32,5 +33,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
     url(r'^api/api-token-auth/', views.obtain_auth_token),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-auth/', include(
+        'rest_framework.urls', namespace='rest_framework')),
 ] + static('/', document_root=settings.MEDIA_ROOT)
