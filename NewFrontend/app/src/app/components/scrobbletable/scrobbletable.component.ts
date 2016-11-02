@@ -6,10 +6,9 @@ import { Component, Input } from '@angular/core';
 })
 
 export class ScrobbletableComponent {
-  @Input() content: any;
+  @Input() data: any;
   @Input() header: string;
 
   constructor() {}
-
 
 }
