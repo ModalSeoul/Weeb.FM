@@ -8,3 +8,4 @@ cdn/
 nnpm-debug*
 *.swp
 migrations/
+yarn-error.log

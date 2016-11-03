@@ -98,7 +98,7 @@ export class AuthService {
   }
 
   private setAuthToken(token: string): void {
-    this.http.updateHeader(this.AUTH_TOKEN_HEADER, 'Token ' + token);
+    this.http.updateHeader('Authorization', 'Token ' + token);
     // this.api.updateHeader(this.AUTH_TOKEN_HEADER, 'Token ' + token);
   }
 }

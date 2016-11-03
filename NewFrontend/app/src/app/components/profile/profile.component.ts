@@ -40,14 +40,10 @@ export class ProfileComponent implements OnInit {
     return !!~list.indexOf(check);
   }
 
-  public isMe(me: string) {
-    if (this.uid == me) {
-      return true;
-    } else {
-      return false;
-    }
+  public rmScrobble(id: number | string) {
+    this.Scrobble.deleteScrobble(id);
   }
-
+  
   public refresh(self: boolean, id: any) {
     if (!self) {
       this.uid = this.route.snapshot.params['id'];

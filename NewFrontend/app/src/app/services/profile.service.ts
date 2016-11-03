@@ -47,6 +47,12 @@ export class ProfileService {
           resolveMe.listen_count = visitingObj.listen_count;
           resolveMe.is_staff = visitingObj.is_staff;
           resolveMe.unique_artists = visitingObj.unique_artists;
+          // Checks if user should be able to delete/edit scrobbles
+          if (this.isMe(tmpUser.nick_name, visitingUser)) {
+            resolveMe.can_delete = true;
+          } else {
+            resolveMe.can_delte = false;
+          }
           this.dayDiff(visitingObj.date_joined).then((diffDays: any) => {
             resolveMe.per_day = Math.ceil(resolveMe.listen_count / diffDays);
           });

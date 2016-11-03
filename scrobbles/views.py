@@ -91,9 +91,8 @@ class ScrobbleView(viewsets.ModelViewSet):
 
         if artist_exists(data['artist']):
             artist = Artist.objects.get(name__iexact=data['artist'])
-
-            # artist.scrobble_count += 1
-            # artist.save()
+            artist.scrobble_count += 1
+            artist.save()
         else:
             if isinstance(data['artist'], bytes):
                 data['artist'] = data['artist'].decode('UTF-8')

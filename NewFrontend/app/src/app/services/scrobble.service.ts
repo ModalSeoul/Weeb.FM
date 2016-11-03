@@ -42,6 +42,10 @@ export class ScrobbleService {
     return this.http.get(`${this.ep}${title}/by_album`);
   }
 
+  public deleteScrobble(id: number | string) {
+    return this.http.delete(`${this.ep}${id}/`);
+  }
+
   public postScrobble(song: string, artist: string) {
     return this.http.post('scrobbles', {
       'song': song,

@@ -23,13 +23,18 @@
     </thead>
     <tbody>
       <tr *ngFor="let scrobble of data; let i=index">
-        <td width="40%">{{scrobble.song_name}}</td>
+        <td width="40%">
+          {{scrobble.song_name}}
+        </td>
         <td width="40%">
           <a [routerLink]="['/artist', scrobble.artist_name]">
             {{scrobble.artist_name}}
           </a>
         </td>
-        <td width="20%">{{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}</td>
+        <td width="20%">
+          {{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}
+          <i *ngIf="isOwner" (click)="rmScrobble(scrobble.id)" class="fa fa-times" aria-hidden="true"></i>
+        </td>
       </tr>
     </tbody>
   </table>
