@@ -1,4 +1,5 @@
 *.sql
+npm-debug.log
 *.pyc
 *.sqlite3
 migrations/
