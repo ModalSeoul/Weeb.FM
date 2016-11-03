@@ -3,14 +3,15 @@ from rest_framework import viewsets
 from rest_framework.filters import BaseFilterBackend
 from rest_framework.decorators import list_route, detail_route
 from rest_framework.response import Response
-
 from .models import Song
 from .serializers import SongSerializer
+from WeebFM.permissions import IsStaffOrReadOnly
 
 
 class SongView(viewsets.ModelViewSet):
     queryset = Song.objects.all()
     serializer_class = SongSerializer
+    permission_classes = (IsStaffOrReadOnly,)
 
     @list_route(methods=['GET'])
     def popular(self, request):

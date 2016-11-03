@@ -1,5 +1,6 @@
 """User views file. Contains all viewsets/routes for the Users app"""
 from operator import itemgetter
+from collections import defaultdict
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseRedirect
 from django.db.models import Count
@@ -7,20 +8,24 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
+from rest_framework import permissions
 
 from users.serializers import MemberSerializer, CreateMemberSerializer, \
     FollowingSerializer, FollowerSerializer, MemberInfoSerializer
 from users.models import Member, Following, MemberInfo
 from scrobbles.models import Scrobble
 from .filters import UserFilter
-
-from collections import defaultdict
+from WeebFM.permissions import IsOwnerOrReadOnly
 
 
 class MemberInfoView(viewsets.ModelViewSet):
     '''Social links for a user. User foreign keys to this'''
     queryset = MemberInfo.objects.all()
     serializer_class = MemberInfoSerializer
+    permission_classes = (
+        permissions.IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly
+    )
 
     @detail_route(methods=['GET'])
     def nick(self, request, pk=None):
@@ -34,6 +39,10 @@ class MemberView(viewsets.ModelViewSet):
     related routes/post-creation tasks'''
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
+    permission_classes = (
+        permissions.IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly
+    )
 
     filter_backends = [
         UserFilter
@@ -125,6 +134,10 @@ class MemberView(viewsets.ModelViewSet):
 class FollowingView(viewsets.ModelViewSet):
     queryset = Following.objects.all()
     serializer_class = FollowingSerializer
+    permission_classes = (
+        permissions.IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly
+    )
 
     @detail_route(methods=['POST'])
     def follow(self, request, pk=None):

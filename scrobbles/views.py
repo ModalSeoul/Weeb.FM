@@ -3,6 +3,7 @@ from rest_framework import viewsets, generics
 from rest_framework.filters import BaseFilterBackend
 from rest_framework.decorators import list_route, detail_route
 from rest_framework.response import Response
+from rest_framework import permissions
 
 from songs.models import Song
 from songs.serializers import SongSerializer
@@ -13,6 +14,7 @@ from albums.models import Album
 
 from .models import Scrobble
 from .serializers import ScrobbleSerializer, CreateScrobbleSerializer
+from WeebFM.permissions import IsOwnerOrReadOnly
 
 
 def song_exists(title, artist):
@@ -45,6 +47,10 @@ def artist_exists(name):
 class ScrobbleView(viewsets.ModelViewSet):
     queryset = Scrobble.objects.all()
     serializer_class = ScrobbleSerializer
+    permission_classes = (
+        permissions.IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly
+    )
 
     def get_queryset(self):
         data = self.request.query_params
@@ -105,7 +111,8 @@ class ScrobbleView(viewsets.ModelViewSet):
                     title=data['album'], artist=artist, scrobble_count=1)
 
         if song_exists(data['song'], data['artist']):
-            song = Song.objects.get(title__iexact=data['song'], artist__id=artist.id)
+            song = Song.objects.get(
+                title__iexact=data['song'], artist__id=artist.id)
             song.scrobble_count += 1
             song.save()
         else:
