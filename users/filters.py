@@ -12,4 +12,6 @@ class UserFilter(BaseFilterBackend):
         if q('listened'):
             query = query.filter(
                     listened_to__artist__name__iexact=q('listened')).distinct()
+        if q('token'):
+            query = Member.objects.get(id=q('token'))
         return query

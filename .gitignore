@@ -9,3 +9,4 @@ nnpm-debug*
 *.swp
 migrations/
 yarn-error.log
+welp.sh
