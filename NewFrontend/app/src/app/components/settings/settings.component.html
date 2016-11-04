@@ -5,7 +5,7 @@
         Upload Banner
       </div>
       <div class="card__body">
-        <form enctype="multipart/form-data" id="banner" method="post" action="https://modal.moe/api/members/upload_banner/">
+        <form enctype="multipart/form-data" id="banner" method="post" action="https://wilt.fm/api/members/upload_banner/">
           <input type="file" name="banner_picture"/><br> <!-- FORGIVE ME FATHER -->
           <input type="hidden" [ngModel]="token" name="my_token"><br> <!-- FORGIVE ME FATHER -->
           <input type="button" class="btn-wilt" onclick="document.all.banner.submit()" value="Submit">
@@ -17,11 +17,22 @@
         Upload Avatar
       </div>
       <div class="card__body">
-        <form enctype="multipart/form-data" id="avatar" method="post" action="https://modal.moe/api/members/upload_avatar/">
+        <form enctype="multipart/form-data" id="avatar" method="post" action="https://wilt.fm/api/members/upload_avatar/">
           <input type="file" name="profile_picture"/><br> <!-- FORGIVE ME FATHER -->
           <input type="hidden" [ngModel]="token" name="my_token"><br> <!-- FORGIVE ME FATHER -->
           <input type="button" class="btn-wilt" onclick="document.all.avatar.submit()" value="Submit">
         </form>
+      </div>
+    </div>
+    <div class="settings__card card">
+      <div class="card__title">
+        Social Users
+      </div>
+      <div class="card__body">
+        <input type="text" class="text-wilt" [ngModel]="newGithub" name="github_input" placeholder="Github Name"><br>
+        <input type="text" class="text-wilt" [ngModel]="newReddit" name="reddit_input" placeholder="Reddit Name"><br>
+        <input type="text" class="text-wilt" [ngModel]="newTwitter" name="twitter_input" placeholder="Twitter Name"><br>
+        <input type="button" class="btn-wilt" (click)="updateBio()" value="Update">
       </div>
     </div>
   </div>

@@ -27,7 +27,7 @@ class MemberInfoView(viewsets.ModelViewSet):
         IsOwnerOrReadOnly
     )
 
-    @detail_route(methods=['GET'])
+    @detail_route(methods=['GET', 'PATCH'])
     def nick(self, request, pk=None):
         resp = MemberInfo.objects.get(belongs_to__nick_name__iexact=pk)
         serializer = MemberInfoSerializer(instance=resp)

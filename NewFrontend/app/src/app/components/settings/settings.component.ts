@@ -4,12 +4,16 @@ import { UserService, AuthService, GlobalService } from '../../services';
 
 @Component({
   selector: 'app-settings',
-  templateUrl: './settings.component.html'
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
   private activeUser: any;
   private avatar: any;
   private token: string;
+  private newGithub: string;
+  private newReddit: string;
+  private newTwitter: string;
 
   constructor(
     private Global: GlobalService,
@@ -24,6 +28,17 @@ export class SettingsComponent implements OnInit {
       console.log(this.token);
       this.activeUser = user;
       this.Global.isLoading = false;
+    });
+  }
+
+  public updateBio() {
+    this.User.updateBio(
+      this.User.curUser.nick_name,
+      this.newGithub,
+      this.newTwitter,
+      this.newReddit
+    ).subscribe((r: any) => {
+      alert('Grats!');
     });
   }
 }

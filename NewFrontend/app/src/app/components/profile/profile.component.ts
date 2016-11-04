@@ -15,6 +15,7 @@ import {
 })
 
 export class ProfileComponent implements OnInit {
+  private bio: any = {};
   private start: number = 50;
   private full: boolean = false;
   private scrobbles: Array<any> = [];
@@ -43,13 +44,18 @@ export class ProfileComponent implements OnInit {
   public rmScrobble(id: number | string) {
     this.Scrobble.deleteScrobble(id);
   }
-  
+
   public refresh(self: boolean, id: any) {
     if (!self) {
       this.uid = this.route.snapshot.params['id'];
     } else {
       this.uid = id;
     }
+
+    this.user.getBio(this.uid).subscribe((bio: any) => {
+      this.bio = bio;
+      console.log(bio);
+    });
 
     this.Profile.updateProfile(this.uid).then((r: any) => {
       this.profileObj = r;
@@ -70,6 +76,7 @@ export class ProfileComponent implements OnInit {
       console.log(r);
     });
   }
+  p
 
   // Adds additional scrobbles to the viewing list
   public addScrobbles() {

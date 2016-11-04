@@ -63,6 +63,26 @@ export class UserService {
     return network$;
   }
 
+  public getBio(nick: string) {
+    const network$ = this.http.get(`member_info/${nick}/nick/`).cache();
+    network$.subscribe(
+      () => console.log('(Bio)Http get happened!'));
+    return network$;
+  }
+
+  public updateBio(
+    nick: string,
+    github: string,
+    twitter: string,
+    reddit: string
+  ) {
+    const network$ = this.http.patch(`member_info/${nick}/nick/`,
+      {github, twitter, reddit}).cache();
+    network$.subscribe(
+      () => console.log('(Bio)Http put happened!'));
+    return network$;
+  }
+
   public listensTo(name: string) {
     return this.http.get(`members/?listened=${name}`).share();
   }

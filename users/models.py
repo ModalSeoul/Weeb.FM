@@ -13,7 +13,7 @@ from songs.models import Song
 
 
 class Member(AbstractUser):
-    '''Member(user) model. Abstracted from Django user accounts.'''
+    """Member(user) model. Abstracted from Django user accounts"""
     nick_name = models.CharField(max_length=60, unique=True)
     loved_tracks = models.ManyToManyField(Song, blank=True)
 
@@ -32,14 +32,17 @@ class Member(AbstractUser):
 
 
 class MemberInfo(models.Model):
-    '''Holds member social links, bio, etc.'''
+    """Holds member social links, bio, etc"""
     bio = models.CharField(
         max_length=200, default='I haven\'t wrote a bio!', null=True)
-    github = models.URLField(max_length=100, null=True, blank=True)
-    twitter = models.URLField(max_length=100, null=True, blank=True)
-    reddit = models.URLField(max_length=100, null=True, blank=True)
-    youtube = models.URLField(max_length=140, null=True, blank=True)
+    github = models.CharField(max_length=100, null=True, blank=True)
+    twitter = models.CharField(max_length=100, null=True, blank=True)
+    reddit = models.CharField(max_length=100, null=True, blank=True)
+    youtube = models.CharField(max_length=140, null=True, blank=True)
     belongs_to = models.OneToOneField(Member)
+
+    def __str__(self):
+        return self.belongs_to.nick_name
 
 
 class Following(models.Model):

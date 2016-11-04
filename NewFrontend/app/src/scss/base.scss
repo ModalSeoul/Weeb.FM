@@ -60,7 +60,7 @@ a:active, a:hover {
 .text-wilt {
   border-radius: 2px;
   border: 2px solid color(primary7);
-  margin: size(.5) size(.5);
+  margin-bottom: size(.5) size(.5);
   padding: size(.5);
 }
 
@@ -213,6 +213,9 @@ a:active, a:hover {
 
 /* List Component
 *******************************************************************************/
+.inline {
+  display: inline;
+}
 
 .listComponent {
   margin: 0 0 size(2) 0;
