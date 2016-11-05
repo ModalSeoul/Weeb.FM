@@ -15,7 +15,7 @@ from users.serializers import MemberSerializer, CreateMemberSerializer, \
 from users.models import Member, Following, MemberInfo
 from scrobbles.models import Scrobble
 from .filters import UserFilter
-from WeebFM.permissions import IsOwnerOrReadOnly
+from WeebFM.permissions import IsOwnerOrReadOnly, IsUserOrReadOnly
 
 
 class MemberInfoView(viewsets.ModelViewSet):
@@ -55,7 +55,7 @@ class MemberView(viewsets.ModelViewSet):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
     permission_classes = (
-        IsOwnerOrReadOnly,
+        IsUserOrReadOnly,
     )
 
     filter_backends = [
