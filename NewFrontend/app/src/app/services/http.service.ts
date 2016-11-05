@@ -3,7 +3,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
-let isDev: boolean = true;
+let isDev: boolean = false;
 let apiUrl: string;
 
 if (!isDev) {
@@ -53,7 +53,10 @@ export class HttpService {
 
   public patch (url: string, data: any = {}) {
     url = `${apiUrl}${url}`;
-    return this.http.patch(url, data, this.headers);
+    let headers = new Headers(this.headers);
+    let options = new RequestOptions({ headers });
+    console.log(headers);
+    return this.request('patch', url, data);
   }
 
   // let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
@@ -66,7 +69,7 @@ export class HttpService {
   public delete (url: string) {
     url = `${apiUrl}${url}`;
     let headers = new Headers(this.headers);
-    let options = new RequestOptions({ headers: headers});
+    let options = new RequestOptions({ headers });
     return this.http.delete(url, options)
   }
 

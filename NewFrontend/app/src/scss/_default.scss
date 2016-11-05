@@ -14,10 +14,12 @@ ul {
 
 /* Remove shadow and outline on focus */
 input[type=name], input[type=email], input[type=text], input[type=tel], input[type=submit],
-input[type=number], input[type=password], input[type=button] textarea, button, a, select {
+input[type=number], input[type=password], input[type=button], textarea, button, a, select {
   outline: none !important;
   box-shadow: 0, 0, 0, transparent;
   text-decoration: none;
+
+  resize: none;
 
   &:focus {
     outline: none !important;

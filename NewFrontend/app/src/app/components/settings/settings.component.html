@@ -29,9 +29,13 @@
         Social Users
       </div>
       <div class="card__body">
-        <input type="text" class="text-wilt" [ngModel]="newGithub" name="github_input" placeholder="Github Name"><br>
-        <input type="text" class="text-wilt" [ngModel]="newReddit" name="reddit_input" placeholder="Reddit Name"><br>
-        <input type="text" class="text-wilt" [ngModel]="newTwitter" name="twitter_input" placeholder="Twitter Name"><br>
+        <input type="text" class="text-wilt" [(ngModel)]="newGithub" name="github_input" placeholder="Github Name">
+        <i class="fa fa-github" aria-hidden="true"></i><br>
+        <input type="text" class="text-wilt" [(ngModel)]="newReddit" name="reddit_input" placeholder="Reddit Name">
+        <i class="fa fa-reddit-alien" aria-hidden="true"></i><br>
+        <input type="text" class="text-wilt" [(ngModel)]="newTwitter" name="twitter_input" placeholder="Twitter Name">
+        <i class="fa fa-twitter" aria-hidden="true"></i><br>
+        <textarea class="text-wilt" [(ngModel)]="newBio" name="bio_input" placeholder="Bio"></textarea><br>
         <input type="button" class="btn-wilt" (click)="updateBio()" value="Update">
       </div>
     </div>

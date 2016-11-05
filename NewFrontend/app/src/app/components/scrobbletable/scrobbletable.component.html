@@ -8,6 +8,7 @@
         <th>Song</th>
         <th>Artist</th>
         <th>Timestamp</th>
+        <th></th>
       </tr>
       <!-- <tr>
         <th>
@@ -22,7 +23,7 @@
       </tr> -->
     </thead>
     <tbody>
-      <tr *ngFor="let scrobble of data; let i=index">
+      <tr *ngFor="let scrobble of data; let i=index" [ngClass]="{'fade': scrobble.isFading}">
         <td width="40%">
           {{scrobble.song_name}}
         </td>
@@ -33,7 +34,9 @@
         </td>
         <td width="20%">
           {{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}
-          <i *ngIf="isOwner" (click)="rmScrobble(scrobble.id)" class="fa fa-times" aria-hidden="true"></i>
+        </td>
+        <td class="del" (click)="rmScrobble(scrobble.id, i)">
+          <i *ngIf="isOwner" class="fa fa-trash" aria-hidden="true"></i>
         </td>
       </tr>
     </tbody>

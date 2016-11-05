@@ -4,6 +4,7 @@ import { ScrobbleService } from '../../services';
 @Component({
   selector: 'scrobble-table',
   templateUrl: './scrobbletable.component.html',
+  styleUrls: ['./scrobbletable.component.scss']
 })
 
 export class ScrobbletableComponent {
@@ -13,9 +14,12 @@ export class ScrobbletableComponent {
 
   constructor(private Scrobble: ScrobbleService) {}
 
-  public rmScrobble(id: number | string) {
+  public rmScrobble(id: number | string, index: number) {
     this.Scrobble.deleteScrobble(id).subscribe((r: any) => {
-      alert('deleted');
+      this.data[index].isFading = true;
+      setTimeout(() => {
+        this.data.splice(index, 1);
+      }, 500);
     });
   }
 }

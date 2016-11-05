@@ -14,6 +14,7 @@ export class SettingsComponent implements OnInit {
   private newGithub: string;
   private newReddit: string;
   private newTwitter: string;
+  private newBio: string;
 
   constructor(
     private Global: GlobalService,
@@ -25,7 +26,6 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
     this.User.getCurrentUser().subscribe((user: any) => {
       this.token = this.Auth.getCookie();
-      console.log(this.token);
       this.activeUser = user;
       this.Global.isLoading = false;
     });
@@ -36,8 +36,10 @@ export class SettingsComponent implements OnInit {
       this.User.curUser.nick_name,
       this.newGithub,
       this.newTwitter,
-      this.newReddit
+      this.newReddit,
+      this.newBio
     ).subscribe((r: any) => {
+      console.log(this.newGithub, this.newReddit, this.newTwitter);
       alert('Grats!');
     });
   }

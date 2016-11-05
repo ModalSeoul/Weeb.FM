@@ -19,7 +19,7 @@ from WeebFM.permissions import IsOwnerOrReadOnly
 
 
 class MemberInfoView(viewsets.ModelViewSet):
-    '''Social links for a user. User foreign keys to this'''
+    """Social links for a user. User foreign keys to this"""
     queryset = MemberInfo.objects.all()
     serializer_class = MemberInfoSerializer
     permission_classes = (
@@ -29,19 +29,33 @@ class MemberInfoView(viewsets.ModelViewSet):
 
     @detail_route(methods=['GET', 'PATCH'])
     def nick(self, request, pk=None):
-        resp = MemberInfo.objects.get(belongs_to__nick_name__iexact=pk)
-        serializer = MemberInfoSerializer(instance=resp)
-        return Response(serializer.data)
+        if request.method == 'GET':
+            resp = MemberInfo.objects.get(belongs_to__nick_name__iexact=pk)
+            serializer = MemberInfoSerializer(instance=resp)
+            return Response(serializer.data)
+        elif request.method == 'PATCH':
+            obj = MemberInfo.objects.get(belongs_to__nick_name__iexact=pk)
+            d = request.data
+            if 'github' in d:
+                obj.github = d['github']
+            if 'twitter' in d:
+                obj.twitter = d['twitter']
+            if 'reddit' in d:
+                obj.reddit = d['reddit']
+            if 'bio' in d:
+                obj.bio = d['bio']
+            obj.save()
+            serializer = MemberInfoSerializer(instance=obj)
+            return Response(serializer.data)
 
 
 class MemberView(viewsets.ModelViewSet):
-    '''Member viewset - handles all Member
-    related routes/post-creation tasks'''
+    """Member viewset - handles all Member
+    related routes/post-creation tasks"""
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
     permission_classes = (
-        permissions.IsAuthenticatedOrReadOnly,
-        IsOwnerOrReadOnly
+        IsOwnerOrReadOnly,
     )
 
     filter_backends = [

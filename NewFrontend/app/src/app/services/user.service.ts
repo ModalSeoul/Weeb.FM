@@ -74,10 +74,15 @@ export class UserService {
     nick: string,
     github: string,
     twitter: string,
-    reddit: string
+    reddit: string,
+    bio: string
   ) {
     const network$ = this.http.patch(`member_info/${nick}/nick/`,
-      {github, twitter, reddit}).cache();
+    { github,
+      twitter,
+      reddit,
+      bio
+    }).cache();
     network$.subscribe(
       () => console.log('(Bio)Http put happened!'));
     return network$;
