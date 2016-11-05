@@ -18,8 +18,7 @@ export class ArtistComponent implements OnInit {
 
   ngOnInit() {
     this.artist = this.route.snapshot.params['name'];
-    this.User.listensTo(this.artist).subscribe((users: any) => {
-      console.log(users);
+    this.User.listensTo(encodeURIComponent(this.artist)).subscribe((users: any) => {
       this.users = users;
       this.Global.isLoading = false;
     });
