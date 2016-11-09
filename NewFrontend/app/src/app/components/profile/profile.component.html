@@ -5,23 +5,25 @@
         <div class="profile__user" [ngClass]="{'profile__staff': profileObj.is_staff}">
           <img class="profile__avi" [ngClass]="{'profile__staff': profileObj.is_staff}" [src]="profileObj.avatar">
           <h1>{{profileObj.nick}}</h1>
-          <ul class="listComponent">
-            <li class="inline">
-              <a *ngIf="bio.github" href="https://github.com/{{bio.github}}" target="_blank">
-                <i class="fa fa-fw fa-github fa-2x" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li class="inline">
-              <a *ngIf="bio.reddit" href="https://reddit.com/u/{{bio.reddit}}" target="_blank">
-                <i class="fa fa-fw fa-reddit-alien fa-2x" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li class="inline">
-              <a *ngIf="bio.twitter" href="https://twitter.com/{{bio.twitter}}" target="_blank">
-                <i class="fa fa-fw fa-twitter fa-2x" aria-hidden="true"></i>
-              </a>
-            </li>
-          </ul>
+          <div class="profile__links">
+            <ul>
+              <li class="inline">
+                <a *ngIf="bio.github" href="https://github.com/{{bio.github}}" target="_blank">
+                  <i class="fa fa-fw fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="inline">
+                <a *ngIf="bio.reddit" href="https://reddit.com/u/{{bio.reddit}}" target="_blank">
+                  <i class="fa fa-fw fa-reddit-alien fa-2x" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="inline">
+                <a *ngIf="bio.twitter" href="https://twitter.com/{{bio.twitter}}" target="_blank">
+                  <i class="fa fa-fw fa-twitter fa-2x" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -64,7 +66,7 @@
           <div class="listComponent__header">
             {{profileObj.nick}}
           </div>
-          <ul class="listComponent">
+          <ul>
             <li>Member since {{profileObj.date_joined | date: 'MM/dd/yyyy' }}</li>
             <li>{{profileObj.listen_count | number}} total scrobbles</li>
             <li>{{profileObj.per_day | number}} scrobbles per day on average.</li>

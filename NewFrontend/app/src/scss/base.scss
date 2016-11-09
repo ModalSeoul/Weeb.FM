@@ -213,9 +213,6 @@ a:active, a:hover {
 
 /* List Component
 *******************************************************************************/
-.inline {
-  display: inline;
-}
 
 .listComponent {
   margin: 0 0 size(2) 0;
@@ -316,9 +313,9 @@ a:active, a:hover {
     height: 200px;
     width: 200px;
     border-radius: 100%;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-       -moz-box-shadow: 0 8px 6px -6px black;
-            box-shadow: 0 8px 6px -6px black;
+    // -webkit-box-shadow: 0 8px 6px -6px black;
+    //    -moz-box-shadow: 0 8px 6px -6px black;
+    //         box-shadow: 0 8px 6px -6px black;
   }
 
   &__banner {
@@ -348,12 +345,35 @@ a:active, a:hover {
     }
   }
 
+  &__links {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: size(2) 0;
+
+      li {
+        display: inline;
+        padding: 0;
+        margin: 0;
+        i {
+          color: white;
+          text-shadow: 2px 2px 4px black;
+        }
+        &:hover {
+          i {
+            color: color(gray4);
+          }
+        }
+      }
+    }
+  }
+
   &__wrapper {
     border-bottom: 3px solid color(divider-dk);
     margin-bottom: size(7);
     // background: linear-gradient(
-    //   rgba(150, 150, 150, 0.75),
-    //   rgba(100, 100, 100, 0.75)
+    //   rgba(150, 150, 150, 0.2),
+    //   rgba(100, 100, 100, 0.2)
     // );
   }
 }
