@@ -5,7 +5,7 @@
         <div class="profile__user" [ngClass]="{'profile__staff': profileObj.is_staff}">
           <img class="profile__avi" [ngClass]="{'profile__staff': profileObj.is_staff}" [src]="profileObj.avatar">
           <h1>{{profileObj.nick}}</h1>
-          <ul class="listComponent_ul">
+          <ul class="listComponent">
             <li class="inline">
               <a *ngIf="bio.github" href="https://github.com/{{bio.github}}" target="_blank">
                 <i class="fa fa-fw fa-github fa-2x" aria-hidden="true"></i>
@@ -64,12 +64,12 @@
           <div class="listComponent__header">
             {{profileObj.nick}}
           </div>
-          <ul class="listComponent__ul">
-            <li class="listComponent__li">Member since {{profileObj.date_joined | date: 'MM/dd/yyyy' }}</li>
-            <li class="listComponent__li">{{profileObj.listen_count | number}} total scrobbles</li>
-            <li class="listComponent__li">{{profileObj.per_day | number}} scrobbles per day on average.</li>
-            <li class="listComponent__li">{{profileObj.unique_artists}} unique artists scrobbled</li>
-            <li class="listComponent_li">{{bio.bio}}</li>
+          <ul class="listComponent">
+            <li>Member since {{profileObj.date_joined | date: 'MM/dd/yyyy' }}</li>
+            <li>{{profileObj.listen_count | number}} total scrobbles</li>
+            <li>{{profileObj.per_day | number}} scrobbles per day on average.</li>
+            <li>{{profileObj.unique_artists}} unique artists scrobbled</li>
+            <li>{{bio.bio}}</li>
             <!-- <li>This user has {{profileObj.followerCount}} followers.</li> -->
           </ul>
         </div>

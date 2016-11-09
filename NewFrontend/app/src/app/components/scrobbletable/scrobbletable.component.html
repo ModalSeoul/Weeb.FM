@@ -36,7 +36,7 @@
           {{scrobble.date_scrobbled | date: 'MMM d h:mm a'}}
         </td>
         <td class="del" (click)="rmScrobble(scrobble.id, i)">
-          <i *ngIf="isOwner" class="fa fa-trash" aria-hidden="true"></i>
+          <i *ngIf="isOwner" class="fa fa-fw fa-trash" aria-hidden="true"></i>
         </td>
       </tr>
     </tbody>
