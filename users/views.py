@@ -58,9 +58,7 @@ class MemberView(viewsets.ModelViewSet):
         IsUserOrReadOnly,
     )
 
-    filter_backends = [
-        UserFilter
-    ]
+    filter_backends = (UserFilter,)
 
     def get_serializer_class(self):
         if self.action == 'create':
@@ -98,7 +96,7 @@ class MemberView(viewsets.ModelViewSet):
 
     @list_route(methods=['GET'])
     def count(self, request):
-        return Response(len(Member.objects.all()))
+        return Response(Member.objects.all().count())
 
     @detail_route(methods=['GET'])
     def top(self, request, pk=None):
@@ -107,11 +105,14 @@ class MemberView(viewsets.ModelViewSet):
         count = scrobbles.count()
         data = scrobbles.filter(member=user).values(
             'member', 'song__artist', 'song__artist__name').annotate(
-            total=Count('id')).order_by('-total')
-        data = data[:10]
+            total=Count('id')).order_by('-total')[:10]
         for i in data:
             i['percent'] = 100 * (i['total'] / count)
         return Response(status=200, data=data)
+
+    @detail_route(methods['GET'])
+    def example(self, request, pk=None):
+        queryset = Member.objects.get(nick)
 
     @detail_route(methods=['GET'])
     def by_token(self, request, pk=None):

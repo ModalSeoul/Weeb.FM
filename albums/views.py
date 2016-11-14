@@ -11,6 +11,7 @@ from WeebFM.permissions import IsStaffOrReadOnly
 class AlbumView(viewsets.ModelViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
+    # TODO: Try posting from no staff
     permission_classes = (IsStaffOrReadOnly,)
 
     @detail_route(methods=['GET'])

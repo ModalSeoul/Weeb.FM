@@ -28,31 +28,6 @@ class ArtistView(viewsets.ModelViewSet):
         serializer = ArtistSerializer(instance=queryset, many=True)
         return Response(serializer.data)
 
-    @detail_route(methods=['GET'])
-    def top(self, request, pk=None):
-        # This is fucking ridiculous LOL
-        if pk:
-            artists = []
-            user = Member.objects.get(nick_name__iexact=pk)
-            scrobbles = Scrobble.objects.filter(member__id=user.id)
-            scrobble_count = scrobbles.count()
-            artist_names = scrobbles.values_list(
-                'song__artist__name').distinct()
-            for artist in artist_names:
-                artist_name = artist[0]
-                artist_scrobbles = scrobbles.filter(
-                    song__artist__name=artist_name).count()
-                increase = scrobbles.count() - artist_scrobbles
-
-                artists.append({
-                    'name': artist_name,
-                    'count': artist_scrobbles,
-                    'percent': 100 * (artist_scrobbles / scrobble_count)
-                })
-            artists = sorted(
-                artists, key=itemgetter('count'), reverse=True)[:10]
-            return Response(artists)
-
     @detail_route(methods=['GET', 'PATCH'])
     def name(self, request, pk=None):
         if pk:
