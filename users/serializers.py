@@ -36,8 +36,8 @@ class CreateMemberSerializer(serializers.Serializer):
 
 
 class MemberSerializer(serializers.ModelSerializer):
-    '''Member serializer - handles all data serialization
-    for the Member model'''
+    """Member serializer - handles all data serialization
+    for the Member model"""
     unique_artists = serializers.SerializerMethodField('calc_unique_artists')
     listen_count = serializers.SerializerMethodField('calc_listen_count')
     loved_tracks = serializers.PrimaryKeyRelatedField(
@@ -61,7 +61,7 @@ class MemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Member
-        exclude = ('email', 'password')
+        exclude = ('email', 'password', 'listened_to')
 
 
 class MemberInfoSerializer(serializers.ModelSerializer):

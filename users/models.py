@@ -23,6 +23,7 @@ class Member(AbstractUser):
     profile_picture = models.ImageField(
         upload_to='cdn/images/avatars/', null=True, blank=True)
 
+    # DECEMBAWEEEEEEEEEEEEEEEN
     banner_picture = models.ImageField(
         upload_to='cdn/images/banners/', null=True, blank=True,
         default='https://modal.moe/cdn/images/avatars/swongbad.gif')

@@ -77,13 +77,14 @@ class MemberView(viewsets.ModelViewSet):
     @list_route(methods=['GET'])
     def most_scrobbles(self, request):
         users = []
+        total_scrobbles = Scrobble.objects.all().count()
+
         for user in Member.objects.all():
-            scrobbles = Scrobble.objects.filter(member__id=user.id)
+            scrobbles = Scrobble.objects.filter(member__id=user.id).count()
             count_dict = {
                 'nick_name': user.nick_name,
-                'count': scrobbles.count(),
-                'percent': 100 * (
-                    scrobbles.count() / Scrobble.objects.all().count())
+                'count': scrobbles,
+                'percent': 100 * (scrobbles / total_scrobbles)
             }
             users.append(count_dict)
         # Leaderboard queryset ?leaderboard=True
@@ -109,10 +110,6 @@ class MemberView(viewsets.ModelViewSet):
         for i in data:
             i['percent'] = 100 * (i['total'] / count)
         return Response(status=200, data=data)
-
-    @detail_route(methods['GET'])
-    def example(self, request, pk=None):
-        queryset = Member.objects.get(nick)
 
     @detail_route(methods=['GET'])
     def by_token(self, request, pk=None):
