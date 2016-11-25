@@ -33,11 +33,13 @@ class Member(AbstractUser):
 
 
 class Shout(models.Model):
-    created_by = models.ForeignKey(AbstractUser)
-    body = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(Member)
+    shouted_to = models.ForeignKey(Member, related_name='shouted_to')
+    text = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.body
+        return '{} -> {}'.format(created_by, shouted_to)
 
 
 class MemberInfo(models.Model):
