@@ -32,6 +32,14 @@ class Member(AbstractUser):
         return self.nick_name
 
 
+class Shout(models.Model):
+    created_by = models.ForeignKey(AbstractUser)
+    body = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.body
+
+
 class MemberInfo(models.Model):
     """Holds member social links, bio, etc"""
     bio = models.CharField(
