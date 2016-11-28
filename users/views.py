@@ -11,8 +11,9 @@ from rest_framework.authtoken.models import Token
 from rest_framework import permissions
 
 from users.serializers import MemberSerializer, CreateMemberSerializer, \
-    FollowingSerializer, FollowerSerializer, MemberInfoSerializer
-from users.models import Member, Following, MemberInfo
+    FollowingSerializer, FollowerSerializer, MemberInfoSerializer, \
+    ShoutSerializer
+from users.models import Member, Following, MemberInfo, Shout
 from scrobbles.models import Scrobble
 from .filters import UserFilter
 from WeebFM.permissions import IsOwnerOrReadOnly, IsUserOrReadOnly
@@ -54,10 +55,7 @@ class MemberView(viewsets.ModelViewSet):
     related routes/post-creation tasks"""
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
-    permission_classes = (
-        IsUserOrReadOnly,
-    )
-
+    permission_classes = (IsUserOrReadOnly,)
     filter_backends = (UserFilter,)
 
     def get_serializer_class(self):
@@ -87,6 +85,7 @@ class MemberView(viewsets.ModelViewSet):
                 'percent': 100 * (scrobbles / total_scrobbles)
             }
             users.append(count_dict)
+
         # Leaderboard queryset ?leaderboard=True
         leaderboard = self.request.query_params.get('leaderboard', None)
         if leaderboard is not None:
@@ -174,3 +173,8 @@ class FollowingView(viewsets.ModelViewSet):
             serializer = FollowerSerializer(instance=query, many=True)
             values = query.values_list('belongs_to__nick_name', flat=True)
             return Response(values)
+
+
+class ShoutViewSet(viewsets.ModelViewSet):
+    queryset = Shout.objects.all()
+    serializer_class = ShoutSerializer

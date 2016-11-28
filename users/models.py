@@ -64,7 +64,6 @@ class Following(models.Model):
         return 'People {} follows'.format(self.belongs_to.nick_name)
 
 
-# DRF auth token receiver
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
