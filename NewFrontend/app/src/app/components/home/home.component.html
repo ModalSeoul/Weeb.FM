@@ -1,18 +1,26 @@
-<div class="home">
-  <span *ngIf="loggedIn">
-    <div class="card" *ngFor="let entry of entries">
-      <div class="card__title">{{entry.title}}</div>
-      <div class="card__body">
-        {{entry.body}}
-      </div>
-      <div class="card__footer">
-        {{entry.date | date: 'MMM d h:mm a'}}
-      </div>
-    </div>
-  </span>
+<span *ngIf="!Global.isLoading">
+  <div class="home">
+    <span *ngIf="loggedIn">
+      <div class="card">
+        <div class="card__title">{{feature.song}} - {{feature.artist}}</div>
+        <div class="card__body">
+          <div class="card__body__player">
+            <iframe title="YouTube video player" class="youtube-player" type="text/html"
+              width="480" height="360" [src]="url" frameborder="0" allowFullScreen></iframe>
+          </div>
+          
+          <p class=card__body__note>{{feature.note}}</p>
 
-  <!-- If user is not logged in -->
-  <span *ngIf="!loggedIn">
-    <login></login>
-  </span>
-</div>
+        </div>
+        <div class="card__footer">
+          Posted by Modal <!-- TODO: dynamic name -->
+        </div>
+      </div>
+    </span>
+
+    <!-- If user is not logged in -->
+    <span *ngIf="!loggedIn">
+      <login></login>
+    </span>
+  </div>
+</span>

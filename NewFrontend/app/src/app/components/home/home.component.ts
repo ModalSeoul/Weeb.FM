@@ -3,8 +3,10 @@ import {
   AuthService,
   UserService,
   BlogService,
-  GlobalService
+  GlobalService,
+  FeaturedService
 } from '../../services';
+import { DomSanitizer } from '@angular/platform-browser/index';
 
 @Component({
   selector: 'app-home',
@@ -12,15 +14,16 @@ import {
 })
 
 export class HomeComponent implements OnInit {
-  private curUser: any = {};
-  private entries: Array<any>;
   private loggedIn: boolean = false;
+  private feature: any = {};
+  private url: any;
 
   constructor(
     private Auth: AuthService,
     private User: UserService,
-    private Blog: BlogService,
-    private Global: GlobalService
+    private Global: GlobalService,
+    private Featured: FeaturedService,
+    private sanitizer: DomSanitizer
   ) {
     // Setting loggedIn property based on user status
     if (this.Auth.isLoggedIn()) {
@@ -29,8 +32,9 @@ export class HomeComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.Blog.getAll().subscribe((posts: any) => {
-      this.entries = posts;
+    this.Featured.currentlyFeatured().subscribe((r: any) => {
+      this.feature = r[0];
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(r[0].link);
       this.Global.isLoading = false;
     });
   }

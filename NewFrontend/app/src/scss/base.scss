@@ -74,7 +74,6 @@ a:active, a:hover {
 .card {
   @include box-shadow();
   @include normal-text;
-
   margin-bottom: size(2);
 
   &__title {
@@ -84,13 +83,22 @@ a:active, a:hover {
     text-align: center;
     text-transform: uppercase;
   }
+
   &__body {
     padding: size(1) size(2);
     text-align: left;
+    overflow: auto;
+
+    &__player {
+      float: left;
+      width: 500px;
+      clear: bottom;
+    }
   }
+
   &__footer {
-    padding: size(1) size(2);
-    text-align: center;
+    padding: size(1) size(1);
+    text-align: left;
   }
 }
 

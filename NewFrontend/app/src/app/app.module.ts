@@ -20,16 +20,17 @@ import {
   StatsService,
   BlogService,
   ProfileService,
-  GlobalService
+  GlobalService,
+  FeaturedService
 } from './services';
 
 import * as Components from './components';
 
 @Injectable()
 export class DefaultRequestOptions extends BaseRequestOptions {
-    headers:Headers = new Headers({
-        'Content-Type': 'application/json'
-    });
+  headers: Headers = new Headers({
+    'Content-Type': 'application/json'
+  });
 }
 
 @NgModule({
@@ -52,17 +53,18 @@ export class DefaultRequestOptions extends BaseRequestOptions {
     BlogService,
     ProfileService,
     GlobalService,
+    FeaturedService,
     CookieService,
     {
       provide: RequestOptions,
       useClass: DefaultRequestOptions
     },
     {
-        provide: XSRFStrategy,
-        useFactory: (cookieService: any) => {
-            return new CookieXSRFStrategy('csrftoken', 'X-CSRFToken');
-        },
-        deps: [CookieService]
+      provide: XSRFStrategy,
+      useFactory: (cookieService: any) => {
+        return new CookieXSRFStrategy('csrftoken', 'X-CSRFToken');
+      },
+      deps: [CookieService]
     }
   ],
   bootstrap: [AppComponent]
