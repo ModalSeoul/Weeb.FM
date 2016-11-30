@@ -11,6 +11,7 @@
     <table class="tableComponent__table">
       <thead>
         <tr>
+          <th *ngIf="User.curUser.is_superuser">ID</th>
           <th>Song</th>
           <th>Artist</th>
           <th>Scrobbles</th>
@@ -18,7 +19,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let song of popularSongs">
-          <td width="50%">{{song.title}}</td>
+          <td width="10%" *ngIf="User.curUser.is_superuser">{{song.id}}</td>
+          <td width="40%">{{song.title}}</td>
           <td width="30%">
             <a [routerLink]="['/artist', song.artist_name]">
               {{song.artist_name}}

@@ -3,7 +3,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
-let isDev: boolean = true;
+let isDev: boolean = false;
 let apiUrl: string;
 
 if (!isDev) {
@@ -20,16 +20,16 @@ export class HttpService {
     'Content-Type': 'application/json',
   };
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) { }
 
-  public resetHeaders (): void {
+  public resetHeaders(): void {
     this.headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     };
   }
 
-  public updateHeader (key: string, value: string) {
+  public updateHeader(key: string, value: string) {
     this.headers[key] = value;
   }
 
@@ -37,21 +37,21 @@ export class HttpService {
     delete this.headers[key];
   }
 
-  public get (url: string, params: any = {}) {
+  public get(url: string, params: any = {}) {
     url = `${apiUrl}${url}`;
     return this.request('get', url, {}, params);
   }
 
-  public post (url: string, body: any = {}, params: any = {}) {
+  public post(url: string, body: any = {}, params: any = {}) {
     url = `${apiUrl}${url}`;
     return this.request('post', url, body, params);
   }
 
-  public put (url: string, body: any = {}, params: any = {}) {
+  public put(url: string, body: any = {}, params: any = {}) {
     return this.request('put', url, body, params);
   }
 
-  public patch (url: string, data: any = {}) {
+  public patch(url: string, data: any = {}) {
     url = `${apiUrl}${url}`;
     let headers = new Headers(this.headers);
     let options = new RequestOptions({ headers });
@@ -66,7 +66,7 @@ export class HttpService {
   //     return this.http.get(path, options)
   // };
 
-  public delete (url: string) {
+  public delete(url: string) {
     url = `${apiUrl}${url}`;
     let headers = new Headers(this.headers);
     let options = new RequestOptions({ headers });

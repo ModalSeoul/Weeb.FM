@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
     private Blog: BlogService,
     private Global: GlobalService
   ) {
-    console.log(this.Auth.isLoggedIn());
     // Setting loggedIn property based on user status
     if (this.Auth.isLoggedIn()) {
       this.loggedIn = true;
