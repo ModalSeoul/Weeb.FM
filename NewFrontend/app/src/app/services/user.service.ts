@@ -35,7 +35,7 @@ export class UserService {
 
   public getLeaderboardUsers() {
     const network$ = this.http.get(
-        'members/most_scrobbles/', {'leaderboard': true}).cache();
+      'members/most_scrobbles/', { 'leaderboard': true }).cache();
     network$.subscribe(
       () => console.log('(Leaderboard object)HTTP Get happened!'));
     return network$;
@@ -78,11 +78,7 @@ export class UserService {
     bio: string
   ) {
     const network$ = this.http.patch(`member_info/${nick}/nick/`,
-    { github,
-      twitter,
-      reddit,
-      bio
-    }).cache();
+      { github, twitter, reddit, bio }).cache();
     network$.subscribe(
       () => console.log('(Bio)Http put happened!'));
     return network$;

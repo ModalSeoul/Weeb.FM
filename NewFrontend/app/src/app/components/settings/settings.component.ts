@@ -38,9 +38,10 @@ export class SettingsComponent implements OnInit {
       this.newTwitter,
       this.newReddit,
       this.newBio
-    ).subscribe((r: any) => {
-      console.log(this.newGithub, this.newReddit, this.newTwitter);
-      alert('Grats!');
-    });
+    ).subscribe(
+      (r: any) => {
+        console.log(this.newGithub, this.newReddit, this.newTwitter);
+        alert('Grats!');
+      }, (err) => alert('Error!'));
   }
 }

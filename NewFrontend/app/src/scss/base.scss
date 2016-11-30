@@ -302,9 +302,14 @@ a:active, a:hover {
 *******************************************************************************/
 
 .profile {
+  
   .btn-wilt {
     margin-top: size(1);
     margin-bottom: size(1);
+  }
+  
+  &__bio {
+    word-wrap: break-word;
   }
 
   &__avi {
