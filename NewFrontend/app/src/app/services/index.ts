@@ -6,3 +6,4 @@ export { StatsService } from './stats.service';
 export { BlogService } from './blog.service';
 export { ProfileService } from './profile.service';
 export { GlobalService } from './global.service';
+export { FeaturedService } from './featured.service';

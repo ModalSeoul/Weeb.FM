@@ -8,11 +8,11 @@ from songs.models import Song
 
 
 class Current(models.Model):
-    song = models.ForeignKey(Song)
-    note = models.TextField(max_length=1200)  # Short text about the song
-    # genre = models.ForeignKey(Genre) TODO: Add Genre application
-    start_date = models.DateTimeField()  # Scheduled featuring
-    end_date = models.DateTimeField()  # Scheduled ending of featuring
+    song = models.CharField(max_length=100)
+    artist = models.CharField(max_length=100)
+    note = models.TextField(max_length=1200)
+    link = models.URLField(max_length=200)
+    active = models.BooleanField(default=True)
 
 
 class Historical(models.Model):
