@@ -3,7 +3,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
-let isDev: boolean = true;
+let isDev: boolean = false;
 let apiUrl: string;
 
 if (!isDev) {

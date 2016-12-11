@@ -21,7 +21,8 @@ import {
   BlogService,
   ProfileService,
   GlobalService,
-  FeaturedService
+  FeaturedService,
+  MarkdownService
 } from './services';
 
 import * as Components from './components';
@@ -54,6 +55,7 @@ export class DefaultRequestOptions extends BaseRequestOptions {
     ProfileService,
     GlobalService,
     FeaturedService,
+    MarkdownService,
     CookieService,
     {
       provide: RequestOptions,

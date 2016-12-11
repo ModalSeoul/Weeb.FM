@@ -8,8 +8,10 @@
             <iframe title="YouTube video player" class="youtube-player" type="text/html"
               width="480" height="360" [src]="url" frameborder="0" allowFullScreen></iframe>
           </div>
-          
-          <p class=card__body__note>{{feature.note}}</p>
+
+          <div class="col-md-6">
+            <div [innerHtml]="feature.note"></div>
+          </div>
 
         </div>
         <div class="card__footer">
