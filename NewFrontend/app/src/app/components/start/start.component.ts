@@ -33,7 +33,7 @@ export class StartComponent implements OnInit {
       },
       {
         name: 'RipFM (From Last.fm to Wilt)',
-        link: '/static/ripfm.exe'
+        link: '/static/ripfm.zip'
       }
     ];
   }

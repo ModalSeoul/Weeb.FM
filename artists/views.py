@@ -28,6 +28,14 @@ class ArtistView(viewsets.ModelViewSet):
         serializer = ArtistSerializer(instance=queryset, many=True)
         return Response(serializer.data)
 
+    @list_route(methods=['GET'])
+    def count(self, request):
+        params = request.query_params.get
+        if params('artist'):
+            count = Scrobble.objects.filter(
+                song__artist__name__iexact=params('artist')).count()
+            return Response({'count': count})
+
     @detail_route(methods=['GET', 'PATCH'])
     def name(self, request, pk=None):
         if pk:
