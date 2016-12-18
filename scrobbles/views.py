@@ -21,12 +21,9 @@ def song_exists(title, artist):
     check = Song.objects.filter(
         title__iexact=title, artist__name__iexact=artist)
     if len(check) != 0:
-        print('{} : TRUE'.format(len(check)))
         return True
     else:
-        print('{} : FALSE'.format(len(check)))
         return False
-
 
 def album_exists(title):
     check = Album.objects.filter(title__iexact=title)
@@ -34,7 +31,6 @@ def album_exists(title):
         return True
     else:
         return False
-
 
 def artist_exists(name):
     check = Artist.objects.filter(name__iexact=name)
@@ -49,8 +45,7 @@ class ScrobbleView(viewsets.ModelViewSet):
     serializer_class = ScrobbleSerializer
     permission_classes = (
         permissions.IsAuthenticatedOrReadOnly,
-        IsOwnerOrReadOnly
-    )
+        IsOwnerOrReadOnly)
 
     def get_queryset(self):
         data = self.request.query_params
