@@ -10,3 +10,4 @@ export { ScrobbletableComponent } from './scrobbletable/scrobbletable.component'
 export { SettingsComponent } from './settings/settings.component';
 export { StartComponent } from './start/start.component';
 export { StatsComponent } from './stats/stats.component';
+export { ManualComponent } from './manual/manual.component';

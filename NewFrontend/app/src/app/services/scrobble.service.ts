@@ -46,7 +46,7 @@ export class ScrobbleService {
     return this.http.delete(`${this.ep}${id}/`);
   }
 
-  public postScrobble(song: string, artist: string) {
+  public postScrobble(song: string, artist: string, album: string = 'undefined') {
     return this.http.post('scrobbles', {
       'song': song,
       'artist': artist
