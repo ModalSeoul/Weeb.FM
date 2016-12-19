@@ -13,6 +13,16 @@ class SongView(viewsets.ModelViewSet):
     serializer_class = SongSerializer
     permission_classes = (IsStaffOrReadOnly,)
 
+    @detail_route(methods=['POST'])
+    def love(self, request, pk=None):
+        if pk:
+            if not self.request.user.is_anonymous:
+                self.request.user.loved_tracks.add(
+                    Song.objects.get(id=pk))
+                return Response('Good good')
+            else:
+                return Response('WOA CHECK YA PRIVILEGE U PC BRA?')
+
     @list_route(methods=['GET'])
     def popular(self, request):
         queryset = Song.objects.order_by('-scrobble_count')[:20]
