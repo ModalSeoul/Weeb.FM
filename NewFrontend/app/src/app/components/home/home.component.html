@@ -1,12 +1,12 @@
 <span *ngIf="!Global.isLoading">
   <div class="home">
     <span *ngIf="loggedIn">
-      <div class="card">
+      <div class="card" *ngFor="let feature of features | reverse">
         <div class="card__title">{{feature.song}} - {{feature.artist}}</div>
         <div class="card__body">
           <div class="card__body__player">
             <iframe title="YouTube video player" class="youtube-player" type="text/html"
-              width="480" height="360" [src]="url" frameborder="0" allowFullScreen></iframe>
+              width="480" height="360" [src]="feature.url" frameborder="0" allowFullScreen></iframe>
           </div>
 
           <div class="col-md-6">
@@ -15,7 +15,7 @@
 
         </div>
         <div class="card__footer">
-          Posted by Modal <!-- TODO: dynamic name -->
+          Posted by Modal
         </div>
       </div>
     </span>

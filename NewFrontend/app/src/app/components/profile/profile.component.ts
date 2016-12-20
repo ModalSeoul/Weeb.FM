@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   private profileObj: any = {};
   private isFollowing: boolean;
   private sub: any;
+  private viewingLoved: boolean = false;
 
   constructor(
     private route: ActivatedRoute,

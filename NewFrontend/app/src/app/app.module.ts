@@ -24,8 +24,8 @@ import {
   FeaturedService,
   MarkdownService
 } from './services';
-
 import * as Components from './components';
+import { ReversePipe } from './reverse.pipe';
 
 @Injectable()
 export class DefaultRequestOptions extends BaseRequestOptions {
@@ -38,6 +38,7 @@ export class DefaultRequestOptions extends BaseRequestOptions {
   declarations: [
     AppComponent,
     ...Object.keys(Components).map(k => Components[k]),
+    ReversePipe
   ],
   imports: [
     AppRoutingModule,

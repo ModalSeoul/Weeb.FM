@@ -17,7 +17,7 @@ import { DomSanitizer } from '@angular/platform-browser/index';
 export class HomeComponent implements OnInit {
 
   private loggedIn: boolean = false;
-  private feature: any = {};
+  private features: Array<any> = [];
   private url: any;
 
   constructor(
@@ -36,10 +36,12 @@ export class HomeComponent implements OnInit {
 
   public ngOnInit() {
     this.Featured.currentlyFeatured().subscribe((r: any) => {
-      this.feature = r[0];
-      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(r[0].link);
-      this.Global.isLoading = false;
-      this.feature.note = this.parseMarkdown(this.feature.note);
+      this.features = r;
+      this.features.forEach((feature: any) => {
+        feature.url = this.sanitizer.bypassSecurityTrustResourceUrl(feature.link);
+        feature.note = this.parseMarkdown(feature.note);
+        this.Global.isLoading = false;
+      });
     });
   }
 

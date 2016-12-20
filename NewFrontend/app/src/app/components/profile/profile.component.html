@@ -75,6 +75,16 @@
             <!-- <li>This user has {{profileObj.followerCount}} followers.</li> -->
           </ul>
         </div>
+        <div class="listComponent profile__bio">
+          <div class="listComponent__header">
+            Loved Tracks
+          </div>
+          <ul>
+            <li *ngFor="let track of profileObj.loved_tracks">
+              {{track.song}}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
