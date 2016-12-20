@@ -21,10 +21,8 @@ def song_exists(title, artist):
     check = Song.objects.filter(
         title__iexact=title, artist__name__iexact=artist)
     if len(check) != 0:
-        print('{} : TRUE'.format(len(check)))
         return True
     else:
-        print('{} : FALSE'.format(len(check)))
         return False
 
 

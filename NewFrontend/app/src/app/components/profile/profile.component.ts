@@ -55,11 +55,13 @@ export class ProfileComponent implements OnInit {
 
     this.user.getBio(this.uid).subscribe((bio: any) => {
       this.bio = bio;
-      console.log(bio);
     });
 
     this.Profile.updateProfile(this.uid).then((r: any) => {
       this.profileObj = r;
+      this.user.getLoved(this.uid).subscribe((loved: any) => {
+        this.profileObj.loved = loved;
+      });
       this.user.getTopArtists(this.uid).subscribe((artists: any) => {
         this.topArtists = artists;
       });
@@ -67,6 +69,7 @@ export class ProfileComponent implements OnInit {
 
     this.Scrobble.getUserScrobbles(this.uid, 0, 50).subscribe((r: any) => {
       this.scrobbles = r;
+      console.log(r);
       this.Global.isLoading = false;
     });
   }
@@ -74,10 +77,8 @@ export class ProfileComponent implements OnInit {
   public follow() {
     this.user.follow(this.uid).subscribe((r: any) => {
       // TODO: Finish following implementation on frontend
-      console.log(r);
     });
   }
-  p
 
   // Adds additional scrobbles to the viewing list
   public addScrobbles() {

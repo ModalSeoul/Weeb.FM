@@ -17,8 +17,15 @@ class ScrobbleSerializer(serializers.ModelSerializer):
     song_name = serializers.CharField(source='song')
     album_name = serializers.CharField(source='song.album', read_only=True)
     nick = serializers.CharField(source='member.nick_name', read_only=True)
+    is_loved = serializers.SerializerMethodField(source='get_is_loved')
+
+    def get_is_loved(self, obj):
+        if obj.song in obj.member.loved_tracks.all():
+            return True
+        else:
+            return False
 
     class Meta:
         model = Scrobble
-        fields = ('id', 'song_name', 'album_name',
+        fields = ('id', 'song_name', 'album_name', 'is_loved', 'song',
                   'artist_name', 'date_scrobbled', 'member', 'nick')

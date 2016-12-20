@@ -47,7 +47,6 @@ export class ProfileService {
           resolveMe.listen_count = visitingObj.listen_count;
           resolveMe.is_staff = visitingObj.is_staff;
           resolveMe.unique_artists = visitingObj.unique_artists;
-          resolveMe.loved_tracks = visitingObj.loved_tracks;
           // Checks if user should be able to delete/edit scrobbles
           if (this.isMe(tmpUser.nick_name, visitingUser)) {
             resolveMe.can_delete = true;

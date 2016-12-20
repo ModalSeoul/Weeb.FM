@@ -304,6 +304,12 @@ a:active, a:hover {
 
 /* Profile
 *******************************************************************************/
+.loved {
+  // TODO: Additional styling for qol
+  &:hover {
+    cursor: pointer;
+  }
+}
 
 .profile {
 

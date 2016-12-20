@@ -87,4 +87,12 @@ export class UserService {
   public listensTo(name: string) {
     return this.http.get(`members/?listened=${name}`).share();
   }
+
+  public getLoved(name: string) {
+    return this.http.get(`songs/?loved=${name}`).cache();
+  }
+
+  public love(id: number | string) {
+    return this.http.post(`songs/${id}/love`).cache();
+  }
 }
