@@ -74,7 +74,7 @@
               <tr *ngFor="let track of profileObj.loved; let i = index">
                 <td width="50%">{{track.title}}</td>
                 <td width="50%">
-                  <a [routerLink]="['/artist', track.song__artist__name]">{{track.artist_name}}</a>
+                  <a [routerLink]="['/artist', track.artist_name]">{{track.artist_name}}</a>
                 </td>
               </tr>
             </tbody>
