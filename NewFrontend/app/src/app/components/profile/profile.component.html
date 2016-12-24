@@ -29,6 +29,8 @@
     </div>
     <div class="flex">
       <div class="flex__side--lg">
+
+        <!-- TOP ARTISTS -->
         <div class="tableComponent">
           <div class="tableComponent__header">
             Top Artists
@@ -54,6 +56,31 @@
             </tbody>
           </table>
         </div>
+
+        <!-- LOVED TRACKS -->
+        <div class="tableComponent">
+          <div (click)="viewingLoved = !viewingLoved;" class="tableComponent__header loved">
+            Loved Tracks
+            <i class="fa fa-bars"></i>
+          </div>
+          <table *ngIf="viewingLoved" class="tableComponent__table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Artist</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let track of profileObj.loved; let i = index">
+                <td width="50%">{{track.title}}</td>
+                <td width="50%">
+                  <a [routerLink]="['/artist', track.artist_name]">{{track.artist_name}}</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <input *ngIf="profileObj.canFollow" (click)="follow()" type="button" class="btn-wilt" value="+ Follow">
         <input *ngIf="isFollowing" type="button" class="btn-wilt" value="Unfollow">
         <scrobble-table [data]="scrobbles" [header]="'User Scrobbles'" [isOwner]="Profile.isMe(uid, user.curUser.nick_name)">
@@ -73,16 +100,6 @@
             <li>{{profileObj.unique_artists}} unique artists scrobbled</li>
             <li>{{bio.bio}}</li>
             <!-- <li>This user has {{profileObj.followerCount}} followers.</li> -->
-          </ul>
-        </div>
-        <div class="listComponent profile__bio">
-          <div class="listComponent__header">
-            Loved Tracks
-          </div>
-          <ul>
-            <li *ngFor="let track of profileObj.loved_tracks">
-              {{track.song}}
-            </li>
           </ul>
         </div>
       </div>

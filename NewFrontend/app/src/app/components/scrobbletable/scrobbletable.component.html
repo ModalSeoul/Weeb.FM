@@ -5,25 +5,20 @@
   <table class="tableComponent__table">
     <thead>
       <tr>
+        <th *ngIf="isOwner"></th>
         <th>Song</th>
         <th>Artist</th>
         <th>Timestamp</th>
         <th></th>
       </tr>
-      <!-- <tr>
-        <th>
-          <input type="text" class="text-wilt" placeholder="Filter by song"
-            [(ngModel)]="songFilter" (ngModelChange)="searchSong()" />
-        </th>
-        <th>
-          <input type="text" class="text-wilt" placeholder="Filter by artist"
-            [(ngModel)]="artistFilter" (ngModelChange)="searchArtist()" />
-        </th>
-        <th></th>
-      </tr> -->
+
     </thead>
     <tbody>
       <tr *ngFor="let scrobble of data; let i=index" [ngClass]="{'fade': scrobble.isFading}">
+        <td *ngIf="isOwner" (click)="loveScrobble(scrobble.song, i)" class="love">
+          <i *ngIf="scrobble.is_loved" class="fa fa-heart" aria-hidden="true"></i>
+          <i *ngIf="!scrobble.is_loved" class="fa fa-heart-o" aria-hidden="true"></i>
+        </td>
         <td width="40%">
           {{scrobble.song_name}}
         </td>

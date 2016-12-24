@@ -5,6 +5,7 @@ from rest_framework.decorators import list_route, detail_route
 from rest_framework.response import Response
 from .models import Song
 from .serializers import SongSerializer
+from users.models import Member
 from WeebFM.permissions import IsStaffOrReadOnly
 
 
@@ -13,15 +14,28 @@ class SongView(viewsets.ModelViewSet):
     serializer_class = SongSerializer
     permission_classes = (IsStaffOrReadOnly,)
 
+    def get_queryset(self):
+        q = self.request.query_params.get
+        queryset = Song.objects.all()
+
+        if q('loved'):
+            user = Member.objects.get(nick_name__iexact=q('loved'))
+            queryset = Song.objects.filter(id__in=user.loved_tracks.all())
+        return queryset
+
     @detail_route(methods=['POST'])
     def love(self, request, pk=None):
-        if pk:
-            if not self.request.user.is_anonymous:
-                self.request.user.loved_tracks.add(
-                    Song.objects.get(id=pk))
-                return Response('Good good')
+        if pk and not self.request.user.is_anonymous:
+            song = Song.objects.get(id=pk)
+            if song in self.request.user.loved_tracks.all():
+                print('Unloved')
+                self.request.user.loved_tracks.remove(song)
             else:
-                return Response('WOA CHECK YA PRIVILEGE U PC BRA?')
+                print('Loved')
+                self.request.user.loved_tracks.add(song)
+            return Response('Good good')
+        else:
+            return Response('WOA CHECK YA PRIVILEGE U PC BRA?')
 
     @list_route(methods=['GET'])
     def popular(self, request):
