@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   private isFollowing: boolean;
   private sub: any;
   private viewingLoved: boolean = false;
+  private viewingSelf: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,31 +47,44 @@ export class ProfileComponent implements OnInit {
     this.Scrobble.deleteScrobble(id);
   }
 
+  public checkSelf(self, id): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (!self) {
+        this.uid = this.route.snapshot.params['id'];
+        resolve(this.uid);
+      } else {
+        this.uid = id;
+        resolve(id);
+      }
+    });
+  }
+
   public refresh(self: boolean, id: any) {
-    if (!self) {
-      this.uid = this.route.snapshot.params['id'];
-    } else {
-      this.uid = id;
-    }
+    this.checkSelf(self, id).then((change_this: any) => {
+      // if (this.user.curUser.nick_name.toLowerCase() == id.toLowerCase()) {
+      //   this.viewingSelf = true;
+      // }
 
-    this.user.getBio(this.uid).subscribe((bio: any) => {
-      this.bio = bio;
-    });
-
-    this.Profile.updateProfile(this.uid).then((r: any) => {
-      this.profileObj = r;
-      this.user.getLoved(this.uid).subscribe((loved: any) => {
-        this.profileObj.loved = loved;
+      this.user.getBio(this.uid).subscribe((bio: any) => {
+        this.bio = bio;
       });
-      this.user.getTopArtists(this.uid).subscribe((artists: any) => {
-        this.topArtists = artists;
-      });
-    });
 
-    this.Scrobble.getUserScrobbles(this.uid, 0, 50).subscribe((r: any) => {
-      this.scrobbles = r;
-      console.log(r);
-      this.Global.isLoading = false;
+      this.Profile.updateProfile(this.uid).then((r: any) => {
+        this.profileObj = r;
+        this.user.getLoved(this.uid).subscribe((loved: any) => {
+          this.profileObj.loved = loved;
+          console.log(this.profileObj);
+        });
+        this.user.getTopArtists(this.uid).subscribe((artists: any) => {
+          this.topArtists = artists;
+        });
+      });
+
+      this.Scrobble.getUserScrobbles(this.uid, 0, 50).subscribe((r: any) => {
+        this.scrobbles = r;
+        console.log(r);
+        this.Global.isLoading = false;
+      });
     });
   }
 

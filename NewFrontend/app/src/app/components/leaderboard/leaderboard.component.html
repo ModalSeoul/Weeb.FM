@@ -17,7 +17,7 @@
           <td width="70%" [routerLink]="['/profile', user.nick_name]">
             <a [routerLink]="['/profile', user.nick_name]">{{user.nick_name}}</a>
           </td>
-          <td width="15%">{{user.count}}</td>
+          <td width="15%">{{user.count | number}}</td>
         </tr>
       </tbody>
     </table>

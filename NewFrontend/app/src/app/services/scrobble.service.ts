@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
+import { UserService } from './user.service';
 
 import 'rxjs/add/operator/map';
 
@@ -7,7 +8,10 @@ import 'rxjs/add/operator/map';
 export class ScrobbleService {
   private ep: string = 'scrobbles/';
 
-  constructor(private http: HttpService) {}
+  constructor(
+    private http: HttpService,
+    private User: UserService
+  ) {}
 
   /*This class is laid out in a fairly
   * straight forward manner. Names are
@@ -51,5 +55,14 @@ export class ScrobbleService {
       'song': song,
       'artist': artist
     });
+  }
+
+  public loveScrobble(id) {
+    return new Promise((resolve, reject) => {
+      this.User.love(id).subscribe((r: any) => {
+        resolve(r);
+        // this.data[index].is_loved = !this.data[index].is_loved;
+      });
+    })
   }
 }

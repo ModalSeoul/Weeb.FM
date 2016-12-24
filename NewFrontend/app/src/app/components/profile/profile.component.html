@@ -66,12 +66,17 @@
           <table *ngIf="viewingLoved" class="tableComponent__table">
             <thead>
               <tr>
+                <th *ngIf="viewingSelf"></th>
                 <th>Title</th>
                 <th>Artist</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let track of profileObj.loved; let i = index">
+                <td *ngIf="viewingSelf" (click)="Scrobble.loveScrobble(track.id); track.is_loved = !track.is_loved;" class="love">
+                  <i *ngIf="!track.is_loved" class="fa fa-heart" aria-hidden="true"></i>
+                  <i *ngIf="track.is_loved" class="fa fa-heart-o" aria-hidden="true"></i>
+                </td>
                 <td width="50%">{{track.title}}</td>
                 <td width="50%">
                   <a [routerLink]="['/artist', track.artist_name]">{{track.artist_name}}</a>
