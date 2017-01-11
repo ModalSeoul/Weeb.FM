@@ -26,7 +26,7 @@
               {{song.artist_name}}
             </a>
           </td>
-          <td width="10%">{{song.scrobble_count}}</td>
+          <td width="10%">{{song.scrobble_count | number}}</td>
         </tr>
       </tbody>
     </table>
@@ -50,7 +50,7 @@
               {{artist.name}}
             </a>
           </td>
-          <td width="10%">{{artist.scrobble_count}}</td>
+          <td width="10%">{{artist.scrobble_count | number}}</td>
         </tr>
       </tbody>
     </table>
