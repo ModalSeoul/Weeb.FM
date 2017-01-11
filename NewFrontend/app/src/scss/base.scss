@@ -21,6 +21,278 @@ a:active, a:hover {
   cursor: pointer;
 }
 
+/*
+* INDIGO THEME
+*******************************************************************************/
+.theme-indigo {
+
+  .text-wilt {
+    border-radius: 2px;
+    border: 2px solid color(indigo7);
+    margin-bottom: size(.5) size(.5);
+    padding: size(.5);
+  }
+
+  i {
+    color: color(indigo9);
+  }
+
+  .btn-wilt {
+    @include medium-text;
+
+    background-color: color(indigo8);
+    border-radius: 3px;
+    border: none;
+    color: color(gray2);
+    opacity: 1;
+    padding: size(1) size(3);
+    @include transition(all, .5s, ease-in-out);
+
+    &:hover {
+      background-color: color(indigo6);
+    }
+    &:active {
+      opacity: 0.8;
+      -webkit-box-shadow: inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+      -moz-box-shadow:    inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+      box-shadow:         inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+    }
+
+    &.accent {
+      background-color: color(accent8);
+      &:hover {
+        background-color: color(accent6);
+      }
+      &:active {
+        opacity: .8;
+        -webkit-box-shadow: inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+        -moz-box-shadow:    inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+        box-shadow:         inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+      }
+    }
+  }
+}
+
+
+.theme-red {
+  .sidebar {
+    background-color: color(gray8);
+    bottom: 0;
+    color: white;
+    position: fixed;
+    height: 100% !important;
+    width: 12rem;
+
+    &__seperator {
+      background-color: white;
+      border: none;
+      margin-top: size(-3.5);
+      margin-bottom: size(3);
+      height: 2px;
+      width: 75%;
+    }
+    &__title {
+      @include bold-text;
+      background-color: color(red7);
+      color: white;
+      font-family: Pacifico;
+      padding: size(.75);
+      text-align: center;
+    }
+    .nav {
+      background-color: color(gray8);
+      border-top: 2px solid color(gray7);
+      color: color(gray2) !important;
+      display: flex;
+      flex-direction: column;
+
+      &__link {
+        background-color: color(gray8);
+        border-bottom: 2px solid color(gray7);
+        color: color(gray2) !important;
+        cursor: pointer;
+        opacity: 1;
+        padding: size(2) size(1.5);
+        @include transition(all, 1s, ease);
+        &:hover {
+          background-color: color(gray9);
+        }
+        &--active {
+          -webkit-box-shadow: inset size(6) 0 0 0 color(red7);
+             -moz-box-shadow: inset size(6) 0 0 0 color(red7);
+                  box-shadow: inset size(6) 0 0 0 color(red7);
+        }
+        &__icon {
+          border-right: 1px;
+          color: color(gray2);
+          font-size: 18px;
+          margin-right: size(3);
+        }
+      }
+    }
+  }
+  .text-wilt {
+    border-radius: 2px;
+    border: 2px solid color(red7);
+    margin-bottom: size(.5) size(.5);
+    padding: size(.5);
+  }
+
+  i {
+    color: color(red9);
+  }
+
+  .btn-wilt {
+    @include medium-text;
+
+    background-color: color(red8);
+    border-radius: 3px;
+    border: none;
+    color: color(gray2);
+    opacity: 1;
+    padding: size(1) size(3);
+    @include transition(all, .5s, ease-in-out);
+
+    &:hover {
+      background-color: color(red6);
+    }
+    &:active {
+      opacity: 0.8;
+      -webkit-box-shadow: inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+      -moz-box-shadow:    inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+      box-shadow:         inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+    }
+
+    &.accent {
+      background-color: color(accent8);
+      &:hover {
+        background-color: color(accent6);
+      }
+      &:active {
+        opacity: .8;
+        -webkit-box-shadow: inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+        -moz-box-shadow:    inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+        box-shadow:         inset 0px -8px 6px -6px rgba(40, 40, 40, 0.3);
+      }
+    }
+  }
+
+  .loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 6rem;
+    right: 0;
+    bottom: 0;
+
+    i {
+      color: color(red9);
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 12rem;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .loved {
+    // TODO: Additional styling for qol
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .profile {
+
+    .btn-wilt {
+      margin-top: size(1);
+      margin-bottom: size(1);
+    }
+
+    &__bio {
+      word-wrap: break-word;
+    }
+
+    &__avi {
+      border: 2px solid color(divider-dk);
+      margin-top: 1rem;
+      height: 200px;
+      width: 200px;
+      border-radius: 100%;
+      // -webkit-box-shadow: 0 8px 6px -6px black;
+      //    -moz-box-shadow: 0 8px 6px -6px black;
+      //         box-shadow: 0 8px 6px -6px black;
+    }
+
+    &__banner {
+      margin: -2rem;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+
+    &__staff {
+      img {
+        border: 2px solid color(red7) !important;
+      }
+      h1 {
+        color: color(red7) !important;
+      }
+    }
+
+    &__user {
+      margin-left: 2rem;
+      margin-right: 2rem;
+
+      h1 {
+        @include bold-text;
+        color: color(gray2);
+        text-shadow: 2px 2px 4px #000000;
+      }
+    }
+
+    &__links {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: size(2) 0;
+
+        li {
+          display: inline;
+          padding: 0;
+          margin: 0;
+          i {
+            color: white;
+            text-shadow: 2px 2px 4px black;
+          }
+          &:hover {
+            i {
+              color: color(gray4);
+            }
+          }
+        }
+      }
+    }
+
+    &__wrapper {
+      border-bottom: 3px solid color(divider-dk);
+      margin-bottom: size(7);
+      // background: linear-gradient(
+      //   rgba(150, 150, 150, 0.2),
+      //   rgba(100, 100, 100, 0.2)
+      // );
+    }
+  }
+}
+
 /**
 * WILT Button CSS
 *******************************************************************************/
@@ -213,6 +485,7 @@ a:active, a:hover {
 
 .align-center {
   text-align: center !important;
+
   &--all {
     text-align: center !important;
     * {

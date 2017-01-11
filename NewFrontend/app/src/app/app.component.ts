@@ -4,15 +4,20 @@ import { GlobalService } from './services';
 @Component({
     selector: 'app-root',
     template: `
+    <div [class]="chosenTheme">
     <side-nav></side-nav>
-    <div class="loading" *ngIf="Global.isLoading">
-      <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-    </div>
-    <div class="weebContainer">
-      <router-outlet></router-outlet>
+      <div class="weebContainer">
+        <div class="loading" *ngIf="Global.isLoading">
+        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
     </div>`,
 })
 
 export class AppComponent {
-  constructor(private Global: GlobalService) {}
+  public chosenTheme = 'theme-red';
+  constructor(private Global: GlobalService) {
+
+  }
 }
