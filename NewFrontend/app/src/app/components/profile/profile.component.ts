@@ -73,7 +73,6 @@ export class ProfileComponent implements OnInit {
         this.profileObj = r;
         this.user.getLoved(this.uid).subscribe((loved: any) => {
           this.profileObj.loved = loved;
-          console.log(this.profileObj);
         });
         this.user.getTopArtists(this.uid).subscribe((artists: any) => {
           this.topArtists = artists;
@@ -82,7 +81,6 @@ export class ProfileComponent implements OnInit {
 
       this.Scrobble.getUserScrobbles(this.uid, 0, 50).subscribe((r: any) => {
         this.scrobbles = r;
-        console.log(r);
         this.Global.isLoading = false;
       });
     });
@@ -113,6 +111,7 @@ export class ProfileComponent implements OnInit {
   public ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.paramsChanged(params['id']);
+      document.title = `${params['id']} | ${this.Global.TITLE}`;
     });
     this.refresh(false, undefined);
   }

@@ -3,6 +3,7 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 
 @Injectable()
 export class GlobalService {
+  public TITLE = 'What I Listen To';
   public isLoading: boolean = false;
   public lastRoute: string;
 
@@ -22,6 +23,9 @@ export class GlobalService {
     }
     if (event instanceof NavigationEnd) {
       this.lastRoute = event.url;
+      if (document.title != this.TITLE && event.url.indexOf('profile') == -1) {
+        document.title = this.TITLE;
+      }
     }
   }
 }
