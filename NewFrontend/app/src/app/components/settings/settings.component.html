@@ -40,28 +40,13 @@
       </div>
     </div>
   </div>
-  <!-- <div class="settings__row">
-    <div class="settings__card card">
-      <div class="card__title">
-        Switch Theme
-      </div>
-      <div class="card__body">
-        <button class="btn-wilt" (click)="toggleTheme()">Toggle Dark/Light Theme</button>
-      </div>
+  <div class="settings__card card">
+    <div class="card__title">
+      Theme
     </div>
-    <div class="settings__card"></div>
-    <div class="settings__card card">
-      <div class="card__title">
-        Primary Color
-      </div>
-      <div class="card__body">
-        <div class="colorSwitch">
-          <div *ngFor="let color of primaryChoices"
-            class="colorSwitch__color"
-            [ngClass]="['primary-' + color + '-bg']"
-            (click)="setPrimaryColor(color)"></div>
-        </div>
-      </div>
-    </div>
-  </div> -->
+    <div class="card__body">
+      <input type="button" class="btn-wilt" (click)="setColor('red');" value="Red"/>
+      <input type="button" class="btn-wilt" (click)="setColor('blue');" value="Blue"/>
+      <input type="button" class="btn-wilt" (click)="setColor('indigo');" value="Indigo"/>
+  </div>
 </div>

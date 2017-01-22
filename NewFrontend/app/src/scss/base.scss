@@ -25,16 +25,85 @@ a:active, a:hover {
 * INDIGO THEME
 *******************************************************************************/
 .theme-indigo {
+  .sidebar {
+    background-color: color(gray8);
+    bottom: 0;
+    color: white;
+    position: fixed;
+    height: 100% !important;
+    width: 12rem;
 
+    &__seperator {
+      background-color: white;
+      border: none;
+      margin-top: size(-3.5);
+      margin-bottom: size(3);
+      height: 2px;
+      width: 75%;
+    }
+    &__title {
+      @include bold-text;
+      background-color: color(indigo7);
+      color: white;
+      font-family: Pacifico;
+      padding: size(.75);
+      text-align: center;
+    }
+    .nav {
+      background-color: color(gray8);
+      border-top: 2px solid color(gray7);
+      color: color(gray2) !important;
+      display: flex;
+      flex-direction: column;
+
+      &__link {
+        background-color: color(gray8);
+        border-bottom: 2px solid color(gray7);
+        color: color(gray2) !important;
+        cursor: pointer;
+        opacity: 1;
+        padding: size(2) size(1.5);
+        @include transition(all, 1s, ease);
+        &:hover {
+          background-color: color(gray9);
+        }
+        &--active {
+          -webkit-box-shadow: inset size(6) 0 0 0 color(indigo7);
+             -moz-box-shadow: inset size(6) 0 0 0 color(indigo7);
+                  box-shadow: inset size(6) 0 0 0 color(indigo7);
+        }
+      }
+    }
+  }
+  .sidebar__title {
+    background-color: color(indigo7);
+  }
+
+  .card {
+    border: 1px solid color(indigo8);
+  }
+  .card__title {
+    background-color: color(indigo8);
+  }
+  a:visited, a:link {
+    color: color(indigo7);
+  }
+  .listComponent__header {
+    background-color: color(indigo8);
+  }
+  .tableComponent {
+    a:visited, a:link {
+      color: color(indigo8);
+    }
+  }
+  .tableComponent__header {
+    background-color: color(indigo8) !important;
+  }
   .text-wilt {
     border-radius: 2px;
     border: 2px solid color(indigo7);
     margin-bottom: size(.5) size(.5);
     padding: size(.5);
-  }
-
-  i {
-    color: color(indigo9);
   }
 
   .btn-wilt {
@@ -71,10 +140,34 @@ a:active, a:hover {
       }
     }
   }
+  .text-wilt {
+    border: 2px solid color(indigo7);
+  }
 }
 
 
 .theme-red {
+  .card {
+    border: 1px solid color(red8);
+  }
+  .card__title {
+    background-color: color(red8);
+  }
+  a:visited, a:link {
+    color: color(red7);
+  }
+  .listComponent__header {
+    background-color: color(red8);
+  }
+  .tableComponent {
+    a:visited, a:link {
+      color: color(red8);
+    }
+  }
+  .tableComponent__header {
+    background-color: color(red8) !important;
+  }
+
   .sidebar {
     background-color: color(gray8);
     bottom: 0;
@@ -137,11 +230,6 @@ a:active, a:hover {
     margin-bottom: size(.5) size(.5);
     padding: size(.5);
   }
-
-  i {
-    color: color(red9);
-  }
-
   .btn-wilt {
     @include medium-text;
 

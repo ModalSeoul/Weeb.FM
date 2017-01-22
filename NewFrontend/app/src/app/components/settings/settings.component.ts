@@ -44,4 +44,9 @@ export class SettingsComponent implements OnInit {
         alert('Grats!');
       }, (err) => alert('Error!'));
   }
+
+  public setColor(color: string) {
+    this.cookies.put('theme', color);
+    location.reload();
+  }
 }

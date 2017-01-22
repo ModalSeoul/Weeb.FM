@@ -8,15 +8,15 @@
   height: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: color(primary7);
+  background: color(gray7);
   border: 11px none #ffffff;
   border-radius: 0px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: color(primary8);
+  background: color(gray8);
 }
 ::-webkit-scrollbar-thumb:active {
-  background: color(primary9);
+  background: color(gray9);
 }
 ::-webkit-scrollbar-track {
   background: color(gray8);
