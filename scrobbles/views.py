@@ -84,7 +84,6 @@ class ScrobbleView(viewsets.ModelViewSet):
         data = self.request.data
         creator = self.request.user
         serializer = self.get_serializer_class()
-        print(data)
 
         if artist_exists(data['artist']):
             artist = Artist.objects.get(name__iexact=data['artist'])
@@ -106,34 +105,41 @@ class ScrobbleView(viewsets.ModelViewSet):
                 album = Album.objects.create(
                     title=data['album'], artist=artist, scrobble_count=1)
 
-        if song_exists(data['song'], data['artist']):
-            song = Song.objects.get(
-                title__iexact=data['song'], artist__id=artist.id)
-            song.scrobble_count += 1
-            song.save()
-        else:
-            if 'album' in data:
-                # Encoding if needed
-                if isinstance(data['song'], bytes):
-                    data['song'] = data['song'].decode('UTF-8')
+        if len(data['song']) > 0 and not data['song'].isspace():
 
-                # Creating song with album, artist & title
-                song = Song.objects.create(
-                    title=data['song'], artist=artist, album=album)
+            if song_exists(data['song'], data['artist']):
+
+                song = Song.objects.get(
+                    title__iexact=data['song'], artist__id=artist.id)
+                song.scrobble_count += 1
+                song.save()
+
             else:
-                # Encoding if needed
-                if isinstance(data['song'], bytes):
-                    data['song'] = data['song'].decode('UTF-8')
+                if 'album' in data:
+                    # Encoding if needed
+                    if isinstance(data['song'], bytes):
+                        data['song'] = data['song'].decode('UTF-8')
 
-                # Creating song with title & artist only.
-                song = Song.objects.create(
-                    title=data['song'], artist=artist)
+                    # Creating song with album, artist & title
+                    song = Song.objects.create(
+                        title=data['song'], artist=artist, album=album)
+                else:
+                    # Encoding if needed
+                    if isinstance(data['song'], bytes):
+                        data['song'] = data['song'].decode('UTF-8')
 
-        creator.listened_to.add(song)
-        creator.save()
-        obj = Scrobble.objects.create(song=song, member=creator)
-        created = serializer(instance=obj)
-        return Response(created.data)
+                    # Creating song with title & artist only.
+                    song = Song.objects.create(
+                        title=data['song'], artist=artist)
+
+            creator.listened_to.add(song)
+            creator.save()
+
+            obj = Scrobble.objects.create(song=song, member=creator)
+            created = serializer(instance=obj)
+
+            return Response(created.data)
+        return Response('Song was either only whitespace or < 1 char')
 
     # In a perfect world, these functions would be
     # in a BaseFilterBackend. Screws fall out all the time,
