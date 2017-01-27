@@ -25,12 +25,14 @@ def song_exists(title, artist):
     else:
         return False
 
+
 def album_exists(title):
     check = Album.objects.filter(title__iexact=title)
     if len(check) != 0:
         return True
     else:
         return False
+
 
 def artist_exists(name):
     check = Artist.objects.filter(name__iexact=name)
@@ -54,7 +56,7 @@ class ScrobbleView(viewsets.ModelViewSet):
 
         if 'active' in data:
             query = Scrobble.objects.filter(
-                    member__nick_name__iexact=data.get('active'))
+                member__nick_name__iexact=data.get('active'))
             query = query.order_by('-date_scrobbled')[:1]
         if 'last_played' in data:
             query = Scrobble.objects.latest('date_scrobbled')
@@ -62,7 +64,7 @@ class ScrobbleView(viewsets.ModelViewSet):
             query = Scrobble.objects.order_by('-id')[:int(data.get('past'))]
         elif 'artist' in data:
             query = Scrobble.objects.filter(
-                    song__artist__name=data.get('artist'))
+                song__artist__name=data.get('artist'))
         elif 'song' in data:
             query = Scrobble.objects.filter(song__title=data.get('song'))
         # Example: ?by_user=Idiot&start=9&end=15
@@ -154,7 +156,7 @@ class ScrobbleView(viewsets.ModelViewSet):
 
     @list_route(methods=['GET'])
     def count(self, request):
-        return Response(len(Scrobble.objects.all()))
+        return Response(Scrobble.objects.all().count())
 
     @detail_route(methods=['GET'])
     def by_song(self, request, pk=None):

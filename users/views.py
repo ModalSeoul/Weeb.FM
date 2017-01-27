@@ -101,13 +101,17 @@ class MemberView(viewsets.ModelViewSet):
     @detail_route(methods=['GET'])
     def top(self, request, pk=None):
         user = Member.objects.get(nick_name__iexact=pk)
+
         scrobbles = Scrobble.objects.filter(member_id=user.pk)
         count = scrobbles.count()
+
         data = scrobbles.filter(member=user).values(
             'member', 'song__artist', 'song__artist__name').annotate(
             total=Count('id')).order_by('-total')[:10]
+
         for i in data:
             i['percent'] = 100 * (i['total'] / count)
+
         return Response(status=200, data=data)
 
     @detail_route(methods=['GET'])
@@ -116,6 +120,7 @@ class MemberView(viewsets.ModelViewSet):
             instance = Token.objects.get(key=pk)
             member = Member.objects.get(id=instance.user_id)
             serializer = MemberSerializer(instance=member)
+
             return Response(serializer.data)
 
     @detail_route(methods=['GET'])
@@ -123,6 +128,7 @@ class MemberView(viewsets.ModelViewSet):
         if pk is not None:
             queryset = Member.objects.get(nick_name__iexact=pk)
             serializer = MemberSerializer(instance=queryset)
+
             return Response(serializer.data)
 
     @list_route(methods=['POST'])
@@ -131,6 +137,7 @@ class MemberView(viewsets.ModelViewSet):
         member = Token.objects.get(key=token).user
         member.profile_picture = self.request.data['profile_picture']
         member.save()
+
         return HttpResponseRedirect('https://wilt.fm/settings')
 
     @list_route(methods=['POST'])
@@ -139,6 +146,7 @@ class MemberView(viewsets.ModelViewSet):
         member = Token.objects.get(key=token).user
         member.banner_picture = self.request.data['banner_picture']
         member.save()
+
         return HttpResponseRedirect('https://wilt.fm/settings')
 
 
@@ -147,8 +155,7 @@ class FollowingView(viewsets.ModelViewSet):
     serializer_class = FollowingSerializer
     permission_classes = (
         permissions.IsAuthenticatedOrReadOnly,
-        IsOwnerOrReadOnly
-    )
+        IsOwnerOrReadOnly)
 
     @detail_route(methods=['POST'])
     def follow(self, request, pk=None):
@@ -157,6 +164,7 @@ class FollowingView(viewsets.ModelViewSet):
             query = Following.objects.get(belongs_to__nick_name__iexact=pk)
             query.following.add(self.request.user.id)
             serializer = FollowingSerializer(query)
+
             return Response(serializer.data)
 
     @detail_route(methods=['GET'])
@@ -164,6 +172,7 @@ class FollowingView(viewsets.ModelViewSet):
         if pk:
             query = Following.objects.get(belongs_to__nick_name__iexact=pk)
             serializer = FollowingSerializer(query)
+
             return Response(serializer.data)
 
     @detail_route(methods=['GET'])
@@ -172,6 +181,7 @@ class FollowingView(viewsets.ModelViewSet):
             query = Following.objects.filter(following__in=pk)
             serializer = FollowerSerializer(instance=query, many=True)
             values = query.values_list('belongs_to__nick_name', flat=True)
+
             return Response(values)
 
 
