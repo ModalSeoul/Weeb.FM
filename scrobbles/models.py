@@ -9,7 +9,7 @@ class Scrobble(models.Model):
     Artist data/storage within the Scrobbles app"""
     song = models.ForeignKey(Song)
     member = models.ForeignKey(Member)
-    date_scrobbled = models.DateTimeField(auto_now_add=True)
+    date_scrobbled = models.DateTimeField()
 
     def __str__(self):
         # e.x "Hells Bells, AC/DC - Admin"

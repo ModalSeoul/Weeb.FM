@@ -1,4 +1,7 @@
 from django.shortcuts import render
+import datetime
+from django.utils import timezone
+
 from rest_framework import viewsets, generics
 from rest_framework.filters import BaseFilterBackend
 from rest_framework.decorators import list_route, detail_route
@@ -135,7 +138,14 @@ class ScrobbleView(viewsets.ModelViewSet):
             creator.listened_to.add(song)
             creator.save()
 
-            obj = Scrobble.objects.create(song=song, member=creator)
+            # if user wants, they can specify their own time for a scrobble.
+            if 'timestamp' in data:
+                date_s = data.get('timestamp')
+            else:
+                date_s = timezone.now()
+
+            obj = Scrobble.objects.create(song=song,
+                    member=creator, date_scrobbled=date_s)
             created = serializer(instance=obj)
 
             return Response(created.data)
