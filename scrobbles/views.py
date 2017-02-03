@@ -48,34 +48,12 @@ def artist_exists(name):
         return False
 
 
-class ScrobbleFilter(BaseFilterBackend):
-
-    def filter_queryset(self, request, queryset, view):
-        q = request.query_params.get
-        queryset = Scrobble.objects.all()
-
-        # holla holla get dolla (last.week is mine now)
-        if q('wiltweek'):
-            pk_scrobbles = queryset.filter(member__nick_name__iexact=q('wiltweek'))
-            week_scrobbles = pk_scrobbles.filter(
-                    date_scrobbled__range=[
-                        timezone.now() - timedelta(days=6),
-                        timezone.now()])
-
-            queryset = week_scrobbles.values_list('song__artist__name').annotate(count=Count('song__artist__name'))
-            return Response(json.dumps(list(queryset)))
-
-        return queryset
-
-
 class ScrobbleView(viewsets.ModelViewSet):
     queryset = Scrobble.objects.all()
     serializer_class = ScrobbleSerializer
     permission_classes = (
         permissions.IsAuthenticatedOrReadOnly,
         IsOwnerOrReadOnly)
-
-    filter_backends = (ScrobbleFilter,)
 
     def get_queryset(self):
         data = self.request.query_params
@@ -170,7 +148,7 @@ class ScrobbleView(viewsets.ModelViewSet):
                 date_s = timezone.now()
 
             obj = Scrobble.objects.create(song=song,
-                    member=creator, date_scrobbled=date_s)
+                                          member=creator, date_scrobbled=date_s)
             created = serializer(instance=obj)
 
             return Response(created.data)
@@ -204,16 +182,14 @@ class ScrobbleView(viewsets.ModelViewSet):
         if q('user'):
             pk_scrobbles = queryset.filter(member__nick_name__iexact=q('user'))
             week_scrobbles = pk_scrobbles.filter(
-                    date_scrobbled__range=[
-                        timezone.now() - timedelta(days=6),
-                        timezone.now()])
+                date_scrobbled__range=[
+                    timezone.now() - timedelta(days=6),
+                    timezone.now()])
 
             b = week_scrobbles.values('song__artist__name').annotate(
-                    count=Count('song__artist__name'),
-                    artist=F('song__artist__name')).order_by('-count').values('artist', 'count')
+                count=Count('song__artist__name'),
+                artist=F('song__artist__name')).order_by('-count').values('artist', 'count')
             return Response(b)
-
-
 
     @list_route(methods=['GET'])
     def count(self, request):
