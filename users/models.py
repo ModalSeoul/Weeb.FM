@@ -26,8 +26,7 @@ class Member(AbstractUser):
 
     # DECEMBAWEEEEEEEEEEEEEEEN
     banner_picture = models.ImageField(
-        upload_to='cdn/images/banners/', null=True, blank=True,
-        default='https://modal.moe/cdn/images/avatars/swongbad.gif')
+        upload_to='cdn/images/banners/', null=True, blank=True)
 
     def __str__(self):
         return self.nick_name

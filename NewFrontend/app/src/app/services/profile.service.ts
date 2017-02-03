@@ -4,7 +4,7 @@ import { UserService } from './user.service';
 
 @Injectable()
 export class ProfileService {
-  private cdn: string = 'https://modal.moe';
+  private cdn: string = 'https://wilt.fm';
 
   constructor(
     private http: HttpService,
@@ -39,7 +39,12 @@ export class ProfileService {
         let tmpUser: any = r;
         // if the user isn't viewing their own profile, display follow button
         this.User.getUserObject(visitingUser).subscribe((visitingObj: any) => {
-          // TODO: global var for cdn
+          /* I'd like to say "I was drunk when I wrote this"
+          But I wasn't. I just didn't care at all and wanted to get
+          the feature pushed. It works, so I've not gone back to fix it.
+          Even though I know I really fucking should.
+          ¯\_(ツ)_/¯
+          */
           resolveMe.avatar = `${this.cdn}${visitingObj.profile_picture}`;
           resolveMe.banner = `${this.cdn}${visitingObj.banner_picture}`;
           resolveMe.nick = visitingObj.nick_name;
