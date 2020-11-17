@@ -8,7 +8,7 @@ from django.utils import timezone
 
 from rest_framework import viewsets, generics, permissions
 from rest_framework.filters import BaseFilterBackend
-from rest_framework.decorators import list_route, detail_route
+from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from songs.models import Song
@@ -157,7 +157,7 @@ class ScrobbleView(viewsets.ModelViewSet):
     # In a perfect world, these functions would be
     # in a BaseFilterBackend. Screws fall out all the time,
     # the world's an imperfect place.
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def by_artist(self, request, pk=None):
         """List all scrobbles from one artist(pk)"""
         if pk is not None:
@@ -165,7 +165,7 @@ class ScrobbleView(viewsets.ModelViewSet):
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
 
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def by_album(self, request, pk=None):
         """Lists all scrobbles from one album(pk)"""
         if pk is not None:
@@ -173,7 +173,7 @@ class ScrobbleView(viewsets.ModelViewSet):
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
 
-    @list_route(methods=['GET'])
+    @action(detail=False, methods=['GET'])
     def wiltweek(self, request):
         q = request.query_params.get
         queryset = Scrobble.objects.all()
@@ -191,11 +191,11 @@ class ScrobbleView(viewsets.ModelViewSet):
                 artist=F('song__artist__name')).order_by('-count').values('artist', 'count')
             return Response(b)
 
-    @list_route(methods=['GET'])
+    @action(detail=False, methods=['GET'])
     def count(self, request):
         return Response(Scrobble.objects.all().count())
 
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def by_song(self, request, pk=None):
         """Lists all scrobbles from one song(pk)"""
         if pk is not None:
@@ -203,7 +203,7 @@ class ScrobbleView(viewsets.ModelViewSet):
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
 
-    @list_route(methods=['GET'])
+    @action(detail=False, methods=['GET'])
     def by_user(self, request, pk=None):
         """Lists scrobbles from one user"""
         if pk is not None:
@@ -212,7 +212,7 @@ class ScrobbleView(viewsets.ModelViewSet):
             serializer = ScrobbleSerializer(instance=queryset, many=True)
             return Response(serializer.data)
 
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def by_user_id(self, request, pk=None):
         queryset = Scrobble.objects.filter(member=pk)
         serializer = ScrobbleSerializer(instance=queryset, many=True)

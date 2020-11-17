@@ -16,17 +16,17 @@ from devblog.views import EntryView
 
 
 router = DefaultRouter()
-router.register(r'members', MemberView, base_name='members')
-router.register(r'member_info', MemberInfoView, base_name='memberinfo')
-router.register(r'shouts', ShoutViewSet, base_name='shouts')
-router.register(r'followings', FollowingView, base_name='friendships')
-router.register(r'scrobbles', ScrobbleView, base_name='scrobbles')
-router.register(r'songs', SongView, base_name='songs')
-router.register(r'artists', ArtistView, base_name='artists')
-router.register(r'albums', AlbumView, base_name='albums')
-router.register(r'featured/current', CurrentView, base_name='currents')
-router.register(r'featured/historical', HistoricalView, base_name='historicals')
-router.register(r'blog_entries', EntryView, base_name="entries")
+router.register(r'members', MemberView)
+router.register(r'member_info', MemberInfoView)
+router.register(r'shouts', ShoutViewSet)
+router.register(r'followings', FollowingView)
+router.register(r'scrobbles', ScrobbleView)
+router.register(r'songs', SongView)
+router.register(r'artists', ArtistView)
+router.register(r'albums', AlbumView)
+router.register(r'featured/current', CurrentView)
+router.register(r'featured/historical', HistoricalView)
+router.register(r'blog_entries', EntryView)
 
 
 urlpatterns = [

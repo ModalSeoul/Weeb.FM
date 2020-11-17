@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = 'k8cra^pz-kty^7b2x-d$b(n8(+=uq9k#2mfet%ni+nf!$*_1gt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,13 +43,13 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
-    'users',
-    'scrobbles',
-    'songs',
-    'artists',
-    'albums',
-    'featured',
-    'devblog'
+    'users.apps.UsersConfig',
+    'scrobbles.apps.ScrobblesConfig',
+    'songs.apps.SongsConfig',
+    'artists.apps.ArtistsConfig',
+    'albums.apps.AlbumsConfig',
+    'featured.apps.FeaturedConfig',
+    'devblog.apps.DevblogConfig'
 ]
 
 REST_FRAMEWORK = {
@@ -57,22 +58,23 @@ REST_FRAMEWORK = {
     ),
 }
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000'
-)
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:3000'
+# )
 
 
 ROOT_URLCONF = 'WeebFM.urls'
@@ -99,18 +101,23 @@ WSGI_APPLICATION = 'WeebFM.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('DB_NAME'),
+#         'USER': os.environ.get('DB_USER'),
+#         'PASSWORD': os.environ.get('DB_PASS'),
+#         'HOST': 'localhost',
+#         'PORT': '',
+
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASS'),
-        'HOST': 'localhost',
-        'PORT': '',
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': f'{BASE_DIR}/db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators

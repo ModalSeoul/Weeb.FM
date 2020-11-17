@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseRedirect
 from django.db.models import Count
 from rest_framework import viewsets, status
-from rest_framework.decorators import detail_route, list_route
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework import permissions
@@ -28,7 +28,7 @@ class MemberInfoView(viewsets.ModelViewSet):
         IsOwnerOrReadOnly
     )
 
-    @detail_route(methods=['GET', 'PATCH'])
+    @action(detail=True, methods=['GET', 'PATCH'])
     def nick(self, request, pk=None):
         if request.method == 'GET':
             resp = MemberInfo.objects.get(belongs_to__nick_name__iexact=pk)
@@ -63,7 +63,7 @@ class MemberView(viewsets.ModelViewSet):
             return CreateMemberSerializer
         return MemberSerializer
 
-    @list_route(methods=['GET'])
+    @action(detail=False, methods=['GET'])
     def current(self, request):
         try:
             user = Member.objects.get(id=self.request.user.id)
@@ -72,7 +72,7 @@ class MemberView(viewsets.ModelViewSet):
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-    @list_route(methods=['GET'])
+    @action(detail=False, methods=['GET'])
     def most_scrobbles(self, request):
         users = []
         total_scrobbles = Scrobble.objects.all().count()
@@ -94,11 +94,11 @@ class MemberView(viewsets.ModelViewSet):
             return Response(top_users)
         return Response(users)
 
-    @list_route(methods=['GET'])
+    @action(detail=False, methods=['GET'])
     def count(self, request):
         return Response(Member.objects.all().count())
 
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def top(self, request, pk=None):
         user = Member.objects.get(nick_name__iexact=pk)
 
@@ -114,7 +114,7 @@ class MemberView(viewsets.ModelViewSet):
 
         return Response(status=200, data=data)
 
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def by_token(self, request, pk=None):
         if pk is not None:
             instance = Token.objects.get(key=pk)
@@ -123,7 +123,7 @@ class MemberView(viewsets.ModelViewSet):
 
             return Response(serializer.data)
 
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def by_nick(self, request, pk=None):
         if pk is not None:
             queryset = Member.objects.get(nick_name__iexact=pk)
@@ -131,7 +131,7 @@ class MemberView(viewsets.ModelViewSet):
 
             return Response(serializer.data)
 
-    @list_route(methods=['POST'])
+    @action(detail=False, methods=['POST'])
     def upload_avatar(self, request):
         token = self.request.data['my_token']
         member = Token.objects.get(key=token).user
@@ -140,7 +140,7 @@ class MemberView(viewsets.ModelViewSet):
 
         return HttpResponseRedirect('https://wilt.fm/settings')
 
-    @list_route(methods=['POST'])
+    @action(detail=False, methods=['POST'])
     def upload_banner(self, request):
         token = self.request.data['my_token']
         member = Token.objects.get(key=token).user
@@ -157,7 +157,7 @@ class FollowingView(viewsets.ModelViewSet):
         permissions.IsAuthenticatedOrReadOnly,
         IsOwnerOrReadOnly)
 
-    @detail_route(methods=['POST'])
+    @action(detail=True, methods=['POST'])
     def follow(self, request, pk=None):
         print(pk)
         if pk:
@@ -167,7 +167,7 @@ class FollowingView(viewsets.ModelViewSet):
 
             return Response(serializer.data)
 
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def following(self, request, pk=None):
         if pk:
             query = Following.objects.get(belongs_to__nick_name__iexact=pk)
@@ -175,7 +175,7 @@ class FollowingView(viewsets.ModelViewSet):
 
             return Response(serializer.data)
 
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def followers(self, request, pk=None):
         if pk:
             query = Following.objects.filter(following__in=pk)

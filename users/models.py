@@ -34,8 +34,8 @@ class Member(AbstractUser):
 
 class Shout(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(Member)
-    shouted_to = models.ForeignKey(Member, related_name='shouted_to')
+    created_by = models.ForeignKey(Member, on_delete=models.CASCADE)
+    shouted_to = models.ForeignKey(Member, related_name='shouted_to', on_delete=models.CASCADE)
     text = models.CharField(max_length=200)
 
     def __str__(self):
@@ -50,7 +50,7 @@ class MemberInfo(models.Model):
     twitter = models.CharField(max_length=100, null=True, blank=True)
     reddit = models.CharField(max_length=100, null=True, blank=True)
     youtube = models.CharField(max_length=140, null=True, blank=True)
-    belongs_to = models.OneToOneField(Member)
+    belongs_to = models.OneToOneField(Member, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.belongs_to.nick_name
@@ -58,7 +58,7 @@ class MemberInfo(models.Model):
 
 class Following(models.Model):
     following = models.ManyToManyField(Member, related_name='sender')
-    belongs_to = models.ForeignKey(Member)
+    belongs_to = models.ForeignKey(Member, on_delete=models.CASCADE)
 
     def __str__(self):
         return 'People {} follows'.format(self.belongs_to.nick_name)

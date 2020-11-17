@@ -4,7 +4,7 @@ from users.models import Member
 
 
 class Entry(models.Model):
-    author = models.ForeignKey(Member)
+    author = models.ForeignKey(Member, on_delete=models.CASCADE)
     title = models.CharField(max_length=140)
     body = models.TextField(max_length=6400)
     date = models.DateTimeField(auto_now_add=True)

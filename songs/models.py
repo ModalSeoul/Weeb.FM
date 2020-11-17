@@ -6,8 +6,8 @@ from albums.models import Album
 
 class Song(models.Model):
     title = models.CharField(max_length=260)
-    artist = models.ForeignKey(Artist)
-    album = models.ForeignKey(Album, null=True, blank=True)
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
+    album = models.ForeignKey(Album, null=True, blank=True, on_delete=models.CASCADE)
     scrobble_count = models.IntegerField(default=0)
 
     @property

@@ -3,7 +3,7 @@ from operator import itemgetter
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.filters import BaseFilterBackend
-from rest_framework.decorators import list_route, detail_route
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Artist
 from .serializers import ArtistSerializer
@@ -22,13 +22,13 @@ class ArtistView(viewsets.ModelViewSet):
         ArtistFilter
     ]
 
-    @list_route(methods=['GET'])
+    @action(detail=False, methods=['GET'])
     def popular(self, request):
         queryset = Artist.objects.order_by('-scrobble_count')[:20]
         serializer = ArtistSerializer(instance=queryset, many=True)
         return Response(serializer.data)
 
-    @list_route(methods=['GET'])
+    @action(detail=False, methods=['GET'])
     def count(self, request):
         params = request.query_params.get
         if params('artist'):
@@ -36,7 +36,7 @@ class ArtistView(viewsets.ModelViewSet):
                 song__artist__name__iexact=params('artist')).count()
             return Response({'count': count})
 
-    @detail_route(methods=['GET', 'PATCH'])
+    @action(detail=True, methods=['GET', 'PATCH'])
     def name(self, request, pk=None):
         if pk:
             if not request.method == 'PATCH':

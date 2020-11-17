@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.filters import BaseFilterBackend
-from rest_framework.decorators import list_route, detail_route
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Album
 from .serializers import AlbumSerializer
@@ -14,7 +14,7 @@ class AlbumView(viewsets.ModelViewSet):
     # TODO: Try posting from no staff
     permission_classes = (IsStaffOrReadOnly,)
 
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def by_artist(self, request, pk=None):
         # If artist id is passed
         if pk is not None:

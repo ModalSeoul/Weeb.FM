@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.filters import BaseFilterBackend
-from rest_framework.decorators import list_route, detail_route
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Song
 from .serializers import SongSerializer
@@ -23,7 +23,7 @@ class SongView(viewsets.ModelViewSet):
             queryset = Song.objects.filter(id__in=user.loved_tracks.all())
         return queryset
 
-    @detail_route(methods=['POST'])
+    @action(detail=True, methods=['POST'])
     def love(self, request, pk=None):
         if pk and not self.request.user.is_anonymous:
             song = Song.objects.get(id=pk)
@@ -37,13 +37,13 @@ class SongView(viewsets.ModelViewSet):
         else:
             return Response('WOA CHECK YA PRIVILEGE U PC BRA?')
 
-    @list_route(methods=['GET'])
+    @action(detail=False, methods=['GET'])
     def popular(self, request):
         queryset = Song.objects.order_by('-scrobble_count')[:20]
         serializer = SongSerializer(instance=queryset, many=True)
         return Response(serializer.data)
 
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def by_artist(self, request, pk=None):
         # If artist id is passed
         if pk is not None:
@@ -54,7 +54,7 @@ class SongView(viewsets.ModelViewSet):
             # return the serialized & filtered data to the viewset
             return Response(serializer.data)
 
-    @detail_route(methods=['GET'])
+    @action(detail=True, methods=['GET'])
     def by_album(self, request, pk=None):
         # If artist id is passed
         if pk is not None:

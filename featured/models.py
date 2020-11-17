@@ -16,7 +16,7 @@ class Current(models.Model):
 
 
 class Historical(models.Model):
-    song = models.ForeignKey(Song)
+    song = models.ForeignKey(Song, on_delete=models.CASCADE)
     note = models.TextField(max_length=1200)
     # genre = models.ForeignKey(Genre) TODO: Add Genre application
     date_created = models.DateTimeField(auto_now_add=True)
