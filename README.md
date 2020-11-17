@@ -18,11 +18,3 @@ WeebFM development started on 10/3/2016. The day LastFm decided to toss up a per
 THIS. IS. ~~Sparta?~~ **WHY**
 ![GODDAMMIT](http://i.imgur.com/bt6imvL.png)
 <hr>
-## Usage
-Install requirements from the requirements.txt file. python3.5 > is suggested.
-<hr>
-## sqlite storage is temporary
-We will be switching over to PostgreSQL soon(tm)
-<hr>
-## If you ain't first you're last.fm
-### Not quite sure what to do with my hands
